@@ -17,6 +17,9 @@ module.exports = {
   },
   plugins: [
     require('daisyui'),
-    require('preline/plugin'),
+    require("@tailwindcss/forms")({
+      strategy: 'base', // only generate global styles
+      strategy: 'class', // only generate classes
+    }),
   ],
 };

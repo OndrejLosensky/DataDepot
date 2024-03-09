@@ -18,8 +18,8 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
             <ul>
-                <li className='btn btn-ghost mr-4'><Link href="/auth/login"> Login in</Link></li>
-                <li className='btn btn-primary mr-4'><Link href="/auth/register">Sign up</Link></li>
+                <button> <Link className='btn btn-ghost mr-4' href="/auth/login">Login</Link> </button>
+                <button> <Link className='btn btn-primary mr-4' href="/auth/register">Sign in</Link> </button>                
             </ul>
         </div>
     </div>
