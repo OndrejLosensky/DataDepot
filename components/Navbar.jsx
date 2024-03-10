@@ -5,7 +5,7 @@ import { FaWarehouse } from "react-icons/fa";
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-300">
+    <div className="navbar bg-base-300 sticky top-0">
         <div className="navbar-start ml-4 ">
             <FaWarehouse className='h-9 w-7 pr-1'/>
             <h2 className='text-2xl text-gray-200'> DataDepot </h2>
