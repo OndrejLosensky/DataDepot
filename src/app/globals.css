@@ -11,3 +11,20 @@ html, body {
 .input-width {
     width: 600px;
   }
+
+.mockup-code {
+    position: fixed;
+    z-index: 1; 
+    right: 0;
+    height: 300px;
+    width: 700px;
+}
+
+.mockup-code pre {
+    overflow: auto;
+    margin: 0;
+}
+
+.navbar {
+    z-index: 2; /* Set a higher z-index value */
+  }

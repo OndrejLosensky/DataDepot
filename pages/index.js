@@ -4,10 +4,11 @@ import PrelineScript from '../components/PrelineScript';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Helmet } from 'react-helmet';
-import Homepage from '../components/Homepage';
-import GetStarted from '../components/GetStarted';
+import GetStarted from '../components/home/GetStarted';
 import Preview from '../components/Preview';
 import Contact from '../components/Contact';
+import Hero from '../components/home/Hero';
+import WhatIs from '../components/home/WhatIs';
 
 function LandingPage (){
     
@@ -21,12 +22,15 @@ function LandingPage (){
 
             {/* Navbar + hero page */}
             <Navbar/>
-            <Homepage/>
+            <Hero/>
 
-            {/* Get started page + all content on main page */}
+            <WhatIs/>
+            <GetStarted/>
+            {/* Get started page + all content on main page 
             <GetStarted/>
             <Preview/>
             <Contact/>
+            */}
 
             {/* Footer + PrelineUI script for components */}
             <Footer/>
