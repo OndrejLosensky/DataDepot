@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-const SectionTitle = ({name}) => {
+const SectionTitle = ({ name }) => {
   return (
-    <div className='text-2xl text-center pb-1 font-thin text-blue-500'>
-        <p>{name}</p>
+    <div className="text-2xl text-center pb-2 uppercase w-48 mx-auto">
+      <p className="">
+        {name}
+      </p>
     </div>
-  )
-}
+  );
+};
 
-export default SectionTitle
+export default SectionTitle;

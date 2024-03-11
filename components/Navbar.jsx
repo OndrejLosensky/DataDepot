@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import LogoDark from './layout/LogoDark';
 import LogoLight from './layout/LogoLight';
 
 const Navbar = () => {
+  const [scrolled, isScrolled] = useState(false);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -13,7 +14,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-300 sticky top-0">
+    <div className="navbar bg-base-300 opacity-95 sticky top-0">
       <div className="navbar-start ml-4 hover:cursor-pointer" onClick={scrollToTop}>
         <LogoLight/>
         <h2 className='text-2xl pt-2 text-gray-200'> DataDepot </h2>

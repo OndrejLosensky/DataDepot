@@ -4,7 +4,7 @@ const Hero = () => {
         <div className='min-h-screen max-w-screen flex'>
           <div className='w-1/2 flex flex-col justify-center items-start ml-8 px-28 py-0'>
           
-          <div class="flex place-items-center relative before:absolute before:h-[600px] before:w-full sm:before:w-[580px] before:-translate-x-1/3 before:rounded-full before:bg-gradient-to-br before:from-custom-pink before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-custom-purple after:via-custom-indigo after:blur-3xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-custom-purple before:dark:opacity-20 after:dark:from-custom-blue after:dark:via-[#4f01a9] after:dark:opacity-100 before:lg:h-[360px] z-[-1]">
+          <div class="flex place-items-center relative before:absolute before:h-[600px] before:w-full sm:before:w-[580px] before:-translate-x-[150px] before:-translate-y-[10px]  before:rounded-full before:bg-gradient-to-br before:from-custom-pink before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-custom-purple after:via-custom-indigo after:blur-3xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-custom-purple before:dark:opacity-20 after:dark:from-custom-blue after:dark:via-[#4f01a9] after:dark:opacity-100 before:lg:h-[360px] z-[-1]">
             <h2 className='text-5xl font-semibold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text shadow-glow'>
               Welcome to DataDepot
             </h2>
@@ -26,6 +26,9 @@ const Hero = () => {
               </svg>   
             </button>
           </div>
+
+          <div class="flex place-items-center relative mr-32 mt-64 before:absolute before:h-[400px] before:w-full sm:before:w-[380px] before:translate-x-[450px] before:translate-y-[-350px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-secondary after:via-success after:blur-3xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-primary before:dark:opacity-20 after:dark:from-green-600 after:dark:via-green-400 after:dark:opacity-100 before:lg:h-[300px] z-[-1]"></div>
+
 
           <div className='w-1/2 flex flex-col justify-center items-end'>
             <div className="mockup-code shadow-xl rounded-none bg-base-300">
