@@ -18,20 +18,12 @@ function LandingPage (){
                 <link rel="icon" href="favicon.ico" />
             </Helmet>
 
-            {/* Navbar + hero page */}
+            {/* Homepage components */}
             <Navbar/>
             <Hero/>
-
             <WhatIs/>
             <WhyChoose/>
             <About/>
-            {/* Get started page + all content on main page 
-            <GetStarted/>
-            <Preview/>
-            <Contact/>
-            */}
-
-            {/* Footer */}
             <Footer/>
         </main>
     )
