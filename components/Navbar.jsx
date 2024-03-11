@@ -28,16 +28,16 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className={`navbar ${isScrolled ? 'bg-base-300 duration-200': 'bg-transparent duration-200 mt-4 ' } opacity-95 sticky top-0`}>
+    <div className={`navbar ${isScrolled ? 'bg-base-300 duration-200': 'bg-transparent duration-200 mt-8 ' } opacity-95 sticky top-0`}>
       <div className="navbar-start ml-8 hover:cursor-pointer" onClick={scrollToTop}>
         <LogoLight/>
         <h2 className='text-2xl pt-2 text-gray-200'> DataDepot </h2>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li className='hover:text-gray-100 duration-200'><Link href="/docs">Docs</Link></li>
-          <li className='hover:text-gray-100 duration-200'><Link href="/docs">Get started</Link></li>
-          <li className='hover:text-gray-100 duration-200'><Link href="/contact">Contact</Link></li>
+          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/docs">Docs</Link></li>
+          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/docs">Get started</Link></li>
+          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/contact">Contact</Link></li>
         </ul>
       </div>
       <div className="navbar-end">
