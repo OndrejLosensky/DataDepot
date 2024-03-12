@@ -16,7 +16,7 @@ function LandingPage (){
             {/* <meta> data */}
              <Helmet>
                 <title>DataDepot</title>
-                <link rel="icon" href="favicon.svg" />
+                <link rel="icon" href="/favicon.svg" />
             </Helmet>
 
             {/* Homepage components */}
