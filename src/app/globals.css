@@ -12,6 +12,11 @@ html, body {
     width: 600px;
   }
 
+.indicator-end {
+  z-index: 1;
+}
+
+
 .mockup-code {
     position: fixed;
     z-index: 1; 

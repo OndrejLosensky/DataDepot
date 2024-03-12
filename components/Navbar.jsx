@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import LogoDark from './layout/LogoDark';
 import LogoLight from './layout/LogoLight';
+import { FaWarehouse } from "react-icons/fa";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,7 +31,7 @@ const Navbar = () => {
   return (
     <div className={`navbar ${isScrolled ? 'bg-base-300 duration-200': 'bg-transparent duration-200 mt-8 ' } opacity-95 sticky top-0`}>
       <div className="navbar-start ml-8 hover:cursor-pointer" onClick={scrollToTop}>
-        <LogoLight/>
+        <FaWarehouse className='w-10 mr-2 h-auto'/>
         <h2 className='text-2xl pt-2 text-gray-200'> DataDepot </h2>
       </div>
       <div className="navbar-center hidden lg:flex">

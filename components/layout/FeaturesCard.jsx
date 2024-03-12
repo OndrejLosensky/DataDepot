@@ -6,11 +6,18 @@ const FeaturesCard = ({ heading, description, smallDescription, gradientFrom, gr
   };
 
   return (
-    <div className="w-[400px] flex flex-col h-auto bg-white text-white rounded-xl shadow-md p-6 m-4" style={cardStyle}>
-      <h2 className="text-3xl font-bold mb-2">{heading}</h2>
-      <h4 className="text-lg font-semibold text-gray-800 mb-2">{description}</h4>
-      <p className="text-base text-gray-700">{smallDescription}</p>
+    <div className="relative w-[400px] flex flex-col h-auto bg-white text-white rounded-xl shadow-md p-6 m-4" style={cardStyle}>
+    {/* Indicator Badge */}
+    <div className="absolute indicator-end top-0 right-0 mt-2 mr-2 z-10">
+      <span className="indicator-item badge badge-primary">new</span>
     </div>
+    
+    {/* Card Content */}
+    <h2 className="text-3xl font-bold mb-2">{heading}</h2>
+    <h4 className="text-lg font-semibold text-gray-800 mb-2">{description}</h4>
+    <p className="text-base text-gray-700">{smallDescription}</p>
+  </div>
+  
   );
 };
 

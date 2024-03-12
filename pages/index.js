@@ -8,7 +8,7 @@ import WhyChoose from '../components/home/WhyChoose';
 import About from '../components/home/About'
 import Hero from '../components/home/Hero';
 import WhatIs from '../components/home/WhatIs';
-
+import Loading from '../components/Loading';
 function LandingPage (){
     
     return (
@@ -25,6 +25,7 @@ function LandingPage (){
             <WhatIs/>
             <WhyChoose/>
             <About/>
+            <Loading/>
             <Footer/>
         </main>
     )
