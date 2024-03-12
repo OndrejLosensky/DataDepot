@@ -55,7 +55,6 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className="border-gray-600 border-b w-[98%] mx-auto"></div>
     </section>
     
   );
