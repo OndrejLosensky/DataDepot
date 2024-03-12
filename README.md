@@ -5,7 +5,9 @@ Store your files effectively inside the sqlite db, that is very quick. Manage al
 Full-stack project created using Next.js, TailwindCSS (daisyUI) and Sqlite database.
 
 ## Features
-* 
+* Store documents inside a simply looking dashboard
+* Manage documents
+* Labels, folders, groups for documents
 
 ## Preview
 
@@ -28,9 +30,11 @@ This project is licensed under the Apache license 2.0: [Link to LICENSE.md]()
 
 ## Languages & Tools Used
 
-* Link to JavaScript: [https://www.javascript.com/](https://www.javascript.com/)
-* Link to React: [https://reactjs.org/](https://reactjs.org/)
-* Link to Tailwind CSS: [https://tailwindcss.com/](https://tailwindcss.com/)
+* Link to Next.js: [https://nextjs.org/](https://nextjs.org)
+* Link to Tailwind CSS: [https://tailwindcss.com/](https://tailwindcss.com)
+* Link to DaisyUI (TailwindCSS library): [https://daisyui.com/](https://daisyui.com)
+* Link to react-icon: [https://react-icons.github.io/react-icons/](https://react-icons.github.io/react-icons)
+* Link to Sqlite: [https://www.sqlite.org](https://www.sqlite.org)
 
 ## Project Creation Date
 
