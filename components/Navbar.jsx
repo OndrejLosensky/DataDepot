@@ -44,7 +44,7 @@ const Navbar = () => {
       <div className="navbar-end">
         <ul>
           <button> <Link className='btn btn-ghost mr-4' href="/auth/login">Login</Link> </button>
-          <button> <Link className='btn btn-primary mr-8' href="/auth/register">Sign in</Link> </button>
+          <button> <Link className='btn btn-primary mr-8' href="/auth/register">Sign up</Link> </button>
         </ul>
       </div>
     </div>

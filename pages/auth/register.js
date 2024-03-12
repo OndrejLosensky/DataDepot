@@ -1,11 +1,7 @@
-import React from 'react'
+const { default: Register } = require("../../components/auth/Register");
 
-const register = () => {
-  return (
-    <div>
-        <h1> Register page </h1>
-    </div>
-  )
+function registerPage() {
+  return <Register/>
 }
 
-export default register
+export default registerPage;
