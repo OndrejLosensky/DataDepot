@@ -61,3 +61,20 @@ html, body {
   .underline-effect:hover::before {
     transform: scaleX(1);
   }
+
+
+
+/* styles/globals.css */
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(calc(-100% - 1rem)); /* Adjust spacing here */
+  }
+}
+
+.animated-scroll {
+  animation: scroll 15s linear infinite;
+}

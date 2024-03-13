@@ -8,6 +8,7 @@ import About from '../components/home/About'
 import Hero from '../components/home/Hero';
 import WhatIs from '../components/home/WhatIs';
 import Loading from '../components/Loading';
+import VerticalEffect from '../components/home/VerticalEffect'
 import Head from 'next/head';
 
 function LandingPage (){
@@ -27,6 +28,7 @@ function LandingPage (){
             <WhatIs/>
             <WhyChoose/>
             <About/>
+            <VerticalEffect/>
             <Loading/>
             <Footer/>
         </main>
