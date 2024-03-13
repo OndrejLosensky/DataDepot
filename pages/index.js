@@ -3,21 +3,23 @@ import 'daisyui/dist/full.css';
 import '../src/app/scrollbar.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { Helmet } from 'react-helmet';
 import WhyChoose from '../components/home/WhyChoose';
 import About from '../components/home/About'
 import Hero from '../components/home/Hero';
 import WhatIs from '../components/home/WhatIs';
 import Loading from '../components/Loading';
+import Head from 'next/head';
+
 function LandingPage (){
     
     return (
         <main>
             {/* <meta> data */}
-             <Helmet>
+
+            <Head>
+                <link rel="icon" href="/favicon.png" />
                 <title>DataDepot</title>
-                <link rel="icon" href="/favicon.svg" />
-            </Helmet>
+            </Head>
 
             {/* Homepage components */}
             <Navbar/>
