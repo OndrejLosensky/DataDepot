@@ -20,7 +20,7 @@ const Hero = () => {
               <span className="flex items-center">
                 Get started
                 <svg
-                  className="ml-1 transition-transform transform-gpu -translate-y-0 group-hover:translate-x-2 duration-200"
+                  className="ml-1 transition-transform transform-gpu -translate-y-0 group-hover:translate-x-1 duration-300"
                   fill="none"
                   viewBox="0 0 24 24"
                   height="1.3em"

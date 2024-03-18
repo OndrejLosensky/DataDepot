@@ -28,8 +28,10 @@ function LandingPage (){
             <WhatIs/>
             <WhyChoose/>
             <About/>
+            {/* 
             <VerticalEffect/>
             <Loading/>
+            */}
             <Footer/>
         </main>
     )
