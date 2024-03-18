@@ -12,9 +12,6 @@ import { SiJest } from "react-icons/si";
 export default function Home() {
   return (
     <div className="container mx-auto mt-8">
-      <Head>
-        <title>Horizontal Scroll Effect</title>
-      </Head>
       <div className="h-64 mb-16 overflow-hidden">
         <div className="flex space-x-4 p-4 overflow-x-scroll animated-scroll">
           {/* Add more icons as needed */}
