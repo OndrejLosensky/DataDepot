@@ -16,7 +16,7 @@ const WhyChoose = () => {
           </div>
         </div>
         <div className="collapse collapse-arrow py-2">
-          <input type="radio" name="my-accordion-2" defaultChecked /> 
+          <input type="radio" name="my-accordion-2"/> 
           <div className="collapse-title text-2xl font-medium border-gray-400 border-b-2">
             Is DataDepot free?
           </div>
@@ -25,7 +25,7 @@ const WhyChoose = () => {
           </div>
         </div>
         <div className="collapse collapse-arrow py-2">
-          <input type="radio" name="my-accordion-2" defaultChecked /> 
+          <input type="radio" name="my-accordion-2"/> 
           <div className="collapse-title text-2xl font-medium border-gray-400 border-b-2">
             Can i customize it for myself?
           </div>
