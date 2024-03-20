@@ -78,12 +78,12 @@ const Register = () => {
                 {passwordVisible ? <HiEyeOff /> : <HiEye />}
               </button>
             </div>
-            <button className="btn btn-primary" onClick={() => setStep(2)}>Next</button>
+            <button className="btn btn-primary w-full" onClick={() => setStep(2)}>Next</button>
           </div>
         );
       case 2:
         return (
-          <div className="flex flex-col items-center justify-center space-y-4">
+          <div className="flex flex-col w-full items-center justify-center space-y-4">
             <h1 className='text-center text-gray-300 text-4xl py-6'>Step 2: Personal Information (Optional)</h1>
             <input
               type="text"
@@ -101,9 +101,9 @@ const Register = () => {
               className="input input-bordered w-full"
               placeholder="Phone Number"
             />
-            <div className="flex items-center justify-between w-full">
-              <button className="btn btn-secondary" onClick={() => setStep(1)}>Previous</button>
-              <button className="btn btn-primary" onClick={handleSubmit}>Register</button>
+            <div className="flex flex-col items-center justify-center gap-y-2 w-full">
+              <button className="btn btn-bordered w-full" onClick={() => setStep(1)}>Previous</button>
+              <button className="btn btn-primary w-full" onClick={handleSubmit}>Register</button>
             </div>
           </div>
         );
@@ -115,7 +115,7 @@ const Register = () => {
   return (
     <div className='flex items-center justify-center h-screen bg-base-100'>
       <a><Link className='btn btn-ghost absolute top-0 left-0 ml-4 mt-4' href="/"><FaArrowLeftLong/>Back</Link></a>
-      <div className='w-[33%] h-auto mx-auto py-10 px-8 bg-gray-800 shadow-2xl backdrop-blur-lg rounded-2xl'>
+      <div className='w-[100%] h-auto mx-auto py-10 px-8 bg-gray-800 shadow-2xl backdrop-blur-lg rounded-2xl'>
         {renderStepContent()}
       </div>
     </div>
