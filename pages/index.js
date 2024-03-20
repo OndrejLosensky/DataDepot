@@ -1,9 +1,10 @@
 import '../src/app/globals.css';
 import 'daisyui/dist/full.css';
 import '../src/app/scrollbar.css';
-import '../src/app/infiniteScroll.css';
 //import '../src/app/IconsScroll.css';
+import React from 'react';
 import Navbar from '../components/Navbar';
+import Home from '../components/home/Home';
 import Footer from '../components/Footer';
 import WhyChoose from '../components/home/WhyChoose';
 import About from '../components/home/About'
@@ -16,7 +17,7 @@ import Head from 'next/head';
 
 function LandingPage (){
     return (
-        <main>
+        <main className='max-w-screen'>
             {/* <meta> data */}
             <Head>
                 <link rel="icon" href="/favicon.png" />
@@ -24,10 +25,12 @@ function LandingPage (){
             </Head>
 
             <Navbar/>
-            <Hero/>
+            <Home/>
             <WhatIs/>
             <WhyChoose/>
-            
+            <About/>
+            <Footer/>
+            {/* 
             <div className='flex flex-col py-16 mb-32 bg-[#1e2228]'>
                 <InfiniteScroll
                 items={[
@@ -53,10 +56,8 @@ function LandingPage (){
                 speed={100}
                 />
             </div>
+            */}
 
-            <About/>
-        
-            <Footer/>
         </main>
     )
 }

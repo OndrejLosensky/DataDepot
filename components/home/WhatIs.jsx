@@ -29,7 +29,7 @@ const WhatIs = () => {
         <FeaturesCardsContainer/>
       </div>
 
-      <div className='border-b border-gray-600 w-[98%] mx-auto'></div>
+      <div className='border-b border-gray-600 w-[88%] mx-auto'></div>
     </section>
   );
 };
