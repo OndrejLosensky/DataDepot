@@ -39,6 +39,8 @@ const Navbar = () => {
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/docs">Docs</Link></li>
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/docs">Get started</Link></li>
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/contact">Contact</Link></li>
+          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/contact">Blog</Link></li>
+          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/contact">Pricing</Link></li>
         </ul>
       </div>
       <div className="navbar-end">

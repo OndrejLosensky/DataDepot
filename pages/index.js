@@ -2,6 +2,7 @@ import '../src/app/globals.css';
 import 'daisyui/dist/full.css';
 import '../src/app/scrollbar.css';
 import '../src/app/infiniteScroll.css';
+//import '../src/app/IconsScroll.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import WhyChoose from '../components/home/WhyChoose';
@@ -10,24 +11,22 @@ import Hero from '../components/home/Hero';
 import WhatIs from '../components/home/WhatIs';
 import InfiniteScroll from '../components/home/InfiniteScroll'
 import Head from 'next/head';
+//import IconsScroll from '../components/home/IconsScroll';
 
 
 function LandingPage (){
     return (
         <main>
             {/* <meta> data */}
-
             <Head>
                 <link rel="icon" href="/favicon.png" />
                 <title>DataDepot</title>
             </Head>
 
-            {/* Homepage components */}
             <Navbar/>
             <Hero/>
             <WhatIs/>
             <WhyChoose/>
-            <About/>
             
             <div className='flex flex-col py-16 mb-32 bg-[#1e2228]'>
                 <InfiniteScroll
@@ -53,8 +52,9 @@ function LandingPage (){
                 ]}
                 speed={100}
                 />
-
             </div>
+
+            <About/>
         
             <Footer/>
         </main>
