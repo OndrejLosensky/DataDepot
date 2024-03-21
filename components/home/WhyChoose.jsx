@@ -1,6 +1,8 @@
 import React from 'react'
 import SectionTitle from '../layout/SectionTitle'
 import Image from 'next/image';
+import Link from 'next/link';
+
 
 const WhyChoose = () => {
   return (
@@ -38,34 +40,34 @@ const WhyChoose = () => {
               Create tags for your stored files
             </p>
             <div className='pt-8'>
-              <button className='text-left ml-36 btn w-[200px] hover:-translate-y-1 duration-200'>
-              Learn more
-              <svg
-                viewBox="0 0 64 64"
-                fill="currentColor"
-                height="1.5em"
-                width="1.9em"
-              >
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinejoin="bevel"
-                  strokeMiterlimit={10}
-                  strokeWidth={2}
-                  d="M31 15l17 17-17 17"
-                />
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinejoin="bevel"
-                  strokeMiterlimit={10}
-                  strokeWidth={2}
-                  d="M16 15l17 17-17 17"
-                />
-              </svg>
-
-              </button>
-              <p className='text-gray-400 text-sm font-thin ml-36 pt-1'>
+              <Link className='text-left ml-36 btn w-[200px] hover:-translate-y-1 duration-200' href="/docs">
+                Supported files 
+                <svg
+                  viewBox="0 0 64 64"
+                  fill="currentColor"
+                  height="1.5em"
+                  width="1.9em"
+                >
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinejoin="bevel"
+                    strokeMiterlimit={10}
+                    strokeWidth={2}
+                    d="M31 15l17 17-17 17"
+                  />
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinejoin="bevel"
+                    strokeMiterlimit={10}
+                    strokeWidth={2}
+                    d="M16 15l17 17-17 17"
+                  />
+                </svg>
+              </Link> 
+              
+              <p className='text-gray-400 text-sm font-thin ml-36 pl-1 pt-1'>
                 Microsoft Office files supported!
               </p>
             </div>

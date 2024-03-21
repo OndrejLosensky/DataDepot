@@ -1,5 +1,7 @@
 import React from "react";
 import Image from 'next/image';
+import Link from 'next/link';
+
 
 const Hero = () => {
   return (
@@ -28,8 +30,8 @@ const Hero = () => {
               }}
             >
               <span className="absolute top-0 left-0 w-full h-full rounded-full"></span>
-              <span className="flex items-center uppercase font-thin relative z-10 ">
-                Get started now!
+              <span className="flex items-center uppercase font-thin relative ">
+                <Link href="/auth/login">Get started now!</Link> 
               </span>
             </button>
 

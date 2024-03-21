@@ -14,13 +14,13 @@ const WhatIs = () => {
 
         <div className="w-2/4 mx-auto text-center font-bold">
           <p className="text-5xl bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">
-            DataDepot features
+              Explore DataDepot
           </p>
         </div>
 
-        <p className='text-center pt-8'> 
-          Welcome to DataDepot, your personal project hub for securely storing and managing all your files. <br />
-          Designed with simplicity and efficiency in mind, DataDepot is the ideal solution for organizing your documents, <br />
+        <p className='text-center pt-8 text-wrap w-1/3 mx-auto'> 
+          Welcome to DataDepot, your personal project hub for securely storing and managing all your files.
+          Designed with simplicity and efficiency in mind, DataDepot is the ideal solution for organizing your documents,
           script files, and more, all within one convenient platform.
         </p>
 
