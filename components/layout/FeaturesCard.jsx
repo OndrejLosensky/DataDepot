@@ -8,7 +8,7 @@ const FeaturesCard = ({ heading, description, smallDescription, gradientFrom, gr
   return (
     <div className="relative w-[400px] flex flex-col h-auto bg-white text-gray-800 rounded-xl shadow-md p-6 m-4" style={cardStyle}>
       {/* Indicator Badge */}
-      <div className='absolute top-2 right-2 z-10 px-2 py-1 rounded-full bg-primary text-white text-xs font-semibold tracking-wide'>
+      <div className='absolute top-2 right-2 px-2 py-1 rounded-full bg-primary text-white text-xs font-semibold tracking-wide'>
         New
       </div>
       
