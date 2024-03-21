@@ -35,7 +35,7 @@ const Navbar = () => {
         <h2 className='text-2xl pt-2 text-gray-200'> DataDepot </h2>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className=" items-center flex flex-row gap-x-10 px-1">
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/docs">Docs</Link></li>
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/docs">Get started</Link></li>
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/contact">Contact</Link></li>

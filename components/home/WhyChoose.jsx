@@ -9,11 +9,11 @@ const WhyChoose = () => {
         <div className='w-1/2 flex justify-center items-center'>
           <div className="mockup-browser border ml-36 w-auto h-auto">
             <div className="mockup-browser-toolbar">
-              <div className="input">https://daisyui.com</div>
+              <div className="input">https://data-depot.com</div>
             </div>
             <div className=''>
               <Image
-                  src="/editor.png"
+                  src="/backend.png"
                   alt="Code editor mockup image"
                   width={800}
                   height={0}

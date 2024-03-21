@@ -88,7 +88,7 @@ const Register = () => {
       case 2:
         return (
           <div className="flex flex-col w-full items-center justify-center space-y-4">
-            <h1 className='text-center text-gray-300 text-4xl py-6'>Step 2: Personal Information (Optional)</h1>
+            <h1 className='text-center text-gray-800 text-4xl py-6'>Step 2: Personal Information (Optional)</h1>
             <input
               type="text"
               name="name"
@@ -112,7 +112,7 @@ const Register = () => {
       case 3:
         return (
           <div className="flex flex-col w-full items-center justify-center space-y-4">
-            <h1 className='text-center text-gray-300 text-4xl py-6'>Step 3: Additional Information</h1>
+            <h1 className='text-center text-gray-800 text-4xl py-6'>Step 3: Additional Information</h1>
             <textarea
               name="additionalInfo"
               value={formData.additionalInfo}
