@@ -12,7 +12,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex w-screen h-screen">
 
       {/* Left Side with Image */}
       <div className="w-1/2 bg-gray-800 relative flex justify-center items-center">

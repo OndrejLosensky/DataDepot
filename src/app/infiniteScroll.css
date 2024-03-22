@@ -15,7 +15,7 @@ body {
 .scroll {
   position: relative;
   display: flex;
-  width: 100%;
+  width: 60rem;
   overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #fff 25%, #fff 75%, transparent);
 }

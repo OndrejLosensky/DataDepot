@@ -35,7 +35,7 @@ const Register = () => {
     switch (step) {
       case 1:
         return (
-          <div className="flex flex-col w-full items-center justify-center space-y-4">
+          <div className="flex flex-col items-center justify-center space-y-4">
             <h1 className='text-center text-gray-800 text-4xl py-6'>Step 1: Account Information</h1>
             <input
               type="email"
@@ -130,7 +130,7 @@ const Register = () => {
   };
 
   return (
-    <div className='flex h-screen'>
+    <div className='flex w-screen h-screen'>
       {/* Left Side with Image */}
       <div className="w-1/2 bg-gray-800 relative flex justify-center items-center">
         <Image

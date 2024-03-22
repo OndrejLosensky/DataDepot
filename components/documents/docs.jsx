@@ -1,29 +1,40 @@
-import React from 'react'
+import React from 'react';
 import { FaArrowLeftLong } from "react-icons/fa6";
-import Link from 'next/link'
+import Link from 'next/link';
 
-const docs = () => {
+const Docs = () => {
   return (
-    <div className='max-w-screen min-h-screen flex flex-row'>
-        <div className="drawer drawer-open">
-          <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content flex flex-col items-center justify-center">
-          
-          </div> 
-          <div className="drawer-side">
-            <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label> 
-            <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-              <h2 className='text-3xl font-semibold py-2 pl-4'> Docs </h2>
-              <li><a>Sidebar Item 1</a></li>
-              <li><a>Sidebar Item 2</a></li>
-            </ul>
-          
-          </div>
+    <div className='flex w-screen h-screen'>
+      {/* Sidebar */}
+      <div className="w-80 min-h-screen bg-base-200 text-base-content overflow-y-auto">
+        <h2 className='text-3xl font-semibold py-2 pl-4'>Docs</h2>
+        <ul className="menu p-4">
+          <li><a>Sidebar Item 1</a></li>
+          <li><a>Sidebar Item 2</a></li>
+          {/* Add more sidebar items here */}
+        </ul>
       </div>
 
-      <a><Link className='btn btn-ghost w-24 absolute top-2 right-2' href="/"><FaArrowLeftLong/>Back</Link></a>
-    </div>
-  )
-}
+      {/* Content */}
+      <div className="flex-grow min-h-screen bg-base-100 p-4 overflow-y-auto">
+        <h1 className='pb-32'> Welcome</h1>
+        <p className='pb-32'> Lorem ipsum</p>
+        <h1 className='pb-32'> Welcome</h1>
+        <p className='pb-32'> Lorem ipsum</p>
+        <h1 className='pb-32' > Welcome</h1>
+        <p className='pb-32'> Lorem ipsum</p>
+        <h1 className='pb-32'> Welcome</h1>
+        <p className='pb-32'> Lorem ipsum</p>
+      </div>
 
-export default docs
+      {/* Back button */}
+      <a>
+        <Link className='btn btn-ghost w-24 absolute top-2 right-2' href="/">
+          <FaArrowLeftLong/>Back
+        </Link>
+      </a>
+    </div>
+  );
+};
+
+export default Docs;
