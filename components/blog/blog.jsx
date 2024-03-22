@@ -5,7 +5,7 @@ import Link from 'next/link'
 const contact = () => {
   return (
     <div className='max-w-screen min-h-screen'>
-        <h1 className='text-center py-4'> Contact form page</h1>
+        <h1 className='text-center py-4'> Blog page</h1>
         <a><Link className='btn btn-ghost absolute top-0 left-0 ml-4 mt-4' href="/"><FaArrowLeftLong/>Back</Link></a>
     </div>
   )

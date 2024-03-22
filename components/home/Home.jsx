@@ -66,6 +66,7 @@ const Hero = () => {
             />
             </div>
 
+            {/*   
             <div className="w-[1200px] h-[600px] flex flex-row rounded-2xl shadow-xl bg-base-200 mb-32">
                 <div className="h-[60px] w-full bg-gray-700 rounded-t-2xl flex flex-row pl-4  items-center"> 
                     <span className="w-4 h-4 mr-2 bg-red-500 rounded-full"></span>
@@ -73,6 +74,7 @@ const Hero = () => {
                     <span className="w-4 h-4 bg-green-500 rounded-full"></span>
                 </div>
             </div>
+            */}
 
           </div>
         </div>

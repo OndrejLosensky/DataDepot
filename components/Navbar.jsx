@@ -37,9 +37,7 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className=" items-center flex flex-row gap-x-10 px-1 mr-32">
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/docs">Docs</Link></li>
-          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/docs">Get started</Link></li>
-          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/contact">Contact</Link></li>
-          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/contact">Blog</Link></li>
+          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/blog">Blog</Link></li>
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/contact">Pricing</Link></li>
         </ul>
       </div>

@@ -6,15 +6,15 @@ const FeaturesCard = ({ heading, description, smallDescription, gradientFrom, gr
   };
 
   return (
-    <div className="relative w-[400px] flex flex-col h-auto bg-white text-gray-800 rounded-xl shadow-md p-6 m-4" style={cardStyle}>
+    <div className="relative w-[400px] flex flex-col h-auto bg-white text-gray-900 rounded-xl shadow-md p-3 m-4" style={cardStyle}>
       {/* Indicator Badge */}
-      <div className='absolute top-2 right-2 px-2 py-1 rounded-full bg-primary text-white text-xs font-semibold tracking-wide'>
+      <div className='w-14 text-center ml-1 px-2 py-1 rounded-full bg-primary text-white text-xs font-semibold tracking-wide'>
         New
       </div>
       
       {/* Card Content */}
-      <h2 className="text-3xl font-bold mb-2">{heading}</h2>
-      <h4 className="text-lg font-semibold mb-2">{description}</h4>
+      <h2 className="text-3xl font-bold my-2 mx-2">{heading}</h2>
+      <h4 className="text-lg text-gray-800 mx-2 pb-2 font-regular">{description}</h4>
       <p className="text-base">{smallDescription}</p>
     </div>
   );
@@ -23,31 +23,31 @@ const FeaturesCard = ({ heading, description, smallDescription, gradientFrom, gr
 
 const cardData = [
   {
-    heading: 'First Card',
-    description: 'Description for the first card',
-    smallDescription: 'Small description for the first card',
-    gradientFrom: '#FFD700',
-    gradientTo: '#FF6347',  
+    heading: 'Drag & drop',
+    description: 'Smoothly implement drag and drop feature so you can quickly re-order the files by your needs.',
+    smallDescription: '',
+    gradientFrom: '#eeff00',
+    gradientTo: '#ffa400',  
+  },  
+  {
+    heading: 'Labeling system',
+    description: 'Create custom label for the file cards, filter them by names, change the tags, group them.',
+    smallDescription: '',
+    gradientFrom: '#13ecc8',
+    gradientTo: '#2eafd1',
   },
   {
-    heading: 'Second Card',
-    description: 'Description for the second card',
-    smallDescription: 'Small description for the second card',
-    gradientFrom: '#7FFFD4',
-    gradientTo: '#20B2AA',
-  },
-  {
-    heading: 'Third Card',
-    description: 'Description for the third card',
-    smallDescription: 'Small description for the third card',
-    gradientFrom: '#00FFFF',
-    gradientTo: '#4682B4', 
+    heading: 'Multiple file types',
+    description: 'DataDepot supports files such as PDF, DOCX, XLSX and more',
+    smallDescription: '',
+    gradientFrom: '#72c33c',
+    gradientTo: '#4699b9', 
   },
 ];
 
 const FeaturesCardsContainer = () => {
   return (
-        <div className="flex flex-row gap-x-8 py-24 justify-center">
+        <div className="flex flex-row gap-x-8 pt-24 justify-center">
         {cardData.map((card, index) => (
             <FeaturesCard
             key={index}

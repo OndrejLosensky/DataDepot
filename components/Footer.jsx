@@ -3,6 +3,10 @@ import { FaWarehouse } from "react-icons/fa";
 
 
 const Footer = () => {
+
+  const githubUrl = "https://github.com/OndrejLosensky";
+  const sourceCode = "https://github.com/OndrejLosensky/DataDepot";
+
   return (
     <footer className="footer items-center py-4 bg-neutral text-neutral-content">
         <aside className="items-center grid-flow-col pt-2">
@@ -10,7 +14,8 @@ const Footer = () => {
             <p className='pt-1'>Copyright © 2024 - All right reserved</p>
         </aside>
         <nav className="grid-flow-col md:place-self-center md:justify-self-end pt-2 mr-16">
-            <a className='hover:text-red-500 duration-300'>
+          {/* Github profile */}
+            <a  href={githubUrl} target="_blank" rel="noopener noreferrer" className='hover:text-red-500 duration-300'>
               <svg
                 viewBox="0 0 1024 1024"
                 fill="currentColor"
@@ -21,7 +26,8 @@ const Footer = () => {
               </svg>        
             </a>
 
-            <a className='pl-4 hover:text-red-500 duration-300'>
+            {/* Source code */}
+            <a href={sourceCode} target="_blank" rel="noopener noreferrer" className='pl-4 hover:text-red-500 duration-300'>
             <svg
                 fill="currentColor"
                 viewBox="0 0 16 16"
