@@ -1,4 +1,4 @@
-import Documents from "../components/documents/docs"
+import Documents from "../../components/frontend/documents/docs"
 
 function DocsPage () {
     return <Documents/>

@@ -1,4 +1,4 @@
-import Blog from "../components/blog/blog";
+import Blog from "../../components/frontend/blog/blog";
 
 function BlogPage () {
     return <Blog/>

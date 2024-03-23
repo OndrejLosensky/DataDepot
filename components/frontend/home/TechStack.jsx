@@ -1,6 +1,6 @@
 import React from 'react'
 import InfiniteScroll from './InfiniteScroll';
-import '../../src/app/infiniteScroll.css';
+import '../../../src/app/infiniteScroll.css'
 
 const TechStack = () => {
   return (
