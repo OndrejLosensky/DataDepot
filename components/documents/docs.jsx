@@ -15,7 +15,7 @@ const Docs = () => {
   return (
     <div className='flex w-screen max-w-screen h-screen'>
       {/* Sidebar */}
-      <div className="w-80 min-h-screen bg-base-200 text-base-content overflow-y-auto">
+      <div className="w-80 min-h-screen bg-base-300 text-base-content shadow-xl overflow-y-auto">
         <div className='h-12 pt-10 flex pb-6 flex-row justify-center items-center'>
           <Image
               src="/logo/light.svg"
@@ -27,7 +27,7 @@ const Docs = () => {
           <h2 className='text-2xl ml-2 mt-2 font-semibold'>DataDepot</h2>
           <p className='ml-4 pt-3 font-thin'>1.0.0</p>
         </div>
-        <div className='border-gray-400 pt-4 border-b w-[80%] mx-auto'></div>
+        <div className='border-gray-400 pt-4 border-b w-[100%] mx-auto'></div>
         <h2 className='ml-12 text-xl font-semibold text-gray-200 pt-10'>Getting started</h2>
         <ul className='ml-12 pt-2 text-gray-500'>
           <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('preview')}>Preview</a></li>
@@ -59,8 +59,18 @@ const Docs = () => {
       </div>
 
       {/* Content */}
+
       <div className="flex-grow min-h-screen bg-base-100 overflow-y-auto">
-          <div className='w-full p-8'>
+          <div className='bg-base-300 opacity-95 border-b border-gray-400  sticky top-0 flex py-4  justify-end h-auto items-center'>
+              {/* Back button */}
+              <a>
+                <Link className='btn btn-ghost w-24 mr-4' href="/">
+                  <FaArrowLeftLong/>Back
+                </Link>
+              </a>  
+          </div>
+
+          <div className='w-full  p-8'>
             <h1 className='text-4xl font-bold text-gray-300 py-4'> Getting started</h1>
             <p>Get started with DataDepot today! Create an account and start using it.</p>
             <h2 id='preview' className='text-2xl  text-gray-300 pt-6'>Preview</h2>
@@ -119,13 +129,6 @@ const Docs = () => {
          
 
       </div>
-
-      {/* Back button */}
-      <a>
-        <Link className='btn btn-ghost w-24 absolute top-2 right-4' href="/">
-          <FaArrowLeftLong/>Back
-        </Link>
-      </a>
     </div>
   );
 };

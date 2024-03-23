@@ -63,3 +63,35 @@ html, body {
     transform: scaleX(1);
   }
 
+
+  .filled-button {
+    position: relative;
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1.5px solid #2b87d3;
+    overflow: hidden;
+  }
+  
+  .button-link {
+    color: #dadada;
+    text-decoration: none;
+    position: relative; 
+    z-index: 2;
+  }
+  
+  .fill {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #2b87d3;
+    transition: left 0.5s ease;
+    pointer-events: none;
+    z-index: 1; 
+  }
+  
+  .filled-button:hover .fill {
+    left: 0;
+  }
+  
