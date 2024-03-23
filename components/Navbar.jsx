@@ -14,6 +14,19 @@ const Navbar = () => {
     });
   };
 
+  const scrollToSection = (id, offset) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition - offset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    }
+  };
+  
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
@@ -37,8 +50,12 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className=" items-center flex flex-row gap-x-10 px-1 mr-32">
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/docs">Docs</Link></li>
+          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><a onClick={() => scrollToSection('Discover', 100)}>Features</a></li>
+          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><a onClick={() => scrollToSection('QA', 0)}> Q&A</a></li>
+          {/* 
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/blog">Blog</Link></li>
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/pricing">Pricing</Link></li>
+          */}
         </ul>
       </div>
       <div className="navbar-end">

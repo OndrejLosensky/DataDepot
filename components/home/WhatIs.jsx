@@ -4,7 +4,7 @@ import FeaturesCardsContainer from '../layout/FeaturesCard';
 
 const WhatIs = () => {
   return (
-    <section className="flex flex-col items-center justify-center">
+    <section id='Discover' className="flex flex-col items-center justify-center">
       <div className='max-w-screen max-h-screen pb-24'>
         <div className='flex flex-row justify-center max-w-screen mx-auto'>
             <div className='mt-2 text-center mb-8'>
