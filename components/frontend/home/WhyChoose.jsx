@@ -13,12 +13,13 @@ const WhyChoose = () => {
             <div className="mockup-browser-toolbar">
               <div className="input">https://www.data-depot.com</div>
             </div>
-            <div className=''>
+            <div className='overflow-hidden'>
               <Image
-                  src="/backend.png"
+                  src="/homepage.svg"
                   alt="Code editor mockup image"
                   width={800}
                   height={0}
+                  className='hover:scale-[3.5] hover:translate-y-16 transition duration-700'
                 />
             </div>
           </div>
@@ -40,7 +41,7 @@ const WhyChoose = () => {
               Create tags for your stored files
             </p>
             <div className='pt-8'>
-              <Link className='text-left ml-36 btn w-[200px] hover:-translate-y-1 duration-200' href="/docs">
+              <Link className='text-left ml-36 btn w-[200px] hover:-translate-y-1 duration-200' href="/frontend/docs#support">
                 Supported files 
                 <svg
                   viewBox="0 0 64 64"
@@ -76,8 +77,6 @@ const WhyChoose = () => {
         </div>
 
       </div>
-
-      <div className='border-b border-gray-600 w-[88%] mx-auto'></div>
 
     </section>
   )

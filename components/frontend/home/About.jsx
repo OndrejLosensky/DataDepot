@@ -2,7 +2,7 @@ import React from 'react'
 
 const WhyChoose = () => {
   return (
-    <div id='QA' className='max-w-screen h-[600px]'>
+    <div id='QA' className='max-w-screen h-[600px] mb-32'>
       <div className='w-3/4 mx-auto'>
       <h2 className='text-4xl font-semibold text-center text-gray-200 mt-16 py-4'> Frequently Asked Questions </h2>
       <div className="collapse collapse-arrow py-2 text-gray-300">

@@ -5,7 +5,7 @@ import '../../../src/app/infiniteScroll.css'
 const TechStack = () => {
   return (
     <div>
-        <div className='flex flex-col mt-8 py-16 mb-32 bg-[#1e2228]'>
+        <div className='flex flex-col mt-8 py-16 mb-32 bg-[#1e2228] shadow-lg'>
                 <h2 className='text-center text-pink-500  pb-8'> Techstack used for this project</h2>
                 <InfiniteScroll
                 items={[

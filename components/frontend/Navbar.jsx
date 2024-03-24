@@ -62,7 +62,7 @@ const Navbar = () => {
       <div className="navbar-end">
         <ul>
           <button> <Link className='px-4 py-2 hover:bg-gray-700 duration-300 rounded-md mr-2' href="/auth/login">Log In</Link> </button>
-          <button> <Link className='px-4 py-2 transform ease-in-out transform:scale-105 bg-primary rounded-md text-gray-900 mr-8' href="/auth/register">Sign up</Link> </button>
+          <button> <Link className='px-4 py-2  bg-[#428DFF] rounded-md text-gray-200 mr-8' href="/auth/register">Sign up</Link> </button>
         </ul>
         <label className="cursor-pointer grid place-items-center mr-24">
           <input type="checkbox" value="light" className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"/>
