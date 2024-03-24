@@ -81,39 +81,44 @@ const Docs = () => {
             <h3 className='text-xl font-semibold text-gray-200 pt-4'>File Upload</h3>
             <p className='max-w-[900px]'>Uploading files to DataDepot is a breeze. Simply click on the "Upload" button located prominently on the dashboard, and you can either select files from your local device or drag and drop them directly into the designated area.
             Our platform supports various file formats, ensuring you can store all your important documents, images, and presentations with ease.</p>
-            <h3 className='text-xl font-semibold text-gray-200 pt-4'>File Organization</h3>
-            <p className='max-w-[900px]'>Efficiently organize your files using DataDepot's robust organizational features. You can create folders, assign labels or tags, and even apply custom metadata to ensure every file is easily searchable and accessible.
-            With our intuitive drag-and-drop interface, rearranging files within folders is as simple as it gets.</p>
             <h3 className='text-xl font-semibold text-gray-200 pt-4'>File Preview</h3>
             <p className='max-w-[900px]'>Previewing files within DataDepot is seamless and hassle-free. Whether it's a PDF document, a Word file, or an image, you can instantly view its contents without having to download or open it externally. This feature saves you time and allows you to quickly glance through your files to find the information you need.</p>
         
-
-            <h3 className='text-xl font-semibold text-gray-200 pt-4'>Collaboration Tools</h3>
-            <p className='max-w-[900px]'>DataDepot offers powerful collaboration tools that enable seamless teamwork and communication. Share files with colleagues or clients, collaborate on documents in real-time, and leave comments or annotations to facilitate productive discussions. With DataDepot, working together has never been easier.</p>
-            <h3 className='text-xl font-semibold text-gray-200 pt-4'>Customization Options</h3>
-            <p className='max-w-[900px]'>Personalize your DataDepot experience with a range of customization options. Choose between dark mode and light mode to suit your preferences, adjust display settings, and tailor the interface to match your workflow. Our platform adapts to your needs, ensuring a comfortable and productive user experience.</p>
-            {/* Placeholder for image(s) */}
-            <div className="flex justify-center pt-8">
-                {/* Placeholder for image(s) */}
-                {/* <img src="preview_image_2.jpg" alt="Preview Image 2" className="max-w-lg mx-auto" /> */}
-            </div>
         </div>
 
 
-<div className='w-full p-8'>
+        <div className='w-full p-8'>
     <h1 className='text-4xl font-bold text-gray-300 py-4'>Features</h1>
-    <p>Discover the powerful features that DataDepot offers to streamline your file management tasks.</p>
-    <h2 id='drag' className='text-2xl text-gray-300 pt-6'>Drag & drop</h2>
-    <p>Easily rearrange your files by dragging them to your desired location within DataDepot.</p>
-    <h2 id='labels' className='text-2xl text-gray-300 pt-6'>Labels / tags</h2>
-    <p>Organize your files efficiently by creating custom tags and assigning them different colors for easy identification.</p>
-    <h2 id='filtering' className='text-2xl text-gray-300 pt-6'>Filtering</h2>
-    <p>Effortlessly find specific files by filtering them based on file type, date added, labels, and more.</p>
-    <h2 id='theme' className='text-2xl text-gray-300 pt-6'>Dark mode / light mode</h2>
-    <p>Customize your DataDepot experience with either dark mode or light mode, whichever suits your preference.</p>
-    <h2 id='filePreview' className='text-2xl text-gray-300 pt-6'>View files</h2>
-    <p>Preview the contents of your files directly within DataDepot without needing to open them separately.</p>
+    <p className="text-lg text-gray-400">Discover the powerful features that DataDepot offers to streamline your file management tasks.</p>
+    
+    <div className="grid  sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+        <div className="feature-card">
+            <h2 className='text-2xl text-gray-300 mb-4'>Drag & Drop</h2>
+            <p className="text-gray-400">Easily rearrange yougr files by dragging them to your desired location within DataDepot.</p>
+        </div>
+        
+        <div className="feature-card">
+            <h2 className='text-2xl text-gray-300 mb-4'>Labels / Tags</h2>
+            <p className="text-gray-400">Organize your files efficiently by creating custom tags and assigning them different colors for easy identification.</p>
+        </div>
+        
+        <div className="feature-card">
+            <h2 className='text-2xl text-gray-300 mb-4'>Filtering</h2>
+            <p className="text-gray-400">Effortlessly find specific files by filtering them based on file type, date added, labels, and more.</p>
+        </div>
+        
+        <div className="feature-card">
+            <h2 className='text-2xl text-gray-300 mb-4'>Dark Mode / Light Mode</h2>
+            <p className="text-gray-400">Customize your DataDepot experience with either dark mode or light mode, whichever suits your preference.</p>
+        </div>
+        
+        <div className="feature-card">
+            <h2 className='text-2xl text-gray-300 mb-4'>File Preview</h2>
+            <p className="text-gray-400">Preview the contents of your files directly within DataDepot without needing to open them separately.</p>
+        </div>
+    </div>
 </div>
+
           
 <div className='w-full p-8'>
     <h1 className='text-4xl font-bold text-gray-300 py-4'>Support</h1>

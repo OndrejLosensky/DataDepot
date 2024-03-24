@@ -95,3 +95,14 @@ html, body {
     left: 0;
   }
   
+
+  .feature-card {
+    background-color: #374151;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    transition: box-shadow 0.4s ease;
+}
+
+.feature-card:hover {
+    box-shadow: 0 0 20px rgba(117, 248, 202, 0.899);
+}
