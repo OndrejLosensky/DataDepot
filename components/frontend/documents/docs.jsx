@@ -22,12 +22,12 @@ const Docs = () => {
           <Image
               src="/logo/light.svg"
               alt="Code editor mockup image"
-              width={200}
+              width={2000}
               height={0}
-              className='w-10 h-10'
+              className='w-9 h-9'
             />
           <h2 className='text-2xl ml-2 mt-2 font-semibold'>DataDepot</h2>
-          <p className='ml-4 pt-3 font-thin'>1.0.0</p>
+          <Link className='ml-4 pt-3 font-thin hover:underline duration-300 cursor-pointer' href='/frontend/blog'>1.0.1</Link>
         </div>
         <div className='border-gray-400 pt-4 border-b w-[100%] mx-auto'></div>
         <h2 className='ml-12 text-xl font-semibold text-gray-200 pt-10'>Getting started</h2>
@@ -63,7 +63,7 @@ const Docs = () => {
       {/* Content */}
 
       <div className="flex-grow min-h-screen bg-base-100 overflow-y-auto">
-          <div className='bg-base-300 opacity-95 border-b border-gray-400  sticky top-0 flex py-4  justify-end h-auto items-center'>
+          <div className='sticky top-0 flex py-4  justify-end h-auto items-center'>
               {/* Back button */}
                 <Link className='btn btn-ghost w-24 mr-4' href="/">
                   <FaArrowLeftLong/>Back
