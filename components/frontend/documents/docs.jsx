@@ -68,63 +68,71 @@ const Docs = () => {
                 </Link>
           </div>
 
-          <div className='w-full  p-8'>
-            <h1 className='text-4xl font-bold text-gray-300 py-4'> Getting started</h1>
-            <p>Get started with DataDepot today! Create an account and start using it.</p>
-            <h2 id='preview' className='text-2xl  text-gray-300 pt-6'>Preview</h2>
-            <p>Here you can see quick preview of the app</p>
-            <h2 id='account' className='text-2xl  text-gray-300 pt-6'>Create an account</h2>
-            <p>Start by creating new account if you are here for the first time.</p>
-            <h2 id='using' className='text-2xl  text-gray-300 pt-6'>How to use</h2>
-            <p>Store your files, organize them and more...</p>
-          </div>
-
-
           <div className='w-full p-8'>
-            <h1 className='text-4xl font-bold text-gray-300 py-4'> Features</h1>
-            <p>Most important features you need to know</p>
-            <h2 id='drag' className='text-2xl  text-gray-300 pt-6'>Drag & drop</h2>
-            <p> Re-order your files as you want, just drag them and it will save for later.</p>
-            <h2 id='labels' className='text-2xl  text-gray-300 pt-6'>Labels / tags</h2>
-            <p>Create tags, select different colors, label your files and more...</p>
-            <h2 id='filtering' className='text-2xl  text-gray-300 pt-6'>Filtering</h2>
-            <p>Filter out by file type, such as .pdf or another. Also by date of adding the file ascendingly or descendingly. Also by labels and more options coming...</p>
-            <h2 id='theme' className='text-2xl  text-gray-300 pt-6'>Dark mode / light mode</h2>
-            <p> In default settings, there is dark mode, but you can also use light mode. Lets look at some preview about how it looks:</p>
-            <h3 className='text-lg text-gray-300 pt-2'>Preview:</h3>
-            <h2 id='filePreview' className='text-2xl  text-gray-300 pt-6'>View files</h2>
-            <p>Preview whats inside your files, see what the image looks like, what pdf has written inside etc.</p>
-
-          </div>
-
-          <div className='w-full p-8'>
-            <h1 className='text-4xl font-bold text-gray-300 py-4' >Support</h1>
-            <p>Everything you need to know about maximal capacity, supported files, browsers etc.</p>
-            <h2 id='capacity' className='text-2xl text-gray-300 pt-6'> Maximum capacity </h2>
-            <p>Currently it has its limit set to <span className='px-2 py-1 bg-gray-600 text-gray-200 rounded-md'> 50MB</span> </p>
-            <h2 id='fileTypes' className='text-2xl  text-gray-300 pt-6'>Supported file types</h2>
-            <ul className='list-disc ml-4 mt-2 '>
-              <li>PDF</li>
-              <li>DOCX</li>
-              <li>XLSX</li>
-              <li>PPTX</li>
-              <li>ZIP</li>
-            </ul>
-            <h2 id='browsers' className='text-2xl  text-gray-300 pt-6'>Supported browsers</h2>   
-            <p> Tested on Safari, Google chrome, Brave, Edge and Arc.</p>
-          </div>
+            <h1 className='text-4xl font-bold text-gray-100 py-4'>Getting started</h1>
+            <p>Welcome to DataDepot! This guide will help you kickstart your journey with our platform.</p>
+            <h2 id='preview' className='text-2xl text-gray-200 pt-6'>Preview</h2>
+            <p className='max-w-[900px]'>Before you dive in, let's take a quick tour of DataDepot's interface and features.</p>
+            <h3 className='text-xl font-semibold text-gray-200 pt-4'>Dashboard Overview</h3>
+            <p className='max-w-[900px]'>Upon logging in to DataDepot, you'll be greeted by a clean and intuitive dashboard that serves as your central hub for managing your files.
+            The dashboard provides easy access to all the essential features and tools you need to organize, upload, and view your files effortlessly.</p>
+            <h3 className='text-xl font-semibold text-gray-200 pt-4'>File Upload</h3>
+            <p className='max-w-[900px]'>Uploading files to DataDepot is a breeze. Simply click on the "Upload" button located prominently on the dashboard, and you can either select files from your local device or drag and drop them directly into the designated area.
+            Our platform supports various file formats, ensuring you can store all your important documents, images, and presentations with ease.</p>
+            <h3 className='text-xl font-semibold text-gray-200 pt-4'>File Organization</h3>
+            <p className='max-w-[900px]'>Efficiently organize your files using DataDepot's robust organizational features. You can create folders, assign labels or tags, and even apply custom metadata to ensure every file is easily searchable and accessible.
+            With our intuitive drag-and-drop interface, rearranging files within folders is as simple as it gets.</p>
+            <h3 className='text-xl font-semibold text-gray-200 pt-4'>File Preview</h3>
+            <p className='max-w-[900px]'>Previewing files within DataDepot is seamless and hassle-free. Whether it's a PDF document, a Word file, or an image, you can instantly view its contents without having to download or open it externally. This feature saves you time and allows you to quickly glance through your files to find the information you need.</p>
         
 
-          <div className='w-full p-8 mb-24'> 
-            <h1 className='text-4xl font-bold text-gray-300 py-4'>Source code</h1>
-            <h2 id='repo' className='text-2xl text-gray-300 pt-6'>Github repo</h2>
-            <p> Whole project was uploaded to my github and is avaiable for free. The url to my Github: <a className='text-blue-500 underline underline-offset-2' href="https://github.com/OndrejLosensky">here</a></p>
-            <h2 id='version' className='text-2xl text-gray-300 pt-6'>Version</h2>
-            <p>Currently the project is in its development stage, so version is now 0.0.0</p>
-            <h2 id='libraries' className='text-2xl text-gray-300 pt-6'> Libraries</h2>
-            <p>Whole app was created with Next.js. For data I used Sqlite and firebase and for styling I've used TailwindCSS </p>
-          </div>
-         
+            <h3 className='text-xl font-semibold text-gray-200 pt-4'>Collaboration Tools</h3>
+            <p className='max-w-[900px]'>DataDepot offers powerful collaboration tools that enable seamless teamwork and communication. Share files with colleagues or clients, collaborate on documents in real-time, and leave comments or annotations to facilitate productive discussions. With DataDepot, working together has never been easier.</p>
+            <h3 className='text-xl font-semibold text-gray-200 pt-4'>Customization Options</h3>
+            <p className='max-w-[900px]'>Personalize your DataDepot experience with a range of customization options. Choose between dark mode and light mode to suit your preferences, adjust display settings, and tailor the interface to match your workflow. Our platform adapts to your needs, ensuring a comfortable and productive user experience.</p>
+            {/* Placeholder for image(s) */}
+            <div className="flex justify-center pt-8">
+                {/* Placeholder for image(s) */}
+                {/* <img src="preview_image_2.jpg" alt="Preview Image 2" className="max-w-lg mx-auto" /> */}
+            </div>
+        </div>
+
+
+<div className='w-full p-8'>
+    <h1 className='text-4xl font-bold text-gray-300 py-4'>Features</h1>
+    <p>Discover the powerful features that DataDepot offers to streamline your file management tasks.</p>
+    <h2 id='drag' className='text-2xl text-gray-300 pt-6'>Drag & drop</h2>
+    <p>Easily rearrange your files by dragging them to your desired location within DataDepot.</p>
+    <h2 id='labels' className='text-2xl text-gray-300 pt-6'>Labels / tags</h2>
+    <p>Organize your files efficiently by creating custom tags and assigning them different colors for easy identification.</p>
+    <h2 id='filtering' className='text-2xl text-gray-300 pt-6'>Filtering</h2>
+    <p>Effortlessly find specific files by filtering them based on file type, date added, labels, and more.</p>
+    <h2 id='theme' className='text-2xl text-gray-300 pt-6'>Dark mode / light mode</h2>
+    <p>Customize your DataDepot experience with either dark mode or light mode, whichever suits your preference.</p>
+    <h2 id='filePreview' className='text-2xl text-gray-300 pt-6'>View files</h2>
+    <p>Preview the contents of your files directly within DataDepot without needing to open them separately.</p>
+</div>
+          
+<div className='w-full p-8'>
+    <h1 className='text-4xl font-bold text-gray-300 py-4'>Support</h1>
+    <p>Learn about the various support options available to assist you while using DataDepot.</p>
+    <h2 id='capacity' className='text-2xl text-gray-300 pt-6'>Maximum capacity</h2>
+    <p>Understand the maximum file size limit currently imposed by DataDepot, ensuring optimal performance. <br /> Current maximum capacity is <span className='bg-gray-600 text-gray-200 px-2 py-1 rounded-md'>50MB</span></p>
+    <h2 id='fileTypes' className='text-2xl text-gray-300 pt-6'>Supported file types</h2>
+    <p>Explore the different file types supported by DataDepot, including PDF, DOCX, XLSX, PPTX, and ZIP.</p>
+    <h2 id='browsers' className='text-2xl text-gray-300 pt-6'>Supported browsers</h2>
+    <p>Discover the list of web browsers tested and supported for use with DataDepot, ensuring compatibility.</p>
+</div>
+
+<div className='w-full p-8'>
+    <h1 className='text-4xl font-bold text-gray-300 py-4'>Source code</h1>
+    <h2 id='repo' className='text-2xl text-gray-300 pt-6'>Github repo</h2>
+    <p>Access the entire source code of DataDepot on GitHub for free. Visit our repository to explore and contribute.</p>
+    <h2 id='version' className='text-2xl text-gray-300 pt-6'>Version</h2>
+    <p>Stay informed about the current development stage and version number of DataDepot.</p>
+    <h2 id='libraries' className='text-2xl text-gray-300 pt-6'>Libraries</h2>
+    <p>Learn about the technologies and libraries used in the development of DataDepot, including Next.js, SQLite, Firebase, and TailwindCSS.</p>
+</div>
 
       </div>
     </div>

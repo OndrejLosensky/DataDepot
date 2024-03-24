@@ -1,11 +1,12 @@
 import React from 'react';
 import SectionTitle from '../layout/SectionTitle';
 import FeaturesCardsContainer from '../layout/FeaturesCard';
+import Link from 'next/link';
 
 const WhatIs = () => {
   return (
-    <section id='Discover' className="flex flex-col items-center justify-center">
-      <div className='max-w-screen max-h-screen pb-24'>
+    <section id='discover' className="flex flex-col items-center justify-center">
+      <div className='max-w-screen max-h-screen pb-4'>
         <div className='flex flex-row justify-center max-w-screen mx-auto'>
             <div className='mt-2 text-center mb-8'>
               <SectionTitle name="Discover Your Digital Oasis"/>
@@ -29,7 +30,7 @@ const WhatIs = () => {
         <FeaturesCardsContainer/>
       </div>
 
-      <div className='font-thin italic m-24'> Open <span className='font-semibold cursor-pointer'>docs</span> to see more or create an account!</div>
+      <div className='font-thin italic m-24'> Open <Link className='font-semibold cursor-pointer' href='/frontend/docs'>Docs</Link> to see more or create an account!</div>
 
       <div className='border-b border-gray-600 w-[88%] mx-auto'></div>
     </section>

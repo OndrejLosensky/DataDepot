@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import LogoDark from './layout/LogoDark';
-import LogoLight from './layout/LogoLight';
 import { FaWarehouse } from "react-icons/fa";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [currentSection, setCurrentSection] = useState(null);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -14,34 +13,11 @@ const Navbar = () => {
     });
   };
 
-  const scrollToSection = (id, offset) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
-    }
-  };
-  
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
     };
 
-    handleScroll();
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.metaKey && event.key === 'b') {
         const label = document.querySelector('.cursor-pointer');
@@ -53,15 +29,15 @@ const Navbar = () => {
       }
     };
 
-    // Adds event listener when component mounts
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
     document.addEventListener('keydown', handleKeyDown);
 
-    // Removes event listener when component unmounts
     return () => {
+      window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []); // Empty dependency array ensures this effect runs only once when component mounts
-
+  }, [currentSection]);
 
   return (
     <div className={`navbar ${isScrolled ? 'bg-base-300 duration-200': 'bg-transparent duration-200 mt-8 ' } opacity-95 sticky top-0`}>
@@ -70,10 +46,13 @@ const Navbar = () => {
         <h2 className='text-2xl pt-2 text-gray-200'> DataDepot </h2>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className=" items-center flex flex-row gap-x-10 px-1 mr-32">
-          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/frontend/docs">Docs</Link></li>
-          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><a onClick={() => scrollToSection('Discover', 100)}>Features</a></li>
-          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><a onClick={() => scrollToSection('QA', 0)}> Q&A</a></li>
+        <ul className=" items-center flex flex-row gap-x-6 px-1 mr-32">
+          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/frontend/docs">Documentation</Link></li>
+          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/frontend/showcase">Showcase</Link></li>
+          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/frontend/pricing">Pricing</Link></li>
+          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/frontend/blog">Blog</Link></li>
+
+
           {/* 
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/blog">Blog</Link></li>
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/pricing">Pricing</Link></li>
