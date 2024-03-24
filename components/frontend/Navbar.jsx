@@ -40,7 +40,7 @@ const Navbar = () => {
   }, [currentSection]);
 
   return (
-    <div className={`navbar ${isScrolled ? 'bg-base-300 duration-200': 'bg-transparent duration-200 mt-8 ' } opacity-95 sticky top-0`}>
+    <div className={`navbar ${isScrolled ? 'bg-[#111212] duration-200': 'bg-transparent duration-200 mt-8 ' } opacity-95 sticky top-0`}>
       <div className="navbar-start ml-32 hover:cursor-pointer" onClick={scrollToTop}>
         <FaWarehouse className='w-10 text-gray-100 mr-2 h-auto'/>
         <h2 className='text-2xl pt-2 text-gray-200'> DataDepot </h2>

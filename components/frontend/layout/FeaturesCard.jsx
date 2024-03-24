@@ -42,6 +42,7 @@ const cardData = [
     description: 'DataDepot supports files such as PDF, DOCX, XLSX and more',
     glow: '#f811fb',
   },
+  
 ];
 
 const FeaturesCardsContainer = () => {
