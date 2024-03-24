@@ -46,7 +46,7 @@ const Docs = () => {
 
         <h2 className='ml-12 text-xl font-semibold text-gray-200 pt-4'>Support</h2>
         <ul className='ml-12 pt-2 text-gray-500'>
-        <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('capacity')}>Maximum capacity</a></li>
+          <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('capacity')}>Maximum capacity</a></li>
           <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('fileTypes')}>Supported file types</a></li>
           <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('browsers')}>Supported browsers</a></li>
         </ul>
@@ -63,11 +63,9 @@ const Docs = () => {
       <div className="flex-grow min-h-screen bg-base-100 overflow-y-auto">
           <div className='bg-base-300 opacity-95 border-b border-gray-400  sticky top-0 flex py-4  justify-end h-auto items-center'>
               {/* Back button */}
-              <a>
                 <Link className='btn btn-ghost w-24 mr-4' href="/">
                   <FaArrowLeftLong/>Back
                 </Link>
-              </a>  
           </div>
 
           <div className='w-full  p-8'>

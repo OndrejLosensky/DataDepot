@@ -27,7 +27,7 @@ const Login = () => {
 
       {/* Right Side with Form */}
       <div className="w-1/2 bg-gray-50 flex justify-center items-center">
-      <a><Link className='btn btn-ghost  absolute top-0 right-0 mr-4 mt-4' href="/"><FaArrowLeftLong className='text-gray-800'/><span className='text-gray-800'>Back</span></Link></a>
+      <Link className='btn btn-ghost  absolute top-0 right-0 mr-4 mt-4' href="/"><FaArrowLeftLong className='text-gray-800'/><span className='text-gray-800'>Back</span></Link>
 
         <div className="w-3/4 py-8 px-6 bg-gray-100 shadow-xl bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-lg border border-gray-300">
           <h1 className="text-center text-gray-800 text-3xl font-semibold mb-6">Login</h1>
@@ -47,7 +47,7 @@ const Login = () => {
             <p className="text-gray-600">Forgot password? <a href="#" className="text-blue-500 hover:underline">Reset here</a></p>
           </div>
           <div className="mt-4 text-center">
-            <p className="text-gray-600">Don't have an account? <a>  <Link className='text-blue-500 hover:underline hover:text-blue-700' href="/auth/register">Register here</Link></a>
+            <p className="text-gray-600">Don't have an account? <Link className='text-blue-500 hover:underline hover:text-blue-700' href="/auth/register">Register here</Link>
 </p>
           </div>
         </div>

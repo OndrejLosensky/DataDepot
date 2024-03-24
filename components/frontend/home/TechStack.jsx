@@ -6,24 +6,23 @@ const TechStack = () => {
   return (
     <div>
         <div className='flex flex-col mt-8 py-16 mb-32 bg-[#1e2228]'>
+                <h2 className='text-center text-pink-500  pb-8'> Techstack used for this project</h2>
                 <InfiniteScroll
                 items={[
-                    'HTML', 'CSS', 'JavaScript', 'ReactJS', 'Figma',
-                    'Photoshop', 'Premiere Pro', 'Figma', 'Angular', 'Node JS'
+                    'HTML', 'CSS', 'JavaScript', 'ReactJS', 'Next.js',
+                    'TailwindCSS', 'Node JS', 'API',
                 ]}
                 speed={90} 
                 />
                 <InfiniteScroll
                 items={[
-                    'HTML', 'CSS', 'JavaScript', 'ReactJS', 'Figma',
-                    'Photoshop', 'Premiere Pro', 'Figma', 'Angular', 'Node JS'
+                    'react-icons', 'axios', 'sqlite','sqlite3', 'DaisyUI', 'fs', 'multiparty', 'react-scroll'
                 ]}
                 speed={60} 
                 />
                 <InfiniteScroll
                 items={[
-                    'HTML', 'CSS', 'JavaScript', 'ReactJS', 'Figma',
-                    'Photoshop', 'Premiere Pro', 'Figma', 'Angular', 'Node JS'
+                    'SQlite', 'Firebase', 'Figma', 'Adobe Illustrator','Adobe Photoshop', 'VSCode'
                 ]}
                 speed={110} 
                 />

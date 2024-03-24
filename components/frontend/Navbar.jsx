@@ -41,6 +41,28 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.metaKey && event.key === 'b') {
+        const label = document.querySelector('.cursor-pointer');
+
+        if (label) {
+          // Simulates a click on the label
+          label.click();
+        }
+      }
+    };
+
+    // Adds event listener when component mounts
+    document.addEventListener('keydown', handleKeyDown);
+
+    // Removes event listener when component unmounts
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []); // Empty dependency array ensures this effect runs only once when component mounts
+
+
   return (
     <div className={`navbar ${isScrolled ? 'bg-base-300 duration-200': 'bg-transparent duration-200 mt-8 ' } opacity-95 sticky top-0`}>
       <div className="navbar-start ml-32 hover:cursor-pointer" onClick={scrollToTop}>
@@ -49,7 +71,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className=" items-center flex flex-row gap-x-10 px-1 mr-32">
-          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/docs">Docs</Link></li>
+          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/frontend/docs">Docs</Link></li>
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><a onClick={() => scrollToSection('Discover', 100)}>Features</a></li>
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><a onClick={() => scrollToSection('QA', 0)}> Q&A</a></li>
           {/* 

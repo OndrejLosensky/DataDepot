@@ -2,7 +2,6 @@ import React from "react";
 import Image from 'next/image';
 import Link from 'next/link';
 
-
 const Hero = () => {
   return (
     <section>
@@ -40,7 +39,7 @@ const Hero = () => {
             </p>
 
 
-            <div class="flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[580px] before:translate-x-[150px] before:translate-y-[650px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-secondary after:via-success after:blur-3xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-primary before:dark:opacity-20 after:dark:from-green-600 after:dark:via-green-400 after:dark:opacity-100 before:lg:h-[300px] z-[-1]"></div>
+            <div className="flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[580px] before:translate-x-[150px] before:translate-y-[650px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-secondary after:via-success after:blur-3xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-primary before:dark:opacity-20 after:dark:from-green-600 after:dark:via-green-400 after:dark:opacity-100 before:lg:h-[300px] z-[-1]"></div>
 
 
 

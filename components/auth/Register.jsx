@@ -144,7 +144,7 @@ const Register = () => {
 
       {/* Right Side with Form */}
       <div className="w-1/2 bg-gray-50 flex justify-center items-center">
-        <a><Link className='btn btn-ghost absolute top-0 right-0 mr-4 mt-4' href="/"><FaArrowLeftLong className='text-gray-800'/><span className='text-gray-800'>Back</span></Link></a>
+        <Link className='btn btn-ghost absolute top-0 right-0 mr-4 mt-4' href="/"><FaArrowLeftLong className='text-gray-800'/><span className='text-gray-800'>Back</span></Link>
         <div className="w-3/4 py-8 px-6 bg-gray-100 shadow-xl bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-lg border border-gray-300">
           {renderStepContent()}
         </div>
