@@ -32,9 +32,9 @@ const Docs = () => {
         <div className='border-gray-400 pt-4 border-b w-[100%] mx-auto'></div>
         <h2 className='ml-12 text-xl font-semibold text-gray-200 pt-10'>Getting started</h2>
         <ul className='ml-12 pt-2 text-gray-500'>
-          <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('preview')}>Preview</a></li>
-          <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('account')}>Create an account</a></li>
-          <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('using')}>How to use</a></li>
+          <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('dashboard')}>Preview</a></li>
+          <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('upload')}>Create an account</a></li>
+          <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('preview')}>How to use</a></li>
         </ul>
 
         <h2 className='ml-12 text-xl font-semibold text-gray-200 pt-4'>Features</h2>
@@ -71,20 +71,31 @@ const Docs = () => {
           </div>
 
           <div className='w-full p-8'>
-            <h1 className='text-4xl font-bold text-gray-100 py-4'>Getting started</h1>
-            <p>Welcome to DataDepot! This guide will help you kickstart your journey with our platform.</p>
-            <h2 id='preview' className='text-2xl text-gray-200 pt-6'>Preview</h2>
-            <p className='max-w-[900px]'>Before you dive in, let's take a quick tour of DataDepot's interface and features.</p>
-            <h3 className='text-xl font-semibold text-gray-200 pt-4'>Dashboard Overview</h3>
-            <p className='max-w-[900px]'>Upon logging in to DataDepot, you'll be greeted by a clean and intuitive dashboard that serves as your central hub for managing your files.
+    <h1 className='text-4xl font-bold text-gray-100 py-4'>Getting started</h1>
+    <p className="text-lg text-gray-300">Welcome to DataDepot! This guide will help you kickstart your journey with our platform.</p>
+    
+    <div className="mt-8">
+        <div className="py-6">
+            <h3 id='dashboard' className='text-xl font-semibold text-gray-200'>Dashboard Overview</h3>
+            <p className='max-w-prose text-gray-300'>Upon logging in to DataDepot, you'll be greeted by a clean and intuitive dashboard that serves as your central hub for managing your files.
             The dashboard provides easy access to all the essential features and tools you need to organize, upload, and view your files effortlessly.</p>
-            <h3 className='text-xl font-semibold text-gray-200 pt-4'>File Upload</h3>
-            <p className='max-w-[900px]'>Uploading files to DataDepot is a breeze. Simply click on the "Upload" button located prominently on the dashboard, and you can either select files from your local device or drag and drop them directly into the designated area.
-            Our platform supports various file formats, ensuring you can store all your important documents, images, and presentations with ease.</p>
-            <h3 className='text-xl font-semibold text-gray-200 pt-4'>File Preview</h3>
-            <p className='max-w-[900px]'>Previewing files within DataDepot is seamless and hassle-free. Whether it's a PDF document, a Word file, or an image, you can instantly view its contents without having to download or open it externally. This feature saves you time and allows you to quickly glance through your files to find the information you need.</p>
-        
+            <Image src="/homepage.svg" alt='Dashboard Overview' width={900} height={512} className='my-6 rounded-lg shadow-lg' />
         </div>
+        
+        <div className="py-6">
+            <h3 id='upload' className='text-xl font-semibold text-gray-200'>File Upload</h3>
+            <p className='max-w-prose text-gray-300'>Uploading files to DataDepot is a breeze. Simply click on the "Upload" button located prominently on the dashboard, and you can either select files from your local device or drag and drop them directly into the designated area.
+            Our platform supports various file formats, ensuring you can store all your important documents, images, and presentations with ease.</p>
+            <Image src="/fileUpload.svg" alt='File Upload' width={900} height={302} className='my-6 rounded-lg shadow-lg' />
+        </div>
+        
+        <div className="py-6">
+            <h3 id='preview' className='text-xl font-semibold text-gray-200'>File Preview</h3>
+            <p className='max-w-prose text-gray-300'>Previewing files within DataDepot is seamless and hassle-free. Whether it's a PDF document, a Word file, or an image, you can instantly view its contents without having to download or open it externally. This feature saves you time and allows you to quickly glance through your files to find the information you need.</p>
+        </div>
+    </div>
+</div>
+
 
 
         <div className='w-full p-8'>

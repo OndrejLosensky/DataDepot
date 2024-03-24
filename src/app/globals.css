@@ -96,8 +96,9 @@ html, body {
   }
   
 
-  .feature-card {
-    background-color: #374151;
+.feature-card {
+    background-color: #232931;
+    border: 0.4px solid #424242;
     padding: 1.5rem;
     border-radius: 0.5rem;
     transition: box-shadow 0.4s ease;
