@@ -2,6 +2,8 @@ import React from 'react';
 import { FaArrowLeftLong } from "react-icons/fa6";
 import Link from 'next/link';
 import Image from 'next/image';
+import { FaFilePdf, FaFileWord, FaFileExcel, FaFilePowerpoint, FaFileArchive, FaFileCode, FaPython } from 'react-icons/fa';
+import { FiImage } from 'react-icons/fi';
 
 const Docs = () => {
 
@@ -119,19 +121,105 @@ const Docs = () => {
     <h2 id='capacity' className='text-2xl text-gray-300 pt-6'>Maximum capacity</h2>
     <p>Understand the maximum file size limit currently imposed by DataDepot, ensuring optimal performance. <br /> Current maximum capacity is <span className='bg-gray-600 text-gray-200 px-2 py-1 rounded-md'>50MB</span></p>
     <h2 id='fileTypes' className='text-2xl text-gray-300 pt-6'>Supported file types</h2>
-    <p>Explore the different file types supported by DataDepot, including PDF, DOCX, XLSX, PPTX, and ZIP.</p>
+    <p>Explore the different file types supported by DataDepot:</p>
+    <div className="flex flex-wrap justify-start items-center pt-4">
+    <div className="flex items-center mr-8 mb-4">
+            <FaFilePdf className="text-red-500 text-4xl mr-2" />
+            <p className="text-gray-400">PDF</p>
+        </div>
+        <div className="flex items-center mr-8 mb-4">
+            <FaFileWord className="text-blue-500 text-4xl mr-2" />
+            <p className="text-gray-400">DOCX</p>
+        </div>
+        <div className="flex items-center mr-8 mb-4">
+            <FaFileExcel className="text-green-500 text-4xl mr-2" />
+            <p className="text-gray-400">XLSX</p>
+        </div>
+        <div className="flex items-center mr-8 mb-4">
+            <FaFilePowerpoint className="text-yellow-500 text-4xl mr-2" />
+            <p className="text-gray-400">PPTX</p>
+        </div>
+        <div className="flex items-center mr-8 mb-4">
+            <FaFileArchive className="text-purple-500 text-4xl mr-2" />
+            <p className="text-gray-400">ZIP</p>
+        </div>
+        <div className="flex items-center mr-8 mb-4">
+            <FaFileCode className="text-orange-500 text-4xl mr-2" />
+            <p className="text-gray-400">JS</p>
+        </div>
+        <div className="flex items-center mr-8 mb-4">
+            <FaPython className="text-yellow-600 text-4xl mr-2" />
+            <p className="text-gray-400">PY</p>
+        </div>
+        <div className="flex items-center mr-8 mb-4">
+            <FiImage className="text-pink-500 text-4xl mr-2" />
+            <p className="text-gray-400">JPG</p>
+        </div>
+        <div className="flex items-center mr-8 mb-4">
+            <FiImage className="text-green-500 text-4xl mr-2" />
+            <p className="text-gray-400">PNG</p>
+        </div>
+    </div>
     <h2 id='browsers' className='text-2xl text-gray-300 pt-6'>Supported browsers</h2>
     <p>Discover the list of web browsers tested and supported for use with DataDepot, ensuring compatibility.</p>
+    <div className="mt-4">
+        <table className="table-auto border-collapse border border-gray-300">
+            <thead>
+                <tr className='bg-gray-800 text-gray-300'>
+                    <th className="px-4 py-2 text-center border">Browser</th>
+                    <th className="px-4 py-2 text-center border">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr className='border'>
+                    <td className="px-4 py-2 text-center border">
+                        <Image src="/icons/safari.png" alt='Safari Icon' width={32} height={32}/>
+                    </td>
+                    <td className="px-4 py-2 text-center border">Safari</td>
+                </tr>
+                <tr className='border'>
+                    <td className="px-4 py-2 text-center border">
+                        <Image src="/icons/chrome.png" alt='Chrome Icon' width={32} height={32}/>
+                    </td>
+                    <td className="px-4 py-2 text-center border">Google Chrome</td>
+                </tr>
+                <tr className='border'>
+                    <td className="px-4 py-2 text-center border">
+                        <Image src="/icons/microsoft.png" alt='Microsoft Edge Icon' width={32} height={32}/>
+                    </td>
+                    <td className="px-4 py-2 text-center border">Microsoft Edge</td>
+                </tr>
+                <tr className='border'>
+                    <td className="px-4 py-2 text-center border">
+                        <Image src="/icons/brave.png" alt='Brave Icon' width={32} height={32}/>
+                    </td>
+                    <td className="px-4 py-2 text-center border">Brave</td>
+                </tr>
+                <tr className='border'>
+                    <td className="px-4 py-2 text-center border">
+                        <Image src="/icons/arc.png" alt='Arc Icon' width={32} height={32}/>
+                    </td>
+                    <td className="px-4 py-2 text-center border">Arc</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <div className='w-full p-8'>
     <h1 className='text-4xl font-bold text-gray-300 py-4'>Source code</h1>
-    <h2 id='repo' className='text-2xl text-gray-300 pt-6'>Github repo</h2>
-    <p>Access the entire source code of DataDepot on GitHub for free. Visit our repository to explore and contribute.</p>
+    <h2 id='repo' className='text-2xl text-gray-300 pt-6'>GitHub Repository</h2>
+    <p>Access the entire source code of DataDepot on GitHub for free. Visit our <a href="https://github.com/your_username/your_repository" className="text-blue-500 underline">repository</a> to explore and contribute.</p>
     <h2 id='version' className='text-2xl text-gray-300 pt-6'>Version</h2>
-    <p>Stay informed about the current development stage and version number of DataDepot.</p>
+    <p className="text-3xl font-semibold text-gray-500 pt-2">1.0.1</p>
     <h2 id='libraries' className='text-2xl text-gray-300 pt-6'>Libraries</h2>
-    <p>Learn about the technologies and libraries used in the development of DataDepot, including Next.js, SQLite, Firebase, and TailwindCSS.</p>
+    <p>Learn about the technologies and libraries used in the development of DataDepot:</p>
+    <ul className="list-disc pl-6">
+        <li className="text-gray-400">Next.js</li>
+        <li className="text-gray-400">SQLite</li>
+        <li className="text-gray-400">Firebase</li>
+        <li className="text-gray-400">TailwindCSS</li>
+    </ul>
 </div>
 
       </div>
