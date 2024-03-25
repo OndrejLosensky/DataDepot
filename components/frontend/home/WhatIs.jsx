@@ -14,7 +14,7 @@ const WhatIs = () => {
         </div>
 
         <div className="w-2/4 mx-auto text-center font-bold">
-          <p className="text-5xl bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">
+          <p className="text-5xl bg-gradient-to-r from-[#9e0af5] to-[#fc1571]  drop-shadow-glow2 text-transparent bg-clip-text">
               Explore DataDepot
           </p>
         </div>
@@ -31,7 +31,7 @@ const WhatIs = () => {
 
       </div>
 
-      <div className='font-thin italic m-24'> Open <Link className='font-semibold cursor-pointer' href='/frontend/docs'>Docs</Link> to see more or create an account!</div>
+      <div className='font-thin m-24'> Click <Link className='font-semibold cursor-pointer' href='/frontend/docs'>here</Link> to see more or create an account!</div>
 
       <div className='border-b border-gray-600 w-[88%] mx-auto'></div>
     </section>

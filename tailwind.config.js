@@ -10,6 +10,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      dropShadow: {
+        glow: [
+          "0 0px 35px rgba(255,255, 255, 0.25)",
+          "0 0px 55px rgba(255, 255,255, 0.15)"
+        ],
+        glow2:
+        [
+          "0px 0px 16px rgba(220,50, 222, 0.45)",
+        ]
+      },
       colors: {
         'custom-pink': '#ff63c3',
         'custom-purple': '#8e5de2',
@@ -21,8 +31,8 @@ module.exports = {
   plugins: [
     require('daisyui'),
     require("@tailwindcss/forms")({
-      strategy: 'base', // only generate global styles
-      strategy: 'class', // only generate classes
+      strategy: 'base',
+      strategy: 'class', 
     }),
   ],
 };
