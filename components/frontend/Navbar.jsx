@@ -48,7 +48,6 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className=" items-center flex flex-row gap-x-6 px-1 mr-32">
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/frontend/docs">Documentation</Link></li>
-          <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/frontend/showcase">Showcase</Link></li>
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/frontend/pricing">Pricing</Link></li>
           <li className='hover:text-gray-100 duration-200 underline-effect hover:no-underline'><Link href="/frontend/blog">Blog</Link></li>
 
