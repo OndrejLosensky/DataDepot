@@ -1,23 +1,123 @@
 import React, { useState } from 'react';
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { HiEye, HiEyeOff } from "react-icons/hi";
+import { AiFillApple, AiFillGoogleCircle } from 'react-icons/ai';
 import Link from 'next/link';
 import Image from 'next/image';
+import { FaLongArrowAltRight } from "react-icons/fa";
 
-const Login = () => {
+
+
+const Register = () => {
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    confirmPassword: '',
+    name: '',
+    phoneNumber: '',
+    additionalInfo: '',
+  });
   const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  return (
-    <div className="flex w-screen h-screen">
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you can handle form submission, e.g., sending data to backend
+    console.log(formData);
+  };
 
+  const renderStepContent = () => {
+    switch (step) {
+      case 1:
+        return (
+          <div className="flex flex-col  justify-center">
+            <div className='w-full h-16 border-b border-gray-400 flex items-center justify-between'>
+                <p className='text-left text-2xl text-[#DFDFDF] mx-8'>Login</p>
+                <p className='flex flex-row items-center mr-2 font-thin bg-transparent py-2 px-2 rounded-md hover:bg-[#363636] cursor-pointer duration-300'> Register here <FaLongArrowAltRight className='ml-2'/> </p>
+               
+            </div>
+
+            <h2 className=' text-[#DFDFDF] text-xl font-semibold ml-8 pt-10'>Welcome to DataDepot</h2>
+           
+           <div className='items-center flex flex-col'>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="block bg-[#3D3D3D] text-md w-[85%]  border mb-6 my-4 mt-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+              placeholder="Your e-mail"
+              required
+            />
+          
+            <button className="py-2 rounded-md shadow-lg bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-6 w-[85%]" onClick={() => setStep(2)}>Continue</button>
+
+            <div className='flex flex-row items-center w-[85%] mt-2 mb-4'>
+                <div className='w-1/2 mr-2 border-b-[1.5px] h-0 border-gray-500'></div>
+                <p className='text-xs'> OR</p>
+                <div className='w-1/2 ml-2 border-b-[1.5px] h-0 border-gray-500'></div>
+            </div>
+
+            <button className='w-[85%] border-[#DFDFDF] hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-2 my-2 flex flex-row items-center justify-center'>
+              <AiFillApple className='absolute left-12 w-7 h-7 mr-2'/> Continue with Apple
+            </button>
+
+            <button className='w-[85%] border-[#DFDFDF] hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-2 my-2 mb-8 flex flex-row items-center justify-center'>
+              Continue with Google
+              <Image src='/icons/google_btn.svg' alt="Google icon" width={28} height={28} className='absolute left-12'/>
+            </button>
+
+
+            <p className='mb-8 text-sm'>Forgot password? Create new <span className='underline cursor-pointer text-blue-500'>here</span></p>
+           </div>
+          </div>
+        );
+      case 2:
+        return (
+          <div className="flex flex-col  justify-center">
+            <div className='w-full h-16 border-b border-gray-400 flex items-center justify-between'>
+                <p className='text-left text-2xl text-[#DFDFDF] mx-8'>Login</p>
+            </div>
+
+            <h2 className=' text-[#DFDFDF] text-xl font-semibold ml-8 pt-8'>Enter your password</h2>
+           
+           <div className='items-center flex flex-col'>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              className="block bg-[#3D3D3D] text-md w-[85%]  border my-4 mt-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+              placeholder="Password"
+              required
+            />
+          
+            <button className="py-2 rounded-md bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] mb-4 w-[85%]" >Login</button>
+            <button className="py-2 rounded-md bg-transparent opacity-80 border-[#DFDFDF] border text-[#fffddd]  mb-4 w-[85%]" onClick={() => setStep(1)}>Previous</button>
+
+            <p className='mb-8 text-sm'>Forgot password? Create new <span className='underline text-blue-500'>here</span></p>
+           </div>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className='flex w-screen h-screen'>
       {/* Left Side with Image */}
       <div className="w-1/2 bg-gray-800 relative flex justify-center items-center">
         <Image
-          src="/login_bg.jpeg"
+          src="/register_bg.jpeg"
           alt="Background Image"
           layout="fill"
           objectFit="cover"
@@ -26,34 +126,14 @@ const Login = () => {
       </div>
 
       {/* Right Side with Form */}
-      <div className="w-1/2 bg-gray-50 flex justify-center items-center">
-      <Link className='btn btn-ghost  absolute top-0 right-0 mr-4 mt-4' href="/"><FaArrowLeftLong className='text-gray-800'/><span className='text-gray-800'>Back</span></Link>
-
-        <div className="w-3/4 py-8 px-6 bg-gray-100 shadow-xl bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-lg border border-gray-300">
-          <h1 className="text-center text-gray-800 text-3xl font-semibold mb-6">Login</h1>
-          <label className="block mb-4">
-            <input type="text" className="block bg-gray-200 text-xl w-full border-b-2 px-2 py-2 text-gray-800 mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Your email" />
-          </label>
-          <label className="block mb-4">
-            <div className="relative">
-              <input type={passwordVisible ? "text" : "password"} className="block bg-gray-200 text-xl w-full border-b-2 px-2 py-2 text-gray-800 mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Your password" />
-              <button onClick={togglePasswordVisibility} className="absolute inset-y-0 right-0 flex items-center px-3 border-b-2 border-gray-300 rounded-r-md">
-                {passwordVisible ? <HiEyeOff className="text-gray-500" /> : <HiEye className="text-gray-500" />}
-              </button>
-            </div>
-          </label>
-          <button className="btn btn-primary w-full mt-4">Login</button>
-          <div className="mt-4 text-center">
-            <p className="text-gray-600">Forgot password? <a href="#" className="text-blue-500 hover:underline">Reset here</a></p>
-          </div>
-          <div className="mt-4 text-center">
-            <p className="text-gray-600">Don't have an account? <Link className='text-blue-500 hover:underline hover:text-blue-700' href="/auth/register">Register here</Link>
-</p>
-          </div>
+      <div className="w-1/2 bg-[#18191A]  flex justify-center items-center">
+        <Link className='btn btn-ghost absolute top-0 right-0 mr-4 mt-4' href="/"><FaArrowLeftLong className='text-[#DFDFDF]'/><span className='text-[#DFDFDF]'>Back</span></Link>
+        <div className="w-[450px] bg-[#262626] shadow-xl bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-2xl">
+          {renderStepContent()}
         </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;

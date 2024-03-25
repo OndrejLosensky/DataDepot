@@ -138,8 +138,8 @@ const Docs = () => {
     <p>Understand the maximum file size limit currently imposed by DataDepot, ensuring optimal performance. <br /> Current maximum capacity is <span className='bg-gray-600 text-gray-200 px-2 py-1 rounded-md'>50MB</span></p>
     <h2 id='fileTypes' className='text-2xl text-gray-300 pt-6'>Supported file types</h2>
     <p>Explore the different file types supported by DataDepot:</p>
-    <div className="flex flex-wrap justify-start items-center pt-4  ">
-        <div className="flex items-center mr-8 mb-4 ">
+    <div className="flex flex-wrap mt-4 items-center pt-4 bg-[#232B35] rounded-md shadow-md justify-between">
+        <div className="flex items-center ml-2 mr-8 mb-4 ">
             <FaFilePdf className="text-red-500 text-4xl mr-2" />
             <p className="text-gray-400">PDF</p>
         </div>
