@@ -55,13 +55,35 @@ html, body {
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #ffffff;
+    background-color: #f4f4f4;
     transform: scaleX(0);
     transition: transform 0.3s ease;
   }
   .underline-effect:hover::before {
     transform: scaleX(1);
   }
+
+
+  
+
+  .underline-effect-dark {
+    position: relative;
+  }
+  .underline-effect-dark::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #080808;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  .underline-effect-dark:hover::before {
+    transform: scaleX(1);
+  }
+
 
 
   .filled-button {
@@ -73,7 +95,6 @@ html, body {
   }
   
   .button-link {
-    color: #dadada;
     text-decoration: none;
     position: relative; 
     z-index: 2;

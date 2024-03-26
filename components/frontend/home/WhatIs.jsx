@@ -3,9 +3,9 @@ import SectionTitle from '../layout/SectionTitle';
 import FeaturesCardsContainer from '../layout/FeaturesCard';
 import Link from 'next/link';
 
-const WhatIs = () => {
+const WhatIs = (isDarkMode) => {
   return (
-    <section id='discover' className="flex flex-col items-center justify-center">
+    <section id='discover' className={`flex flex-col items-center justify-center ${isDarkMode ? '': 'bg-[#cbd3dc]'}`}>
       <div className='max-w-screen max-h-screen pb-4'>
         <div className='flex flex-row justify-center max-w-screen mx-auto'>
             <div className='mt-2 text-center mb-8'>
