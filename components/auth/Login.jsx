@@ -4,6 +4,9 @@ import { AiFillApple, AiFillGoogleCircle } from 'react-icons/ai';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaLongArrowAltRight } from "react-icons/fa";
+import { HiOutlineArrowLongLeft } from "react-icons/hi2";
+
+
 
 
 
@@ -41,7 +44,6 @@ const Register = () => {
           <div className="flex flex-col  justify-center">
             <div className='w-full h-16 border-b border-gray-400 flex items-center justify-between'>
                 <p className='text-left text-2xl text-[#DFDFDF] mx-8'>Login</p>
-                <p className='flex flex-row items-center mr-2 font-thin bg-transparent py-2 px-2 rounded-md hover:bg-[#363636] cursor-pointer duration-300'> Register here <FaLongArrowAltRight className='ml-2'/> </p>
                
             </div>
 
@@ -76,7 +78,7 @@ const Register = () => {
             </button>
 
 
-            <p className='mb-8 text-sm'>Forgot password? Create new <span className='underline cursor-pointer text-blue-500'>here</span></p>
+            <p className='mb-8 text-sm'>New user? Create new account <Link className='underline text-blue-500' href="/auth/register"> here</Link></p>
            </div>
           </div>
         );
@@ -86,6 +88,7 @@ const Register = () => {
             <div className='w-full h-16 border-b border-gray-400 flex items-center justify-between'>
                 <p className='text-left text-2xl text-[#DFDFDF] mx-8'>Login</p>
             </div>
+
 
             <h2 className=' text-[#DFDFDF] text-xl font-semibold ml-8 pt-8'>Enter your password</h2>
            
@@ -100,9 +103,11 @@ const Register = () => {
               required
             />
           
-            <button className="py-2 rounded-md bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] mb-4 w-[85%]" >Login</button>
-            <button className="py-2 rounded-md bg-transparent opacity-80 border-[#DFDFDF] border text-[#fffddd]  mb-4 w-[85%]" onClick={() => setStep(1)}>Previous</button>
-
+            <button className="py-2 rounded-md bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-2 w-[85%]" >Login</button>
+            <button className=" rounded-md bg-transparent text-[#c4c4c4] hover:text-[#e6e6e6] duration-300 flex flex-row items-center py-1 mb-6 mt-2" onClick={() => setStep(1)}> 
+              <HiOutlineArrowLongLeft className='mr-2 font-thin'/> 
+              Previous
+            </button>
             <p className='mb-8 text-sm'>Forgot password? Create new <span className='underline text-blue-500'>here</span></p>
            </div>
           </div>

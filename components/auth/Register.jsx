@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { HiEye, HiEyeOff } from "react-icons/hi";
+import { AiFillApple, AiFillGoogleCircle } from 'react-icons/ai';
 import Link from 'next/link';
 import Image from 'next/image';
+import { FaLongArrowAltRight } from "react-icons/fa";
+import { HiOutlineArrowLongLeft } from "react-icons/hi2";
+
+
+
+
 
 const Register = () => {
   const [step, setStep] = useState(1);
@@ -35,95 +41,126 @@ const Register = () => {
     switch (step) {
       case 1:
         return (
-          <div className="flex flex-col items-center justify-center space-y-4">
-            <h1 className='text-center text-gray-800 text-4xl py-6'>Step 1: Account Information</h1>
+          <div className="flex flex-col  justify-center">
+            <div className='w-full h-16 border-b border-gray-400 flex items-center justify-between'>
+                <p className='text-left text-2xl text-[#DFDFDF] mx-8'>Register</p>
+               
+            </div>
+
+            <h2 className=' text-[#DFDFDF] text-xl font-semibold ml-8 pb-4 pt-10'>Welcome to DataDepot</h2>
+           
+           <div className='items-center flex flex-col'>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="block bg-gray-200 text-xl w-full border-b-2 px-2 py-2 text-gray-800 mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-              placeholder="Email"
+              className="block bg-[#3D3D3D] text-md w-[85%]  border my-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+              placeholder="Your e-mail"
               required
             />
-            <div className="relative w-full">
               <input
-                type={passwordVisible ? "text" : "password"}
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                className="block bg-gray-200 text-xl w-full border-b-2 px-2 py-2 text-gray-800 mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                placeholder="Password"
-                required
-              />
-              <button
-                className="absolute top-0 right-0 mt-4 mr-4"
-                onClick={togglePasswordVisibility}
-              >
-                {passwordVisible ? <HiEyeOff /> : <HiEye />}
-              </button>
-            </div>
-            <div className="relative w-full">
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              className="block bg-[#3D3D3D] text-md w-[85%]  border my-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+              placeholder="New password"
+              required
+            />
               <input
-                type={passwordVisible ? "text" : "password"}
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                className="block bg-gray-200 text-xl w-full border-b-2 px-2 py-2 text-gray-800 mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 pr-12"
-                placeholder="Confirm Password"
-                required
-              />
-              <button
-                className="absolute top-0 right-0 mt-4 mr-4"
-                onClick={togglePasswordVisibility}
-              >
-                {passwordVisible ? <HiEyeOff /> : <HiEye />}
-              </button>
+              type="confirmPassword"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              className="block bg-[#3D3D3D] text-md w-[85%]  border my-2 mb-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+              placeholder="Confirm password"
+              required
+            />
+          
+            <button className="py-2 rounded-md shadow-lg bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-6 w-[85%]" onClick={() => setStep(2)}>Continue</button>
+
+            <div className='flex flex-row items-center w-[85%] mt-2 mb-4'>
+                <div className='w-1/2 mr-2 border-b-[1.5px] h-0 border-gray-500'></div>
+                <p className='text-xs'> OR</p>
+                <div className='w-1/2 ml-2 border-b-[1.5px] h-0 border-gray-500'></div>
             </div>
 
+            <button className='w-[85%] border-[#DFDFDF] hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-2 my-2 flex flex-row items-center justify-center'>
+              <AiFillApple className='absolute left-12 w-7 h-7 mr-2'/> Continue with Apple
+            </button>
 
-            <button className="btn btn-primary w-full" onClick={() => setStep(2)}>Next</button>
+            <button className='w-[85%] border-[#DFDFDF] hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-2 my-2 mb-8 flex flex-row items-center justify-center'>
+              Continue with Google
+              <Image src='/icons/google_btn.svg' alt="Google icon" width={28} height={28} className='absolute left-12'/>
+            </button>
+
+
+            <p className='mb-8 text-sm'>Already have an account? Sign in <Link className='underline text-blue-500' href="/auth/login"> here</Link></p>
+           </div>
           </div>
         );
       case 2:
         return (
-          <div className="flex flex-col w-full items-center justify-center space-y-4">
-            <h1 className='text-center text-gray-800 text-4xl py-6'>Step 2: Personal Information (Optional)</h1>
+          <div className="flex flex-col  justify-center">
+            <div className='w-full h-16 border-b border-gray-400 flex items-center justify-between'>
+                <p className='text-left text-2xl text-[#DFDFDF] mx-8'>Register</p>
+            </div>
+
+
+            <h2 className=' text-[#DFDFDF] text-xl font-semibold ml-8 pt-8'>Addition information <span className='text-sm text-gray-400 font-thin'>(optional)</span></h2>
+           
+           <div className='items-center flex flex-col'>
             <input
-              type="text"
-              name="name"
-              value={formData.name}
+              type="name"
+              name="text"
+              value={formData.password}
               onChange={handleChange}
-              className="block bg-gray-200 text-xl w-full border-b-2 px-2 py-2 text-gray-800 mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" 
-              placeholder="Name"
+              className="block bg-[#3D3D3D] text-md w-[85%]  border mt-4 my-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+              placeholder="Full name"
+              required
             />
             <input
-              type="tel"
-              name="phoneNumber"
-              value={formData.phoneNumber}
+              type="phoneNumber"
+              name="text"
+              value={formData.password}
               onChange={handleChange}
-              className="block bg-gray-200 text-xl w-full border-b-2 px-2 py-2 text-gray-800 mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" 
-              placeholder="Phone Number"
+              className="block bg-[#3D3D3D] text-md w-[85%]  border my-2 mb-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+              placeholder="Phone number"
+              required
             />
-            <button className="btn btn-ghost  w-full" onClick={() => setStep(1)}> <span className='text-gray-600'> Previous </span></button>
-            <button className="btn btn-primary w-full" onClick={() => setStep(3)}>Next</button>
+          
+          
+            <button className="py-2 rounded-md bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-2 w-[85%]" onClick={() => setStep(3)} >Continue</button>
+            <button className=" rounded-md bg-transparent text-[#c4c4c4] hover:text-[#e6e6e6] duration-300 flex flex-row items-center py-1 mb-6 mt-2" onClick={() => setStep(1)}> 
+              <HiOutlineArrowLongLeft className='mr-2 font-thin'/> 
+              Previous
+            </button>
+            <p className='mb-8 text-sm'>Forgot password? Create new <span className='underline text-blue-500'>here</span></p>
+           </div>
           </div>
         );
-      case 3:
-        return (
-          <div className="flex flex-col w-full items-center justify-center space-y-4">
-            <h1 className='text-center text-gray-800 text-4xl py-6'>Step 3: Additional Information</h1>
-            <textarea
-              name="additionalInfo"
-              value={formData.additionalInfo}
-              onChange={handleChange}
-              className="block bg-gray-200 text-xl w-full border-b-2 px-2 py-2 text-gray-800 mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 h-32"
-              placeholder="Additional Information"
-            />
-            <button className="btn btn-ghost w-full" onClick={() => setStep(2)}><span className='text-gray-600'> Previous </span></button>
-            <button className="btn btn-primary w-full" onClick={handleSubmit}>Register</button>
-          </div>
-        );
+        case 3:
+          return (
+            <div className="flex flex-col  justify-center">
+              <div className='w-full h-16 border-b border-gray-400 flex items-center justify-between'>
+                  <p className='text-left text-2xl text-[#DFDFDF] mx-8'>Register</p>
+              </div>
+  
+              <h2 className=' text-[#DFDFDF] text-xl font-semibold ml-8 pt-8'>Anything else about you? <span className='text-sm text-gray-400 font-thin'>(optional)</span></h2> 
+
+             <div className='items-center flex flex-col'>
+              <textarea rows={5} className="block bg-[#3D3D3D] text-md w-[85%]  border mt-4 my-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+            
+              <button className="py-2 rounded-md bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-2 w-[85%]" onClick={() => setStep(3)} >Register</button>
+              <button className=" rounded-md bg-transparent text-[#c4c4c4] hover:text-[#e6e6e6] duration-300 flex flex-row items-center py-1 mb-6 mt-2" onClick={() => setStep(2)}> 
+                <HiOutlineArrowLongLeft className='mr-2 font-thin'/> 
+                Previous
+              </button>
+              <p className='mb-8 text-sm'>Forgot password? Create new <span className='underline text-blue-500'>here</span></p>
+             </div>
+            </div>
+          );
       default:
         return null;
     }
@@ -132,9 +169,9 @@ const Register = () => {
   return (
     <div className='flex w-screen h-screen'>
       {/* Left Side with Image */}
-      <div className="w-1/2 bg-gray-800 relative flex justify-center items-center">
+      <div className="w-1/2 bg-gray-800 relative flex justify-center items-center border-r-[0.3px] border-[#DFDFDF]">
         <Image
-          src="/register_bg.jpeg"
+          src="/login_bg.jpeg"
           alt="Background Image"
           layout="fill"
           objectFit="cover"
@@ -143,9 +180,9 @@ const Register = () => {
       </div>
 
       {/* Right Side with Form */}
-      <div className="w-1/2 bg-gray-50 flex justify-center items-center">
-        <Link className='btn btn-ghost absolute top-0 right-0 mr-4 mt-4' href="/"><FaArrowLeftLong className='text-gray-800'/><span className='text-gray-800'>Back</span></Link>
-        <div className="w-3/4 py-8 px-6 bg-gray-100 shadow-xl bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-lg border border-gray-300">
+      <div className="w-1/2 bg-[#18191A]  flex justify-center items-center">
+        <Link className='btn btn-ghost absolute top-0 right-0 mr-4 mt-4' href="/"><FaArrowLeftLong className='text-[#DFDFDF]'/><span className='text-[#DFDFDF]'>Back</span></Link>
+        <div className="w-[450px] bg-[#262626] shadow-xl bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-2xl">
           {renderStepContent()}
         </div>
       </div>
