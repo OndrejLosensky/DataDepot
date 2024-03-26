@@ -3,10 +3,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { AiFillApple, AiFillGoogleCircle } from 'react-icons/ai';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaLongArrowAltRight } from "react-icons/fa";
 import { HiOutlineArrowLongLeft } from "react-icons/hi2";
-
-
 
 
 
@@ -133,6 +130,7 @@ const Register = () => {
       {/* Right Side with Form */}
       <div className="w-1/2 bg-[#18191A]  flex justify-center items-center">
         <Link className='btn btn-ghost absolute top-0 right-0 mr-4 mt-4' href="/"><FaArrowLeftLong className='text-[#DFDFDF]'/><span className='text-[#DFDFDF]'>Back</span></Link>
+        <Link className='absolute top-0 mt-4 ' href="/frontend/loading">Loading page</Link>
         <div className="w-[450px] bg-[#262626] shadow-xl bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-2xl">
           {renderStepContent()}
         </div>
