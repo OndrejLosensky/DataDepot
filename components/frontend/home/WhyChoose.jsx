@@ -19,7 +19,7 @@ const WhyChoose = () => {
                   alt="Code editor mockup image"
                   width={800}
                   height={0}
-                  className='hover:scale-[3.5] hover:translate-y-16 transition duration-700'
+                  className='hover:scale-[4.5] hover:-translate-y-32 hover:translate-x-20 transition duration-700'
                 />
             </div>
           </div>
@@ -35,11 +35,12 @@ const WhyChoose = () => {
             <h2 className='text-5xl text-gray-300 ml-36 font-bold text-left pb-4'>
               Discover DataDepot
             </h2>
-            <p className='text-left text-xl text-gray-400 ml-36'>
-              Support for many file types (.docx;.pdf;.pptx;...) <br />
-              SQlite integration for efficient storage <br />
-              Create tags for your stored files
-            </p>
+            <ul className='text-left text-xl list-disc text-gray-400 ml-36 pl-4'>
+              <li className='py-1'>Support for many file types (.docx;.pdf;.pptx;...)</li>
+              <li className='py-1'>SQlite integration for efficient storage</li>
+              <li className='py-1'>Create tags for your stored files</li>
+              <li className='py-1'>Simple but modern UI</li>
+            </ul>
             <div className='pt-8'>
               <Link className='text-left ml-36 btn w-[200px] hover:-translate-y-1 duration-200' href="/frontend/docs#support">
                 Supported files 
