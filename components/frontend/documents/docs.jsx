@@ -32,14 +32,14 @@ const Docs = () => {
         <div className='border-gray-400 pt-4 border-b w-[100%] mx-auto'></div>
         <h2 className='ml-12 text-xl font-semibold text-gray-200 pt-10'>Getting started</h2>
         <ul className='ml-12 pt-2 text-gray-500'>
-          <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('dashboard')}>Preview</a></li>
-          <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('upload')}>Create an account</a></li>
-          <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('preview')}>How to use</a></li>
+          <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('dashboard')}>Dashboard</a></li>
+          <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('upload')}>Uploading files</a></li>
+          <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('files')}>Files</a></li>
         </ul>
 
         <h2 className='ml-12 text-xl font-semibold text-gray-200 pt-4'>Features</h2>
         <ul className='ml-12 pt-2 text-gray-500'>
-          <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('drags')}>Drag and drop</a></li>
+          <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('drag')}>Drag and drop</a></li>
           <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('labels')}>Labels / tags</a></li>
           <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('filtering')}>Filtering</a></li>
           <li className='py-1 hover:text-gray-200 duration-300 cursor-pointer'><a onClick={() => scrollToSection('theme')}> Dark mode / light mode</a></li>
@@ -90,7 +90,7 @@ const Docs = () => {
         </div>
         
         <div className="py-6">
-            <h3 id='preview' className='text-xl font-semibold text-gray-200'>File Preview</h3>
+            <h3 id='files' className='text-xl font-semibold text-gray-200'>File Preview</h3>
             <p className='max-w-prose text-gray-300'>Previewing files within DataDepot is seamless and hassle-free. Whether it's a PDF document, a Word file, or an image, you can instantly view its contents without having to download or open it externally. This feature saves you time and allows you to quickly glance through your files to find the information you need.</p>
         </div>
     </div>
@@ -103,27 +103,27 @@ const Docs = () => {
     <p className="text-lg text-gray-400">Discover the powerful features that DataDepot offers to streamline your file management tasks.</p>
     
     <div className="grid  sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
-        <div className="feature-card">
+        <div id='drag' className="feature-card">
             <h2 className='text-2xl text-gray-300 mb-4'>Drag & Drop</h2>
             <p className="text-gray-400">Easily rearrange yougr files by dragging them to your desired location within DataDepot.</p>
         </div>
         
-        <div className="feature-card">
+        <div id='labels' className="feature-card">
             <h2 className='text-2xl text-gray-300 mb-4'>Labels / Tags</h2>
             <p className="text-gray-400">Organize your files efficiently by creating custom tags and assigning them different colors for easy identification.</p>
         </div>
         
-        <div className="feature-card">
+        <div id='filtering' className="feature-card">
             <h2 className='text-2xl text-gray-300 mb-4'>Filtering</h2>
             <p className="text-gray-400">Effortlessly find specific files by filtering them based on file type, date added, labels, and more.</p>
         </div>
         
-        <div className="feature-card">
+        <div id='themes' className="feature-card">
             <h2 className='text-2xl text-gray-300 mb-4'>Dark Mode / Light Mode</h2>
             <p className="text-gray-400">Customize your DataDepot experience with either dark mode or light mode, whichever suits your preference.</p>
         </div>
         
-        <div className="feature-card">
+        <div id='filePreview' className="feature-card">
             <h2 className='text-2xl text-gray-300 mb-4'>File Preview</h2>
             <p className="text-gray-400">Preview the contents of your files directly within DataDepot without needing to open them separately.</p>
         </div>

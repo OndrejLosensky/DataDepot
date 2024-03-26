@@ -33,8 +33,8 @@ const Blog = () => {
   ];
 
   return (
-    <div className='max-w-screen min-h-screen'>
-      <div className='w-screen h-16 bg-base-300 flex items-center'>
+    <div className='max-w-screen min-h-screen overflow-hidden bg-[#18191A]'>
+      <div className='w-screen h-16 bg-[#111212] flex items-center'>
         <Link href="/"><button className='btn btn-ghost ml-4'><FaArrowLeftLong /> Back</button></Link>
       </div>
        
@@ -44,7 +44,7 @@ const Blog = () => {
         <div className='border-b-[0.5px] border-gray-400 mx-4 pt-6'></div>
         <div className="flex flex-col gap-4 mt-4">
           {blogPosts.map((post, index) => (
-            <div key={index} className="ml-4 border-[0.5px]  border-gray-500 rounded-lg p-4">
+            <div key={index} className="bg-[#222222] mx-4 border-[0.5px]  border-gray-500 rounded-lg p-4">
               <h2 className="text-2xl font-semibold">{post.heading}</h2>
               <p className="text-gray-500 text-sm">Version: {post.version} - Date: {post.date}</p>
               <p className="mt-2">{post.description}</p>
