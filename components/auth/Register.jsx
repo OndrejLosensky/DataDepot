@@ -171,7 +171,7 @@ const Register = () => {
       {/* Left Side with Image */}
       <div className="w-1/2 bg-gray-800 relative flex justify-center items-center border-r-[0.3px] border-[#DFDFDF]">
         <Image
-          src="/login_bg.jpeg"
+          src="/register_bg.jpeg"
           alt="Background Image"
           layout="fill"
           objectFit="cover"
