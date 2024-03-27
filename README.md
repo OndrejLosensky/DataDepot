@@ -1,17 +1,17 @@
 # `DataDepot`
 
-Store your files effectively inside the sqlite db, that is very quick. Manage all files inside one dashboard, upload different types of files, create labels for it, make groups and many more. You can discover it now!
+Web for DataDepot app. Made in dark mode but light mode supported, documentation, pricing and blog pages. Minimalistic landing page with simple animations. Landing page has an QA section, techstack showcase, about DataDepot and preview of features. Keyboard shortcut to toggle the dark mode. Some elements were directly used from DaisyUI.
 
-Full-stack project created using Next.js, TailwindCSS (daisyUI) and Sqlite database.
+Login and register forms styled to dark mode, in the future they will be integrated with login via Google or Apple. Option to reset password etc.
 
 ## Features
-* Store documents inside a simply looking dashboard
-* Manage documents
-* Labels, folders, groups for documents
+* Dark mode
+* Simple animations
+* Docs, Blog and Pricing pages
+* Login and Register
 
 ## Preview
 
-[Insert screenshots, gifs, or videos here to showcase your project.]
 
 
 ## License
@@ -33,8 +33,9 @@ This project is licensed under the Apache license 2.0: [Link to LICENSE.md]()
 * Link to Next.js: [https://nextjs.org/](https://nextjs.org)
 * Link to Tailwind CSS: [https://tailwindcss.com/](https://tailwindcss.com)
 * Link to DaisyUI (TailwindCSS library): [https://daisyui.com/](https://daisyui.com)
-* Link to react-icon: [https://react-icons.github.io/react-icons/](https://react-icons.github.io/react-icons)
-* Link to Sqlite: [https://www.sqlite.org](https://www.sqlite.org)
+* Link to react-icon: [https://react-icons.github.io/react-icons/](https://react-icons.github.io/react-icons)
+* Link to Sqlite: [https://www.sqlite.org](https://www.sqlite.org)
+* Link to Firebase:[https://firebase.google.com/](https://firebase.google.com/)
 
 ## Project Creation Date
 
