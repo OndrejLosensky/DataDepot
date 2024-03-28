@@ -1,36 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaArrowLeftLong } from "react-icons/fa6";
 import Link from 'next/link';
-import Navbar from '../Navbar';
+import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
 
 const Blog = () => {
-  // Array of blog posts
-  const blogPosts = [
-    {
-      heading: 'New Features Added',
-      version: 'v1.2',
-      date: 'March 25, 2024',
-      description: 'Discover the latest features and enhancements in version 1.2 of DataDepot.',
-    },
-    {
-      heading: 'Important Update: Security Patch',
-      version: 'v1.3',
-      date: 'March 26, 2024',
-      description: 'Learn about the crucial security patch released in version 1.3 of DataDepot.',
-    },
-    {
-      heading: 'Enhanced User Experience',
-      version: 'v1.4',
-      date: 'March 27, 2024',
-      description: 'Explore the improvements made to enhance the overall user experience in version 1.4.',
-    },
-    {
-      heading: 'App created',
-      version: 'v1.5',
-      date: 'March 28, 2024',
-      description: 'Explore the realease app',
-    },
-  ];
+  const [selectedPost, setSelectedPost] = useState(null);
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState('');
+
+
+  useEffect(() => {
+    fetch('/api/blogPosts')
+      .then(response => response.json())
+      .then(data => setBlogPosts(data))
+      .catch(error => console.error('Error fetching blog posts:', error));
+  }, []);
+
+  const fetchComments = (postId) => {
+    fetch(`/api/comments?id=${postId}`)
+      .then(response => response.json())
+      .then(data => setComments(data))
+      .catch(error => console.error('Error fetching comments:', error));
+  };
+
+  const addComment = () => {
+    // Assuming the comment includes user, message, and postId
+    const commentData = {
+      user: 'User', // Replace with actual user data
+      message: newComment,
+      postId: selectedPost.id
+    };
+
+    fetch('/api/comments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(commentData),
+    })
+      .then(response => response.json())
+      .then(data => {
+        setComments([...comments, data]); // Add the new comment to the existing comments
+        setNewComment(''); // Clear the input field after adding the comment
+      })
+      .catch(error => console.error('Error adding comment:', error));
+  };
+
+  const openDialog = (post) => {
+    setSelectedPost(post);
+    fetchComments(post.id);   
+    document.getElementById('posts').showModal();
+  };
 
   return (
     <div className='max-w-screen min-h-screen overflow-hidden bg-[#18191A]'>
@@ -38,6 +59,80 @@ const Blog = () => {
         <Link href="/"><button className='btn btn-ghost ml-4'><FaArrowLeftLong /> Back</button></Link>
       </div>
        
+      <dialog id="posts" className="modal max-w-screen max-h-screen">
+        <div className="h-[90%] mb-48 bg-[#262626] w-2/3 text-left flex flex-col">
+          {selectedPost && (
+            <>
+              <div className=''>
+                <div className='h-12 flex flex-row items-center border-b-[0.3px] border-gray-500 '>
+                  <h2 className='w-64 flex flex-row ml-4'>
+                    <span className='font-thin text-md'>Post number:</span>
+                    <span className='items-center flex pl-1 text-md'>{selectedPost.id}</span>
+                  </h2>
+                  <button className='flex w-full items-center justify-end pr-2' onClick={() => document.getElementById('posts').close()}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 48 48"
+                    >
+                      <path
+                        fill="#f44336"
+                        d="M44 24c0 11.045-8.955 20-20 20S4 35.045 4 24 12.955 4 24 4s20 8.955 20 20z"
+                      ></path>
+                      <path
+                        fill="#fff"
+                        d="M29.656 15.516l2.828 2.828-14.14 14.14-2.828-2.828 14.14-14.14z"
+                      ></path>
+                      <path
+                        fill="#fff"
+                        d="M32.484 29.656l-2.828 2.828-14.14-14.14 2.828-2.828 14.14 14.14z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+                <div className='mx-4 mt-4'>
+                  <h1 className='text-3xl text-[#DFDFDF]'>{selectedPost.heading}</h1>
+                  <div className='flex flex-row'>
+                    <h2 className='font-thin'>Version: {selectedPost.version}</h2>
+                    <p className='mx-2'> – </p>
+                    <h3 className='font-thin'>Date: {selectedPost.date}</h3>
+                  </div>
+                  <p className='pt-2'>{selectedPost.description}</p>
+                  <div className='border-b-[0.5px] border-gray-400 py-2'></div>
+                </div>  
+                {/* Comments section */}
+                <div>
+                  <div className='flex flex-row justify-between w-full mt-2'>
+                    <h2 className='ml-4 text-2xl text-gray-200 font-semibold'> Comments </h2>
+                    <button className='mr-4 px-4 py-2 rounded-lg text-[#DFDFDF] bg-[#428DFF] hover:bg-[#0040BC] duration-300 ' onClick={addComment}> + add comment </button>
+                  </div>
+                  <div className=''>
+                    {/* Comments */}
+                    {comments.map((comment, index) => (
+                      <div key={index} className='flex flex-row p-4 justify-between border mx-4 rounded-md mt-4'>
+                        <div className='flex flex-row'>
+                          <p className=''>User: {comment.user}</p>
+                          <p className='ml-16'>{comment.message}</p>
+                        </div>
+                        <div className='flex flex-row gap-x-4'> 
+                          <FaRegThumbsDown className='w-6 h-6 cursor-pointer '/>
+                          <FaRegThumbsUp className='w-6 h-6 cursor-pointer '/>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+        <form method="dialog" className="modal-backdrop bg-black opacity-15">
+          <button>close</button>
+        </form>
+      </dialog>
+
+
       <div className='w-2/4 mx-auto'>
         <h1 className='text-4xl pl-4 pt-8 text-gray-300'>Welcome to <span className='text-gray-100 font-semibold'>DataDepot blog</span></h1>
         <p className='ml-4 text-xl pt-2 font-thin'>Here you can find about new versions of the app, features, important changes and more interesting things  </p>
@@ -48,7 +143,7 @@ const Blog = () => {
               <h2 className="text-2xl font-semibold">{post.heading}</h2>
               <p className="text-gray-500 text-sm">Version: {post.version} - Date: {post.date}</p>
               <p className="mt-2">{post.description}</p>
-              <button className='px-4 py-1 mt-2 rounded-md shadow-lg bg-blue-500 hover:bg-blue-700 duration-300 text-gray-100'> See more</button>
+              <button onClick={() => openDialog(post)} className='px-4 py-1 mt-2 rounded-md shadow-lg bg-blue-500 hover:bg-blue-700 duration-300 text-gray-100'>See more</button>
             </div>
           ))}
         </div>
