@@ -12,8 +12,8 @@ module.exports = {
     extend: {
       dropShadow: {
         glow: [
-          "0 0px 35px rgba(255,255, 255, 0.25)",
-          "0 0px 55px rgba(255, 255,255, 0.15)"
+          "0 0px 8px rgba(64,210, 235, 0.25)",
+          "0 0px 8px rgba(64, 235,183, 0.25)"
         ],
         glow2:
         [

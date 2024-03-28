@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { FaArrowLeftLong } from "react-icons/fa6";
 import Link from 'next/link';
-import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
+import Footer from '../Footer';
 
 const Blog = () => {
   const [selectedPost, setSelectedPost] = useState(null);
   const [blogPosts, setBlogPosts] = useState([]);
-  const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState('');
 
 
   useEffect(() => {
@@ -17,39 +15,8 @@ const Blog = () => {
       .catch(error => console.error('Error fetching blog posts:', error));
   }, []);
 
-  const fetchComments = (postId) => {
-    fetch(`/api/comments?id=${postId}`)
-      .then(response => response.json())
-      .then(data => setComments(data))
-      .catch(error => console.error('Error fetching comments:', error));
-  };
-
-  const addComment = () => {
-    // Assuming the comment includes user, message, and postId
-    const commentData = {
-      user: 'User', // Replace with actual user data
-      message: newComment,
-      postId: selectedPost.id
-    };
-
-    fetch('/api/comments', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(commentData),
-    })
-      .then(response => response.json())
-      .then(data => {
-        setComments([...comments, data]); // Add the new comment to the existing comments
-        setNewComment(''); // Clear the input field after adding the comment
-      })
-      .catch(error => console.error('Error adding comment:', error));
-  };
-
   const openDialog = (post) => {
     setSelectedPost(post);
-    fetchComments(post.id);   
     document.getElementById('posts').showModal();
   };
 
@@ -59,6 +26,7 @@ const Blog = () => {
         <Link href="/"><button className='btn btn-ghost ml-4'><FaArrowLeftLong /> Back</button></Link>
       </div>
        
+
       <dialog id="posts" className="modal max-w-screen max-h-screen">
         <div className="h-[90%] mb-48 bg-[#262626] w-2/3 text-left flex flex-col">
           {selectedPost && (
@@ -101,27 +69,9 @@ const Blog = () => {
                   <p className='pt-2'>{selectedPost.description}</p>
                   <div className='border-b-[0.5px] border-gray-400 py-2'></div>
                 </div>  
-                {/* Comments section */}
+                {/* Content section */}
                 <div>
-                  <div className='flex flex-row justify-between w-full mt-2'>
-                    <h2 className='ml-4 text-2xl text-gray-200 font-semibold'> Comments </h2>
-                    <button className='mr-4 px-4 py-2 rounded-lg text-[#DFDFDF] bg-[#428DFF] hover:bg-[#0040BC] duration-300 ' onClick={addComment}> + add comment </button>
-                  </div>
-                  <div className=''>
-                    {/* Comments */}
-                    {comments.map((comment, index) => (
-                      <div key={index} className='flex flex-row p-4 justify-between border mx-4 rounded-md mt-4'>
-                        <div className='flex flex-row'>
-                          <p className=''>User: {comment.user}</p>
-                          <p className='ml-16'>{comment.message}</p>
-                        </div>
-                        <div className='flex flex-row gap-x-4'> 
-                          <FaRegThumbsDown className='w-6 h-6 cursor-pointer '/>
-                          <FaRegThumbsUp className='w-6 h-6 cursor-pointer '/>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+
                 </div>
               </div>
             </>
@@ -137,9 +87,9 @@ const Blog = () => {
         <h1 className='text-4xl pl-4 pt-8 text-gray-300'>Welcome to <span className='text-gray-100 font-semibold'>DataDepot blog</span></h1>
         <p className='ml-4 text-xl pt-2 font-thin'>Here you can find about new versions of the app, features, important changes and more interesting things  </p>
         <div className='border-b-[0.5px] border-gray-400 mx-4 pt-6'></div>
-        <div className="flex flex-col gap-4 mt-4">
+        <div className="flex flex-col gap-4 mt-4 mb-16">
           {blogPosts.map((post, index) => (
-            <div key={index} className="bg-[#222222] mx-4 border-[0.5px]  border-gray-500 rounded-lg p-4">
+            <div key={index} className="bg-[#222222] duration-300 hover:drop-shadow-glow mx-4 border-[0.5px]  border-gray-500 rounded-lg p-4">
               <h2 className="text-2xl font-semibold">{post.heading}</h2>
               <p className="text-gray-500 text-sm">Version: {post.version} - Date: {post.date}</p>
               <p className="mt-2">{post.description}</p>
@@ -148,6 +98,7 @@ const Blog = () => {
           ))}
         </div>
       </div> 
+      <Footer/>
     </div>
   );
 };
