@@ -169,7 +169,7 @@ const Register = () => {
   return (
     <div className='flex w-screen h-screen'>
       {/* Left Side with Image */}
-      <div className="w-1/2 bg-gray-800 relative flex justify-center items-center border-r-[0.3px] border-[#DFDFDF]">
+      <div className="w-1/2 bg-gray-800 relative flex justify-center items-center border-r-[0.3px] border-[#6e6e6e]">
         <Image
           src="/register_bg.jpeg"
           alt="Background Image"
