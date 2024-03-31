@@ -127,11 +127,14 @@ const Register = () => {
         <div className="absolute inset-0 bg-black opacity-30"></div>
       </div>
 
+      <div className="z-[-1] flex place-items-center before:absolute before:h-[200px] before:w-full sm:before:w-[450px] before:translate-x-[40px] before:translate-y-[-280px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-secondary after:via-success after:blur-3xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-primary before:dark:opacity-25 after:dark:from-blue-500 after:dark:via-red-500 after:dark:opacity-100 before:lg:h-[250px]"></div>
+
+
       {/* Right Side with Form */}
-      <div className="w-1/2 bg-[#18191A]  flex justify-center items-center">
+      <div className="w-1/2 flex justify-center items-center">
         <Link className='btn btn-ghost absolute top-0 right-0 mr-4 mt-4' href="/"><FaArrowLeftLong className='text-[#DFDFDF]'/><span className='text-[#DFDFDF]'>Back</span></Link>
         <Link className='absolute top-0 mt-4 ' href="/frontend/loading">Loading page</Link>
-        <div className="w-[450px] bg-[#262626] shadow-xl bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-2xl">
+        <div className="w-[450px] bg-[#262626]  shadow-xl bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-2xl">
           {renderStepContent()}
         </div>
       </div>
