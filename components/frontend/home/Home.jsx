@@ -13,6 +13,7 @@ const Home = ({isDarkMode}) => {
 
           <div className='max-w-screen flex flex-col justify-center text-center items-center'>
           <div className="pt-8">
+            {/**/}
             <Countdown date="2024-4-30"/>
           </div>
 

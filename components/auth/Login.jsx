@@ -4,36 +4,29 @@ import { AiFillApple, AiFillGoogleCircle } from 'react-icons/ai';
 import Link from 'next/link';
 import Image from 'next/image';
 import { HiOutlineArrowLongLeft } from "react-icons/hi2";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../src/app/firebaseConfig'
+import { useRouter } from 'next/router';
 
 
-
-const Register = () => {
+const Login = () => {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    confirmPassword: '',
-    name: '',
-    phoneNumber: '',
-    additionalInfo: '',
-  });
-  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const router = useRouter();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const handleLogin = async (e) => {
+      e.preventDefault();
+       try {
+          // Sign in user with email and password
+          await signInWithEmailAndPassword(auth, email, password);
+          // Redirect to dashboard upon successful login
+          router.push('/backend/dashboard');
+      } catch (err) {
+          setError(err.message);
+      }
   };
-
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Here you can handle form submission, e.g., sending data to backend
-    console.log(formData);
-  };
-
   const renderStepContent = () => {
     switch (step) {
       case 1:
@@ -50,8 +43,8 @@ const Register = () => {
             <input
               type="email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="block bg-[#3D3D3D] text-md w-[85%]  border mb-6 my-4 mt-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
               placeholder="Your e-mail"
               required
@@ -93,14 +86,14 @@ const Register = () => {
             <input
               type="password"
               name="password"
-              value={formData.password}
-              onChange={handleChange}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="block bg-[#3D3D3D] text-md w-[85%]  border my-4 mt-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
               placeholder="Password"
               required
             />
           
-            <button className="py-2 rounded-md bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-2 w-[85%]" >Login</button>
+            <button className="py-2 rounded-md bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-2 w-[85%]" onClick={handleLogin} >Login</button>
             <button className=" rounded-md bg-transparent text-[#c4c4c4] hover:text-[#e6e6e6] duration-300 flex flex-row items-center py-1 mb-6 mt-2" onClick={() => setStep(1)}> 
               <HiOutlineArrowLongLeft className='mr-2 font-thin'/> 
               Previous
@@ -125,6 +118,7 @@ const Register = () => {
           objectFit="cover"
         />
         <div className="absolute inset-0 bg-black opacity-30"></div>
+        <p className='text-gray-200 absolute bottom-2 px-2 py-1 bg-sky-900 rounded-lg'> E-mail: <span className='font-bold'>ondra@gmail.com</span> | heslo: <span className='font-bold'>  123456</span> </p>
       </div>
 
       <div className="z-[-1] flex place-items-center before:absolute before:h-[200px] before:w-full sm:before:w-[450px] before:translate-x-[40px] before:translate-y-[-280px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-secondary after:via-success after:blur-3xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-primary before:dark:opacity-25 after:dark:from-blue-500 after:dark:via-red-500 after:dark:opacity-100 before:lg:h-[250px]"></div>
@@ -142,4 +136,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

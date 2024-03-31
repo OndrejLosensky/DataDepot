@@ -1,7 +1,7 @@
-const { default: Login } = require("../../components/auth/Login");
+import Login from "../../components/auth/Login";
 
-function loginPage(){
-  return <Login/>
+function LoginPage() {
+  return <Login />;
 }
 
-export default loginPage;
+export default LoginPage;

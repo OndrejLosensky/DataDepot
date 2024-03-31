@@ -9,8 +9,8 @@ const Loading = () => {
     words: ['Preparing your files...', 'Starting the warehouse...','Loading user settings...','Almost there...','Depot is opening...'],
     loop: true,
     typeSpeed:70,
-    deleteSpeed:60,
-    delaySpeed:3000,
+    deleteSpeed:40,
+    delaySpeed:2500,
 });
 
   return (
@@ -21,7 +21,7 @@ const Loading = () => {
 
       <div className='flex flex-row items-center py-4 absolute top-24'>
         <FaWarehouse className={`w-20 mr-2 h-auto text-[#DFDFDF]`}/>
-        <p className='mt-4 text-4xl drop-shadow-glow2'> DataDepot</p>
+        <p className='mt-4 text-4xl'> DataDepot</p>
       </div>
 
      
