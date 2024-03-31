@@ -1,6 +1,7 @@
 import React from "react";
 import Image from 'next/image';
 import Link from 'next/link';
+import Countdown from "./Countdown";
 
 const Home = ({isDarkMode}) => {
   return (
@@ -11,9 +12,11 @@ const Home = ({isDarkMode}) => {
 
 
           <div className='max-w-screen flex flex-col justify-center text-center items-center'>
-          
+          <div className="pt-8">
+            <Countdown date="2024-4-30"/>
+          </div>
 
-          <div className={`flex flex-row pt-24 opacity-50 ${isDarkMode ? 'text-[#DFDFDF]':'text-[#222222]'}`}>
+          <div className={`hidden flex flex-row pt-2 opacity-50 ${isDarkMode ? 'text-[#DFDFDF]':'text-[#222222]'}`}>
             <kbd className={`kbd kbd-sm mr-1 ${isDarkMode ? 'text-[#DFDFDF]':'text-[#DFDFDF]'}`}>CMD</kbd>
             +
             <kbd className={`ml-1 mr-2 kbd kbd-sm ${isDarkMode ? 'text-[#DFDFDF]':'text-[#DFDFDF]'}`}>B</kbd>
