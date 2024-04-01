@@ -1,0 +1,8 @@
+html, body {
+    background-color: #18191A !important;
+}
+
+.nav-links li.active {
+    color: #3b82f6;
+    border-bottom: 2px #3b82f6 solid ;
+  }
