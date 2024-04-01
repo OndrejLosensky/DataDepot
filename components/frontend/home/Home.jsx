@@ -43,7 +43,7 @@ const Home = ({isDarkMode}) => {
 
             <div className='flex flex-col justify-center items-center'>
             <Image
-              src="/editor2.svg"
+              src="/editor.svg"
               alt="Code editor mockup image"
               width={1200}
               height={0}
