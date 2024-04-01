@@ -17,15 +17,18 @@ const Countdown = ({ date }) => {
     return timeLeft;
   };
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [timeLeft, setTimeLeft] = useState({}); // Initial state is an empty object
 
   useEffect(() => {
+    // Calculate initial timeLeft state on the client-side only
+    setTimeLeft(calculateTimeLeft());
+
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, []); // Empty dependency array ensures this effect runs only once, on mount
 
   const padNumber = (number) => {
     return number < 10 ? `0${number}` : number;
