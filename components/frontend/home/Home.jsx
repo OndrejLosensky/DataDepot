@@ -17,13 +17,6 @@ const Home = ({isDarkMode}) => {
             <Countdown date="2024-4-30" suppressHydrationWarning />
           </div>
 
-          <div className={`hidden flex flex-row pt-2 opacity-50 ${isDarkMode ? 'text-[#DFDFDF]':'text-[#222222]'}`}>
-            <kbd className={`kbd kbd-sm mr-1 ${isDarkMode ? 'text-[#DFDFDF]':'text-[#DFDFDF]'}`}>CMD</kbd>
-            +
-            <kbd className={`ml-1 mr-2 kbd kbd-sm ${isDarkMode ? 'text-[#DFDFDF]':'text-[#DFDFDF]'}`}>B</kbd>
-            <span className="font-thin"> to toggle dark mode </span>
-          </div>
-
             <h2 className={`pt-8 text-5xl text-center drop-shadow-glow  font-semibold ${isDarkMode ? 'text-[#DFDFDF]':'text-[#222222]'}`}>
               Store your files efficiently
             </h2>
@@ -48,14 +41,20 @@ const Home = ({isDarkMode}) => {
 
 
 
-            <div className=''>
+            <div className='flex flex-col justify-center items-center'>
             <Image
               src="/editor.svg"
               alt="Code editor mockup image"
               width={1200}
               height={0}
-              className='max-w-screen max-h-screen drop-shadow-xl py-16 mb-16'
+              className='max-w-screen max-h-screen drop-shadow-xl pt-12'
             />
+             <div className={`flex flex-row py-4 pb-16 opacity-50 ${isDarkMode ? 'text-[#DFDFDF]':'text-[#222222]'}`}>
+              <kbd className={`kbd kbd-sm mr-1 ${isDarkMode ? 'text-[#DFDFDF]':'text-[#DFDFDF]'}`}>CMD</kbd>
+              +
+              <kbd className={`ml-1 mr-2 kbd kbd-sm ${isDarkMode ? 'text-[#DFDFDF]':'text-[#DFDFDF]'}`}>B</kbd>
+              <span className="font-thin"> to toggle dark mode </span>
+              </div>
             </div>
 
             {/*   
