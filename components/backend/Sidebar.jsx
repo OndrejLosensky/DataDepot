@@ -50,7 +50,7 @@ const Sidebar = ({ isOpen, toggleSidebar,setActiveComponent }) => {
         </div>
       )}
 
-      <div className={`w-[250px] bg-[#323232] sticky top-4 flex flex-col justify-between max-h-screen h-[${ isScrolled ? '730':'730'}px]  mx-4 mt-4 rounded-2xl opacity-80 border border-gray-500 shadow-xl transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-[98%]'}`}>
+      <div className={`w-[250px] bg-[#323232] sticky top-4 flex flex-col justify-between max-h-screen h-[730px]  mx-4 mt-4 rounded-2xl opacity-80 border border-gray-500 shadow-xl transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-[98%]'}`}>
         {/* Arrow for opening and closing sidebar */}
         <div className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-[#555555] border-gray-500 border text-gray-50 w-6 h-6 rounded-l-lg flex justify-center items-center cursor-pointer" onClick={toggleSidebar}>
           <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 ${isOpen ? 'rotate-180 duration-500' : 'rotate-0 duration-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -60,10 +60,19 @@ const Sidebar = ({ isOpen, toggleSidebar,setActiveComponent }) => {
 
         {/* Top part (Upload + folders) */}
         <div className='text-white h-[80%] w-[100%] justify-between flex flex-col'>
-          <FileUpload
-            successAlertVisible={setSuccessAlertVisible}
-            errorAlertVisible={setErrorAlertVisible}
-          />
+          <div>
+            <FileUpload
+              successAlertVisible={setSuccessAlertVisible}
+              errorAlertVisible={setErrorAlertVisible}
+            />
+            <div className='mx-5 mt-8'>
+              <h2 className='text-2xl text-white border-b border-gray-400 mb-1'> Folders</h2>
+              <li className='py-1'>Documents</li>
+              <li className='py-1'>Personal</li>
+              <li className='py-1'>School</li>
+              <li className='py-1'>Work</li>
+            </div>
+          </div>
           <ProgressBar />
         </div>
         {/* Bottom part (Setting + logout) */}
