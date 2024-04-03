@@ -6,6 +6,7 @@ import FileUpload from './upload/FileUpload';
 import { FaCheckCircle } from 'react-icons/fa';
 import { FiAlertCircle } from 'react-icons/fi';
 import ProgressBar from './upload/ProgressBar';
+import { FaRegFolder } from "react-icons/fa";
 
 const Sidebar = ({ isOpen, toggleSidebar,setActiveComponent }) => {
   const [successAlertVisible, setSuccessAlertVisible] = useState(false);
@@ -67,10 +68,12 @@ const Sidebar = ({ isOpen, toggleSidebar,setActiveComponent }) => {
             />
             <div className='mx-5 mt-8'>
               <h2 className='text-2xl text-white border-b border-gray-400 mb-1'> Folders</h2>
-              <li className='py-1'>Documents</li>
-              <li className='py-1'>Personal</li>
-              <li className='py-1'>School</li>
-              <li className='py-1'>Work</li>
+              <ul className='list-none'>  
+                <li className='py-1 flex flex-row items-center hover:bg-[#484848] rounded-md duration-500 cursor-pointer'> <FaRegFolder className='w-4 h-4 mr-1'/> Documents</li>
+                <li className='py-1 flex flex-row items-center hover:bg-[#484848] rounded-md duration-500 cursor-pointer'> <FaRegFolder className='w-4 h-4 mr-1'/> Personal</li>
+                <li className='py-1 flex flex-row items-center hover:bg-[#484848] rounded-md duration-500 cursor-pointer'> <FaRegFolder className='w-4 h-4 mr-1'/> School</li>
+                <li className='py-1 flex flex-row items-center hover:bg-[#484848] rounded-md duration-500 cursor-pointer'> <FaRegFolder className='w-4 h-4 mr-1'/> Work</li>
+              </ul>
             </div>
           </div>
           <ProgressBar />

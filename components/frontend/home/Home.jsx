@@ -14,7 +14,7 @@ const Home = ({isDarkMode}) => {
           <div className='max-w-screen flex flex-col justify-center text-center items-center'>
           <div className="mt-8">
             {/**/}
-            <Countdown date="2024-4-3" suppressHydrationWarning />
+            <Countdown date="2024-4-25" suppressHydrationWarning />
           </div>
 
             <h2 className={`pt-8 text-5xl text-center drop-shadow-glow  font-semibold ${isDarkMode ? 'text-[#DFDFDF]':'text-[#222222]'}`}>
