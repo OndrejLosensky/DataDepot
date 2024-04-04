@@ -40,23 +40,26 @@ const Login = () => {
             <h2 className=' text-[#DFDFDF] text-xl font-semibold ml-8 pt-10'>Welcome to DataDepot</h2>
            
            <div className='items-center flex flex-col'>
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="block bg-[#3D3D3D] text-md w-[85%]  border mb-6 my-4 mt-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-              placeholder="Your e-mail"
-              required
-            />
-          
-            <button className="py-2 rounded-md shadow-lg bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-6 w-[85%]" onClick={() => setStep(2)}>Continue</button>
-
+           <form className='w-full justify-center flex flex-col items-center' onSubmit={(e) => { e.preventDefault(); setStep(2); }}>
+              <input
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="block bg-[#3D3D3D] text-md w-[85%]  border mb-6 my-4 mt-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                placeholder="Your e-mail"
+                required
+              />
+              <button type="submit" className="py-2 rounded-md shadow-lg bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-6 w-[85%]">
+                Continue
+              </button>
+            </form>
             <div className='flex flex-row items-center w-[85%] mt-2 mb-4'>
-                <div className='w-1/2 mr-2 border-b-[1.5px] h-0 border-gray-500'></div>
-                <p className='text-xs'> OR</p>
-                <div className='w-1/2 ml-2 border-b-[1.5px] h-0 border-gray-500'></div>
+              <div className='w-1/2 mr-2 border-b-[1.5px] h-0 border-gray-500'></div>
+              <p className='text-xs'> OR</p>
+              <div className='w-1/2 ml-2 border-b-[1.5px] h-0 border-gray-500'></div>
             </div>
+
 
             <button className='w-[85%] border-[#DFDFDF] hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-2 my-2 flex flex-row items-center justify-center'>
               <AiFillApple className='absolute left-12 w-7 h-7 mr-2'/> Continue with Apple
@@ -83,6 +86,8 @@ const Login = () => {
             <h2 className=' text-[#DFDFDF] text-xl font-semibold ml-8 pt-8'>Enter your password</h2>
            
            <div className='items-center flex flex-col'>
+            
+           <form className='flex flex-col w-full items-center' onSubmit={handleLogin}>
             <input
               type="password"
               name="password"
@@ -92,12 +97,16 @@ const Login = () => {
               placeholder="Password"
               required
             />
-          
-            <button className="py-2 rounded-md bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-2 w-[85%]" onClick={handleLogin} >Login</button>
-            <button className=" rounded-md bg-transparent text-[#c4c4c4] hover:text-[#e6e6e6] duration-300 flex flex-row items-center py-1 mb-6 mt-2" onClick={() => setStep(1)}> 
-              <HiOutlineArrowLongLeft className='mr-2 font-thin'/> 
-              Previous
+            <button type="submit" className="py-2 rounded-md bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-2 w-[85%]">
+              Login
             </button>
+          </form>
+          <button className="rounded-md bg-transparent text-[#c4c4c4] hover:text-[#e6e6e6] duration-300 flex flex-row items-center py-1 mb-6 mt-2" onClick={() => setStep(1)}> 
+            <HiOutlineArrowLongLeft className='mr-2 font-thin'/> 
+            Previous
+          </button>
+
+
             <p className='mb-8 text-sm'>Forgot password? Create new <span className='underline text-blue-500'>here</span></p>
            </div>
           </div>
