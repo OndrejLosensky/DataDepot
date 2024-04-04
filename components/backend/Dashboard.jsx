@@ -51,7 +51,7 @@ const Dashboard = () => {
           <Loading />
         </div>
       ) : (
-        <div className='flex flex-col bg-[#18191A] h-screen'>
+        <div className='flex flex-col h-screen'> {/* bg-[#18191A] */}
           {/* Navbar */}
           <nav className='py-2 shadow-lg border-b-[0.4px] border-gray-600 bg-[#111212] px-8 flex items-center justify-between'>
             {/* Logo and title */}
