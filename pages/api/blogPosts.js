@@ -2,7 +2,7 @@ import sqlite3 from 'sqlite3';
 
 export default function handler(req, res) {
   if (req.method === 'GET') {
-    const db = new sqlite3.Database('./db/db.sqlite'); // Replace with your database path
+    const db = new sqlite3.Database('./db/blog.sqlite'); // Replace with your database path
 
     db.serialize(() => {
       db.all('SELECT * FROM blog_posts', (err, rows) => {

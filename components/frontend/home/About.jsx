@@ -7,7 +7,7 @@ const WhyChoose = () => {
       <p className='text-center text-xl text-[#a554f1] drop-shadow-glow2 pb-2 pt-12'> Q & A</p>
       <h2 className='text-4xl font-semibold text-center text-gray-200 mt-2 pb-4'> Frequently Asked Questions </h2>
       <div className="collapse collapse-arrow py-2 text-gray-300">
-        <input type="radio" name="my-accordion-2" defaultChecked /> 
+        <input type="radio" name="my-accordion-2" /> 
         <div className="collapse-title text-2xl font-medium ">
           What is DataDepot?
           <div className='border-b pt-2 w-auto'></div>

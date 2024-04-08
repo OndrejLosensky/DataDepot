@@ -1,20 +1,23 @@
-import { open } from 'sqlite';
+// api/createLabel.js
+
 import sqlite3 from 'sqlite3';
+import { open } from 'sqlite';
 
 export default async function handler(req, res) {
-  if (req.method === 'GET') {
+  if (req.method === 'POST') {
+    const { name, color } = req.body;
     try {
       const db = await open({
         filename: './db/data.sqlite',
         driver: sqlite3.Database,
       });
 
-      const result = await db.get('SELECT SUM(size) AS total_size FROM files');
-      const totalSize = result.total_size || 0;
-
-      res.status(200).json({ totalSize });
+      const query = 'INSERT INTO labels (name, color) VALUES (?, ?)';
+      await db.run(query, [name, color]);
+      
+      res.status(201).json({ message: 'Label created successfully' });
     } catch (error) {
-      console.error('Error fetching total size:', error);
+      console.error('Error creating label:', error);
       res.status(500).json({ message: 'Internal Server Error' });
     }
   } else {
