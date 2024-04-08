@@ -21,20 +21,14 @@ export default async function handler(req, res) {
 
             const params = [];
 
-            /*
             if (labels) {
                 const labelNames = labels.split(',');
                 query += ' WHERE labels.name IN (' + labelNames.map(() => '?').join(',') + ')';
                 params.push(...labelNames);
             }
-            */
 
             if (fileType) {
-                if (labels) {
-                    query += ' AND files.name LIKE ?';
-                } else {
-                    query += ' WHERE files.name LIKE ?';
-                }
+                query += labels ? ' AND files.name LIKE ?' : ' WHERE files.name LIKE ?';
                 params.push(`%${fileType}`);
             }
 
@@ -43,9 +37,9 @@ export default async function handler(req, res) {
 
             // Add sorting based on sortOption
             if (sortOption === 'asc') {
-                query += ' ORDER BY labelNames ASC';
+                query += ' ORDER BY files.name ASC';
             } else if (sortOption === 'desc') {
-                query += ' ORDER BY labelNames DESC';
+                query += ' ORDER BY files.name DESC';
             }
 
             const files = await db.all(query, params);

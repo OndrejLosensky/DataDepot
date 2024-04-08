@@ -36,6 +36,9 @@ const Sidebar = ({ isOpen, toggleSidebar,setActiveComponent }) => {
     setActiveComponent('Settings');
   };
 
+  const toolTipData = isOpen ? 'Close the sidebar' : 'Open the sidebar';
+
+
   return (
     <section className='h-screen'>
       {successAlertVisible && (
@@ -53,11 +56,14 @@ const Sidebar = ({ isOpen, toggleSidebar,setActiveComponent }) => {
 
       <div className={`w-[250px] bg-[#323232] flex flex-col sticky top-4 justify-between max-h-screen h-[88%] mx-4 mt-4 rounded-2xl opacity-80 border border-gray-500 shadow-xl transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-[98%]'}`}>
         {/* Arrow for opening and closing sidebar */}
-        <div className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-[#555555] border-gray-500 border text-gray-50 w-6 h-6 rounded-l-lg flex justify-center items-center cursor-pointer" onClick={toggleSidebar}>
-          <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 ${isOpen ? 'rotate-180 duration-500' : 'rotate-0 duration-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
+        <div className="tooltip absolute top-1/2 right-0 tooltip-right" data-tip={toolTipData}>
+          <div className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-[#555555] border-gray-500 border text-gray-50 w-6 h-6 rounded-l-lg flex justify-center items-center cursor-pointer" onClick={toggleSidebar}>
+            <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 ${isOpen ? 'rotate-180 duration-500' : 'rotate-0 duration-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </div>
         </div>
+        
 
         {/* Top part (Upload + folders) */}
         <div className='text-white h-[80%] w-[100%] justify-between flex flex-col'>
@@ -66,6 +72,7 @@ const Sidebar = ({ isOpen, toggleSidebar,setActiveComponent }) => {
               successAlertVisible={setSuccessAlertVisible}
               errorAlertVisible={setErrorAlertVisible}
             />
+            {/* 
             <div className='mx-5 mt-8'>
               <h2 className='text-2xl text-white border-b border-gray-400 mb-1'> Folders</h2>
               <ul className='list-none'>  
@@ -75,6 +82,7 @@ const Sidebar = ({ isOpen, toggleSidebar,setActiveComponent }) => {
                 <li className='py-1 flex flex-row items-center hover:bg-[#484848] rounded-md duration-500 cursor-pointer'> <FaRegFolder className='w-4 h-4 mr-1'/> Work</li>
               </ul>
             </div>
+            */}
           </div>
           <ProgressBar />
         </div>

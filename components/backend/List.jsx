@@ -95,6 +95,12 @@ const FileList = ({ fileTypeFilter, sortOption }) => {
     }
   };
 
+  const handleDeleteButtonClick = (id) => {
+    return () => {
+      handleDelete(id);
+    };
+  };
+
 
   const handleLabelAssignment = async (fileId, labelId) => {
     try {
@@ -207,9 +213,13 @@ const FileList = ({ fileTypeFilter, sortOption }) => {
                             <h3 className="font-bold text-center text-xl">Are you sure you want to delete this file?</h3>
                             <p className="pb-12 pt-2 font-italic text-sm text-center">By deleting this, the file will be lost. This cant be undone!</p>
                             <button
-                              onClick={() => handleDelete(file.id)}
-                              className="bg-red-500 hover:bg-red-700  text-gray-50 font-bold py-2 px-4  rounded-md duration-200 "
-                            > Delete </button>
+                                onClick={handleDeleteButtonClick(file.id)}
+                            className="hover:text-red-700 text-red-400 font-bold items-center flex flex-row rounded-full duration-200"
+                            >
+                            <FaTrash className='w-4 h-auto'/>
+                            <p className='ml-2'>Delete</p>
+                            </button>
+
                           </div>
                           <form method="dialog" className="modal-backdrop bg-black opacity-40">
                             <button>close</button>
@@ -238,7 +248,7 @@ const FileList = ({ fileTypeFilter, sortOption }) => {
                   </label>
                 )}
                 {!selectedLabel[file.id] && (
-                  <label className='mt-12 px-2 py-1 rounded-md text-sm'></label> // Stays blank – looks better than small text saying no label 
+                  <label className='mt-12 px-2 py-1 rounded-md text-sm'> Idk</label> 
                 )}
               </div>
               {/* Dropdown icon */}              

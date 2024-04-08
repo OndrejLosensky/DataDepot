@@ -36,7 +36,7 @@ const FileUpload = ({ successAlertVisible, errorAlertVisible }) => {
           onChange={handleFileUpload} 
           accept=".docx,.pdf,.xlsx"
       />
-      <button className='mt-2 py-2 px-4 mx-5 border-2 border-gray-300 rounded-md'> + New folder</button>
+      {/*<button className='mt-2 py-2 px-4 mx-5 border-2 border-gray-300 rounded-md'> + New folder</button>*/}
     </div>
   );
 };

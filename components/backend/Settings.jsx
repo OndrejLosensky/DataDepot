@@ -6,32 +6,18 @@ const Settings = ({ setActiveComponent }) => {
     setActiveComponent('Files');
   };
 
-  useEffect(() => {
-    const links = document.querySelectorAll('ul.nav-links li');
-
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        const targetId = link.dataset.target;
-        const targetSection = document.getElementById(targetId);
-        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-        // Apply active class to the clicked link
-        links.forEach(item => item.classList.remove('active'));
-        link.classList.add('active');
-      });
-    });
-  }, []);
-
   return (
     <div className='overflow-y-auto'>
       <button onClick={handleGoBack} className='text-gray-200 flex flex-row items-center h-8'> <HiArrowLongLeft className='mr-2 w-6 h-8'/> Back</button>
       <h1 className='text-4xl text-gray-100 font-semibold'>Account Settings</h1>
+      {/*
       <ul className='gap-x-8 flex flex-row text-gray-300 mt-4 nav-links'>
         <li className='border-b-[2px] border-gray-200 cursor-pointer active' data-target='details'>My details</li>
         <li className='border-b-[2px] border-gray-200 cursor-pointer' data-target='app'>App settings</li>
         <li className='border-b-[2px] border-gray-200 cursor-pointer' data-target='password'>Password</li>
         <li className='border-b-[2px] border-gray-200 cursor-pointer' data-target='delete'>Delete</li>
       </ul>
+       */}
 
 
       {/*  Cards to edit */}

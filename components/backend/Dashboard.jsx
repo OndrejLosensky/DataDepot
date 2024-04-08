@@ -41,7 +41,7 @@ const Dashboard = () => {
   }, [isSidebarOpen]);
 
   return (
-    <div>
+    <div className='w-screen'>
       <Head>
         <link rel="icon" href="/favicon.png" />
         <title>DataDepot</title>
@@ -72,7 +72,7 @@ const Dashboard = () => {
 
             {/* Theme toggle and profile picture */}
             <div className='flex flex-row '>
-              <ThemeController />
+              {/* <ThemeController /> */}
               <Image src="/profilePic.svg" width={48} height={48} className='rounded-full ml-8 cursor-pointer' />
             </div>
           </nav>

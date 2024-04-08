@@ -3,7 +3,7 @@ import sqlite3 from 'sqlite3';
 
 export default async function handler(req, res) {
   if (req.method === 'DELETE') {
-    const fileId = req.query.id; // Extract file id from query parameters
+    const fileId = String(req.query.id); // Ensure fileId is treated as a string
     console.log('Deleting file with ID:', fileId); // Log the file ID
 
     const db = await open({
