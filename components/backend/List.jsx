@@ -135,7 +135,7 @@ const FileList = ({ fileTypeFilter, sortOption }) => {
   }, [selectedLabel]);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mx-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mx-4">
       {/* Alerts for file deletion */}
       {errorDeletingAlertVisible && (
         <div role="alert" className="absolute top-0 left-0 w-full flex items-center bg-red-500 text-white py-2 px-4 rounded">

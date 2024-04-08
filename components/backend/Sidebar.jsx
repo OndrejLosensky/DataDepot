@@ -37,7 +37,7 @@ const Sidebar = ({ isOpen, toggleSidebar,setActiveComponent }) => {
   };
 
   return (
-    <section>
+    <section className='h-screen'>
       {successAlertVisible && (
         <div role="alert" className={` text-white bg-green-500 absolute top-0 left-0 w-screen py-5 px-4 rounded flex items-center`}>
           <FaCheckCircle className="mr-2" />
@@ -51,7 +51,7 @@ const Sidebar = ({ isOpen, toggleSidebar,setActiveComponent }) => {
         </div>
       )}
 
-      <div className={`w-[250px] bg-[#323232] sticky top-4 flex flex-col justify-between max-h-screen h-[730px]  mx-4 mt-4 rounded-2xl opacity-80 border border-gray-500 shadow-xl transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-[98%]'}`}>
+      <div className={`w-[250px] bg-[#323232] flex flex-col sticky top-4 justify-between max-h-screen h-[88%] mx-4 mt-4 rounded-2xl opacity-80 border border-gray-500 shadow-xl transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-[98%]'}`}>
         {/* Arrow for opening and closing sidebar */}
         <div className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-[#555555] border-gray-500 border text-gray-50 w-6 h-6 rounded-l-lg flex justify-center items-center cursor-pointer" onClick={toggleSidebar}>
           <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 ${isOpen ? 'rotate-180 duration-500' : 'rotate-0 duration-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
