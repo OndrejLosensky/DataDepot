@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { AiFillApple, AiFillGoogleCircle } from 'react-icons/ai';
+import { AiFillApple } from 'react-icons/ai';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaLongArrowAltRight } from "react-icons/fa";
 import { HiOutlineArrowLongLeft } from "react-icons/hi2";
-import Reg from '../auth/Reg';
-
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../src/app/firebaseConfig';
+import { useRouter } from 'next/router';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
+import { FaCheckCircle } from 'react-icons/fa';
+import { FiAlertCircle } from 'react-icons/fi';
 
 const Register = () => {
   const [step, setStep] = useState(1);
@@ -18,21 +21,56 @@ const Register = () => {
     phoneNumber: '',
     additionalInfo: '',
   });
-  const [passwordVisible, setPasswordVisible] = useState(false);
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState(null);
+  const router = useRouter();
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [successAlertVisible, setSuccessAlertVisible] = useState(false);
+  const [errorAlertVisible, setErrorAlertVisible] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+        setError("Passwords do not match");
+        return;
+    }
+    try {
+        // Create user with email and password
+        setSuccessAlertVisible(true);
+        setIsLoading(true);
+        await createUserWithEmailAndPassword(auth, email, password);
+        // Redirect to dashboard upon successful registration
+        router.push('/backend/dashboard');
+    } catch (err) {
+        setErrorAlertVisible(true);
+        setError(err.message);
+        setTimeout(() => {
+          setErrorAlertVisible(false);
+        }, 2000); 
+    }
+};
+
+   
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword(prevState => !prevState);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Here you can handle form submission, e.g., sending data to backend
-    console.log(formData);
+  const handleToggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(prevState => !prevState);
   };
 
   const renderStepContent = () => {
@@ -47,55 +85,69 @@ const Register = () => {
 
             <h2 className=' text-[#DFDFDF] text-xl font-semibold ml-8 pb-4 pt-10'>Welcome to DataDepot</h2>
            
-           <div className='items-center flex flex-col'>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="block bg-[#3D3D3D] text-md w-[85%]  border my-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-              placeholder="Your e-mail"
-              required
-            />
+            <div className='items-center flex flex-col'>
               <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="block bg-[#3D3D3D] text-md w-[85%]  border my-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-              placeholder="New password"
-              required
-            />
-              <input
-              type="confirmPassword"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              className="block bg-[#3D3D3D] text-md w-[85%]  border my-2 mb-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-              placeholder="Confirm password"
-              required
-            />
-          
-            <button className="py-2 rounded-md shadow-lg bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-6 w-[85%]" onClick={() => setStep(2)}>Continue</button>
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="block bg-[#3D3D3D] text-md w-[85%]  border my-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                placeholder="Your e-mail"
+                required
+              />
+                <div className="relative w-[85%]">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="block bg-[#3D3D3D] text-md w-full border my-4 mt-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                    placeholder="Password"
+                    required
+                  />
+                  {showPassword ? (
+                    <FiEyeOff onClick={handleTogglePasswordVisibility} className="absolute right-4 top-7 text-gray-400 cursor-pointer" />
+                  ) : (
+                    <FiEye onClick={handleTogglePasswordVisibility} className="absolute right-4 top-7 text-gray-400 cursor-pointer" />
+                  )}
+                </div>
+                <div className='relative w-[85%]'>
+                  <input
+                     type={showConfirmPassword ? "text" : "password"}
+                    name="confirmPassword"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className="block bg-[#3D3D3D] text-md w-full border my-4 mt-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                    placeholder="Confirm password"
+                    required
+                    />
+                    {showConfirmPassword ? (
+                      <FiEyeOff onClick={handleToggleConfirmPasswordVisibility} className="absolute right-4 top-7 text-gray-400 cursor-pointer" />
+                    ) : (
+                      <FiEye onClick={handleToggleConfirmPasswordVisibility} className="absolute right-4 top-7 text-gray-400 cursor-pointer" />
+                    )}                                     
+                </div>
+            
+              <button className="py-2 rounded-md shadow-lg bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-6 w-[85%]" onClick={handleRegister}>Continue</button>
 
-            <div className='flex flex-row items-center w-[85%] mt-2 mb-4'>
-                <div className='w-1/2 mr-2 border-b-[1.5px] h-0 border-gray-500'></div>
-                <p className='text-xs'> OR</p>
-                <div className='w-1/2 ml-2 border-b-[1.5px] h-0 border-gray-500'></div>
+              <div className='flex flex-row items-center w-[85%] mt-2 mb-4'>
+                  <div className='w-1/2 mr-2 border-b-[1.5px] h-0 border-gray-500'></div>
+                  <p className='text-xs'> OR</p>
+                  <div className='w-1/2 ml-2 border-b-[1.5px] h-0 border-gray-500'></div>
+              </div>
+
+              <button className='w-[85%] border-[#DFDFDF] hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-2 my-2 flex flex-row items-center justify-center'>
+                <AiFillApple className='absolute left-12 w-7 h-7 mr-2'/> Continue with Apple
+              </button>
+
+              <button className='w-[85%] border-[#DFDFDF] hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-2 my-2 mb-8 flex flex-row items-center justify-center'>
+                Continue with Google
+                <Image src='/icons/google_btn.svg' alt="Google icon" width={28} height={28} className='absolute left-12'/>
+              </button>
+
+
+              <p className='mb-8 text-sm'>Already have an account? Sign in <Link className='underline text-blue-500' href="/auth/login"> here</Link></p>
             </div>
-
-            <button className='w-[85%] border-[#DFDFDF] hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-2 my-2 flex flex-row items-center justify-center'>
-              <AiFillApple className='absolute left-12 w-7 h-7 mr-2'/> Continue with Apple
-            </button>
-
-            <button className='w-[85%] border-[#DFDFDF] hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-2 my-2 mb-8 flex flex-row items-center justify-center'>
-              Continue with Google
-              <Image src='/icons/google_btn.svg' alt="Google icon" width={28} height={28} className='absolute left-12'/>
-            </button>
-
-
-            <p className='mb-8 text-sm'>Already have an account? Sign in <Link className='underline text-blue-500' href="/auth/login"> here</Link></p>
-           </div>
           </div>
         );
       case 2:
@@ -150,7 +202,7 @@ const Register = () => {
              <div className='items-center flex flex-col'>
               <textarea rows={5} className="block bg-[#3D3D3D] text-md w-[85%]  border mt-4 my-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
             
-              <button className="py-2 rounded-md bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-2 w-[85%]" onClick={() => setStep(3)} >Register</button>
+              <button className="py-2 rounded-md bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-2 w-[85%]" onClick={handleRegister} >Register</button>
               <button className=" rounded-md bg-transparent text-[#c4c4c4] hover:text-[#e6e6e6] duration-300 flex flex-row items-center py-1 mb-6 mt-2" onClick={() => setStep(2)}> 
                 <HiOutlineArrowLongLeft className='mr-2 font-thin'/> 
                 Previous
@@ -182,14 +234,27 @@ const Register = () => {
 
       {/* Right Side with Form */}
       <div className="w-1/2  flex justify-center items-center">
+        {successAlertVisible && (
+            <div role="alert" className={` text-white bg-green-500 absolute top-0 left-0 w-screen py-5 px-4 rounded flex items-center`}>
+              <FaCheckCircle className="mr-2" />
+              <span>Login was successfull!</span>
+            </div>
+          )}
+          {errorAlertVisible && (
+          <div role="alert" className={`text-white bg-red-500 absolute top-0 left-0 w-screen py-5 px-4 rounded flex items-center`}>
+            <FiAlertCircle className="mr-2" />
+            <span>Error while logining. Please try again.</span>
+          </div>
+        )}
         <Link className='btn btn-ghost absolute top-0 right-0 mr-4 mt-4' href="/"><FaArrowLeftLong className='text-[#DFDFDF]'/><span className='text-[#DFDFDF]'>Back</span></Link>
         {/* 
         <div className="w-[450px] bg-[#262626] shadow-xl bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-2xl">
           {renderStepContent()}
         </div>
         */}
-
-        <Reg/>
+        <div className="w-[450px] bg-[#262626]  shadow-xl bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-2xl">
+          {renderStepContent()}
+        </div>
       </div>
     </div>
   );
