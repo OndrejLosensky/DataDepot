@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { IoSettingsOutline } from "react-icons/io5";
 import { TbLogout2 } from "react-icons/tb";
-import Link from 'next/link';
 import FileUpload from './upload/FileUpload';
 import { FaCheckCircle } from 'react-icons/fa';
 import { FiAlertCircle } from 'react-icons/fi';
 import ProgressBar from './upload/ProgressBar';
-import { FaRegFolder } from "react-icons/fa";
+import { signOut } from "firebase/auth";
+import { useRouter } from 'next/router';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from '../../src/app/firebaseConfig';
 
-const Sidebar = ({ isOpen, toggleSidebar,setActiveComponent }) => {
+const Sidebar = ({ isOpen, toggleSidebar, setActiveComponent }) => {
   const [successAlertVisible, setSuccessAlertVisible] = useState(false);
   const [errorAlertVisible, setErrorAlertVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+        await signOut(auth);
+        router.push('/'); // Redirect to the landing page after logout
+    } catch (error) {
+        console.error('Error signing out:', error);
+    }
+};
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +49,6 @@ const Sidebar = ({ isOpen, toggleSidebar,setActiveComponent }) => {
   };
 
   const toolTipData = isOpen ? 'Close the sidebar' : 'Open the sidebar';
-
 
   return (
     <section className='h-screen'>
@@ -72,26 +83,15 @@ const Sidebar = ({ isOpen, toggleSidebar,setActiveComponent }) => {
               successAlertVisible={setSuccessAlertVisible}
               errorAlertVisible={setErrorAlertVisible}
             />
-            {/* 
-            <div className='mx-5 mt-8'>
-              <h2 className='text-2xl text-white border-b border-gray-400 mb-1'> Folders</h2>
-              <ul className='list-none'>  
-                <li className='py-1 flex flex-row items-center hover:bg-[#484848] rounded-md duration-500 cursor-pointer'> <FaRegFolder className='w-4 h-4 mr-1'/> Documents</li>
-                <li className='py-1 flex flex-row items-center hover:bg-[#484848] rounded-md duration-500 cursor-pointer'> <FaRegFolder className='w-4 h-4 mr-1'/> Personal</li>
-                <li className='py-1 flex flex-row items-center hover:bg-[#484848] rounded-md duration-500 cursor-pointer'> <FaRegFolder className='w-4 h-4 mr-1'/> School</li>
-                <li className='py-1 flex flex-row items-center hover:bg-[#484848] rounded-md duration-500 cursor-pointer'> <FaRegFolder className='w-4 h-4 mr-1'/> Work</li>
-              </ul>
-            </div>
-            */}
           </div>
           <ProgressBar />
         </div>
         {/* Bottom part (Setting + logout) */}
         <div className='bg-[#292929] rounded-b-2xl h-[20%] flex flex-col justify-center gap-y-3 text-[#DFDFDF]'>
-          <button className='px-6 py-2 max-w-full mx-8 justify-center bg-[#454545] border border-gray-300 rounded-lg hover:text-gray-50 hover:border-gray-50 hover:bg-[#606060] duration-300 flex flex-row'>
+        <button className='px-6 py-2 max-w-full mx-8 justify-center bg-[#454545] border border-gray-300 rounded-lg hover:text-gray-50 hover:border-gray-50 hover:bg-[#606060] duration-300 flex flex-row' onClick={handleLogout}>
             <TbLogout2 className='w-6 h-6 mr-4' />
-            <Link href="/">Sign out</Link>
-          </button>
+            Sign out
+        </button>
           <button className='px-6 py-2 max-w-full mx-8 border justify-center border-gray-200 rounded-lg flex flex-row' onClick={handleSettingsClick}>
             <IoSettingsOutline className='w-6 h-6 mr-4' />
             Settings

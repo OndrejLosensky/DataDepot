@@ -80,8 +80,7 @@ const Dashboard = () => {
           {/* Sidebar and main content */}
           <div className='flex flex-1'>
             {/* Sidebar */}
-            <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} setActiveComponent={setActiveComponent} />
-
+              <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} setActiveComponent={setActiveComponent} />
             {/* Main content */}
             <div className={`m-4  ${isSidebarOpen ? 'flex-1' : 'w-full flex-grow'}`}>
               {activeComponent === 'Files' && <Files />}

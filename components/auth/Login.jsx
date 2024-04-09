@@ -10,6 +10,8 @@ import { useRouter } from 'next/router';
 import { FaCheckCircle } from 'react-icons/fa';
 import { FiAlertCircle } from 'react-icons/fi';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import { IoCloseSharp } from "react-icons/io5";
+
 
 const Login = () => {
   const [step, setStep] = useState(1);
@@ -53,9 +55,9 @@ const Login = () => {
       case 1:
         return (
           <div className="flex flex-col  justify-center">
-            <div className='w-full h-16 border-b border-gray-400 flex items-center justify-between'>
-                <p className='text-left text-2xl text-[#DFDFDF] mx-8'>Login</p>
-               
+            <div className='w-full h-16 border-b border-gray-400 items-left flex items-center justify-between px-8'>
+              <p className='text-left text-2xl text-[#DFDFDF]'>Register</p>
+              <Link className='ml-1 px-2 py-2 rounded-full hover:bg-gray-700 duration-300' href="/"><IoCloseSharp className='w-6 h-6 text-[#DFDFDF]'/></Link>
             </div>
 
             <h2 className=' text-[#DFDFDF] text-xl font-semibold ml-8 pt-10'>Welcome to DataDepot</h2>
@@ -92,15 +94,16 @@ const Login = () => {
             </button>
 
 
-            <p className='mb-8 text-sm'>New user? Create new account <Link className='underline text-blue-500' href="/auth/register"> here</Link></p>
+            <p className='mb-8 mt-2 text-md flex flex-col items-center '>New to DataDepot? <Link className='font-semibold pt-1 text-blue-500' href="/auth/register"> Sign Up</Link></p>
            </div>
           </div>
         );
       case 2:
         return (
           <div className="flex flex-col  justify-center">
-            <div className='w-full h-16 border-b border-gray-400 flex items-center justify-between'>
-                <p className='text-left text-2xl text-[#DFDFDF] mx-8'>Login</p>
+            <div className='w-full h-16 border-b border-gray-400 items-left flex items-center justify-between px-8'>
+              <p className='text-left text-2xl text-[#DFDFDF]'>Register</p>
+              <Link className='ml-1 px-2 py-2 rounded-full hover:bg-gray-700 duration-300' href="/"><IoCloseSharp className='w-6 h-6 text-[#DFDFDF]'/></Link>
             </div>
 
 
@@ -183,7 +186,6 @@ const Login = () => {
           <span>Error while logining. Please try again.</span>
         </div>
       )}
-        <Link className='btn btn-ghost absolute top-0 right-0 mr-4 mt-4' href="/"><FaArrowLeftLong className='text-[#DFDFDF]'/><span className='text-[#DFDFDF]'>Back</span></Link>
         <div className="w-[450px] bg-[#262626]  shadow-xl bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-2xl">
           {renderStepContent()}
         </div>
