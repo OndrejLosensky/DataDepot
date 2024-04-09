@@ -1,9 +1,11 @@
-// Import the functions you need from the SDKs you need
+// firebaseConfig.js
 import { initializeApp } from "firebase/app";
-import { getAuth, useDeviceLanguage } from "firebase/auth";
-import {getFirestore} from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
+  // Your Firebase configuration
   apiKey: "AIzaSyB-Ub-8CblvM6UjnifY6No8EPMDCZN9NMU",
   authDomain: "datadepot-fea2b.firebaseapp.com",
   projectId: "datadepot-fea2b",
@@ -17,5 +19,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
+console.log("Storage object:", storage); // Log the storage object
 
-export {auth, db};
+export { auth, db, storage };

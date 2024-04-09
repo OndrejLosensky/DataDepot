@@ -1,28 +1,24 @@
-import axios from 'axios';
+import { useState } from 'react';
+import { ref, uploadBytes } from "firebase/storage";
+import { storage } from '../../../src/app/firebaseConfig';
 
 const FileUpload = ({ successAlertVisible, errorAlertVisible }) => {
-
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
-    const formData = new FormData();
-    formData.append('file', file);
-    
+    const storageRef = ref(storage, file.name);
+
     try {
-      await axios.post('/api/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
+      await uploadBytes(storageRef, file);
       successAlertVisible(true);
       setTimeout(() => {
         successAlertVisible(false);
-      }, 2000); 
+      }, 2000);
     } catch (error) {
       console.error('Error uploading file:', error);
       errorAlertVisible(true);
       setTimeout(() => {
         errorAlertVisible(false);
-      }, 2000); 
+      }, 2000);
     }
   };
 
@@ -36,7 +32,6 @@ const FileUpload = ({ successAlertVisible, errorAlertVisible }) => {
           onChange={handleFileUpload} 
           accept=".docx,.pdf,.xlsx"
       />
-      {/*<button className='mt-2 py-2 px-4 mx-5 border-2 border-gray-300 rounded-md'> + New folder</button>*/}
     </div>
   );
 };
