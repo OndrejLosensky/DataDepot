@@ -3,8 +3,8 @@ import QA from './QA';
 
 const WhyChoose = () => {
   return (
-    <div className='w-2/3 mx-auto my-64'>
-      <p className='text-center text-xl text-[#a554f1] drop-shadow-glow2 pb-2 pt-12'>Q & A</p>
+    <div className='w-2/3 mx-auto my-36 mb-52'>
+      <p className='text-center text-xl text-[#a554f1] pb-2 pt-12'>Q & A</p>
       <h2 className='text-4xl font-semibold text-center text-gray-200 mt-2 pb-4'>Frequently Asked Questions</h2>
       <QA
         question="What is DataDepot?"

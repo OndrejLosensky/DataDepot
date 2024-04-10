@@ -34,5 +34,6 @@ module.exports = {
       strategy: 'base',
       strategy: 'class', 
     }),
+    require("@tailwindcss/typography"),
   ],
 };
