@@ -7,10 +7,15 @@ const Pricing = () => {
 
   return (
     <div className='max-w-screen min-h-screen'>
+
         <div className='flex flex-col items-center mt-16'>
           <h1 className=' text-md text-purple-500 font-semibold'> Pricing</h1>
           <p className='text-4xl text-gray-200 mb-8 font-semibold'> Only the free plan is available now.</p>
         </div>  
+
+        <div className="z-[-1] flex place-items-center before:dark:bg-gradient-to-bl before:dark:from-pink-400 before:dark:to-sky-300 before:dark:opacity-[15%] before:absolute before:h-[420px] before:w-full sm:before:w-[460px] before:translate-x-[-170px] before:translate-y-[120px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-red-500 after:via-yellow-400 after:blur-2xl after:content-['']  after:dark:from-rose-800 after:dark:via-blue-200 after:dark:opacity-100 "></div>
+        <div className="z-[-1] flex place-items-center before:dark:bg-gradient-to-l before:dark:from-sky-400 before:dark:to-violet-400 before:dark:opacity-[15%] before:absolute before:h-[290px] before:w-full sm:before:w-[400px] before:translate-x-[1370px] before:translate-y-[650px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-red-500 after:via-yellow-400 after:blur-2xl after:content-['']  after:dark:from-rose-800 after:dark:via-blue-200 after:dark:opacity-100"></div>
+
 
         <div className='bg-gray-700 my-4 mx-auto w-[266px] rounded-full py-1 px-1 h-10 items-center justify-between flex'>
             <button
@@ -127,13 +132,13 @@ const Pricing = () => {
               </div>
           </div>
 
-  </div>
+        </div>
+
         </div>
 
         <div>
           <button className='flex flex-row items-center text-gray-200 font-bold mx-auto my-8'> Click to learn more <FaArrowRightLong className='w-6 h-4 ml-2 text-gray-200'/> </button>
         </div>
-
 
 
     </div>

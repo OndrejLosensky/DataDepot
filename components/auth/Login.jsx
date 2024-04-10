@@ -156,6 +156,7 @@ const Login = () => {
 
   return (
     <div className='flex w-screen h-screen'>
+      <div className="flex place-items-center before:absolute before:h-[600px] before:w-full sm:before:w-[2000px] before:translate-x-[0px] before:translate-y-[0px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-red-500 after:via-yellow-400 after:blur-3xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-purple-400 before:dark:opacity-30 after:dark:from-rose-500 after:dark:via-blue-500 after:dark:opacity-100 before:lg:h-[250px] z-[-1]"></div>
 
       {/* Left Side with Image */}
       <div className="w-1/2 bg-gray-800 relative flex justify-center items-center border-r-[0.3px] border-[#6e6e6e]">
@@ -168,8 +169,6 @@ const Login = () => {
         <div className="absolute inset-0 bg-black opacity-30"></div>
         <p className='text-gray-200 absolute bottom-2 px-2 py-1 bg-sky-900 rounded-lg'> E-mail: <span className='font-bold'>ondra@gmail.com</span> | heslo: <span className='font-bold'>  123456</span> </p>
       </div>
-
-      <div className="z-[-1] flex place-items-center before:absolute before:h-[200px] before:w-full sm:before:w-[450px] before:translate-x-[40px] before:translate-y-[-280px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-secondary after:via-success after:blur-3xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-primary before:dark:opacity-25 after:dark:from-blue-500 after:dark:via-red-500 after:dark:opacity-100 before:lg:h-[250px]"></div>
 
 
       {/* Right Side with Form */}
