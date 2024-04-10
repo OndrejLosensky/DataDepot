@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+
 html, body {
-    background-color: white !important;
+    background-color: #1a1f32 !important;
 }
-*/
+
 
 
 .input-width {

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaLock, FaUnlock} from "react-icons/fa";
 
 const Pricing = () => {
+  const [selectedPlan, setSelectedPlan] = useState('monthly');
+
   return (
     <div className='max-w-screen min-h-screen'>
         <div className='flex flex-col items-center mt-16'>
@@ -11,8 +13,18 @@ const Pricing = () => {
         </div>  
 
         <div className='bg-gray-700 my-4 mx-auto w-[266px] rounded-full py-1 px-1 h-10 items-center justify-between flex'>
-           <button className='py-1 text-gray-200 w-32 bg-purple-500 rounded-full h-8'> Montly </button>
-           <button className='py-1 text-gray-200 w-32 active:bg-purple-500 rounded-full h-8'> Yearly </button>
+            <button
+              className={`py-1 text-gray-200 w-32 rounded-full h-8 ${selectedPlan === 'monthly' ? 'bg-purple-500' : ''}`}
+              onClick={() => setSelectedPlan('monthly')}
+            >
+              Monthly
+            </button>
+            <button
+              className={`py-1 text-gray-200 w-32 rounded-full h-8 ${selectedPlan === 'yearly' ? 'bg-purple-500' : ''}`}
+              onClick={() => setSelectedPlan('yearly')}
+            >
+              Yearly
+            </button>
         </div>
 
         <div className='flex justify-center mt-8 p-4'>
@@ -30,8 +42,15 @@ const Pricing = () => {
               </div>
             </div>
             <div className='mx-8 mt-10'>
-              <h2 className='text-3xl text-gray-100'>$5 <span className='text-sm text-gray-400 font-thin'> per month billed annually</span></h2>
-              <h2 className='font-thin'> or <span className='text-gray-400 font-semibold'>$9 billed monthly</span></h2>
+              {selectedPlan === 'yearly' ? (
+                <div>             
+                  <h2 className='text-3xl text-gray-100'>$99 <span className='text-sm text-gray-400 font-thin'> once a year</span></h2>
+                </div>
+              ) : (
+                <div>
+                  <h2 className='text-3xl text-gray-100'>$5 <span className='text-sm text-gray-400 font-thin'>billed monthly</span></h2>
+                </div>
+              )}
               <button className='w-full mt-8 py-2 items-center justify-center flex bg-purple-500 rounded-lg text-gray-200'> <FaLock className='text-gray-300 w-6 h-8'/> </button>
               <div>
                 <h3 className='font-semibold text-gray-100 pt-4'> Everything in Free and:</h3>
@@ -54,7 +73,15 @@ const Pricing = () => {
               </div>
             </div>
             <div className='mx-8 mt-16'>
-              <h2 className='text-3xl text-gray-100'>$0 <span className='text-sm text-gray-400 font-thin'> per month billed annually </span></h2>
+              {selectedPlan === 'yearly' ? (
+                <div>             
+                  <h2 className='text-3xl text-gray-100'>Free</h2>
+                </div>
+              ) : (
+                <div>
+                  <h2 className='text-3xl text-gray-100'>Free</h2>
+                </div>
+              )}
               <button className='w-full mt-8 py-2 items-center justify-center flex bg-purple-500 rounded-lg text-gray-200'> <FaUnlock className='text-gray-300 w-6 h-8'/> </button>
               <div>
                 <h3 className='font-semibold text-gray-100 pt-8'> Featuring </h3>
@@ -79,8 +106,15 @@ const Pricing = () => {
                 </div>
               </div>
               <div className='mx-8 mt-10'>
-                <h2 className='text-3xl text-gray-100'>$19 <span className='text-sm text-gray-400 font-thin'> per month billed annually</span></h2>
-                <h2 className='font-thin'> or <span className='text-gray-400 font-semibold'>$27 billed monthly</span></h2>
+                {selectedPlan === 'yearly' ? (
+                  <div>             
+                    <h2 className='text-3xl text-gray-100'>$399 <span className='text-sm text-gray-400 font-thin'> once a year</span></h2>
+                  </div>
+                ) : (
+                  <div>
+                    <h2 className='text-3xl text-gray-100'>$27 <span className='text-sm text-gray-400 font-thin'>billed monthly</span></h2>
+                  </div>
+                )}
                 <button className='w-full mt-8 py-2 items-center justify-center flex bg-purple-500 rounded-lg text-gray-200'> <FaLock className='text-gray-300 w-6 h-8'/> </button>
                 <div>
                   <h3 className='font-semibold text-gray-100 pt-4'> Everything in Free, Basic and:</h3>

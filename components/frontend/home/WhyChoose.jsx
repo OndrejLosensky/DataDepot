@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const WhyChoose = () => {
   return (
-    <section className='flex flex-col'>
+    <section id='questions' className='flex flex-col'>
       <div className='max-w-screen h-auto py-24 flex flex-row'>
         <div className='w-1/2 flex justify-center items-center'>
           <div className="mockup-browser border ml-36 w-auto h-auto">

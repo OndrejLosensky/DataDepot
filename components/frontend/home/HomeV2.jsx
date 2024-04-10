@@ -5,9 +5,12 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 const HomeV2 = () => {
   return (
     <div className='min-h-screen h-auto max-w-screen'>
+      <div className="flex place-items-center before:absolute before:h-[190px] before:w-full sm:before:w-[500px] before:translate-x-[920px] before:translate-y-[170px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-red-500 after:via-yellow-400 after:blur-3xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-purple-400 before:dark:opacity-30 after:dark:from-rose-500 after:dark:via-blue-500 after:dark:opacity-100 before:lg:h-[250px] z-[-1]"></div>
+      <div className="flex place-items-center before:dark:bg-gradient-to-l rotate-45 before:dark:from-red-500 before:dark:to-purple-500 before:dark:opacity-15 before:absolute before:h-[200px] before:w-full sm:before:w-[400px] before:translate-x-[430px] before:translate-y-[700px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-red-500 after:via-yellow-400 after:blur-2xl after:content-['']  after:dark:from-rose-800 after:dark:via-blue-200 after:dark:opacity-100 before:lg:h-[250px] z-[-1]"></div>
+
       <section className='flex justify-center items-center'>
         <div className='mx-auto w-screen mt-12 md:space-y-16 flex flex-row items-center justify-between'>
-          <div className='w-[40%]  ml-24 justify-left items-left flex flex-col items-left space-y-8 text-center lg:px-8'>
+          <div className='w-[40%] mb-24  ml-24 justify-left items-left flex flex-col items-left space-y-8 text-center lg:px-8'>
             <div className='flex flex-row items-center gap-x-6'>
               <p className='px-4 text-sm py-1 rounded-full bg-[#7735ba7d] border border-purple-700 text-[#e6cbff] font-bold'>
                 Latest Release
