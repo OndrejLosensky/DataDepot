@@ -45,7 +45,7 @@ const Landing = () => {
         </div>
       </section>
       */}
-      <section id='features' className="w-full h-screen mt-12 p-6 text-center">
+      <section id='features' className="w-full overflow-x-hidden h-screen mt-12 p-6 text-center">
         <div className="mx-auto w-full max-w-6xl">
           <h1 className=' text-md text-purple-500 font-semibold'> Featuring</h1>
           {/*
@@ -53,7 +53,7 @@ const Landing = () => {
             Efficient & Secure: Smart way to store files
           </span>
            */}
-          <span className="relative z-10 text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-300 via-rose-300  to-violet-300">
+          <span className="relative z-[0] text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-300 via-rose-300  to-violet-300">
             Efficient & Secure: Smart way to store files
           </span>
           <p className="mt-2 mb-2 text-lg text-text">
@@ -69,7 +69,7 @@ const Landing = () => {
       </section>
 
 
-      <section>
+      <section className='mb-[400px]'>
         <div className="mx-auto max-w-6xl space-y-24 md:space-y-36">
           <div className="flex flex-col items-center justify-between gap-6 lg:flex-row ">
             <div className="max-w-md space-y-6 text-center lg:text-left">
@@ -142,11 +142,12 @@ const Landing = () => {
         </div>
       </section>
 
-      <section id='pricing' className='my-48'>
+      <section id='pricing' className='mt-64'>
         <Pricing/>
       </section>
 
 
+      {/*
       <section className='w-screen h-[700px] flex flex-row' >
          <div className='w-[60%] [h-90%] bg-gradient-to-br mr-20 from-cyan-500 to-green-500 '></div>
          <div className='w-[40%] justify-center h-full flex flex-col'>
@@ -175,48 +176,132 @@ const Landing = () => {
             </div>
          </div>
       </section>
+      */}
 
 
-      <section className='w-screen h-[600px]'>
+      <section className='max-w-screen h-[600px] mb-[450px]'>
+      <div className="z-[-1] flex place-items-center before:dark:bg-gradient-to-br before:dark:from-blue-500 before:dark:to-purple-500 before:dark:opacity-[25%] before:absolute before:h-[160px] before:w-full sm:before:w-[350px] before:translate-x-[400px] before:translate-y-[250px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-red-500 after:via-yellow-400 after:blur-2xl after:content-['']  after:dark:from-rose-800 after:dark:via-blue-200 after:dark:opacity-100"></div>
+
         <h1 className=' text-md text-purple-500 font-semibold mt-48 text-center'> Pricing comparison</h1>
         <h1 className='text-3xl font-bold text-gray-200 text-center mb-2'> What you can get in each plan </h1>
         <p className='mx-auto mb-16 w-1/3 text-center text-gray-400'> Below is an table with complete list of included features in each plan. Make sure to check what plan suits you the best.</p>
-  <div className='w-[60%] mx-auto  flex flex-row justify-between'>
-    <p className='text-lg text-gray-200 font-semibold w-32'> Features </p>
-    <p className=''> Free</p>
-    <p> Basic</p>
-    <p>Pro</p>
-  </div>
-  <div className='border-b-[0.2px] my-3 border-gray-500 w-[60%] mx-auto'></div>
-  <div className='w-[60%] mx-auto flex flex-row items-center justify-between'>
-    <p className='text-lg text-gray-200 w-32 font-ligh '>Unlimited labels</p>
-    <FaCheck className='w-5 h-5 text-lime-400'/>
-    <FaCheck className='w-5 h-5 text-lime-400'/>
-    <FaCheck className='w-5 h-5 text-lime-400'/>
-  </div>
-  <div className='border-b-[0.2px] my-3 border-gray-500 w-[60%] mx-auto'></div>
-  <div className='w-[60%] mx-auto flex flex-row items-center justify-between'>
-    <p className='text-lg text-gray-200 w-32 font-ligh'>Support 24/7</p>
-    <BsDash className='w-5 h-5 text-gray-400'/>
-    <FaCheck className='w-5 h-5 text-lime-400'/>
-    <FaCheck className='w-5 h-5 text-lime-400'/>
-  </div>
-  <div className='border-b-[0.2px] my-3 border-gray-500 w-[60%] mx-auto'></div>
-  <div className='w-[60%] mx-auto flex flex-row items-center justify-between'>
-    <p className='text-lg text-gray-200 w-32 font-ligh'>Folders</p>
-    <BsDash className='w-5 h-5 text-gray-400'/>
-    <FaCheck className='w-5 h-5 text-lime-400'/>
-    <FaCheck className='w-5 h-5 text-lime-400'/>
-  </div>
-  <div className='border-b-[0.2px] my-3 border-gray-500 w-[60%] mx-auto'></div>
-  <div className='w-[60%] mx-auto flex flex-row items-center justify-between'>
-    <p className='text-lg text-gray-200 w-32 font-ligh'>Exporting</p>
-    <BsDash className='w-5 h-5 text-gray-400'/>
-    <BsDash className='w-5 h-5 text-gray-400'/>
-    <FaCheck className='w-5 h-5 text-lime-400'/>
-  </div>
-  <div className='border-b-[0.2px] my-3 border-gray-500 w-[60%] mx-auto'></div>
-</section>
+        
+        <div className='w-[60%] mx-auto flex flex-row'>
+            <div className='w-1/4'>
+                <div className='h-24'> 
+                </div>
+                <div className='space-y-4 text-gray-200 font-light'>
+                  <p className='border-b-[1px] border-gray-400 pb-2 font-bold'>Features</p>
+                  <p className='border-b-[0.5px] border-gray-400 pb-2 '>All file types</p>
+                  <p className='border-b-[0.5px] border-gray-400 pb-2 '>Unlimited label colors</p>
+                  <p className='border-b-[0.5px] border-gray-400 pb-2 '>Support 24/7</p>
+                  <p className='border-b-[0.5px] border-gray-400 pb-2 '>10GB storage</p>
+              </div>
+              </div>
+            <div className='w-1/4'>
+              <div className='text-center h-24 pt-2'>
+                <p className='text-3xl text-gray-200 font-semibold'>Free</p>
+                <p> For beginners </p>
+              </div>
+              <div className='flex items-center justify-center border-b-[1px] border-gray-400 pt-4 pb-4'>
+
+              </div>
+              <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
+                <FaCheck className='w-4 h-4 text-cyan-500'/>
+              </div>
+              <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
+                <BsDash className='w-4 h-4 text-gray-400'/>
+              </div>
+              <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
+                <BsDash className='w-4 h-4 text-gray-400'/>
+              </div>
+              <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
+                <BsDash className='w-4 h-4 text-gray-400'/>
+              </div>
+            </div>
+            <div className='w-1/4'>
+              <div className='text-center h-24 pb-8 pt-2'>
+                <p className='text-3xl text-gray-200 font-semibold'>Basic</p>
+                <p> Basic version </p>
+              </div>
+              <div className='flex items-center justify-center border-b-[1px] border-gray-400 pt-4 pb-4'>
+
+              </div>
+              <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
+                <FaCheck className='w-4 h-4 text-cyan-500'/>
+              </div>
+              <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
+                <FaCheck className='w-4 h-4 text-cyan-500'/>
+              </div>
+              <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
+                <BsDash className='w-6 h-4 text-gray-400'/>
+              </div>
+              <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
+                <BsDash className='w-6 h-4 text-gray-400'/>
+              </div>
+
+            </div>
+            <div className='w-1/4'>
+              <div className='text-center h-24 pt-2'>
+                <p className='text-3xl text-gray-200 font-semibold'>Pro</p>
+                <p> For proffesionals</p>
+              </div>
+              <div className='flex items-center justify-center border-b-[1px] border-gray-400 pt-4 pb-4'>
+
+              </div>
+              <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
+                <FaCheck className='w-4 h-4 text-cyan-500'/>
+              </div>
+              <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
+                <FaCheck className='w-4 h-4 text-cyan-500'/>
+              </div>
+              <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
+                <FaCheck className='w-4 h-4 text-cyan-500'/>
+              </div>
+              <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
+                <FaCheck className='w-4 h-4 text-cyan-500'/>
+              </div>
+            </div>
+        </div>
+        
+        {/*
+        <div className='w-[60%] mx-auto mt-48 flex flex-row justify-between'>
+          <p className='text-lg text-gray-200 font-semibold w-32'> Features </p>
+          <p className='text-lg'> Free</p>
+          <p className='text-lg'> Basic</p>
+          <p className='text-lg'> Pro</p>
+        </div>
+        <div className='border-b-[0.2px] my-3 border-gray-500 w-[60%] mx-auto'></div>
+        <div className='w-[60%] mx-auto flex flex-row items-center justify-between'>
+          <p className='text-lg text-gray-200 w-32 font-light '>Unlimited labels</p>
+          <FaCheck className='w-5 h-5 text-lime-400'/>
+          <FaCheck className='w-5 h-5 text-lime-400'/>
+          <FaCheck className='w-5 h-5 text-lime-400'/>
+        </div>
+        <div className='border-b-[0.2px] my-3 border-gray-500 w-[60%] mx-auto'></div>
+        <div className='w-[60%] mx-auto flex flex-row items-center justify-between'>
+          <p className='text-lg text-gray-200 w-32 font-light'>Support 24/7</p>
+          <BsDash className='w-5 h-5 text-gray-400'/>
+          <FaCheck className='w-5 h-5 text-lime-400'/>
+          <FaCheck className='w-5 h-5 text-lime-400'/>
+        </div>
+        <div className='border-b-[0.2px] my-3 border-gray-500 w-[60%] mx-auto'></div>
+        <div className='w-[60%] mx-auto flex flex-row items-center justify-between'>
+          <p className='text-lg text-gray-200 w-32 font-light'>Folders</p>
+          <BsDash className='w-5 h-5 text-gray-400'/>
+          <FaCheck className='w-5 h-5 text-lime-400'/>
+          <FaCheck className='w-5 h-5 text-lime-400'/>
+        </div>
+        <div className='border-b-[0.2px] my-3 border-gray-500 w-[60%] mx-auto'></div>
+        <div className='w-[60%] mx-auto flex flex-row items-center justify-between'>
+          <p className='text-lg text-gray-200 w-32 font-light'>Exporting</p>
+          <BsDash className='w-5 h-5 text-gray-400'/>
+          <BsDash className='w-5 h-5 text-gray-400'/>
+          <FaCheck className='w-5 h-5 text-lime-400'/>
+        </div>
+        <div className='border-b-[0.2px] my-3 border-gray-500 w-[60%] mx-auto'></div>
+      */}
+      </section>
 
 
      <section id='questions'>
@@ -230,8 +315,7 @@ const Landing = () => {
             <h1 className='text-3xl font-black text-[#DFDFDF]'> Join DataDepot blog to see all news.</h1>
             <p className='text-lg w-2/5 mx-auto my-8 text-gray-300 font-thin'>  Stay up to date with new releases, updates and changes. Also you can follow me on my Github to see more apps like this. It is completely free to do it. </p>
             <div className='flex flex-row items-center justify-center gap-x-4'>
-              <button className='py-2 px-4 rounded-lg bg-gray-300 text-gray-800 hover:-translate-y-1 duration-300 hover:bg-gray-200 shadow-lg'>See my Github </button>
-              <button className='py-2 px-4 rounded-lg bg-gray-300 text-gray-800 hover:-translate-y-1 duration-300 hover:bg-gray-200 shadow-lg'> Join the Blog</button>
+              <button className='py-2 px-6 rounded-full bg-gray-300 text-gray-800 hover:-translate-y-1 duration-300 hover:bg-gray-200 shadow-lg'> Join the Blog</button>
               <button className='flex flex-row py-2 text-gray-300 hover:text-gray-100 duration-200 items-center'> See the Demo  <FaArrowRightLong className='w-6 h-4 ml-2'/> </button>
             </div>
         </section>

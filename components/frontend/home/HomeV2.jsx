@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
 const HomeV2 = () => {
@@ -14,9 +13,9 @@ const HomeV2 = () => {
           <div className='w-[40%] mb-24  ml-24 justify-left items-left flex flex-col items-left space-y-8 text-center lg:px-8'>
             <div className='flex flex-row items-center gap-x-6'>
               <p className='px-4 text-sm py-1 rounded-full bg-[#6b22b4bd] border border-purple-700 text-[#eedffc] font-bold'>
-                Latest Release
+                Demo release
               </p>
-              <p className='text-gray-200 text-sm font-semibold'>DataDepot V2</p>
+              <p className='text-gray-200 text-sm font-semibold'>DataDepot V1</p>
             </div>
             <h1 className='text-4xl text-left font-bold'>
                 <span className="relative z-10 text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-200  to-gray-400">
