@@ -24,7 +24,7 @@ const FileUpload = ({ successAlertVisible, errorAlertVisible }) => {
 
   return (
     <div className='flex flex-col justify-center'>
-      <label htmlFor="file-upload" className={`px-4 py-2 rounded-md shadow-lg cursor-pointer bg-[#428DFF] hover:bg-[#0040BC] duration-300 mt-4 mx-5 text-center text-white`}>+ Add File</label>
+      <label htmlFor="file-upload" className={`px-4 py-2 rounded-md shadow-lg cursor-pointer bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mt-4 mx-5 text-center `}>+ Add File</label>
       <input 
           id="file-upload"
           type="file" 

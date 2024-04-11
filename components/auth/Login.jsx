@@ -73,7 +73,7 @@ const Login = () => {
                 placeholder="Your e-mail"
                 required
               />
-              <button type="submit" className="py-2 rounded-md shadow-lg bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-6 w-[85%]">
+              <button type="submit" className="py-2 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-6 w-[85%]">
                 Continue
               </button>
             </form>
@@ -130,11 +130,11 @@ const Login = () => {
             </div>
 
             {isLoading ? (
-              <button type="submit" className="py-2 rounded-md opacity-80 bg-[#428DFF] text-[#fffddd] duration-300 mb-2 w-[85%]">
+              <button type="submit" className="py-2 rounded-md opacity-80 bg-purple-500 text-[#fffddd] duration-300 mb-2 w-[85%]">
                 <span className="loading loading-spinner loading-sm"></span> Loading
               </button>
             ) : (
-              <button type="submit" className="py-2 rounded-md bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-2 w-[85%]">
+              <button type="submit" className="py-2 rounded-md bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-2 w-[85%]">
                 Login
               </button>
             )}

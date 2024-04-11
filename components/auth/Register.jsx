@@ -105,14 +105,14 @@ const Register = () => {
                     name="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="block bg-[#3D3D3D] text-md w-full border my-4 mt-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                    className="block bg-[#3D3D3D] text-md w-full border my-2 mt-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                     placeholder="Password"
                     required
                   />
                   {showPassword ? (
-                    <FiEyeOff onClick={handleTogglePasswordVisibility} className="absolute right-4 top-7 text-gray-400 cursor-pointer" />
+                    <FiEyeOff onClick={handleTogglePasswordVisibility} className="absolute right-4 top-[23px] text-gray-400 cursor-pointer" />
                   ) : (
-                    <FiEye onClick={handleTogglePasswordVisibility} className="absolute right-4 top-7 text-gray-400 cursor-pointer" />
+                    <FiEye onClick={handleTogglePasswordVisibility} className="absolute right-4 top-[23px] text-gray-400 cursor-pointer" />
                   )}
                 </div>
                 <div className='relative w-[85%]'>
@@ -121,18 +121,18 @@ const Register = () => {
                     name="confirmPassword"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="block bg-[#3D3D3D] text-md w-full border my-4 mt-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                    className="block bg-[#3D3D3D] text-md w-full border my-4 mt-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                     placeholder="Confirm password"
                     required
                     />
                     {showConfirmPassword ? (
-                      <FiEyeOff onClick={handleToggleConfirmPasswordVisibility} className="absolute right-4 top-7 text-gray-400 cursor-pointer" />
+                      <FiEyeOff onClick={handleToggleConfirmPasswordVisibility} className="absolute right-4 top-[23px] text-gray-400 cursor-pointer" />
                     ) : (
-                      <FiEye onClick={handleToggleConfirmPasswordVisibility} className="absolute right-4 top-7 text-gray-400 cursor-pointer" />
+                      <FiEye onClick={handleToggleConfirmPasswordVisibility} className="absolute right-4 top-[23px] text-gray-400 cursor-pointer" />
                     )}                                     
                 </div>
             
-              <button className="py-2 rounded-md shadow-lg bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-6 w-[85%]" onClick={handleRegister}>Continue</button>
+              <button className="py-2 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-6 w-[85%]" onClick={handleRegister}>Continue</button>
 
               <div className='flex flex-row items-center w-[85%] mt-2 mb-4'>
                   <div className='w-1/2 mr-2 border-b-[1.5px] h-0 border-gray-500'></div>
