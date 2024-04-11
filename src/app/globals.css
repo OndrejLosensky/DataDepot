@@ -128,3 +128,15 @@ html, body {
 .feature-card:hover {
     box-shadow: 0 0 20px rgba(117, 248, 202, 0.899);
 }
+
+.pricing-card {
+  transition: transform 0.5s ease;
+}
+
+.slide-left {
+  transform: translateX(-100%);
+}
+
+.slide-right {
+  transform: translateX(100%);
+}

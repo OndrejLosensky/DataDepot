@@ -1,16 +1,22 @@
 import React, {useState} from 'react'
 import { IoPricetagOutline } from "react-icons/io5";
 import { IoShieldCheckmarkOutline } from "react-icons/io5";
-import { RxLightningBolt } from "react-icons/rx";
-import { FaRegLightbulb } from "react-icons/fa6";
 import { IoSunny } from "react-icons/io5";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaBell } from "react-icons/fa";
-import Image from 'next/image'
+import { FaRegFolder } from "react-icons/fa6";
+import { FaRegFileAlt } from "react-icons/fa";
 import WhyChoose from './About';
 import HomeV2 from './HomeV2';
 import Pricing from '../pricing/Pricing'; 
 import FeatureCard from '../home/FeatureCard';
+import { IoSettingsOutline } from "react-icons/io5";
+import { MdOutlineDashboardCustomize } from "react-icons/md";
+import { IoAnalyticsOutline } from "react-icons/io5";
+import { FaCheck } from "react-icons/fa6";
+import { BsDash } from "react-icons/bs";
+
+
 
 const Landing = () => {
   const [hovered1, setHovered1] = useState(false);
@@ -55,9 +61,9 @@ const Landing = () => {
           </p>
   
           <div className="mt-12 grid grid-cols-1 gap-6 text-left md:grid-cols-3">
-            <FeatureCard hovered={hovered1} setHovered={setHovered1} icon={IoSunny} heading="Feature 01" />
-            <FeatureCard hovered={hovered2} setHovered={setHovered2} icon={IoShieldCheckmarkOutline} heading="Feature 02" />
-            <FeatureCard hovered={hovered3} setHovered={setHovered3} icon={FaBell} heading="Feature 03" />
+            <FeatureCard hovered={hovered1} setHovered={setHovered1} icon={IoPricetagOutline} heading="Labeling system" description="Create custom label for the file cards, filter them by names, change the tags, group them." />
+            <FeatureCard hovered={hovered2} setHovered={setHovered2} icon={FaRegFolder} heading="Multiple file types" description="DataDepot supports files such as PDF, DOCX, XLSX , PPTX, ZIP and others. See more in the docs" />
+            <FeatureCard hovered={hovered3} setHovered={setHovered3} icon={FaRegFileAlt} heading="Simple folder system" description="Create folder, where you can store your documents and sort them. Easily export whole folder as an zip file" />
           </div>
         </div>
       </section>
@@ -67,17 +73,15 @@ const Landing = () => {
         <div className="mx-auto max-w-6xl space-y-24 md:space-y-36">
           <div className="flex flex-col items-center justify-between gap-6 lg:flex-row ">
             <div className="max-w-md space-y-6 text-center lg:text-left">
-              <span className="inline-flex items-center rounded-full border-2 border-red-200 bg-red-200 px-2 py-1 text-sm font-semibold text-red-600 shadow-sm">
-                <IoPricetagOutline className="mr-1 h-5 w-5" />
-                Features
+              <span className="inline-flex items-center rounded-full border-2 border-indigo-200 bg-indigo-200 px-2 py-1 text-sm font-semibold text-indigo-600 shadow-sm">
+                <MdOutlineDashboardCustomize className="mr-1 h-5 w-5" />
+                Dashboard
               </span>
               <h3 className="text-3xl font-semibold text-white lg:text-4xl">
-                Lorem ipsum dolor sit amet, consectetur
+                Simple UI
               </h3>
               <p className="text-lg text-gray-300 font-medium">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, non
-                nulla iaculis lacus mi. Eu fusce pellentesque mattis ultricies
-                mauris orci, commodo.
+                Simple modern dashboard made to be easily accessible to anyone. Quickly browse through files, create tags, folders. Export anything or just preview files.
               </p>
             </div>
   
@@ -92,17 +96,15 @@ const Landing = () => {
   
           <div className="flex flex-col items-center justify-between gap-6 lg:flex-row-reverse">
             <div className="max-w-md space-y-6 text-center lg:text-left">
-              <span className="inline-flex items-center rounded-full border-2 border-green-200 bg-green-200 px-2 py-1 text-sm font-semibold text-green-600 shadow-sm">
-                <IoShieldCheckmarkOutline className="mr-1 h-5 w-5" />
-                Features
+              <span className="inline-flex items-center rounded-full border-2 border-violet-200 bg-violet-200 px-2 py-1 text-sm font-semibold text-violet-600 shadow-sm">
+                <IoSettingsOutline className="mr-1 h-5 w-5" />
+                Settings
               </span>
               <h3 className="text-3xl font-semibold text-white lg:text-4xl">
-                Lorem ipsum dolor sit amet, consectetur
+                Adjust for your needs
               </h3>
               <p className="text-lg text-gray-300 font-medium">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, non
-                nulla iaculis lacus mi. Eu fusce pellentesque mattis ultricies
-                mauris orci, commodo.
+                Choose from few profile avatars (there will be more later), edit personal info such as name, change or recover password. You can also delete account
               </p>
             </div>
   
@@ -117,17 +119,15 @@ const Landing = () => {
   
           <div className="flex flex-col items-center justify-between gap-6 lg:flex-row ">
             <div className="max-w-md space-y-6 text-center lg:text-left">
-              <span className="inline-flex items-center rounded-full border-2 border-orange-200 bg-orange-200 px-2 py-1 text-sm font-semibold text-orange-600 shadow-sm">
-                <IoPricetagOutline className="mr-1 h-5 w-5" />
-                Features
+              <span className="inline-flex items-center rounded-full border-2 border-cyan-200 bg-cyan-200 px-2 py-1 text-sm font-semibold text-cyan-700 shadow-sm">
+                <IoAnalyticsOutline className="mr-1 h-5 w-5" />
+                Analytics
               </span>
               <h3 className="text-3xl font-semibold text-white lg:text-4xl">
-                Lorem ipsum dolor sit amet, consectetur
+                Simple statistics
               </h3>
               <p className="text-lg text-gray-300 font-medium">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, non
-                nulla iaculis lacus mi. Eu fusce pellentesque mattis ultricies
-                mauris orci, commodo.
+                Who wouldn't be exited to see how many files he opened in the past work week. Or maybe how many files have been uploaded. See many interesting anylytics next to the settings tab
               </p>
             </div>
   
@@ -175,6 +175,49 @@ const Landing = () => {
             </div>
          </div>
       </section>
+
+
+      <section className='w-screen h-[600px]'>
+        <h1 className=' text-md text-purple-500 font-semibold mt-48 text-center'> Pricing comparison</h1>
+        <h1 className='text-3xl font-bold text-gray-200 text-center mb-2'> What you can get in each plan </h1>
+        <p className='mx-auto mb-16 w-1/3 text-center text-gray-400'> Below is an table with complete list of included features in each plan. Make sure to check what plan suits you the best.</p>
+  <div className='w-[60%] mx-auto  flex flex-row justify-between'>
+    <p className='text-lg text-gray-200 font-semibold w-32'> Features </p>
+    <p className=''> Free</p>
+    <p> Basic</p>
+    <p>Pro</p>
+  </div>
+  <div className='border-b-[0.2px] my-3 border-gray-500 w-[60%] mx-auto'></div>
+  <div className='w-[60%] mx-auto flex flex-row items-center justify-between'>
+    <p className='text-lg text-gray-200 w-32 font-ligh '>Unlimited labels</p>
+    <FaCheck className='w-5 h-5 text-lime-400'/>
+    <FaCheck className='w-5 h-5 text-lime-400'/>
+    <FaCheck className='w-5 h-5 text-lime-400'/>
+  </div>
+  <div className='border-b-[0.2px] my-3 border-gray-500 w-[60%] mx-auto'></div>
+  <div className='w-[60%] mx-auto flex flex-row items-center justify-between'>
+    <p className='text-lg text-gray-200 w-32 font-ligh'>Support 24/7</p>
+    <BsDash className='w-5 h-5 text-gray-400'/>
+    <FaCheck className='w-5 h-5 text-lime-400'/>
+    <FaCheck className='w-5 h-5 text-lime-400'/>
+  </div>
+  <div className='border-b-[0.2px] my-3 border-gray-500 w-[60%] mx-auto'></div>
+  <div className='w-[60%] mx-auto flex flex-row items-center justify-between'>
+    <p className='text-lg text-gray-200 w-32 font-ligh'>Folders</p>
+    <BsDash className='w-5 h-5 text-gray-400'/>
+    <FaCheck className='w-5 h-5 text-lime-400'/>
+    <FaCheck className='w-5 h-5 text-lime-400'/>
+  </div>
+  <div className='border-b-[0.2px] my-3 border-gray-500 w-[60%] mx-auto'></div>
+  <div className='w-[60%] mx-auto flex flex-row items-center justify-between'>
+    <p className='text-lg text-gray-200 w-32 font-ligh'>Exporting</p>
+    <BsDash className='w-5 h-5 text-gray-400'/>
+    <BsDash className='w-5 h-5 text-gray-400'/>
+    <FaCheck className='w-5 h-5 text-lime-400'/>
+  </div>
+  <div className='border-b-[0.2px] my-3 border-gray-500 w-[60%] mx-auto'></div>
+</section>
+
 
      <section id='questions'>
       <WhyChoose/>     

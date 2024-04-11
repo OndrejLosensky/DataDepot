@@ -10,10 +10,7 @@ const FeatureCard = ({ hovered, setHovered, icon: Icon, heading, description }) 
        {heading}
       </h3>
       <p className="font-medium text-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum
-        dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit.
+        {description}
       </p>
       <span
         className="flex flex-row space-x-2 items-center cursor-pointer font-medium text-purple-500"

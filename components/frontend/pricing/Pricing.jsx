@@ -1,9 +1,12 @@
 import React, {useState} from 'react'
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaLock, FaUnlock} from "react-icons/fa";
+import Link from 'next/link';
 
 const Pricing = () => {
   const [selectedPlan, setSelectedPlan] = useState('monthly');
+  const [hovered, setHovered] = useState(false);
+
 
   return (
     <div className='max-w-screen min-h-screen'>
@@ -19,13 +22,13 @@ const Pricing = () => {
 
         <div className='bg-gray-700 my-4 mx-auto w-[266px] rounded-full py-1 px-1 h-10 items-center justify-between flex'>
             <button
-              className={`py-1 text-gray-200 w-32 rounded-full h-8 ${selectedPlan === 'monthly' ? 'bg-purple-500' : ''}`}
+              className={`pricing-btn py-1 text-gray-200 w-32 rounded-full h-8 ${selectedPlan === 'monthly' ? 'bg-purple-500 duration-500' : ''}`}
               onClick={() => setSelectedPlan('monthly')}
             >
               Monthly
             </button>
             <button
-              className={`py-1 text-gray-200 w-32 rounded-full h-8 ${selectedPlan === 'yearly' ? 'bg-purple-500' : ''}`}
+              className={`pricing-btn py-1 text-gray-200 w-32 rounded-full h-8 ${selectedPlan === 'yearly' ? 'bg-purple-500 duration-500' : ''}`}
               onClick={() => setSelectedPlan('yearly')}
             >
               Yearly
@@ -56,7 +59,7 @@ const Pricing = () => {
                   <h2 className='text-3xl text-gray-100'>$5 <span className='text-sm text-gray-400 font-thin'>billed monthly</span></h2>
                 </div>
               )}
-              <button className='w-full mt-8 py-2 items-center justify-center flex bg-purple-500 rounded-lg text-gray-200'> <FaLock className='text-gray-300 w-6 h-8'/> </button>
+              <button className='w-full mt-8 py-2 items-center justify-center flex bg-purple-500 rounded-lg text-gray-200 cursor-default'> <FaLock className='text-gray-300 w-6 h-8'/> </button>
               <div>
                 <h3 className='font-semibold text-gray-100 pt-4'> Everything in Free and:</h3>
                 <ul className='list-disc font-light text-sm pl-4 mt-2 text-gray-200'>
@@ -67,7 +70,6 @@ const Pricing = () => {
               </div>
             </div>
           </div>
-
 
           <div className='w-[400px] h-[550px] border-2 border-purple-500 bg-[#262626] rounded-2xl shadow-xl'>
             <div className='h-1/3 w-full bg-[#323232] border-b-[0.3px] border-gray-500 shadow-md rounded-t-2xl flex items-end'>
@@ -87,7 +89,7 @@ const Pricing = () => {
                   <h2 className='text-3xl text-gray-100'>Free</h2>
                 </div>
               )}
-              <button className='w-full mt-8 py-2 items-center justify-center flex bg-purple-500 rounded-lg text-gray-200'> <FaUnlock className='text-gray-300 w-6 h-8'/> </button>
+              <button className='w-full mt-8 py-2 text-lg font-medium items-center justify-center flex bg-gray-600 border-gray-400 border cursor-default rounded-lg text-gray-200'> <FaUnlock className='text-gray-300 w-6 h-8 mr-2'/> <span className='pt-1 ml-1'>Current</span> </button>
               <div>
                 <h3 className='font-semibold text-gray-100 pt-8'> Featuring </h3>
                 <ul className='list-disc font-light pl-4 mt-2 text-gray-200'>
@@ -120,7 +122,7 @@ const Pricing = () => {
                     <h2 className='text-3xl text-gray-100'>$27 <span className='text-sm text-gray-400 font-thin'>billed monthly</span></h2>
                   </div>
                 )}
-                <button className='w-full mt-8 py-2 items-center justify-center flex bg-purple-500 rounded-lg text-gray-200'> <FaLock className='text-gray-300 w-6 h-8'/> </button>
+                <button className='w-full mt-8 py-2 items-center justify-center flex bg-purple-500 rounded-lg text-gray-200 cursor-default'> <FaLock className='text-gray-300 w-6 h-8'/> </button>
                 <div>
                   <h3 className='font-semibold text-gray-100 pt-4'> Everything in Free, Basic and:</h3>
                   <ul className='list-disc font-light text-sm pl-4 mt-2 text-gray-200'>
@@ -136,10 +138,17 @@ const Pricing = () => {
 
         </div>
 
-        <div>
-          <button className='flex flex-row items-center text-gray-200 font-bold mx-auto my-8'> Click to learn more <FaArrowRightLong className='w-6 h-4 ml-2 text-gray-200'/> </button>
-        </div>
-
+        <span
+        className="flex flex-row space-x-2 items-center absolute left-[46%] font-semibold mt-4 cursor-pointer text-gray-300"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <p>Click to learn more</p>
+        <FaArrowRightLong
+          className="h-4 w-6 transition-all duration-500"
+          style={{ marginLeft: hovered ? '12px' : '8px' }}
+        />
+      </span>
 
     </div>
   )
