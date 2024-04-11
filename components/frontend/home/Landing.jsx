@@ -42,9 +42,14 @@ const Landing = () => {
       <section id='features' className="w-full h-screen mt-12 p-6 text-center">
         <div className="mx-auto w-full max-w-6xl">
           <h1 className=' text-md text-purple-500 font-semibold'> Featuring</h1>
-          <h2 className="mx-auto mt-4 text-center text-3xl font-semibold tracking-tight text-gray-200 md:max-w-2xl md:text-4xl">
+          {/*
+          <span className="relative z-10 text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-violet-400 to-blue-500">
             Efficient & Secure: Smart way to store files
-          </h2>
+          </span>
+           */}
+          <span className="relative z-10 text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-300 via-rose-300  to-violet-300">
+            Efficient & Secure: Smart way to store files
+          </span>
           <p className="mt-2 mb-2 text-lg text-text">
             Discover many key features DataDepot provides that differ from other apps
           </p>

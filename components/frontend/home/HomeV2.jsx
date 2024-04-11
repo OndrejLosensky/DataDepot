@@ -19,10 +19,12 @@ const HomeV2 = () => {
               <p className='text-gray-200 text-sm font-semibold'>DataDepot V2</p>
             </div>
             <h1 className='text-4xl text-left font-bold'>
-              <span className='text-gradient-to-r text-gray-100 from-red-500 to-green-400 text-clip'>
-                Experience DataDepot: <br />
-                <span className='text-3xl'>Document Management System with AI</span>
-              </span>
+                <span className="relative z-10 text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-200  to-gray-400">
+                  Experience DataDepot: <br />
+                </span>
+                <span className="relative text-3xl z-10 font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-200  to-gray-400">
+                  Document Management system with AI
+                </span>
             </h1>
             <p className='text-md text-left py-2 text-gray-400'>
               Simplify document management with DataDepot. Effortlessly store,
