@@ -56,7 +56,7 @@ const Login = () => {
         return (
           <div className="flex flex-col  justify-center">
             <div className='w-full h-16 border-b border-gray-400 items-left flex items-center justify-between px-8'>
-              <p className='text-left text-2xl text-[#DFDFDF]'>Register</p>
+              <p className='text-left text-2xl text-[#DFDFDF]'>Login</p>
               <Link className='ml-1 px-2 py-2 rounded-full hover:bg-gray-700 duration-300' href="/"><IoCloseSharp className='w-6 h-6 text-[#DFDFDF]'/></Link>
             </div>
 
@@ -102,7 +102,7 @@ const Login = () => {
         return (
           <div className="flex flex-col  justify-center">
             <div className='w-full h-16 border-b border-gray-400 items-left flex items-center justify-between px-8'>
-              <p className='text-left text-2xl text-[#DFDFDF]'>Register</p>
+              <p className='text-left text-2xl text-[#DFDFDF]'>Login</p>
               <Link className='ml-1 px-2 py-2 rounded-full hover:bg-gray-700 duration-300' href="/"><IoCloseSharp className='w-6 h-6 text-[#DFDFDF]'/></Link>
             </div>
 
