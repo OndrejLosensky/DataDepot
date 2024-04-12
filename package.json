@@ -12,6 +12,7 @@
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "@tailwindcss/typography": "github:tailwindcss/typography",
+    "aos": "^2.3.4",
     "axios": "^1.6.8",
     "daisyui": "^4.7.3",
     "firebase": "^10.10.0",

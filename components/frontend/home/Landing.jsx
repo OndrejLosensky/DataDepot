@@ -15,13 +15,19 @@ import { MdOutlineDashboardCustomize } from "react-icons/md";
 import { IoAnalyticsOutline } from "react-icons/io5";
 import { FaCheck } from "react-icons/fa6";
 import { BsDash } from "react-icons/bs";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+import { useEffect } from 'react';
 
 
 const Landing = () => {
   const [hovered1, setHovered1] = useState(false);
   const [hovered2, setHovered2] = useState(false);
   const [hovered3, setHovered3] = useState(false);
+
+  useEffect(() => {
+    AOS.init({duration: "1500" });
+  },[])
 
   return (
     <div className='max-w-screen h-auto min-h-screen overflow-x-hidden'>
@@ -71,7 +77,7 @@ const Landing = () => {
 
       <section className='mb-[400px] overflow-x-hidden '>
         <div className="mx-auto max-w-6xl space-y-24 md:space-y-36">
-          <div className="flex flex-col items-center justify-between gap-6 lg:flex-row ">
+          <div data-aos='fade-up' className="flex flex-col items-center justify-between gap-6 lg:flex-row ">
             <div className="max-w-md space-y-6 text-center lg:text-left">
               <span className="inline-flex items-center rounded-full border-2 border-indigo-200 bg-indigo-200 px-2 py-1 text-sm font-semibold text-indigo-600 shadow-sm">
                 <MdOutlineDashboardCustomize className="mr-1 h-5 w-5" />
@@ -94,7 +100,7 @@ const Landing = () => {
             </div>
           </div>
   
-          <div className="flex flex-col items-center justify-between gap-6 lg:flex-row-reverse">
+          <div data-aos='fade-up'  className="flex flex-col items-center justify-between gap-6 lg:flex-row-reverse">
             <div className="max-w-md space-y-6 text-center lg:text-left">
               <span className="inline-flex items-center rounded-full border-2 border-violet-200 bg-violet-200 px-2 py-1 text-sm font-semibold text-violet-600 shadow-sm">
                 <IoSettingsOutline className="mr-1 h-5 w-5" />
@@ -117,7 +123,7 @@ const Landing = () => {
             </div>
           </div>
   
-          <div className="flex flex-col items-center justify-between gap-6 lg:flex-row ">
+          <div data-aos='fade-up'  className="flex flex-col items-center justify-between gap-6 lg:flex-row ">
             <div className="max-w-md space-y-6 text-center lg:text-left">
               <span className="inline-flex items-center rounded-full border-2 border-cyan-200 bg-cyan-200 px-2 py-1 text-sm font-semibold text-cyan-700 shadow-sm">
                 <IoAnalyticsOutline className="mr-1 h-5 w-5" />
@@ -142,7 +148,7 @@ const Landing = () => {
         </div>
       </section>
 
-      <section id='pricing' className='mt-64'>
+      <section id='pricing'  className='mt-64'>
         <Pricing/>
       </section>
 
@@ -179,7 +185,7 @@ const Landing = () => {
       */}
 
 
-      <section className='max-w-screen overflow-y-hidden overflow-x-hidden  h-[800px] mb-[350px]'>
+      <section data-aos='fade-up'  className='max-w-screen overflow-y-hidden overflow-x-hidden  h-[800px] mb-[350px]'>
       <div className="z-[-1] flex place-items-center before:dark:bg-gradient-to-br before:dark:from-blue-500 before:dark:to-purple-500 before:dark:opacity-[25%] before:absolute before:h-[160px] before:w-full sm:before:w-[350px] before:translate-x-[400px] before:translate-y-[250px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-red-500 after:via-yellow-400 after:blur-2xl after:content-['']  after:dark:from-rose-800 after:dark:via-blue-200 after:dark:opacity-100"></div>
 
         <h1 className=' text-md text-purple-500 font-semibold mt-48 text-center'> Pricing comparison</h1>
