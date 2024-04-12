@@ -75,7 +75,7 @@ const Landing = () => {
       </section>
 
 
-      <section className='mb-[400px] overflow-x-hidden '>
+      <section className='mb-[400px] overflow-hidden '>
         <div className="mx-auto max-w-6xl space-y-24 md:space-y-36">
           <div data-aos='fade-up' className="flex flex-col items-center justify-between gap-6 lg:flex-row ">
             <div className="max-w-md space-y-6 text-center lg:text-left">
