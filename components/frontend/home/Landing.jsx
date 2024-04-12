@@ -19,6 +19,15 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 import { useEffect } from 'react';
 
+export function Video() {
+  return (
+    <video width="700" height="550" controls className='mx-auto my-6 border border-gray-400 rounded-xl shadow-lg'>
+      <source src="/datadepotV1.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  )
+}
+
 const Landing = () => {
   const [hovered1, setHovered1] = useState(false);
   const [hovered2, setHovered2] = useState(false);
@@ -27,6 +36,19 @@ const Landing = () => {
   useEffect(() => {
     AOS.init({duration: "1500" });
   },[])
+
+  const scrollToAnchor = (id) => {
+    const element = document.getElementById(id);
+    const offset = 120; 
+  
+    if (element) {
+      const offsetTop = element.offsetTop - offset;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <div className='max-w-screen h-auto min-h-screen overflow-x-hidden'>
@@ -322,16 +344,11 @@ const Landing = () => {
       <WhyChoose/>     
      </section>
 
-    {/* 
-     <section>
+     <section id='demo' className='mb-32'>
       <p className='text-center text-xl text-[#a554f1] pt-12'>demo</p>
       <h1 className='text-3xl font-bold text-gray-300 text-center'> Learn more by watching how everything looks & works</h1>
-      <video controls className='mx-auto mt-8 mb-32 h-[400px]'>
-          <source src="datadepotV1.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+          <Video/>
      </section>
-    */}
 
      <div id='join' className='max-h-1/2 overflow-x-hidden '>
         <div className="z-[-1] flex place-items-center before:dark:bg-gradient-to-br before:dark:from-blue-400 before:dark:to-violet-500 before:dark:opacity-[20%] before:absolute before:h-[300px] before:w-full sm:before:w-[500px] before:translate-x-[380px] before:translate-y-[70px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-red-500 after:via-yellow-400 after:blur-2xl after:content-['']  after:dark:from-rose-800 after:dark:via-blue-200 after:dark:opacity-100 "></div>
@@ -341,7 +358,7 @@ const Landing = () => {
             <p className='text-lg w-2/5 mx-auto my-8 text-gray-300 font-thin'>  Stay up to date with new releases, updates and changes. Also you can follow me on my Github to see more apps like this. It is completely free to do it. </p>
             <div className='flex flex-row items-center justify-center gap-x-4'>
               <button className='py-2 px-6 rounded-full bg-gray-300 text-gray-800 hover:-translate-y-1 duration-300 hover:bg-gray-200 shadow-lg'> Join the Blog</button>
-              <button className='flex flex-row py-2 text-gray-300 hover:text-gray-100 duration-200 items-center'> See the Demo  <FaArrowRightLong className='w-6 h-4 ml-2'/> </button>
+              <button className='flex flex-row py-2 text-gray-300 hover:text-gray-100 duration-200 items-center' onClick={() => scrollToAnchor('demo')}> See the Demo  <FaArrowRightLong className='w-6 h-4 ml-2'/> </button>
             </div>
         </section>
       </div>

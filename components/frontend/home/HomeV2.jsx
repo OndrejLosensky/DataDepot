@@ -1,7 +1,21 @@
+import Link from 'next/link';
 import React from 'react';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
 const HomeV2 = () => {
+  const scrollToAnchor = (id) => {
+    const element = document.getElementById(id);
+    const offset = 120; 
+  
+    if (element) {
+      const offsetTop = element.offsetTop - offset;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className='min-h-screen h-auto overflow-hidden max-w-screen'>
       <div className="flex place-items-center before:absolute before:h-[190px] before:w-full sm:before:w-[500px] before:translate-x-[920px] before:translate-y-[170px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-red-500 after:via-yellow-400 after:blur-3xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-purple-400 before:dark:opacity-30 after:dark:from-rose-500 after:dark:via-blue-500 after:dark:opacity-100 before:lg:h-[250px] z-[-1]"></div>
@@ -35,9 +49,10 @@ const HomeV2 = () => {
               <button className='px-4 py-2 bg-purple-600 hover:bg-purple-700 duration-300 text-[#ebebeb] rounded-md shadow-lg'>
                 Get started
               </button>
-              <button className='text-gray-200 hover:text-gray-100 duration-200 font-bold flex flex-row items-center'>
+              <button onClick={() => scrollToAnchor('demo')} className='text-gray-200 hover:text-gray-100 duration-200 font-bold flex flex-row items-center'>
                 How it works <FaArrowRightLong className='w-6 h-4 ml-2' />
               </button>
+
             </div>
           </div>
           <div className='w-[60%] relative pb-32'> 

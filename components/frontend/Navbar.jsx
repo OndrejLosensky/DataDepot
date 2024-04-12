@@ -7,6 +7,19 @@ function Navbar ({ isDarkMode, toggleTheme }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [currentSection, setCurrentSection] = useState(null);
 
+    const scrollToAnchor = (id) => {
+      const element = document.getElementById(id);
+      const offset = 100; 
+    
+      if (element) {
+        const offsetTop = element.offsetTop - offset;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    };
+
     const scrollToTop = () => {
       window.scrollTo({
         top: 0,
@@ -57,10 +70,10 @@ function Navbar ({ isDarkMode, toggleTheme }) {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className={`items-center flex flex-row gap-x-6 px-1 ${isDarkMode ? 'text-[#DFDFDF]':'text-[#5c5c5c]'}`}>
-            <li className={`duration-200 cursor-pointer ${isDarkMode ? 'hover:text-[#f4f4f4] underline-effect hover:no-underline':'hover:text-[#000000] underline-effect-dark hover:no-underline'}`}> <Link href="#features" onClick={() => scrollToSection('features')}> Features </Link></li>
-            <li className={`duration-200 cursor-pointer ${isDarkMode ? 'hover:text-[#f4f4f4] underline-effect hover:no-underline':'hover:text-[#000000] underline-effect-dark hover:no-underline'}`}> <Link href="#pricing" onClick={() => scrollToSection('pricing')}> Pricing </Link></li>
-            <li className={`duration-200 cursor-pointer ${isDarkMode ? 'hover:text-[#f4f4f4] underline-effect hover:no-underline':'hover:text-[#000000] underline-effect-dark hover:no-underline'}`}> <Link href="#questions" onClick={() => scrollToSection('questions')}> Q&A </Link></li>
-            <li className={`duration-200 cursor-pointer ${isDarkMode ? 'hover:text-[#f4f4f4] underline-effect hover:no-underline':'hover:text-[#000000] underline-effect-dark hover:no-underline'}`}> <Link href="#join" onClick={() => scrollToSection('join')}> Join</Link></li>
+            <li className={`duration-200 cursor-pointer ${isDarkMode ? 'hover:text-[#f4f4f4] underline-effect hover:no-underline':'hover:text-[#000000] underline-effect-dark hover:no-underline'}`} onClick={() => scrollToAnchor('features')}> Features</li>
+            <li className={`duration-200 cursor-pointer ${isDarkMode ? 'hover:text-[#f4f4f4] underline-effect hover:no-underline':'hover:text-[#000000] underline-effect-dark hover:no-underline'}`} onClick={() => scrollToAnchor('pricing')}> Pricing</li>
+            <li className={`duration-200 cursor-pointer ${isDarkMode ? 'hover:text-[#f4f4f4] underline-effect hover:no-underline':'hover:text-[#000000] underline-effect-dark hover:no-underline'}`} onClick={() => scrollToAnchor('questions')}> Q&A</li>
+            <li className={`duration-200 cursor-pointer ${isDarkMode ? 'hover:text-[#f4f4f4] underline-effect hover:no-underline':'hover:text-[#000000] underline-effect-dark hover:no-underline'}`} onClick={() => scrollToAnchor('join')}> Join</li>
           </ul>
         </div>
         <div className="navbar-end mr-32">
