@@ -5,6 +5,8 @@
 
 html, body {
     background-color: #1a1f32 !important;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 
@@ -129,14 +131,3 @@ html, body {
     box-shadow: 0 0 20px rgba(117, 248, 202, 0.899);
 }
 
-.pricing-card {
-  transition: transform 0.5s ease;
-}
-
-.slide-left {
-  transform: translateX(-100%);
-}
-
-.slide-right {
-  transform: translateX(100%);
-}

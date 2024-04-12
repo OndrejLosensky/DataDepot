@@ -18,7 +18,7 @@ function LandingPage (){
     };
 
     return (
-        <main className='max-w-screen'>
+        <main className='max-w-screen overflow-x-hidden'>
             <Head>
                 <link rel="icon" href="/favicon.png" />
                 <title>DataDepot</title>

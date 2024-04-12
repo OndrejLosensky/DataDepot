@@ -9,7 +9,7 @@ const Pricing = () => {
 
 
   return (
-    <div className='max-w-screen min-h-screen'>
+    <div className='max-w-screen min-h-screen overflow-x-hidden'>
 
         <div className='flex flex-col items-center mt-16'>
           <h1 className=' text-md text-purple-500 font-semibold'> Pricing</h1>
@@ -41,7 +41,7 @@ const Pricing = () => {
           <div className='w-[400px] h-[480px] bg-[#262626] opacity-65 rounded-2xl shadow-xl self-end'>
             <div className='h-1/3 w-full bg-[#323232] border-b-[0.3px] border-gray-500 shadow-md rounded-t-2xl flex items-end relative'>
               <div className='flex flex-col mb-4'>
-                <span className='w-7 h-7 ml-8 mb-2 bg-gradient-to-br from-pink-500 to-blue-400 rounded-full'></span>
+                <span className='w-7 h-7 ml-8 mb-2 bg-gradient-to-br from-[#6157FF] to-[#EE49FD] rounded-full'></span>
                 <h2 className='text-2xl font-bold text-gray-100 ml-8'> Basic </h2>   
                 <p className='text-md text-gray-400 ml-8 w-2/3'> For more advanced users that want to store large files or big amounts</p>
               </div>
@@ -74,7 +74,7 @@ const Pricing = () => {
           <div className='w-[400px] h-[550px] border-2 border-purple-500 bg-[#262626] rounded-2xl shadow-xl'>
             <div className='h-1/3 w-full bg-[#323232] border-b-[0.3px] border-gray-500 shadow-md rounded-t-2xl flex items-end'>
               <div className='flex flex-col mb-8'>
-                <span className='w-7 h-7 ml-8 mb-4  bg-gradient-to-br from-purple-500 to-green-400 rounded-full'></span>
+                <span className='w-7 h-7 ml-8 mb-4  bg-gradient-to-br from-[#103CE7] to-[#64E9FF] rounded-full'></span>
                 <h2 className='text-2xl font-bold text-gray-100 ml-8'> Free </h2>   
                 <p className='text-md text-gray-400 ml-8 w-2/3'> version for anyone, manage your files efficiently.  </p>
               </div>
@@ -104,7 +104,7 @@ const Pricing = () => {
           <div className='w-[400px] h-[480px] bg-[#262626] opacity-65 rounded-2xl shadow-xl self-end'>
               <div className='h-1/3 w-full bg-[#323232] border-b-[0.3px] border-gray-500 shadow-md rounded-t-2xl flex items-end relative'>
                 <div className='flex flex-col mb-4'>
-                  <span className='w-7 h-7 ml-8 mb-2 bg-gradient-to-br from-yellow-300 to-rose-400 rounded-full'></span>
+                  <span className='w-7 h-7 ml-8 mb-2 bg-gradient-to-br from-[#FF4066] to-[#FFF16A] rounded-full'></span>
                   <h2 className='text-2xl font-bold text-gray-100 ml-8'> Pro </h2>   
                   <p className='text-md text-gray-400 ml-8 w-2/3'> For professionals that like to store ultra large amount of documents </p>
                 </div>

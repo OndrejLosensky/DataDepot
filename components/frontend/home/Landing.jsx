@@ -69,7 +69,7 @@ const Landing = () => {
       </section>
 
 
-      <section className='mb-[400px]'>
+      <section className='mb-[400px] overflow-x-hidden '>
         <div className="mx-auto max-w-6xl space-y-24 md:space-y-36">
           <div className="flex flex-col items-center justify-between gap-6 lg:flex-row ">
             <div className="max-w-md space-y-6 text-center lg:text-left">
@@ -179,7 +179,7 @@ const Landing = () => {
       */}
 
 
-      <section className='max-w-screen h-[600px] mb-[450px]'>
+      <section className='max-w-screen overflow-y-hidden overflow-x-hidden  h-[800px] mb-[350px]'>
       <div className="z-[-1] flex place-items-center before:dark:bg-gradient-to-br before:dark:from-blue-500 before:dark:to-purple-500 before:dark:opacity-[25%] before:absolute before:h-[160px] before:w-full sm:before:w-[350px] before:translate-x-[400px] before:translate-y-[250px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-red-500 after:via-yellow-400 after:blur-2xl after:content-['']  after:dark:from-rose-800 after:dark:via-blue-200 after:dark:opacity-100"></div>
 
         <h1 className=' text-md text-purple-500 font-semibold mt-48 text-center'> Pricing comparison</h1>
@@ -304,11 +304,11 @@ const Landing = () => {
       </section>
 
 
-     <section id='questions'>
+      <section id='questions'>
       <WhyChoose/>     
      </section>
 
-      <div id='join' className='max-h-1/2'>
+     <div id='join' className='max-h-1/2 overflow-x-hidden '>
         <div className="z-[-1] flex place-items-center before:dark:bg-gradient-to-br before:dark:from-blue-400 before:dark:to-violet-500 before:dark:opacity-[20%] before:absolute before:h-[300px] before:w-full sm:before:w-[500px] before:translate-x-[380px] before:translate-y-[70px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-red-500 after:via-yellow-400 after:blur-2xl after:content-['']  after:dark:from-rose-800 after:dark:via-blue-200 after:dark:opacity-100 "></div>
 
           <section className='text-center mb-48 pt-32 justify-center flex flex-col'>
