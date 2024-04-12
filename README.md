@@ -11,26 +11,7 @@ Login and register forms styled to dark mode, in the future they will be integra
 * Login and Register
 
 ## Preview
-<img width="500" alt="Snímek obrazovky 2024-03-27 v 8 01 08" src="https://github.com/OndrejLosensky/DataDepot-v1/assets/127244546/fe441a20-507d-434b-aa05-a446ba922b1d">
-<img width="500" alt="Snímek obrazovky 2024-03-27 v 8 01 20" src="https://github.com/OndrejLosensky/DataDepot-v1/assets/127244546/9f3a8769-33be-47bd-a91f-f8ac114b567d">
-<img width="500" alt="Snímek obrazovky 2024-03-27 v 8 01 31" src="https://github.com/OndrejLosensky/DataDepot-v1/assets/127244546/bc9c79e3-aa56-45dc-8039-fb8780b5f493">
-
-### Documentation page
-<img width="600" alt="Snímek obrazovky 2024-03-27 v 8 01 57" src="https://github.com/OndrejLosensky/DataDepot-v1/assets/127244546/992cc7d4-e157-400f-953f-6149d9e5184e">
-
-### Pricing page
-<img width="600" alt="Snímek obrazovky 2024-03-27 v 8 02 07" src="https://github.com/OndrejLosensky/DataDepot-v1/assets/127244546/17374151-bbdc-47cc-89ff-299a04632f5c">
-
-### Blog posts
-<img width="600" alt="Snímek obrazovky 2024-03-27 v 8 02 20" src="https://github.com/OndrejLosensky/DataDepot-v1/assets/127244546/67883fc9-7614-4975-8b7d-0a5ac48d9e09">
-
-### Login form
-<img width="500" alt="Snímek obrazovky 2024-03-27 v 8 03 56" src="https://github.com/OndrejLosensky/DataDepot-v1/assets/127244546/4fb5d7ed-099d-4c09-a006-1d670d23b373">
-<img width="500" alt="Snímek obrazovky 2024-03-27 v 8 04 06" src="https://github.com/OndrejLosensky/DataDepot-v1/assets/127244546/7d22ebae-1e86-41bb-986a-e5ee206aaa87">
-
-### Register form
-<img width="500" alt="Snímek obrazovky 2024-03-27 v 8 05 13" src="https://github.com/OndrejLosensky/DataDepot-v1/assets/127244546/529fc6e7-d839-4e91-aa36-3f1f0f5424bf">
-<img width="500" alt="Snímek obrazovky 2024-03-27 v 8 05 25" src="https://github.com/OndrejLosensky/DataDepot-v1/assets/127244546/b237753e-da7a-4433-82a4-9e566822e350">
+https://github.com/OndrejLosensky/DataDepot-v1/assets/127244546/ff15b253-04d4-45bb-aacb-c3a4868b1785
 
 
 ## License
