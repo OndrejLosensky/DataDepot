@@ -19,7 +19,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 import { useEffect } from 'react';
 
-
 const Landing = () => {
   const [hovered1, setHovered1] = useState(false);
   const [hovered2, setHovered2] = useState(false);
@@ -51,7 +50,7 @@ const Landing = () => {
         </div>
       </section>
       */}
-      <section id='features' className="w-full overflow-x-hidden h-screen mt-12 p-6 text-center">
+      <section id='features' className="w-full overflow-x-hidden h-auto mt-6 p-6 text-center">
         <div className="mx-auto w-full max-w-6xl">
           <h1 className=' text-md text-purple-500 font-semibold'> Featuring</h1>
           {/*
@@ -66,7 +65,7 @@ const Landing = () => {
             Discover many key features DataDepot provides that differ from other apps
           </p>
   
-          <div className="mt-12 grid grid-cols-1 gap-6 text-left md:grid-cols-3">
+          <div className="mt-12 mb-32 grid grid-cols-1 gap-6 text-left md:grid-cols-3">
             <FeatureCard hovered={hovered1} setHovered={setHovered1} icon={IoPricetagOutline} heading="Labeling system" description="Create custom label for the file cards, filter them by names, change the tags, group them." />
             <FeatureCard hovered={hovered2} setHovered={setHovered2} icon={FaRegFolder} heading="Multiple file types" description="DataDepot supports files such as PDF, DOCX, XLSX , PPTX, ZIP and others. See more in the docs" />
             <FeatureCard hovered={hovered3} setHovered={setHovered3} icon={FaRegFileAlt} heading="Simple folder system" description="Create folder, where you can store your documents and sort them. Easily export whole folder as an zip file" />
@@ -75,7 +74,7 @@ const Landing = () => {
       </section>
 
 
-      <section className='mb-[400px] overflow-hidden '>
+      <section className='mb-[200px] overflow-hidden '>
         <div className="mx-auto max-w-6xl space-y-24 md:space-y-36">
           <div data-aos='fade-up' className="flex flex-col items-center justify-between gap-6 lg:flex-row ">
             <div className="max-w-md space-y-6 text-center lg:text-left">
@@ -185,7 +184,7 @@ const Landing = () => {
       */}
 
 
-      <section data-aos='fade-up'  className='max-w-screen overflow-y-hidden overflow-x-hidden  h-[800px] mb-[350px]'>
+      <section data-aos='fade-up'  className='max-w-screen overflow-y-hidden overflow-x-hidden  h-[800px] mb-[250px]'>
       <div className="z-[-1] flex place-items-center before:dark:bg-gradient-to-br before:dark:from-blue-500 before:dark:to-purple-500 before:dark:opacity-[25%] before:absolute before:h-[160px] before:w-full sm:before:w-[350px] before:translate-x-[400px] before:translate-y-[250px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-red-500 after:via-yellow-400 after:blur-2xl after:content-['']  after:dark:from-rose-800 after:dark:via-blue-200 after:dark:opacity-100"></div>
 
         <h1 className=' text-md text-purple-500 font-semibold mt-48 text-center'> Pricing comparison</h1>
@@ -202,6 +201,7 @@ const Landing = () => {
                   <p className='border-b-[0.5px] border-gray-400 pb-2 '>Unlimited label colors</p>
                   <p className='border-b-[0.5px] border-gray-400 pb-2 '>Support 24/7</p>
                   <p className='border-b-[0.5px] border-gray-400 pb-2 '>10GB storage</p>
+                  <p className='border-b-[0.5px] border-gray-400 pb-2 '>Generate text with AI</p>
               </div>
               </div>
             <div className='w-1/4'>
@@ -214,6 +214,9 @@ const Landing = () => {
               </div>
               <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
                 <FaCheck className='w-4 h-4 text-cyan-500'/>
+              </div>
+              <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
+                <FaCheck className='w-4 h-4 text-cyan-500'/>  
               </div>
               <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
                 <BsDash className='w-4 h-4 text-gray-400'/>
@@ -240,12 +243,14 @@ const Landing = () => {
                 <FaCheck className='w-4 h-4 text-cyan-500'/>
               </div>
               <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
-                <BsDash className='w-6 h-4 text-gray-400'/>
+                <FaCheck className='w-4 h-4 text-cyan-500'/>  
               </div>
               <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
                 <BsDash className='w-6 h-4 text-gray-400'/>
               </div>
-
+              <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
+                <BsDash className='w-4 h-4 text-gray-400'/>
+              </div>
             </div>
             <div className='w-1/4'>
               <div className='text-center h-24 pt-2'>
@@ -254,6 +259,9 @@ const Landing = () => {
               </div>
               <div className='flex items-center justify-center border-b-[1px] border-gray-400 pt-4 pb-4'>
 
+              </div>
+              <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
+                <FaCheck className='w-4 h-4 text-cyan-500'/>
               </div>
               <div className='flex items-center justify-center border-b-[0.5px] border-gray-400 pt-4 pb-4'>
                 <FaCheck className='w-4 h-4 text-cyan-500'/>
@@ -313,6 +321,17 @@ const Landing = () => {
       <section id='questions'>
       <WhyChoose/>     
      </section>
+
+    {/* 
+     <section>
+      <p className='text-center text-xl text-[#a554f1] pt-12'>demo</p>
+      <h1 className='text-3xl font-bold text-gray-300 text-center'> Learn more by watching how everything looks & works</h1>
+      <video controls className='mx-auto mt-8 mb-32 h-[400px]'>
+          <source src="datadepotV1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+     </section>
+    */}
 
      <div id='join' className='max-h-1/2 overflow-x-hidden '>
         <div className="z-[-1] flex place-items-center before:dark:bg-gradient-to-br before:dark:from-blue-400 before:dark:to-violet-500 before:dark:opacity-[20%] before:absolute before:h-[300px] before:w-full sm:before:w-[500px] before:translate-x-[380px] before:translate-y-[70px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-red-500 after:via-yellow-400 after:blur-2xl after:content-['']  after:dark:from-rose-800 after:dark:via-blue-200 after:dark:opacity-100 "></div>

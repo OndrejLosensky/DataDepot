@@ -51,7 +51,7 @@ const Dashboard = () => {
           <Loading />
         </div>
       ) : (
-        <div className='flex flex-col h-screen'> {/* bg-[#18191A] */}
+        <div className='flex flex-col min-h-screen'> {/* bg-[#18191A] */}
           {/* Navbar */}
           <nav className='py-2 shadow-lg border-b-[0.4px] border-gray-600 bg-[#111212] px-8 flex items-center justify-between'>
             {/* Logo and title */}
@@ -73,7 +73,7 @@ const Dashboard = () => {
             {/* Theme toggle and profile picture */}
             <div className='flex flex-row '>
               {/* <ThemeController /> */}
-              <Image src="/profilePic.svg" width={48} height={48} className='rounded-full ml-8 cursor-pointer' />
+              <Image src="/pf.jpeg" width={48} height={48} className='rounded-full border border-gray-400 ml-8 cursor-pointer' />
             </div>
           </nav>
 
