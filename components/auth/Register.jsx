@@ -11,6 +11,8 @@ import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { FaCheckCircle } from 'react-icons/fa';
 import { FiAlertCircle } from 'react-icons/fi';
 import { IoCloseSharp } from "react-icons/io5";
+import { FaMale, FaFemale } from "react-icons/fa";
+
 
 
 const Register = () => {
@@ -132,7 +134,7 @@ const Register = () => {
                     )}                                     
                 </div>
             
-              <button className="py-2 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-6 w-[85%]" onClick={handleRegister}>Continue</button>
+              <button className="py-2 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-6 w-[85%]" onClick={() => setStep(2)}>Continue</button>
 
               <div className='flex flex-row items-center w-[85%] mt-2 mb-4'>
                   <div className='w-1/2 mr-2 border-b-[1.5px] h-0 border-gray-500'></div>
@@ -175,26 +177,35 @@ const Register = () => {
               required
             />
             <input
-              type="phoneNumber"
-              name="text"
+              type="tel"
+              name="phone"
+              value={formData.password}
+              onChange={handleChange}
+              className="block bg-[#3D3D3D] text-md w-[85%]  border my-2 mb-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+              placeholder="Phone number"
+              required
+            />
+            <input
+              type="number"
+              name="age"
               value={formData.password}
               onChange={handleChange}
               className="block bg-[#3D3D3D] text-md w-[85%]  border my-2 mb-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-              placeholder="Phone number"
+              placeholder="Your age"
               required
             />
           
           
-            <button className="py-2 rounded-md bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-2 w-[85%]" onClick={() => setStep(3)} >Continue</button>
+            <button className="py-2 rounded-md bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-2 w-[85%]" onClick={() => setStep(3)} >Continue</button>
             <button className=" rounded-md bg-transparent text-[#c4c4c4] hover:text-[#e6e6e6] duration-300 flex flex-row items-center py-1 mb-6 mt-2" onClick={() => setStep(1)}> 
               <HiOutlineArrowLongLeft className='mr-2 font-thin'/> 
               Previous
             </button>
-            <p className='mb-8 text-sm'>Forgot password? Create new <span className='underline text-blue-500'>here</span></p>
+            <p className='mb-8 mt-2 items-center text-md flex flex-col'>Already have an account? <Link className='font-semibold pt-1 text-blue-500' href="/auth/login"> Login </Link></p>
            </div>
           </div>
         );
-        case 3:
+      case 3:
           return (
             <div className="flex flex-col  justify-center">
               <div className='w-full h-16 border-b border-gray-400 flex items-center justify-between'>
@@ -206,15 +217,42 @@ const Register = () => {
              <div className='items-center flex flex-col'>
               <textarea rows={5} className="block bg-[#3D3D3D] text-md w-[85%]  border mt-4 my-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
             
-              <button className="py-2 rounded-md bg-[#428DFF] text-[#fffddd] hover:bg-[#034CB8] duration-300 mb-2 w-[85%]" onClick={handleRegister} >Register</button>
+              <button className="py-2 rounded-md bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-2 w-[85%]" onClick={() => setStep(4)} >Continue</button>
               <button className=" rounded-md bg-transparent text-[#c4c4c4] hover:text-[#e6e6e6] duration-300 flex flex-row items-center py-1 mb-6 mt-2" onClick={() => setStep(2)}> 
                 <HiOutlineArrowLongLeft className='mr-2 font-thin'/> 
                 Previous
               </button>
-              <p className='mb-8 text-sm'>Forgot password? Create new <span className='underline text-blue-500'>here</span></p>
+              <p className='mb-8 mt-2 items-center text-md flex flex-col'>Already have an account? <Link className='font-semibold pt-1 text-blue-500' href="/auth/login"> Login </Link></p>
              </div>
             </div>
           );
+      case 4: 
+        return (
+          <div className="flex flex-col  justify-center">
+            <div className='w-full h-16 border-b border-gray-400 flex items-center justify-between'>
+                <p className='text-left text-2xl text-[#DFDFDF] mx-8'>Register</p>
+            </div>
+            <h2 className=' text-[#DFDFDF] text-xl font-semibold ml-8 pt-8'>Select your sex<span className='text-sm text-gray-400 font-thin'>(optional)</span></h2>
+            <div className='items-center flex flex-col mt-6'>           
+              <div className='flex flex-row space-x-8'>
+                <div className='flex flex-col justify-center items-center rounded-lg shadow-sm border border-gray-500 cursor-pointer bg-[#3d3d40] text-[#DFDFDF] duration-300 hover:bg-[#48484b] hover:border-gray-400 hover:shadow-lg w-36 h-32'>
+                      <FaMale className='w-8 h-8 mb-1'/>
+                      Male
+                </div>
+                <div className='flex flex-col justify-center items-center rounded-lg shadow-sm border border-gray-500 cursor-pointer bg-[#3d3d40] text-[#DFDFDF] duration-300 hover:bg-[#48484b] hover:border-gray-400 hover:shadow-lg w-36 h-32'>
+                      <FaFemale className='w-8 h-8 mb-1'/>
+                      Female
+                </div>
+              </div> 
+              <button className="py-2 mt-6 rounded-md bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-2 w-[85%]" onClick={handleRegister} >Register</button>
+              <button className=" rounded-md bg-transparent text-[#c4c4c4] hover:text-[#e6e6e6] duration-300 flex flex-row items-center py-1 mb-6 mt-2" onClick={() => setStep(3)}> 
+                <HiOutlineArrowLongLeft className='mr-2 font-thin'/> 
+                Previous
+              </button>
+              <p className='mb-8 mt-2 items-center text-md flex flex-col'>Already have an account? <Link className='font-semibold pt-1 text-blue-500' href="/auth/login"> Login </Link></p>
+             </div>
+          </div>
+      );
       default:
         return null;
     }

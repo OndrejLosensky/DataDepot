@@ -15,15 +15,24 @@ const Sidebar = ({ isOpen, toggleSidebar, setActiveComponent }) => {
   const [errorAlertVisible, setErrorAlertVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
+  // Modify the handleLogout function to show the confirmation dialog
   const handleLogout = async () => {
-    try {
-        await signOut(auth);
-        router.push('/'); // Redirect to the landing page after logout
-    } catch (error) {
-        console.error('Error signing out:', error);
-    }
-};
+      // Display confirmation dialog
+      const shouldLogout = window.confirm('Are you sure you want to log out?');
+      
+      // If user confirms, proceed with logout
+      if (shouldLogout) {
+          try {
+              await signOut(auth);
+              router.push('/'); // Redirect to the landing page after logout
+          } catch (error) {
+              console.error('Error signing out:', error);
+          }
+      }
+  };
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,6 +61,13 @@ const Sidebar = ({ isOpen, toggleSidebar, setActiveComponent }) => {
 
   return (
     <section className='max-h-screen'>
+      {showConfirmation && (
+          <div className="confirmation-modal">
+              <p>Are you sure you want to log out?</p>
+              <button onClick={() => setShowConfirmation(false)}>Cancel</button>
+              <button onClick={handleLogout}>Confirm</button>
+          </div>
+      )}
       {successAlertVisible && (
         <div role="alert" className={` text-white bg-green-500 absolute top-0 left-0 w-screen py-5 px-4 rounded flex items-center`}>
           <FaCheckCircle className="mr-2" />
@@ -88,10 +104,10 @@ const Sidebar = ({ isOpen, toggleSidebar, setActiveComponent }) => {
         </div>
         {/* Bottom part (Setting + logout) */}
         <div className='bg-[#292929] rounded-b-2xl h-[20%] flex flex-col justify-center gap-y-3 text-[#DFDFDF]'>
-        <button className='px-6 py-2 max-w-full mx-8 justify-center bg-[#454545] border border-gray-300 rounded-lg hover:text-gray-50 hover:border-gray-50 hover:bg-[#606060] duration-300 flex flex-row' onClick={handleLogout}>
-            <TbLogout2 className='w-6 h-6 mr-4' />
-            Sign out
-        </button>
+          <button className='px-6 py-2 max-w-full mx-8 justify-center bg-[#454545] border border-gray-300 rounded-lg hover:text-gray-50 hover:border-gray-50 hover:bg-[#606060] duration-300 flex flex-row' onClick={handleLogout}>
+              <TbLogout2 className='w-6 h-6 mr-4' />
+              Sign out
+          </button>
           <button className='px-6 py-2 max-w-full mx-8 border justify-center border-gray-200 rounded-lg flex flex-row' onClick={handleSettingsClick}>
             <IoSettingsOutline className='w-6 h-6 mr-4' />
             Settings
