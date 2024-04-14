@@ -32,23 +32,21 @@ const HomeV2 = () => {
               <p className='text-gray-200 text-sm font-semibold'>DataDepot V1</p>
             </div>
             <h1 className='text-4xl text-left font-bold'>
-                <span className="relative z-10 text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-200  to-gray-400">
+                <span className="relative text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-200  to-gray-400">
                   Experience DataDepot: <br />
                 </span>
-                <span className="relative text-3xl z-10 font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-200  to-gray-400">
-                  Document Management system with AI
+                <span className="relative text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-200  to-gray-400">
+                  Data Management system with AI
                 </span>
             </h1>
             <p className='text-md text-left py-2 text-gray-400'>
-              Simplify document management with DataDepot. Effortlessly store,
-              organize, and access your documents from anywhere. Whether you're
+              Simplify data management with DataDepot. Effortlessly store,
+              organize, and access your documents,files, passwords and more from anywhere. Whether you're
               a student, professional, or business owner, DataDepot streamlines
               your workflow and boosts productivity.
             </p>
             <div className='flex flex-row items-center gap-x-8'>
-              <button className='px-4 py-2 bg-purple-600 hover:bg-purple-700 duration-300 text-[#ebebeb] rounded-md shadow-lg'>
-                Get started
-              </button>
+              <Link className='px-4 py-2 bg-purple-600 hover:bg-purple-700 duration-300 text-[#ebebeb] rounded-md shadow-lg' href="/auth/register"> Get started </Link>
               <button onClick={() => scrollToAnchor('demo')} className='text-gray-200 hover:text-gray-100 duration-200 font-bold flex flex-row items-center'>
                 How it works <FaArrowRightLong className='w-6 h-4 ml-2' />
               </button>

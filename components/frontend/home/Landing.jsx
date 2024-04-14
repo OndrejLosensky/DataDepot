@@ -18,6 +18,7 @@ import { BsDash } from "react-icons/bs";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 import { useEffect } from 'react';
+import Link from 'next/link';
 
 export function Video() {
   return (
@@ -357,7 +358,7 @@ const Landing = () => {
             <h1 className='text-3xl font-black text-[#DFDFDF]'> Join DataDepot blog to see all news.</h1>
             <p className='text-lg w-2/5 mx-auto my-8 text-gray-300 font-thin'>  Stay up to date with new releases, updates and changes. Also you can follow me on my Github to see more apps like this. It is completely free to do it. </p>
             <div className='flex flex-row items-center justify-center gap-x-4'>
-              <button className='py-2 px-6 rounded-full bg-gray-300 text-gray-800 hover:-translate-y-1 duration-300 hover:bg-gray-200 shadow-lg'> Join the Blog</button>
+              <Link className='py-2 px-6 rounded-full bg-gray-300 text-gray-800 hover:-translate-y-1 duration-300 hover:bg-gray-200 shadow-lg' href="/frontend/blog"> Join the Blog </Link>
               <button className='flex flex-row py-2 text-gray-300 hover:text-gray-100 duration-200 items-center' onClick={() => scrollToAnchor('demo')}> See the Demo  <FaArrowRightLong className='w-6 h-4 ml-2'/> </button>
             </div>
         </section>
