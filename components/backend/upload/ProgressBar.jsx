@@ -38,14 +38,14 @@ const ProgressBar = () => {
   }
 
   return (
-    <div className="mt-2 mx-5 mb-8 py-2">
+    <div className="mt-2 mx-6 mb-8 py-2">
       <div className={`progress-container h-3 rounded-full shadow-lg overflow-hidden bg-gray-200`}>
         <div
           className={`progress-bar h-full transition-all duration-500 ${progressBarColor}`}
           style={{ width: `${progress}%` }}
         ></div>
       </div>
-      <h2 className="text-xs font-thin pt-1 text-center "><span className={`font-semibold text-gray-50`}>{formatBytes(databaseSize)} </span>used from <span className={`font-semibold text-gray-50`}>{formatBytes(maxDatabaseSize)}</span></h2>
+      <h2 className="text-xs font-thin pt-1 text-center text-gray-100 "><span className={`font-semibold text-gray-50`}>{formatBytes(databaseSize)} </span>used from <span className={`font-semibold text-gray-50`}>{formatBytes(maxDatabaseSize)}</span></h2>
     </div>
   );
 };

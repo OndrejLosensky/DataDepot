@@ -7,7 +7,6 @@ const Files = () => {
 
   return (
     <div className='w-auto mx-auto h-full'>
-      {/*
       <ControlPanel
          fileTypeFilter={fileTypeFilter} 
          setFileTypeFilter={setFileTypeFilter} 
@@ -15,7 +14,6 @@ const Files = () => {
          setSortOption={setSortOption} 
       />
       <div className='border-b mb-8 border-gray-500 mx-4 mt-2'> </div>
-       */}
     </div>
   )
 }
