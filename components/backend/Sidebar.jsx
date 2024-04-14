@@ -94,7 +94,9 @@ const Sidebar = ({ isOpen, toggleSidebar, setActiveComponent }) => {
 
         {/* Top part (Upload + folders) */}
         <div className='text-white h-[80%] w-[100%] justify-between flex flex-col'>
-          <div>
+          <div className='justify-center flex flex-col space-y-3'>
+            <button className='py-2 px-4 text-purple-600 bg-purple-200 font-semibold mt-3 rounded-md mx-5'> Password manager </button>
+            <button className='py-2 px-4 text-purple-600 bg-purple-200 font-semibold mt-3 rounded-md mx-5'> Statistics </button>
             <FileUpload
               successAlertVisible={setSuccessAlertVisible}
               errorAlertVisible={setErrorAlertVisible}

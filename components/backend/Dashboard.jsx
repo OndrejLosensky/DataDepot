@@ -11,7 +11,7 @@ import Settings from './Settings';
 
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeComponent, setActiveComponent] = useState('Files'); // Default active component
 
   // Simulating loading completion after 3 seconds

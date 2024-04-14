@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { FaArrowRightLong } from "react-icons/fa6";
-import { FaLock, FaUnlock} from "react-icons/fa";
-import Link from 'next/link';
+import { CiLock } from "react-icons/ci";
+import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 
 const Pricing = () => {
   const [selectedPlan, setSelectedPlan] = useState('monthly');
@@ -59,13 +59,13 @@ const Pricing = () => {
                   <h2 className='text-3xl text-gray-100'>$5 <span className='text-sm text-gray-400 font-thin'>billed monthly</span></h2>
                 </div>
               )}
-              <button className='w-full mt-8 py-2 items-center justify-center flex bg-purple-500 rounded-lg text-gray-200 cursor-default'> <FaLock className='text-gray-300 w-6 h-8'/> </button>
+              <button className='w-full mt-8 py-2 items-center justify-center flex bg-purple-500 rounded-lg text-gray-200 cursor-default'> <CiLock className='text-gray-300 w-6 h-8'/> </button>
               <div>
                 <h3 className='font-semibold text-gray-100 pt-4'> Everything in Free and:</h3>
-                <ul className='list-disc font-light text-sm pl-4 mt-2 text-gray-200'>
-                  <li className='py-1'>Export option and statistics</li>
-                  <li className='py-1'>500MB capacity for docs</li>
-                  <li className='py-1'>20 color to choose from</li>
+                <ul className='font-light text-sm mt-2 text-gray-200'>
+                  <li className='py-1 flex flex-row items-center gap-3'> <IoIosCheckmarkCircleOutline className='text-green-400'/> Export option and statistics</li>
+                  <li className='py-1 flex flex-row items-center gap-3'> <IoIosCheckmarkCircleOutline className='text-green-400'/>  500MB capacity for docs</li>
+                  <li className='py-1 flex flex-row items-center gap-3'> <IoIosCheckmarkCircleOutline className='text-green-400'/>20 color to choose from</li>
                 </ul>
               </div>
             </div>
@@ -89,13 +89,13 @@ const Pricing = () => {
                   <h2 className='text-3xl text-gray-100'>Free</h2>
                 </div>
               )}
-              <button className='w-full mt-8 py-2 text-lg font-medium items-center justify-center flex bg-gray-600 border-gray-400 border cursor-default rounded-lg text-gray-200'> <FaUnlock className='text-gray-300 w-6 h-8 mr-2'/> <span className='pt-1 ml-1'>Current</span> </button>
+              <button className='w-full mt-8 py-2 text-lg font-medium items-center justify-center flex bg-purple-500 cursor-default rounded-lg text-gray-200'> <CiLock className='text-gray-300 w-6 h-8 mr-2'/> </button>
               <div>
                 <h3 className='font-semibold text-gray-100 pt-8'> Featuring </h3>
-                <ul className='list-disc font-light pl-4 mt-2 text-gray-200'>
-                  <li className='py-1'>all files types supported</li>
-                  <li className='py-1'>50MB capacity for docs</li>
-                  <li className='py-1'>10 different color labels </li>
+                <ul className='font-light mt-2 text-gray-200'>
+                  <li className='py-1 flex flex-row items-center gap-3'> <IoIosCheckmarkCircleOutline className='text-green-400'/> all files types supported</li>
+                  <li className='py-1 flex flex-row items-center gap-3'> <IoIosCheckmarkCircleOutline className='text-green-400'/>50MB capacity for docs</li>
+                  <li className='py-1 flex flex-row items-center gap-3'> <IoIosCheckmarkCircleOutline className='text-green-400'/>10 different color labels </li>
                 </ul>
               </div>
             </div>
@@ -122,13 +122,13 @@ const Pricing = () => {
                     <h2 className='text-3xl text-gray-100'>$27 <span className='text-sm text-gray-400 font-thin'>billed monthly</span></h2>
                   </div>
                 )}
-                <button className='w-full mt-8 py-2 items-center justify-center flex bg-purple-500 rounded-lg text-gray-200 cursor-default'> <FaLock className='text-gray-300 w-6 h-8'/> </button>
+                <button className='w-full mt-8 py-2 items-center justify-center flex bg-purple-500 rounded-lg text-gray-200 cursor-default'> <CiLock className='text-gray-300 w-6 h-8'/> </button>
                 <div>
                   <h3 className='font-semibold text-gray-100 pt-4'> Everything in Free, Basic and:</h3>
                   <ul className='list-disc font-light text-sm pl-4 mt-2 text-gray-200'>
-                    <li className='py-1'>Folder structure system</li>
-                    <li className='py-1'>10GB capacity</li>
-                    <li className='py-1'>Unlimited colors for labels</li>
+                    <li className='py-1 flex flex-row items-center gap-3'> <IoIosCheckmarkCircleOutline className='text-green-400'/>Folder structure system</li>
+                    <li className='py-1 flex flex-row items-center gap-3'> <IoIosCheckmarkCircleOutline className='text-green-400'/>10GB capacity</li>
+                    <li className='py-1 flex flex-row items-center gap-3'> <IoIosCheckmarkCircleOutline className='text-green-400'/>Unlimited colors for labels</li>
                   </ul>
                 </div>
               </div>

@@ -30,8 +30,11 @@ const Blog = () => {
         <Link href="/"><button className='flex flex-row items-center py-2 my-2 hover:bg-gray-700 p-2 rounded-lg duration-300 mb-4'><FaArrowLeft className='mr-2' /> Back</button></Link>
         <h1 className='text-4xl font-bold mb-4'>Welcome to DataDepot Blog</h1>
         <p className='text-xl font-light mb-8'>
-          Stay updated with the latest news, updates, and releases. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim mi nec dolor tristique, eget varius elit viverra.
+          Welcome to the DataDepot Blog, your one-stop destination for staying informed about our latest news, updates, and product releases. Our blog is your go-to resource for discovering insightful articles, helpful tutorials, and exciting announcements.
+          Whether you're a seasoned user or new to DataDepot, our blog is designed to keep you informed and inspired. Dive into our posts to learn about our newest features, upcoming events, and industry trends.
+          We're committed to providing you with valuable content that empowers you to make the most of our platform. Join us on this journey as we explore the endless possibilities of data management and analysis.
         </p>
+        <div className='border-b-[0.5px] mb-6 border-gray-400'> </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
           {blogPosts.map((post, index) => (

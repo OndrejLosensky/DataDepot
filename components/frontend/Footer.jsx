@@ -11,7 +11,9 @@ const Footer = () => {
       <div className='w-[70%] border-t-[0.5px] border-gray-500 pt-4 flex py-2 flex-row mx-auto justify-between'>
         <aside className="items-center flex flex-row gap-2 grid-flow-col pt-2 ml-2">
           <FaWarehouse className="w-6 h-6 text-gray-400" />
-          <p className="pt-1 text-gray-400 font-light">© 2024 DataDepot. All rights reserved</p>
+          <span className="relative mt-1 font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-200  to-purple-300">
+             2024 DataDepot. All rights reserved
+          </span>
         </aside>
         <nav className="grid-flow-col gap-x-4 items-center flex flex-row md:place-self-center md:justify-self-end pt-2 mr-2">
           

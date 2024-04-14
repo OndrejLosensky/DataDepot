@@ -6,7 +6,8 @@ const Files = () => {
   const [sortOption, setSortOption] = useState('');
 
   return (
-    <div className='w-[80%] mx-auto'>
+    <div className='w-auto mx-auto h-full'>
+      {/*
       <ControlPanel
          fileTypeFilter={fileTypeFilter} 
          setFileTypeFilter={setFileTypeFilter} 
@@ -14,6 +15,7 @@ const Files = () => {
          setSortOption={setSortOption} 
       />
       <div className='border-b mb-8 border-gray-500 mx-4 mt-2'> </div>
+       */}
     </div>
   )
 }
