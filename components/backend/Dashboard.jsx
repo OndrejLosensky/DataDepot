@@ -3,7 +3,6 @@ import '../../src/app/bg.css'
 import RequireAuth from '../../components/auth/RequireAuth';
 import Loading from '../Loading';
 import Image from 'next/image';
-import ThemeController from '../ThemeController';
 import Sidebar from './Sidebar';
 import Head from 'next/head';
 import Files from './Files';
