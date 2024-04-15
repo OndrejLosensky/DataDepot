@@ -115,9 +115,9 @@ const Landing = () => {
   
             <div className="max-w-lg">
               <img
-                src="https://i.imgur.com/5JzWVvz.png"
+                src="/sidebarHidden.svg"
                 alt=""
-                className="w-full"
+                className="w-full hover:scale-150 duration-300"
               />
             </div>
           </div>
@@ -138,9 +138,9 @@ const Landing = () => {
   
             <div className="max-w-lg">
               <img
-                src="https://i.imgur.com/5JzWVvz.png"
+                src="/settings.svg"
                 alt=""
-                className="w-full"
+                className="w-full hover:scale-150 duration-300"
               />
             </div>
           </div>
@@ -161,9 +161,9 @@ const Landing = () => {
   
             <div className="max-w-lg">
               <img
-                src="https://i.imgur.com/5JzWVvz.png"
+                src="/sidebarVisible.svg"
                 alt=""
-                className="w-full"
+                className="w-full hover:scale-150 duration-300"
               />
             </div>
           </div>

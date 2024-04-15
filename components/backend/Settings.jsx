@@ -14,7 +14,7 @@ const Settings = ({ setActiveComponent }) => {
 
   return (
     <div className='overflow-y-auto'>
-      <button onClick={handleGoBack} className='text-gray-200 flex flex-row items-center h-8'> <HiArrowLongLeft className='mr-2 w-6 h-8'/> Back</button>
+      <button onClick={handleGoBack} className='text-gray-200 flex flex-row items-center mt-2 mb-1 h-8'> <HiArrowLongLeft className='mr-2 w-6 h-8'/> Back</button>
       <h1 className='text-4xl text-gray-100 font-semibold'>Account Settings</h1>
       {/*
       <ul className='gap-x-8 flex flex-row text-gray-300 mt-4 nav-links'>
@@ -25,8 +25,8 @@ const Settings = ({ setActiveComponent }) => {
       </ul>
        */}
             <div className='relative border-b mt-4 border-gray-600'>
-                <ul className='flex w-[400px] flex-row justify-between  text-center items-center text-gray-300 mr-8'>
-                    {["Details", "App", "Password", "Delete"].map((name, index) => (
+                <ul className='flex w-[600px] flex-row justify-between  text-center items-center text-gray-300 mr-8'>
+                    {["Details", "App", "Password", "Delete", "Theme", "Backup"].map((name, index) => (
                         <li
                             key={index}
                             className={`py-3 w-[100px] text-center cursor-pointer ${activeTab === index ? 'text-purple-500 border-b border-purple-500' : ''}`}
@@ -130,6 +130,16 @@ const Settings = ({ setActiveComponent }) => {
                     <p className='text-xs font-thin text-gray-300 mt-16'> DataDepot application doesnt gurantee anything about your lost or stolen data!!! </p>
                 </div>
           </div>
+            )}
+            {activeTab === 4 && (
+                <div id='theme' className='mr-8 h-[500px] mt-8 bg-[#21273e] rounded-lg border flex flex-row mb-12 border-[#686868] shadow-xl'>
+                    
+                </div>
+            )}
+            {activeTab === 5 && (
+                <div id='backup' className='mr-8 h-[500px] mt-8 bg-[#21273e] rounded-lg border flex flex-row mb-12 border-[#686868] shadow-xl'>
+                    
+                </div>
             )}
     </div>
   );

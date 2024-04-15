@@ -18,13 +18,13 @@ const Overview = () => {
   
       // Data for passwords chart
       const passwordsData = {
-        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', '7','8', '9', '10'],
         datasets: [
           {
             label: 'Passwords',
-            data: generateRandomData(),
+            data: [0,15,52,469,120,200,300,310,340,356],
             fill: false,
-            borderColor: '#c900ff',
+            borderColor: '#22c55d',
             tension: 0.3,
           },
         ]
@@ -32,26 +32,26 @@ const Overview = () => {
   
       // Data for folders chart
       const foldersData = {
-        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', '7','8','9','10'],
         datasets: [
           {
             label: 'Folders',
-            data: generateRandomData(),
+            data: [0,1,3,5,7,11,12,15,24,1],
             fill: false,
-            borderColor: '#c900ff',
+            borderColor: '#ef4444',
             tension: 0.3,
           },
         ]
       };
   
       const filesData = {
-        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', '7','8', '9', '10'],
         datasets: [
           {
             label: 'Passwords',
-            data: generateRandomData(),
+            data: [1081, 1277, 1508, 1781, 2104, 2488, 2944, 3476,2348,1797]            ,
             fill: false,
-            borderColor: '#c900ff',
+            borderColor: '#22c55d',
             tension: 0.3,
           },
         ]
@@ -152,7 +152,10 @@ const Overview = () => {
                 <div className='bg-gray-700 w-1/3 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 
                     <div className='flex flex-col w-1/2'>
                         <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Files stored</h1>
-                        <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>1797</p>
+                        <div className='flex flex-row items-end'>
+                            <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>1797</p>
+                            <p className='text-sm text-green-500 mb-1 ml-1 '> +18% </p>
+                        </div>
                     </div>
                     <canvas className='p-6  w-1/2' ref={filesChartRef}></canvas>
                 </div>
@@ -160,7 +163,10 @@ const Overview = () => {
                 <div className='bg-gray-700 w-1/3 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 
                     <div className='flex flex-col w-1/2'>
                         <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Passwords stored</h1>
-                        <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>395</p>
+                        <div className='flex flex-row items-end'>
+                            <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>356</p>
+                            <p className='text-sm text-green-500 mb-1 ml-1'> +348% </p>
+                        </div>
                     </div>
                     <canvas className='p-6  w-1/2' ref={passwordsChartRef}></canvas>
                 </div>
@@ -168,7 +174,10 @@ const Overview = () => {
                 <div className='bg-gray-700 w-1/3 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 
                     <div className='flex flex-col w-1/2'>
                         <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Folders stored</h1>
-                        <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>5</p>
+                        <div className='flex flex-row items-end'>
+                            <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>2</p>
+                            <p className='text-sm text-red-500 mb-1 ml-1'> -90% </p>
+                        </div>
                     </div>
                     <canvas className='p-6  w-1/2' ref={foldersChartRef}></canvas>
                 </div>
