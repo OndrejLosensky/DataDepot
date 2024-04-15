@@ -50,8 +50,12 @@ const Settings = ({ setActiveComponent }) => {
                     </div>
                     <div className='w-2/3'>
                         <div className='flex flex-row gap-x-8'>
-                            <Image src="/pf.jpeg" width={150} height={150} className='rounded-full mt-4' />
-                            <button className='text-purple-500 text-xl'> Change </button>
+                            <Image src="/profile_pictures/1.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer border-2 border-purple-500' />
+                            <Image src="/profile_pictures/2.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
+                            <Image src="/profile_pictures/3.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
+                            <Image src="/profile_pictures/4.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
+                            <Image src="/profile_pictures/5.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
+                            <Image src="/profile_pictures/6.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
                         </div>
                         <h2 className='text-gray-200 py-2 text-xl mt-4 font-semibold'> Username</h2>
                         <label className="input input-bordered border-gray-500 mr-12 bg-[#222222] flex items-center gap-2">

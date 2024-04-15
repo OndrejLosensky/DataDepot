@@ -172,7 +172,7 @@ const Overview = () => {
                     </label>
                 </div>
                 <div className='flex flex-row '>
-                    <Image src="/pf.jpeg" width={48} height={48} className='rounded-full border border-gray-400 ml-4 cursor-pointer' />
+                    <Image src="/profile_pictures/1.jpeg" width={48} height={48} className='rounded-full border border-gray-400 ml-4 cursor-pointer' />
                 </div>
             </div>
         </div>
