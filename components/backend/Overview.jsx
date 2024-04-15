@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import Image from 'next/image'
 import Chart from 'chart.js/auto';
 
@@ -9,6 +9,11 @@ const Overview = () => {
     const passwordsChartInstance = useRef(null);
     const foldersChartInstance = useRef(null);
     const filesChartInstance = useRef(null);
+    const [selectedOption, setSelectedOption] = useState('Last 7 days');
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+  };
   
     {/* Top level charts */}
     useEffect(() => {
@@ -18,7 +23,7 @@ const Overview = () => {
   
       // Data for passwords chart
       const passwordsData = {
-        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', '7','8', '9', '10'],
+        labels: ['1','2','3','4','5','6','7','8','9','10'],
         datasets: [
           {
             label: 'Passwords',
@@ -32,7 +37,7 @@ const Overview = () => {
   
       // Data for folders chart
       const foldersData = {
-        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', '7','8','9','10'],
+        labels: ['1','2','3','4','5','6','7','8','9','10'],
         datasets: [
           {
             label: 'Folders',
@@ -45,7 +50,7 @@ const Overview = () => {
       };
   
       const filesData = {
-        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', '7','8', '9', '10'],
+        labels: ['1','2','3','4','5','6','7','8','9','10'],
         datasets: [
           {
             label: 'Passwords',
@@ -124,29 +129,55 @@ const Overview = () => {
     }, []);
     
   return (
-    <div className='w-auto h-full'>
+    <div className='w-auto h-full overflow-hidden'>
         {/* Navbar */}
-        <div className='flex flex-row justify-between h-[10%] items-center'>
+        <div className='flex flex-row justify-between overflow-hidden h-[10%] items-center'>
             <div className='pl-2'>
                 <h1 className='text-2xl text-[#DFDFDF] font-bold'> Overview</h1>
                 <p className='text-gray-400 font-thin'> Main dashboard </p>
             </div>
             <div className='flex flex-row items-center'>
                 <div>
-                <label className="input input-bordered h-10 flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
-                    <input type="text" className="grow w-64" placeholder="Search" />
-                    <kbd className="kbd kbd-sm">⌘</kbd>
-                    <kbd className="kbd kbd-sm">K</kbd>
-                </label>
+                    <button
+                        className={`mr-4 px-2 py-1 ${selectedOption === 'Last 7 days' ? 'bg-purple-500' : 'border border-gray-500'} text-gray-200 rounded-md`}
+                        onClick={() => handleOptionClick('Last 7 days')}
+                    >
+                        Last 7 days
+                    </button>
+                    <button
+                        className={`mr-4 px-2 py-1 ${selectedOption === 'Last 30 days' ? 'bg-purple-500' : 'border border-gray-500'} text-gray-200 rounded-md`}
+                        onClick={() => handleOptionClick('Last 30 days')}
+                    >
+                        Last 30 days
+                    </button>
+                    <button
+                        className={`mr-4 px-2 py-1 ${selectedOption === 'Last 90 days' ? 'bg-purple-500' : 'border border-gray-500'} text-gray-200 rounded-md`}
+                        onClick={() => handleOptionClick('Last 90 days')}
+                    >
+                        Last 90 days
+                    </button>
+                    <button
+                        className={`mr-4 px-2 py-1 ${selectedOption === 'All time' ? 'bg-purple-500' : 'border border-gray-500'} text-gray-200 rounded-md`}
+                        onClick={() => handleOptionClick('All time')}
+                    >
+                        All time
+                    </button>
+                </div>
+                <div>
+                    <label className="input input-bordered h-10 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
+                        <input type="text" className="grow w-64" placeholder="Search" />
+                        <kbd className="kbd kbd-sm">⌘</kbd>
+                        <kbd className="kbd kbd-sm">K</kbd>
+                    </label>
                 </div>
                 <div className='flex flex-row '>
-                <Image src="/pf.jpeg" width={48} height={48} className='rounded-full border border-gray-400 ml-4 cursor-pointer' />
+                    <Image src="/pf.jpeg" width={48} height={48} className='rounded-full border border-gray-400 ml-4 cursor-pointer' />
                 </div>
             </div>
         </div>
         {/* Charts, statistics etc */}
-        <div className='w-full space-y-6 h-[90%] flex flex-col'>
+        <div className='w-full space-y-6 h-[90%] flex flex-col overflow-hidden'>
             {/* Top level */}
             <div className='flex flex-row space-x-6 justify-center h-[20%]'>
                 <div className='bg-gray-700 w-1/3 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 
@@ -213,15 +244,15 @@ const Overview = () => {
                         <div className="flex flex-col space-y-4">
                             <div className="flex items-center justify-between">
                                 <p className="text-gray-300">Overall Storage Usage:</p>
-                                <p className="text-gray-200">65% used</p>
+                                <p className="text-gray-200"><strong>65% </strong>used</p>
                             </div>
                             <div className="flex items-center justify-between">
                                 <p className="text-gray-300">Last Backup:</p>
-                                <p className="text-gray-200">April 10, 2024</p>
+                                <p className="text-gray-200 font-semibold">April 10, 2024</p>
                             </div>
                             <div className="flex items-center justify-between">
                                 <p className="text-gray-300">Account Activity:</p>
-                                <p className="text-gray-200">Recent login from 3 new devices</p>
+                                <p className="text-gray-200 font-semibold">Recent login from 3 new devices</p>
                             </div>
                         </div>
                     </div>
@@ -231,7 +262,7 @@ const Overview = () => {
 
             {/* Bottom level */}
             <div className='h-[45%]'>
-            <div className='w-full bg-gray-700 h-full rounded-lg shadow-lg border border-gray-500'>
+            <div className='w-full bg-gray-700 h-full rounded-lg shadow-lg border border-gray-500 overflow-y-auto'>
                 <div className='flex flex-col'>
                     <div className='flex flex-row py-3 bg-gray-600 w-full justify-between px-4 items-center'> 
                         <h1 className='text-2xl font-bold text-gray-200'>Most Recent Actions</h1>
@@ -240,7 +271,10 @@ const Overview = () => {
                     <div className="">
                         <div className="flex flex-col">
                             <div className="flex items-center bg-[#374151] hover:bg-[#404b5e] duration-300 py-2 px-4 w-full justify-between">
-                                <p className="text-gray-300">Document 1</p>
+                               <div className='flex flex-row items-center'>
+                                    <Image className='w-6 h-6 mr-2' src="/icons/word.svg" height={32} width={32} ></Image>
+                                    <p className="text-gray-300">demo.docx</p>
+                               </div>
                                 <div className="flex space-x-2">
                                     <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">View</button>
                                     <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">Edit</button>
@@ -248,7 +282,10 @@ const Overview = () => {
                                 </div>
                             </div>
                             <div className="flex items-center bg-[#374151] hover:bg-[#404b5e] duration-300  py-2 px-4 w-full justify-between">
-                                <p className="text-gray-300">Document 2</p>
+                                <div className='flex flex-row items-center'>
+                                    <Image className='w-6 h-6 mr-2' src="/icons/word.svg" height={32} width={32} ></Image>
+                                    <p className="text-gray-300">login.docx</p>
+                               </div>
                                 <div className="flex space-x-2">
                                     <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">View</button>
                                     <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">Edit</button>
@@ -256,7 +293,10 @@ const Overview = () => {
                                 </div>
                             </div>
                             <div className="flex items-center bg-[#374151] hover:bg-[#404b5e] duration-300  py-2 px-4 w-full justify-between">
-                                <p className="text-gray-300">Document 3</p>
+                                <div className='flex flex-row items-center'>
+                                        <Image className='w-6 h-6 mr-2' src="/icons/word.svg" height={32} width={32} ></Image>
+                                        <p className="text-gray-300">logs.docx</p>
+                                </div>
                                 <div className="flex space-x-2">
                                     <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">View</button>
                                     <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">Edit</button>
@@ -264,7 +304,10 @@ const Overview = () => {
                                 </div>
                             </div>
                             <div className="flex items-center bg-[#374151] hover:bg-[#404b5e] duration-300  py-2 px-4 w-full justify-between">
-                                <p className="text-gray-300">Document 4</p>
+                                <div className='flex flex-row items-center'>
+                                    <Image className='w-6 h-6 mr-2' src="/icons/word.svg" height={32} width={32} ></Image>
+                                    <p className="text-gray-300">CV.docx</p>
+                               </div>
                                 <div className="flex space-x-2">
                                     <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">View</button>
                                     <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">Edit</button>
@@ -272,13 +315,18 @@ const Overview = () => {
                                 </div>
                             </div>
                             <div className="flex items-center bg-[#374151] hover:bg-[#404b5e] duration-300  py-2 px-4 w-full justify-between">
-                                <p className="text-gray-300">Document 5</p>
+                                <div className='flex flex-row items-center'>
+                                    <Image className='w-6 h-6 mr-2' src="/icons/word.svg" height={32} width={32} ></Image>
+                                    <p className="text-gray-300">Github.docx</p>
+                               </div>
                                 <div className="flex space-x-2">
                                     <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">View</button>
                                     <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">Edit</button>
                                     <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">Delete</button>
                                 </div>
                             </div>
+                            
+                            
                         </div>
                     </div>
                 </div>
