@@ -80,10 +80,10 @@ const Dashboard = () => {
                 </div>
                 <p className='mx-4 px-4 pb-1 pt-6'> Menu</p>
                 <div className='mt-1 space-y-3 flex flex-col '>
-                  <button className={`px-4 py-2  rounded-md mx-4 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Overview' ? 'bg-purple-500' : ''}`} onClick={() => handleComponentClick('Overview')}> <RiDashboard3Line/> Overview </button>
-                  <button className={`px-4 py-2  rounded-md mx-4 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Files' ? 'bg-purple-500' : ''}`} onClick={() => handleComponentClick('Files')}> <LuFiles/> Files </button>
-                  <button className={`px-4 py-2  rounded-md mx-4 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'PasswordManager' ? 'bg-purple-500' : ''}`} onClick={() => handleComponentClick('PasswordManager')}> <MdLockOutline/> Password manager</button>
-                  <button className={`px-4 py-2  rounded-md mx-4 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Analytics' ? 'bg-purple-500' : ''}`} onClick={() => handleComponentClick('Analytics')}> <IoAnalyticsOutline/> Analytics </button>
+                  <button className={`px-4 py-2  rounded-md mx-4 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Overview' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('Overview')}> <RiDashboard3Line/> Overview </button>
+                  <button className={`px-4 py-2  rounded-md mx-4 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Files' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('Files')}> <LuFiles/> Files </button>
+                  <button className={`px-4 py-2  rounded-md mx-4 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'PasswordManager' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('PasswordManager')}> <MdLockOutline/> Password manager</button>
+                  <button className={`px-4 py-2  rounded-md mx-4 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Analytics' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('Analytics')}> <IoAnalyticsOutline/> Analytics </button>
                 </div>
               </div>
               <div className='w-full flex flex-col space-y-2 mb-6'>
