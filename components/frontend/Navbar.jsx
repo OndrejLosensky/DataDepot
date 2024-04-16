@@ -2,6 +2,7 @@ import ThemeController from '../ThemeController'
 import Link from 'next/link';
 import { FaWarehouse } from "react-icons/fa";
 import React, {useEffect, useState} from 'react';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
 function Navbar ({ isDarkMode, toggleTheme }) {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -78,8 +79,9 @@ function Navbar ({ isDarkMode, toggleTheme }) {
         </div>
         <div className="navbar-end mr-32">
           <ul>
-            <button> <Link className={`px-4 py-2  duration-300 ${isDarkMode ? 'text-[#DFDFDF] hover:bg-[#464652]':'text-[#5c5c5c] hover:bg-[#c6c6c6]'} rounded-md mr-2`} href="/auth/login">Log In</Link> </button>
-            <button> <Link className={`px-4 py-2  bg-[#8d45da] hover:bg-[#6c3e9c] duration-300 rounded-md text-[#DFDFDF] mr-8`} href="/auth/register">Sign up</Link> </button>
+            {/*  <button> <Link className={`px-4 py-2  duration-300 ${isDarkMode ? 'text-[#DFDFDF] hover:bg-[#464652]':'text-[#5c5c5c] hover:bg-[#c6c6c6]'} rounded-md mr-2`} href="/auth/login">Log In</Link> </button>
+            <button> <Link className={`px-4 py-2  bg-[#8d45da] hover:bg-[#6c3e9c] duration-300 rounded-md text-[#DFDFDF] mr-8`} href="/auth/register">Sign up</Link> </button> */}
+            <button> <Link className={`px-4 py-2  bg-[#8d45da] hover:bg-[#6c3e9c] flex flex-row items-center duration-300 rounded-lg text-[#DFDFDF] mr-8`} href="/#">Join the Waitlist <FaArrowRightLong className='w-[30px] h-[14px]'/> </Link> </button>
           </ul>
           {/* 
           <ThemeController toggleTheme={toggleTheme} isDarkMode={isDarkMode}/>
