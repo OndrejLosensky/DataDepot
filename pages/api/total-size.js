@@ -5,11 +5,11 @@ export default async function handler(req, res) {
   if (req.method === 'GET') {
     try {
       const db = await open({
-        filename: './db/data.sqlite',
+        filename: './db/test.sqlite',
         driver: sqlite3.Database,
       });
 
-      const result = await db.get('SELECT SUM(size) AS total_size FROM files');
+      const result = await db.get('SELECT SUM (size) AS total_size FROM files');
       const totalSize = result.total_size || 0;
 
       res.status(200).json({ totalSize });

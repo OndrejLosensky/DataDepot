@@ -21,7 +21,7 @@ import { IoAnalyticsOutline } from "react-icons/io5";
 import { RiDashboard3Line } from "react-icons/ri";
 import { MdLockOutline } from "react-icons/md";
 import { IoChevronLeft, IoChevronRight } from 'react-icons/io5';
-
+import ProgressBarRadial from './upload/ProgressBarRadial';
 
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -109,7 +109,7 @@ const Dashboard = () => {
               </div>
             </div>
             <div className='w-full flex flex-col space-y-2 mb-6'>
-              {sidebarVisible && <ProgressBar />}
+              {sidebarVisible ?  (<ProgressBar />) : (<ProgressBarRadial/>)}
               <button onClick={handleLogout} className={`flex items-center ${sidebarVisible ? 'px-4 py-2 mx-5':'mx-4 px-2 py-2'} justify-center bg-[#454545] border border-gray-300 rounded-lg hover:text-gray-50 hover:border-gray-50 hover:bg-[#606060] duration-300`}>
                 <TbLogout2 className={`${sidebarVisible ? 'mr-2':'w-6 h-6'}`} />
                 {sidebarVisible && <span className="text-white">Sign out</span>}

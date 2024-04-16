@@ -49,7 +49,7 @@ const Settings = ({ setActiveComponent }) => {
                         <h2 className='text-3xl font-semibold ml-4 mt-4 text-[#DFDFDF]'> Basic details</h2>
                     </div>
                     <div className='w-2/3'>
-                        <div className='flex flex-row gap-x-8'>
+                        <div className='flex flex-row gap-x-8 mt-10'>
                             <Image src="/profile_pictures/1.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer border-2 border-purple-500' />
                             <Image src="/profile_pictures/2.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
                             <Image src="/profile_pictures/3.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
@@ -57,10 +57,15 @@ const Settings = ({ setActiveComponent }) => {
                             <Image src="/profile_pictures/5.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
                             <Image src="/profile_pictures/6.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
                         </div>
-                        <h2 className='text-gray-200 py-2 text-xl mt-4 font-semibold'> Username</h2>
+                        <h2 className='text-gray-200 py-2 text-xl mt-8 font-semibold'> Username</h2>
                         <label className="input input-bordered border-gray-500 mr-12 bg-[#222222] flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" /></svg>
                             <input type="text" className="grow" placeholder="Username" />
+                        </label>
+                        <h2 className='text-gray-200 py-2 text-xl mt-8 font-semibold'> E-mail address</h2>
+                        <label className="input input-bordered border-gray-500 mr-12 bg-[#222222] flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" /></svg>
+                            <input type="text" className="grow" placeholder="Email" />
                         </label>
                     </div>
                 </div>
@@ -71,14 +76,35 @@ const Settings = ({ setActiveComponent }) => {
                     <h2 className='text-3xl font-semibold ml-4 mt-4 text-[#DFDFDF]'> App settings</h2>
                 </div>
                 <div className='w-2/3'>
-                        <h2 className='text-2xl text-[#DFDFDF] mt-8'> Default color theme <span className='text-sm text-gray-400 font-thin'>(It will load at next login)</span> </h2>
-                        <label className="flex cursor-pointer gap-2 pt-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
-                            <input type="checkbox" value="synthwave" className="toggle theme-controller"/>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                        </label>
-                        <h2 className='text-2xl text-[#DFDFDF] mt-10'> Billing </h2>
-                        <h3 className='text-lg text-gray-200 py-2'> Current plan: <span className='bg-gray-500 px-2 py-1 text-lg text-white rounded-lg'> Pro </span></h3>
+                        <h2 className='text-2xl text-[#DFDFDF] mt-10 mb-2'> Default page on launch </h2>
+                        <div className="form-control w-64">
+                            <label className="label cursor-pointer">
+                                <span className="label-text text-gray-300"> Overview</span> 
+                                <input type="radio" name="radio-10" className="radio checked:bg-purple-500" checked />
+                            </label>
+                        </div>
+                        <div className="form-control w-64">
+                            <label className="label cursor-pointer">
+                                <span className="label-text text-gray-300">File manager</span> 
+                                <input type="radio" name="radio-10" className="radio checked:bg-purple-500"/>
+                            </label>
+                        </div>
+                        <div className="form-control w-64">
+                            <label className="label cursor-pointer">
+                                <span className="label-text text-gray-300">Password manager</span> 
+                                <input type="radio" name="radio-10" className="radio checked:bg-purple-500" />
+                            </label>
+                        </div>
+                        <div className="form-control w-64">
+                            <label className="label cursor-pointer">
+                                <span className="label-text text-gray-300">Analytics</span> 
+                                <input type="radio" name="radio-10" className="radio checked:bg-purple-500" />
+                            </label>
+                        </div>
+
+                        <div className='border-b py-4 border-gray-500'></div>
+                        <h2 className='text-2xl text-[#DFDFDF] mt-8'> Billing </h2>
+                        <h3 className='text-lg text-gray-200 py-2'> Current plan: <span className='bg-gray-500 px-2 py-1 text-lg text-white rounded-lg'> Free </span></h3>
                         <p className='text-gray-300 text-sm'> You can cancel your paid plan anytime! </p>
                         <button className='text-red-400 cursor-pointer underline-offset-4 underline'> cancel subscription</button>
                 </div>
@@ -137,7 +163,13 @@ const Settings = ({ setActiveComponent }) => {
             )}
             {activeTab === 4 && (
                 <div id='theme' className='mr-8 h-[500px] mt-8 bg-[#21273e] rounded-lg border flex flex-row mb-12 border-[#686868] shadow-xl'>
-                    
+                        <h2 className='text-2xl text-[#DFDFDF] mt-8'> Default color theme <span className='text-sm text-gray-400 font-thin'>(It will load at next login)</span> </h2>
+                        <label className="flex cursor-pointer gap-2 pt-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+                            <input type="checkbox" value="synthwave" className="toggle theme-controller"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        </label>
+
                 </div>
             )}
             {activeTab === 5 && (

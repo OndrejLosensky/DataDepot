@@ -45,7 +45,7 @@ const PasswordManager = () => {
          <div className='w-full h-[60%] flex flex-col overflow-hidden'>
           <div className='flex flex-row justify-between items-center'> 
             <h1 className='text-2xl font-semibold text-gray-200'> Password folders</h1>
-            <button className='px-4 py-1 text-gray-200 bg-purple-500 rounded-md shadow-md'> + New folder </button>
+            <button className='px-4 py-1 text-gray-200 bg-purple-500 rounded-md shadow-md hover:bg-purple-600 duration-300'> + New folder </button>
           </div>
 
           <div className='grid grid-cols-4 w-full mt-6 gap-6'>
