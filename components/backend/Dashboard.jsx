@@ -86,7 +86,7 @@ const Dashboard = () => {
               <button onClick={handleLogout}>Confirm</button>
             </div>
           )}
-            <div className={`w-[15%] shadow-lg h-screen relative justify-between bg-[#323232] text-gray-200 flex flex-col duration-200 ${sidebarVisible ? 'w-[15%]' : 'w-[5%]'}`}>
+            <div className={`w-[15%] shadow-lg h-screen sticky left-0 top-0 justify-between bg-[#323232] text-gray-200 flex flex-col duration-200 ${sidebarVisible ? 'w-[15%]' : 'w-[5%]'}`}>
             {/* Toggle sidebar button */}
             <div className="tooltip absolute top-1/2 right-0 tooltip-right" data-tip={toolTipData}>
               <div className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-[#555555] border-gray-500 border text-gray-50 w-6 h-6 rounded-l-lg flex justify-center items-center cursor-pointer" onClick={toggleSidebar}>
@@ -104,7 +104,7 @@ const Dashboard = () => {
               <div className='mt-1 space-y-3 flex flex-col '>
                 <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4 mt-8'} rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Overview' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('Overview')}> <RiDashboard3Line className={`${sidebarVisible ? '':'w-6 h-10'}`} /> {sidebarVisible && 'Overview'} </button>
                 <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'} rounded-md  text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Files' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('Files')}> <LuFiles className={`${sidebarVisible ? '':'w-6 h-10'}`} /> {sidebarVisible && 'Files'} </button>
-                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'PasswordManager' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('PasswordManager')}> <MdLockOutline className={`${sidebarVisible ? '':'w-6 h-10'}`} /> {sidebarVisible && 'Password manager'} </button>
+                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'PasswordManager' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('PasswordManager')}> <MdLockOutline className={`${sidebarVisible ? '':'w-6 h-10'}`} /> {sidebarVisible && 'Passwords'} </button>
                 <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Analytics' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('Analytics')}> <IoAnalyticsOutline className={`${sidebarVisible ? '':'w-6 h-10'}`} /> {sidebarVisible && 'Analytics'} </button>
               </div>
             </div>
