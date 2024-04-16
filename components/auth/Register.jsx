@@ -13,8 +13,6 @@ import { FiAlertCircle } from 'react-icons/fi';
 import { IoCloseSharp } from "react-icons/io5";
 import { FaMale, FaFemale } from "react-icons/fa";
 
-
-
 const Register = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -37,8 +35,7 @@ const Register = () => {
   const [errorAlertVisible, setErrorAlertVisible] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-
+  const [passwordError, setPasswordError] = useState('');
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -79,82 +76,101 @@ const Register = () => {
     setShowConfirmPassword(prevState => !prevState);
   };
 
+  const validatePassword = (password) => {
+    const capitalLetterRegex = /[A-Z]/;
+    const isValidLength = password.length >= 8;
+    const hasCapitalLetter = capitalLetterRegex.test(password);
+    return isValidLength && hasCapitalLetter;
+  };
+
+  const handleContinue = () => {
+    if (password !== confirmPassword) {
+      setPasswordError("Passwords don't match");
+    } else if (!validatePassword(password)) {
+      setPasswordError('Password must be at least 8 characters long with one capital letter');
+    } else {
+      setStep(2);
+      console.log('Validation successful! Proceed to the next step or submit the form.');
+      setPasswordError(" ");
+    }
+  };
+
   const renderStepContent = () => {
     switch (step) {
       case 1:
         return (
-          <div className="flex flex-col  justify-center">
-            <div className='w-full h-16 border-b border-gray-400 items-left flex items-center justify-between px-8'>
-              <p className='text-left text-2xl text-[#DFDFDF]'>Register</p>
-              <Link className='ml-1 px-2 py-2 rounded-full hover:bg-gray-700 duration-300' href="/"><IoCloseSharp className='w-6 h-6 text-[#DFDFDF]'/></Link>
-            </div>
-
-            <h2 className=' text-[#DFDFDF] text-xl font-semibold ml-8 pb-4 pt-10'>Welcome to DataDepot</h2>
-           
-            <div className='items-center flex flex-col'>
+          <div className="flex flex-col justify-center">
+          <div className='w-full h-16 border-b border-gray-400 items-left flex items-center justify-between px-8'>
+            <p className='text-left text-2xl text-[#DFDFDF]'>Register</p>
+            <Link className='ml-1 px-2 py-2 rounded-full hover:bg-gray-700 duration-300' href="/"><IoCloseSharp className='w-6 h-6 text-[#DFDFDF]'/></Link>
+          </div>
+    
+          <div className='mx-8 mt-4 text-center h-6'> {passwordError && <p className="text-red-500 text-xs">{passwordError}</p>} </div>
+          <h2 className='text-[#DFDFDF] text-xl font-semibold ml-8 pb-4 pt-2'>Welcome to DataDepot</h2>
+    
+          <div className='items-center flex flex-col'>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="block bg-[#3D3D3D] text-md w-[85%] border my-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+              placeholder="Your e-mail"
+              required
+            />
+            <div className="relative w-[85%]">
               <input
-                type="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="block bg-[#3D3D3D] text-md w-[85%]  border my-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                placeholder="Your e-mail"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="block bg-[#3D3D3D] text-md w-full border my-2 mt-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                placeholder="Password"
                 required
               />
-                <div className="relative w-[85%]">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="block bg-[#3D3D3D] text-md w-full border my-2 mt-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                    placeholder="Password"
-                    required
-                  />
-                  {showPassword ? (
-                    <FiEyeOff onClick={handleTogglePasswordVisibility} className="absolute right-4 top-[23px] text-gray-400 cursor-pointer" />
-                  ) : (
-                    <FiEye onClick={handleTogglePasswordVisibility} className="absolute right-4 top-[23px] text-gray-400 cursor-pointer" />
-                  )}
-                </div>
-                <div className='relative w-[85%]'>
-                  <input
-                     type={showConfirmPassword ? "text" : "password"}
-                    name="confirmPassword"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="block bg-[#3D3D3D] text-md w-full border my-4 mt-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                    placeholder="Confirm password"
-                    required
-                    />
-                    {showConfirmPassword ? (
-                      <FiEyeOff onClick={handleToggleConfirmPasswordVisibility} className="absolute right-4 top-[23px] text-gray-400 cursor-pointer" />
-                    ) : (
-                      <FiEye onClick={handleToggleConfirmPasswordVisibility} className="absolute right-4 top-[23px] text-gray-400 cursor-pointer" />
-                    )}                                     
-                </div>
-            
-              <button className="py-2 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-6 w-[85%]" onClick={() => setStep(2)}>Continue</button>
-
-              <div className='flex flex-row items-center w-[85%] mt-2 mb-4'>
-                  <div className='w-1/2 mr-2 border-b-[1.5px] h-0 border-gray-500'></div>
-                  <p className='text-xs'> OR</p>
-                  <div className='w-1/2 ml-2 border-b-[1.5px] h-0 border-gray-500'></div>
-              </div>
-
-              <button className='w-[85%] border-[#DFDFDF] hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-2 my-2 flex flex-row items-center justify-center'>
-                <AiFillApple className='absolute left-12 w-7 h-7 mr-2'/> Continue with Apple
-              </button>
-
-              <button className='w-[85%] border-[#DFDFDF] hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-2 my-2 mb-8 flex flex-row items-center justify-center'>
-                Continue with Google
-                <Image src='/icons/google_btn.svg' alt="Google icon" width={28} height={28} className='absolute left-12'/>
-              </button>
-
-
-              <p className='mb-8 mt-2 items-center text-md flex flex-col'>Already have an account? <Link className='font-semibold pt-1 text-blue-500' href="/auth/login"> Login </Link></p>
+              {showPassword ? (
+                <FiEyeOff onClick={handleTogglePasswordVisibility} className="absolute right-4 top-[23px] text-gray-400 cursor-pointer" />
+              ) : (
+                <FiEye onClick={handleTogglePasswordVisibility} className="absolute right-4 top-[23px] text-gray-400 cursor-pointer" />
+              )}
             </div>
+            <div className='relative w-[85%]'>
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                name="confirmPassword"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="block bg-[#3D3D3D] text-md w-full border my-4 mt-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                placeholder="Confirm password"
+                required
+              />
+              {showConfirmPassword ? (
+                <FiEyeOff onClick={handleToggleConfirmPasswordVisibility} className="absolute right-4 top-[23px] text-gray-400 cursor-pointer" />
+              ) : (
+                <FiEye onClick={handleToggleConfirmPasswordVisibility} className="absolute right-4 top-[23px] text-gray-400 cursor-pointer" />
+              )}
+            </div>
+    
+            <button className="py-2 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-6 w-[85%]" onClick={handleContinue}>Continue</button>
+    
+            <div className='flex flex-row items-center w-[85%] mt-2 mb-4'>
+              <div className='w-1/2 mr-2 border-b-[1.5px] h-0 border-gray-500'></div>
+              <p className='text-xs'> OR</p>
+              <div className='w-1/2 ml-2 border-b-[1.5px] h-0 border-gray-500'></div>
+            </div>
+    
+            <button className='w-[85%] border-[#DFDFDF] hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-2 my-2 flex flex-row items-center justify-center'>
+              <AiFillApple className='absolute left-12 w-7 h-7 mr-2'/> Continue with Apple
+            </button>
+    
+            <button className='w-[85%] border-[#DFDFDF] hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-2 my-2 mb-8 flex flex-row items-center justify-center'>
+              Continue with Google
+              <Image src='/icons/google_btn.svg' alt="Google icon" width={28} height={28} className='absolute left-12'/>
+            </button>
+    
+            <p className='mb-8 mt-2 items-center text-md flex flex-col'>Already have an account? <Link className='font-semibold pt-1 text-blue-500' href="/auth/login"> Login </Link></p>
           </div>
+        </div>
         );
       case 2:
         return (

@@ -172,20 +172,21 @@ const Login = () => {
 
 
       {/* Right Side with Form */}
-      <div className="w-1/2 flex justify-center items-center">
+      <div className="w-1/2 relative flex flex-col justify-center items-center">
         {successAlertVisible && (
-          <div role="alert" className={` text-white bg-green-500 absolute top-0 left-0 w-screen py-5 px-4 rounded flex items-center`}>
+          <div role="alert" className={` text-green-500 justify-center w-screen py-5 px-4 rounded flex items-center`}>
             <FaCheckCircle className="mr-2" />
             <span>Login was successfull!</span>
           </div>
         )}
         {errorAlertVisible && (
-        <div role="alert" className={`text-white bg-red-500 absolute top-0 left-0 w-screen py-5 px-4 rounded flex items-center`}>
-          <FiAlertCircle className="mr-2" />
-          <span>Error while logining. Please try again.</span>
-        </div>
-      )}
+            <div role="alert" className={`text-red-500 justify-center w-screen py-5 px-4 rounded flex items-center`}>
+              <FiAlertCircle className="mr-2" />
+              <span>Wrong email / password! Please try again</span>
+            </div>
+          )}
         <div className="w-[450px] bg-[#262626]  shadow-xl bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-2xl">
+          
           {renderStepContent()}
         </div>
       </div>
