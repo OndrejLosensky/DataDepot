@@ -117,7 +117,7 @@ const Landing = () => {
               <img
                 src="/sidebarHidden.svg"
                 alt=""
-                className="w-full hover:scale-150 duration-300"
+                className="w-full"
               />
             </div>
           </div>
@@ -140,7 +140,7 @@ const Landing = () => {
               <img
                 src="/settings.svg"
                 alt=""
-                className="w-full hover:scale-150 duration-300"
+                className="w-full"
               />
             </div>
           </div>
@@ -163,7 +163,7 @@ const Landing = () => {
               <img
                 src="/sidebarVisible.svg"
                 alt=""
-                className="w-full hover:scale-150 duration-300"
+                className="w-full"
               />
             </div>
           </div>
