@@ -4,6 +4,9 @@ Web for DataDepot app. Made in dark mode but light mode supported, documentation
 
 Login and register forms styled to dark mode, in the future they will be integrated with login via Google or Apple. Option to reset password etc.
 
+
+Check out the: [Journey](https://github.com/OndrejLosensky/DataDepot-v1/blob/main/src/app/Journey.md)
+
 ## Features
 * Dark mode
 * Simple animations
