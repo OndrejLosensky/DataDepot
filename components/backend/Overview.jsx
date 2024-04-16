@@ -140,25 +140,25 @@ const Overview = ({ isUserActive}) => {
             <div className='flex flex-row items-center'>
                 <div>
                     <button
-                        className={`mr-4 px-2 py-1 ${selectedOption === 'Last 7 days' ? 'bg-purple-500' : 'border border-gray-500'} text-gray-200 rounded-md`}
+                        className={`mr-4 px-2 py-1 ${selectedOption === 'Last 7 days' ? 'bg-purple-500 border-purple-500' : 'border-gray-500'} border text-gray-200 rounded-md duration-200`}
                         onClick={() => handleOptionClick('Last 7 days')}
                     >
                         Last 7 days
                     </button>
                     <button
-                        className={`mr-4 px-2 py-1 ${selectedOption === 'Last 30 days' ? 'bg-purple-500' : 'border border-gray-500'} text-gray-200 rounded-md`}
+                        className={`mr-4 px-2 py-1 ${selectedOption === 'Last 30 days' ? 'bg-purple-500 border-purple-500' : 'border-gray-500'} border text-gray-200 rounded-md duration-200`}
                         onClick={() => handleOptionClick('Last 30 days')}
                     >
                         Last 30 days
                     </button>
                     <button
-                        className={`mr-4 px-2 py-1 ${selectedOption === 'Last 90 days' ? 'bg-purple-500' : 'border border-gray-500'} text-gray-200 rounded-md`}
+                        className={`mr-4 px-2 py-1 ${selectedOption === 'Last 90 days' ? 'bg-purple-500 border-purple-500' : 'border-gray-500'} border text-gray-200 rounded-md duration-200`}
                         onClick={() => handleOptionClick('Last 90 days')}
                     >
                         Last 90 days
                     </button>
                     <button
-                        className={`mr-4 px-2 py-1 ${selectedOption === 'All time' ? 'bg-purple-500' : 'border border-gray-500'} text-gray-200 rounded-md`}
+                        className={`mr-4 px-2 py-1 ${selectedOption === 'All time' ? 'bg-purple-500 border-purple-500' : 'border-gray-500'} border text-gray-200 rounded-md duration-200`}
                         onClick={() => handleOptionClick('All time')}
                     >
                         All time
