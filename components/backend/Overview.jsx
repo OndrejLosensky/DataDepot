@@ -1,8 +1,9 @@
 import React, {useEffect, useRef, useState} from 'react'
 import Image from 'next/image'
 import Chart from 'chart.js/auto';
+import Profile from './Profile';
 
-const Overview = () => {
+const Overview = ({ isUserActive}) => {
     const passwordsChartRef = useRef(null);
     const foldersChartRef = useRef(null);
     const filesChartRef = useRef(null);
@@ -171,8 +172,8 @@ const Overview = () => {
                         <kbd className="kbd kbd-sm">K</kbd>
                     </label>
                 </div>
-                <div className='flex flex-row '>
-                    <Image src="/profile_pictures/1.jpeg" width={48} height={48} className='rounded-full border border-gray-400 ml-4 cursor-pointer' />
+                <div className='flex flex-row relative'>
+                  <Profile isUserActive={isUserActive}/> 
                 </div>
             </div>
         </div>

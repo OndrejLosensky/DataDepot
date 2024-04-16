@@ -28,6 +28,7 @@ const ProgressBar = () => {
 
   const maxDatabaseSize = 50 * 1024 * 1024;
   const progress = (databaseSize / maxDatabaseSize) * 100;
+  const roundedProgress = Math.round(progress);
 
   let progressBarColor = 'text-green-500';
 
@@ -38,8 +39,8 @@ const ProgressBar = () => {
   }
 
   return (
-    <div className="mb-3 mx-auto p-1 bg-[#484848] rounded-full">
-        <div className={`radial-progress ${progressBarColor}`} style={{"--value":progress, "--size": "2.0rem",}} role="progressbar"></div>
+    <div className="mb-3 mx-auto p-1 bg-[#484848] hover:scale-[1.35] cursor-pointer duration-300 rounded-full">
+        <div className={`radial-progress text-[10px] ${progressBarColor}`} style={{"--value":progress, "--size": "2.7rem",}} role="progressbar"> {roundedProgress}%</div>
     </div>
   );
 };

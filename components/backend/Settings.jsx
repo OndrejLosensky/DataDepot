@@ -44,7 +44,7 @@ const Settings = ({ setActiveComponent }) => {
 
 
             {activeTab === 0 && (
-                <div id='details' className='mr-8 h-[500px] mt-8 bg-[#21273e] rounded-lg border flex flex-row mb-12 border-[#686868] shadow-xl'>
+                <div id='details' className=' h-[500px] mt-8 bg-[#21273e] rounded-lg border flex flex-row mb-12 border-[#686868] shadow-xl'>
                     <div className='w-1/3 m-4'>
                         <h2 className='text-3xl font-semibold ml-4 mt-4 text-[#DFDFDF]'> Basic details</h2>
                     </div>
@@ -71,37 +71,56 @@ const Settings = ({ setActiveComponent }) => {
                 </div>
             )}
             {activeTab === 1 && (
-                <div id='app' className='mr-8 h-[500px] mt-8 bg-[#21273e] rounded-lg border flex flex-row mb-12 border-[#686868] shadow-xl'>
+                <div id='app' className='h-[500px] mt-8 bg-[#21273e] rounded-lg border flex flex-row mb-12 border-[#686868] shadow-xl'>
                 <div className='w-1/3 m-4 '>
                     <h2 className='text-3xl font-semibold ml-4 mt-4 text-[#DFDFDF]'> App settings</h2>
                 </div>
                 <div className='w-2/3'>
-                        <h2 className='text-2xl text-[#DFDFDF] mt-10 mb-2'> Default page on launch </h2>
-                        <div className="form-control w-64">
-                            <label className="label cursor-pointer">
-                                <span className="label-text text-gray-300"> Overview</span> 
-                                <input type="radio" name="radio-10" className="radio checked:bg-purple-500" checked />
-                            </label>
-                        </div>
-                        <div className="form-control w-64">
-                            <label className="label cursor-pointer">
-                                <span className="label-text text-gray-300">File manager</span> 
-                                <input type="radio" name="radio-10" className="radio checked:bg-purple-500"/>
-                            </label>
-                        </div>
-                        <div className="form-control w-64">
-                            <label className="label cursor-pointer">
-                                <span className="label-text text-gray-300">Password manager</span> 
-                                <input type="radio" name="radio-10" className="radio checked:bg-purple-500" />
-                            </label>
-                        </div>
-                        <div className="form-control w-64">
-                            <label className="label cursor-pointer">
-                                <span className="label-text text-gray-300">Analytics</span> 
-                                <input type="radio" name="radio-10" className="radio checked:bg-purple-500" />
-                            </label>
-                        </div>
+                        <div className='w-full flex flex-row mt-10'>
+                            <div className='w-1/2 '>
+                                <h2 className='text-2xl text-[#DFDFDF] mb-2'> Default page on launch </h2>
+                                <div className="form-control w-64">
+                                    <label className="label cursor-pointer">
+                                        <span className="label-text text-gray-300"> Overview</span> 
+                                        <input type="radio" name="radio-10" className="radio checked:bg-purple-500" checked />
+                                    </label>
+                                </div>
+                                <div className="form-control w-64">
+                                    <label className="label cursor-pointer">
+                                        <span className="label-text text-gray-300">File manager</span> 
+                                        <input type="radio" name="radio-10" className="radio checked:bg-purple-500"/>
+                                    </label>
+                                </div>
+                                <div className="form-control w-64">
+                                    <label className="label cursor-pointer">
+                                        <span className="label-text text-gray-300">Password manager</span> 
+                                        <input type="radio" name="radio-10" className="radio checked:bg-purple-500" />
+                                    </label>
+                                </div>
+                                <div className="form-control w-64">
+                                    <label className="label cursor-pointer">
+                                        <span className="label-text text-gray-300">Analytics</span> 
+                                        <input type="radio" name="radio-10" className="radio checked:bg-purple-500" />
+                                    </label>
+                                </div>
+                            </div>
 
+                            <div>
+                                <h2 className='text-2xl text-[#DFDFDF] mb-2'> Sidebar </h2>
+                                <div className="form-control w-64">
+                                <label className="label cursor-pointer">
+                                    <span className="label-text">Opened by default</span> 
+                                    <input type="radio" name="radio-12" className="radio checked:bg-violet-500" checked />
+                                </label>
+                                </div>
+                                <div className="form-control w-64">
+                                <label className="label cursor-pointer">
+                                    <span className="label-text">Closed by default</span> 
+                                    <input type="radio" name="radio-12" className="radio checked:bg-violet-500"/>
+                                </label>
+                                </div>
+                            </div>
+                        </div>
                         <div className='border-b py-4 border-gray-500'></div>
                         <h2 className='text-2xl text-[#DFDFDF] mt-8'> Billing </h2>
                         <h3 className='text-lg text-gray-200 py-2'> Current plan: <span className='bg-gray-500 px-2 py-1 text-lg text-white rounded-lg'> Free </span></h3>
@@ -111,7 +130,7 @@ const Settings = ({ setActiveComponent }) => {
             </div>  
             )}
             {activeTab === 2 && ( 
-                <div id='password' className='mr-8 h-[500px] mt-8 bg-[#21273e] rounded-lg border flex flex-row mb-12 border-[#686868] shadow-xl'>
+                <div id='password' className=' h-[500px] mt-8 bg-[#21273e] rounded-lg border flex flex-row mb-12 border-[#686868] shadow-xl'>
                 <div className='w-1/3 m-4 '>
                     <h2 className='text-3xl font-semibold ml-4 mt-4 text-[#DFDFDF]'> Password</h2>
                 </div>
@@ -147,7 +166,7 @@ const Settings = ({ setActiveComponent }) => {
           </div>
             )}
             {activeTab === 3 && (
-                <div id='delete' className='mr-8 h-[500px] mt-8 bg-[#21273e] rounded-lg border flex flex-row mb-12 border-[#686868] shadow-xl'>
+                <div id='delete' className=' h-[500px] mt-8 bg-[#21273e] rounded-lg border flex flex-row mb-12 border-[#686868] shadow-xl'>
                 <div className='w-1/3 m-4 '>
                     <h2 className='text-3xl font-semibold ml-4 mt-4 text-[#DFDFDF]'> Profile</h2>
                 </div>
@@ -162,19 +181,28 @@ const Settings = ({ setActiveComponent }) => {
           </div>
             )}
             {activeTab === 4 && (
-                <div id='theme' className='mr-8 h-[500px] mt-8 bg-[#21273e] rounded-lg border flex flex-row mb-12 border-[#686868] shadow-xl'>
+                <div id='theme' className=' h-[500px] mt-8 bg-[#21273e] rounded-lg border flex flex-row mb-12 border-[#686868] shadow-xl'>
+                    <div className='w-1/3 m-4 '>
+                        <h2 className='text-3xl font-semibold ml-4 mt-4 text-[#DFDFDF]'> Profile</h2>
+                    </div>
+                    <div className='w-2/3'>
                         <h2 className='text-2xl text-[#DFDFDF] mt-8'> Default color theme <span className='text-sm text-gray-400 font-thin'>(It will load at next login)</span> </h2>
                         <label className="flex cursor-pointer gap-2 pt-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
                             <input type="checkbox" value="synthwave" className="toggle theme-controller"/>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                         </label>
-
-                </div>
+                    </div>
+                 </div>
+                
             )}
             {activeTab === 5 && (
-                <div id='backup' className='mr-8 h-[500px] mt-8 bg-[#21273e] rounded-lg border flex flex-row mb-12 border-[#686868] shadow-xl'>
-                    
+                <div id='backup' className='h-[500px] mt-8 bg-[#21273e] rounded-lg border justify-center items-center flex flex-col mb-12 border-[#686868] shadow-xl'>
+                    <div className='flex opacity-75 mb-2 flex-row justify-center mt-4'>
+                        <Image src="/logo/light.svg" width={32} height={32} />
+                        <p className='pt-1 text-2xl text-gray-100 pl-2'> DataDepot</p>
+                    </div>
+                    <h1 className='text-4xl text-gray-300 font-bold '> Coming soon... </h1>
                 </div>
             )}
     </div>

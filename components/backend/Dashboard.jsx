@@ -22,15 +22,31 @@ import { RiDashboard3Line } from "react-icons/ri";
 import { MdLockOutline } from "react-icons/md";
 import { IoChevronLeft, IoChevronRight } from 'react-icons/io5';
 import ProgressBarRadial from './upload/ProgressBarRadial';
+import { FaUsersCog } from "react-icons/fa";
+import Users from './Users';
 
-const Dashboard = () => {
+const Dashboard = ({isUserActive}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [activeComponent, setActiveComponent] = useState('Overview'); // Default active component
   const router = useRouter();
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [sidebarVisible, setSidebarVisible] = useState(true);
 
-  // Function to toggle the visibility of the sidebar
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      // Check if CMD (Meta) key and H key are pressed simultaneously
+      if (event.ctrlKey && event.key === 'h') {
+        toggleSidebar();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [sidebarVisible]); // Include sidebarVisible in the dependency array if needed
+
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
   };
@@ -86,7 +102,7 @@ const Dashboard = () => {
               <button onClick={handleLogout}>Confirm</button>
             </div>
           )}
-            <div className={`w-[15%] shadow-lg h-screen sticky left-0 top-0 justify-between bg-[#323232] text-gray-200 flex flex-col duration-200 ${sidebarVisible ? 'w-[15%]' : 'w-[5%]'}`}>
+            <div className={`shadow-lg h-screen sticky left-0 top-0 justify-between bg-[#323232] text-gray-200 flex flex-col duration-200 ${sidebarVisible ? 'w-[15%]' : 'w-[5%]'}`}>
             {/* Toggle sidebar button */}
             <div className="tooltip absolute top-1/2 right-0 tooltip-right" data-tip={toolTipData}>
               <div className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-[#555555] border-gray-500 border text-gray-50 w-6 h-6 rounded-l-lg flex justify-center items-center cursor-pointer" onClick={toggleSidebar}>
@@ -96,9 +112,9 @@ const Dashboard = () => {
               </div>
             </div>
             <div>
-              <div className='flex flex-row justify-center mt-4'>
+              <div className='flex flex-row justify-center py-4 border-b border-gray-400'>
                 <Image src="/logo/light.svg" width={32} height={32} />
-                {sidebarVisible && <p className='pt-1 text-2xl text-gray-100 pl-2'> DataDepot</p>}
+                {sidebarVisible && <p className='text-2xl text-gray-100 pl-2'> DataDepot</p>}
               </div>
               {sidebarVisible && <p className='mx-4 px-4 pb-1 pt-6'> Menu</p>}
               <div className='mt-1 space-y-3 flex flex-col '>
@@ -106,6 +122,7 @@ const Dashboard = () => {
                 <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'} rounded-md  text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Files' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('Files')}> <LuFiles className={`${sidebarVisible ? '':'w-6 h-10'}`} /> {sidebarVisible && 'Files'} </button>
                 <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'PasswordManager' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('PasswordManager')}> <MdLockOutline className={`${sidebarVisible ? '':'w-6 h-10'}`} /> {sidebarVisible && 'Passwords'} </button>
                 <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Analytics' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('Analytics')}> <IoAnalyticsOutline className={`${sidebarVisible ? '':'w-6 h-10'}`} /> {sidebarVisible && 'Analytics'} </button>
+                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Users' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('Users')}> <FaUsersCog className={`${sidebarVisible ? '':'w-6 h-10'}`} /> {sidebarVisible && 'Users'} </button>
               </div>
             </div>
             <div className='w-full flex flex-col space-y-2 mb-6'>
@@ -126,9 +143,10 @@ const Dashboard = () => {
             <div className={`m-4 ${sidebarVisible ? 'w-[85%]':'w-[95%]'}`}>
               {activeComponent === 'Files' && <Files />}
               {activeComponent === 'Settings' && <Settings setActiveComponent={setActiveComponent} />}
-              {activeComponent === 'Overview' && <Overview />}
+              {activeComponent === 'Overview' && <Overview isUserActive={isUserActive}/>}
               {activeComponent === 'PasswordManager' && <PasswordManager />}
               {activeComponent === 'Analytics' && <Analytics />}
+              {activeComponent === 'Users' && <Users />}
             </div>
         </div>
       )}

@@ -16,7 +16,7 @@ const Loading = () => {
   return (
     <div className="max-w-screen min-h-screen flex flex-col justify-center items-center text-white"> {/*  bg-gradient-to-br from-blue-950 opacity-75 to-yellow-950 */}
 
-      <div className='flex flex-row items-center py-4 absolute top-24'>
+      <div className='flex flex-row items-center py-4 absolute top-36'>
         <FaWarehouse className={`w-20 mr-2 h-auto text-[#DFDFDF]`}/>
         <p className='mt-4 text-4xl'> DataDepot</p>
       </div>
