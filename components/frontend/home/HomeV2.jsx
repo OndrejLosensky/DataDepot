@@ -55,7 +55,7 @@ const HomeV2 = () => {
           </div>
           <div className='w-[60%] relative '> 
               <div className='rounded-lg'>
-                <img src='/sidebarVisible.svg' alt="dashboard image" className='translate-x-40 pt-12 h-[880px] rounded-lg' />
+                <img src='/sidebarVisible.svg' alt="dashboard image" className='translate-x-60 pt-12 scale-125 h-[880px] rounded-lg' />
               </div>
           </div>
         </div>
