@@ -12,3 +12,6 @@ Today I have found out about Pocketbase which I like and most likely will implem
 Finally today I have added an function to log out when user is AFK. I have implemented it to the **RequireAuth** that renders the Dashboard. Today I did a lot of changes and work done. Including preparations for UsersPage for admin only.
 
 Spent hours today: `5 hours & 30 min`
+
+
+### Day 17.4 2024
