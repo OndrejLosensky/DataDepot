@@ -22,7 +22,7 @@ const Lab = () => {
                         <button className={`px-8 py-2 justify-center rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer duration-300 ${activeComponent === 'stocksApi' ? 'underline underline-offset-8 text-purple-50' : ''}`} onClick={() => handleComponentClick('stocksApi')}> StocksAPI </button>
                     </div>
             </div>
-            <div className='w-[90%] h-full'>
+            <div className='w-[90%] h-full flex justify-center items-center'>
                 {activeComponent === 'getStarted' && <GetStarted />}
                 {activeComponent === 'btcPrice' && <BtcPrice />}
                 {activeComponent === 'stocksApi' && <StocksAPI/>}

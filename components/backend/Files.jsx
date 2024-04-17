@@ -3,7 +3,12 @@ import Profile from './Profile';
 import { IoClose } from "react-icons/io5";
 import Image from 'next/image';
 import { AiOutlineQuestion } from "react-icons/ai";
-
+import { MdOutlineFileDownload } from "react-icons/md";
+import { AiOutlineTag } from "react-icons/ai";
+import { VscOpenPreview } from "react-icons/vsc";
+import { IoShareSocialOutline } from "react-icons/io5";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { FaFilePdf } from "react-icons/fa";
 
 const Files = ({isUserActive}) => {
   const [fileTypeFilter, setFileTypeFilter] = useState('');
@@ -31,7 +36,7 @@ const Files = ({isUserActive}) => {
         </div>
     </div>
     {/* Banner */}
-    <div className='w-full bg-gray-800 h-[34%] flex flex-row overflow-hidden'>
+    <div className='w-full bg-gray-800 h-[19%] flex flex-row overflow-hidden'>
         <div className='w-1/4 flex justify-center items-center'>
           <Image src="/file.svg" width={256} height={256} alt='Icon' className='rounded-full bg-gray-500 m-20 p-4'/>
         </div>
@@ -48,7 +53,7 @@ const Files = ({isUserActive}) => {
     </div>
 
      {/* Passwords (cards with folders) */}
-     <div className='w-full h-[60%] flex flex-col overflow-hidden'>
+     <div className='w-full h-[75%] flex flex-col overflow-hidden'>
       <div className='flex flex-row justify-between items-center'> 
         <h1 className='text-2xl font-semibold text-gray-200'> Files folders</h1>
         <button className='px-4 py-1 text-gray-200 bg-purple-500 rounded-md shadow-md hover:bg-purple-600 duration-300'> + New folder </button>
@@ -56,7 +61,234 @@ const Files = ({isUserActive}) => {
 
       <div className='grid grid-cols-4 w-full mt-6 gap-6'>
         <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
-              
+            <div className='h-[80%] flex flex-col justify-between '>
+                <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
+                   <AiOutlineTag/>
+                   Personal
+                </label>
+                <div className='flex flex-col'>
+                  <div className='flex text-xl flex-row space-x-2 items-center text-gray-100 font-medium'>
+                    <FaFilePdf className='text-red-600 w-10 h-8'/>
+                    filename.pdf
+                  </div>
+                  <p className='ml-2 mt-1 text-gray-300'> Size: 352 KB</p>
+                  <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
+                </div>
+            </div>
+            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+              <VscOpenPreview className='cursor-pointer'/>
+              <AiOutlineTag className='cursor-pointer'/>
+              <MdOutlineFileDownload className='cursor-pointer'/>
+              <IoShareSocialOutline className='cursor-pointer'/>
+              <BsThreeDotsVertical className='cursor-pointer'/>
+            </div>  
+        </div>  
+        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+            <div className='h-[80%] flex flex-col justify-between '>
+                <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
+                   <AiOutlineTag/>
+                   Personal
+                </label>
+                <div className='flex flex-col'>
+                  <div className='flex text-xl flex-row space-x-2 items-center text-gray-100 font-medium'>
+                    <FaFilePdf className='text-red-600 w-10 h-8'/>
+                    filename.pdf
+                  </div>
+                  <p className='ml-2 mt-1 text-gray-300'> Size: 352 KB</p>
+                  <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
+                </div>
+            </div>
+            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+              <VscOpenPreview className='cursor-pointer'/>
+              <AiOutlineTag className='cursor-pointer'/>
+              <MdOutlineFileDownload className='cursor-pointer'/>
+              <IoShareSocialOutline className='cursor-pointer'/>
+              <BsThreeDotsVertical className='cursor-pointer'/>
+            </div>  
+        </div>  
+        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+            <div className='h-[80%] flex flex-col justify-between '>
+                <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
+                   <AiOutlineTag/>
+                   Personal
+                </label>
+                <div className='flex flex-col'>
+                  <div className='flex text-xl flex-row space-x-2 items-center text-gray-100 font-medium'>
+                    <FaFilePdf className='text-red-600 w-10 h-8'/>
+                    filename.pdf
+                  </div>
+                  <p className='ml-2 mt-1 text-gray-300'> Size: 352 KB</p>
+                  <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
+                </div>
+            </div>
+            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+              <VscOpenPreview className='cursor-pointer'/>
+              <AiOutlineTag className='cursor-pointer'/>
+              <MdOutlineFileDownload className='cursor-pointer'/>
+              <IoShareSocialOutline className='cursor-pointer'/>
+              <BsThreeDotsVertical className='cursor-pointer'/>
+            </div>  
+        </div>  
+        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+            <div className='h-[80%] flex flex-col justify-between '>
+                <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
+                   <AiOutlineTag/>
+                   Personal
+                </label>
+                <div className='flex flex-col'>
+                  <div className='flex text-xl flex-row space-x-2 items-center text-gray-100 font-medium'>
+                    <FaFilePdf className='text-red-600 w-10 h-8'/>
+                    filename.pdf
+                  </div>
+                  <p className='ml-2 mt-1 text-gray-300'> Size: 352 KB</p>
+                  <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
+                </div>
+            </div>
+            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+              <VscOpenPreview className='cursor-pointer'/>
+              <AiOutlineTag className='cursor-pointer'/>
+              <MdOutlineFileDownload className='cursor-pointer'/>
+              <IoShareSocialOutline className='cursor-pointer'/>
+              <BsThreeDotsVertical className='cursor-pointer'/>
+            </div>  
+        </div>  
+        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+            <div className='h-[80%] flex flex-col justify-between '>
+                <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
+                   <AiOutlineTag/>
+                   Personal
+                </label>
+                <div className='flex flex-col'>
+                  <div className='flex text-xl flex-row space-x-2 items-center text-gray-100 font-medium'>
+                    <FaFilePdf className='text-red-600 w-10 h-8'/>
+                    filename.pdf
+                  </div>
+                  <p className='ml-2 mt-1 text-gray-300'> Size: 352 KB</p>
+                  <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
+                </div>
+            </div>
+            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+              <VscOpenPreview className='cursor-pointer'/>
+              <AiOutlineTag className='cursor-pointer'/>
+              <MdOutlineFileDownload className='cursor-pointer'/>
+              <IoShareSocialOutline className='cursor-pointer'/>
+              <BsThreeDotsVertical className='cursor-pointer'/>
+            </div>  
+        </div>  
+        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+            <div className='h-[80%] flex flex-col justify-between '>
+                <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
+                   <AiOutlineTag/>
+                   Personal
+                </label>
+                <div className='flex flex-col'>
+                  <div className='flex text-xl flex-row space-x-2 items-center text-gray-100 font-medium'>
+                    <FaFilePdf className='text-red-600 w-10 h-8'/>
+                    filename.pdf
+                  </div>
+                  <p className='ml-2 mt-1 text-gray-300'> Size: 352 KB</p>
+                  <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
+                </div>
+            </div>
+            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+              <VscOpenPreview className='cursor-pointer'/>
+              <AiOutlineTag className='cursor-pointer'/>
+              <MdOutlineFileDownload className='cursor-pointer'/>
+              <IoShareSocialOutline className='cursor-pointer'/>
+              <BsThreeDotsVertical className='cursor-pointer'/>
+            </div>  
+        </div>  
+        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+            <div className='h-[80%] flex flex-col justify-between '>
+                <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
+                   <AiOutlineTag/>
+                   Personal
+                </label>
+                <div className='flex flex-col'>
+                  <div className='flex text-xl flex-row space-x-2 items-center text-gray-100 font-medium'>
+                    <FaFilePdf className='text-red-600 w-10 h-8'/>
+                    filename.pdf
+                  </div>
+                  <p className='ml-2 mt-1 text-gray-300'> Size: 352 KB</p>
+                  <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
+                </div>
+            </div>
+            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+              <VscOpenPreview className='cursor-pointer'/>
+              <AiOutlineTag className='cursor-pointer'/>
+              <MdOutlineFileDownload className='cursor-pointer'/>
+              <IoShareSocialOutline className='cursor-pointer'/>
+              <BsThreeDotsVertical className='cursor-pointer'/>
+            </div>  
+        </div>  
+        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+            <div className='h-[80%] flex flex-col justify-between '>
+                <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
+                   <AiOutlineTag/>
+                   Personal
+                </label>
+                <div className='flex flex-col'>
+                  <div className='flex text-xl flex-row space-x-2 items-center text-gray-100 font-medium'>
+                    <FaFilePdf className='text-red-600 w-10 h-8'/>
+                    filename.pdf
+                  </div>
+                  <p className='ml-2 mt-1 text-gray-300'> Size: 352 KB</p>
+                  <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
+                </div>
+            </div>
+            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+              <VscOpenPreview className='cursor-pointer'/>
+              <AiOutlineTag className='cursor-pointer'/>
+              <MdOutlineFileDownload className='cursor-pointer'/>
+              <IoShareSocialOutline className='cursor-pointer'/>
+              <BsThreeDotsVertical className='cursor-pointer'/>
+            </div>  
+        </div>  
+        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+            <div className='h-[80%] flex flex-col justify-between '>
+                <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
+                   <AiOutlineTag/>
+                   Personal
+                </label>
+                <div className='flex flex-col'>
+                  <div className='flex text-xl flex-row space-x-2 items-center text-gray-100 font-medium'>
+                    <FaFilePdf className='text-red-600 w-10 h-8'/>
+                    filename.pdf
+                  </div>
+                  <p className='ml-2 mt-1 text-gray-300'> Size: 352 KB</p>
+                  <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
+                </div>
+            </div>
+            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+              <VscOpenPreview className='cursor-pointer'/>
+              <AiOutlineTag className='cursor-pointer'/>
+              <MdOutlineFileDownload className='cursor-pointer'/>
+              <IoShareSocialOutline className='cursor-pointer'/>
+              <BsThreeDotsVertical className='cursor-pointer'/>
+            </div>  
+        </div>  
+        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+            <div className='h-[80%] flex flex-col justify-between '>
+                <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
+                   <AiOutlineTag/>
+                   Personal
+                </label>
+                <div className='flex flex-col'>
+                  <div className='flex text-xl flex-row space-x-2 items-center text-gray-100 font-medium'>
+                    <FaFilePdf className='text-red-600 w-10 h-8'/>
+                    filename.pdf
+                  </div>
+                  <p className='ml-2 mt-1 text-gray-300'> Size: 352 KB</p>
+                  <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
+                </div>
+            </div>
+            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+              <VscOpenPreview className='cursor-pointer'/>
+              <AiOutlineTag className='cursor-pointer'/>
+              <MdOutlineFileDownload className='cursor-pointer'/>
+              <IoShareSocialOutline className='cursor-pointer'/>
+              <BsThreeDotsVertical className='cursor-pointer'/>
+            </div>  
         </div>  
       </div>
     </div>
