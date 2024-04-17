@@ -11,7 +11,12 @@ Today I have found out about Pocketbase which I like and most likely will implem
 
 Finally today I have added an function to log out when user is AFK. I have implemented it to the **RequireAuth** that renders the Dashboard. Today I did a lot of changes and work done. Including preparations for UsersPage for admin only.
 
-Spent hours today: `5 hours & 30 min`
+Spent hours today: `5 Hours & 30 min`
 
 
 ### Day 17.4 2024
+On this day I havent done pretty much anything. Primary I added new section called the **Lab** where i can now test components, For users it wont be avaiable. Also I have an Users section that will be only for Admin. 
+
+I updated `Password manager` to have an button that will be generating passwords. Then I have copied the same layout to the `Files` and created an demo look of how the each cart/folder could look like. Now I an few days I would like to implement and beter graphs as a testing in the Lab and Finish the Analytics and Users page UI 's so I can finally start making it work
+
+Spent hours today: `1 Hour & 45 min` 
