@@ -145,10 +145,10 @@ const Dashboard = ({isUserActive}) => {
 
 
             <div className={`m-4 ${sidebarVisible ? 'w-[85%]':'w-[95%]'}`}>
-              {activeComponent === 'Files' && <Files />}
+              {activeComponent === 'Files' && <Files isUserActive={isUserActive} />}
               {activeComponent === 'Settings' && <Settings setActiveComponent={setActiveComponent} />}
               {activeComponent === 'Overview' && <Overview isUserActive={isUserActive}/>}
-              {activeComponent === 'PasswordManager' && <PasswordManager />}
+              {activeComponent === 'PasswordManager' && <PasswordManager isLoading={isUserActive}/>}
               {activeComponent === 'Analytics' && <Analytics />}
               {activeComponent === 'Users' && <Users />}
               {activeComponent === 'Lab' && <Lab/>}

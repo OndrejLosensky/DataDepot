@@ -2,32 +2,35 @@ import React from 'react'
 import Image from 'next/image'
 import { IoClose } from "react-icons/io5";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import { AiOutlineQuestion } from "react-icons/ai";
+import Profile from './Profile';
 
-const PasswordManager = () => {
+const PasswordManager = ({isUserActive}) => {
   return (
     <div className='w-auto h-full overflow-hidden space-y-6 mr-4'>
         {/* Navbar */}
         <div className='flex flex-row justify-between overflow-hidden h-[6%] items-center'>
             <div className='flex flex-row gap-x-4'>
                 <button className='bg-purple-500 text-gray-200 px-4 py-2 rounded-md shadow-md hover:bg-purple-600 duration-300'> + Add Password </button>
+                <button className='border border-gray-300 text-gray-300 px-4 py-2 rounded-md'> Generate Secure Password</button>
                 <div>
                     <label className="input input-bordered h-10 flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
-                        <input type="text" className="grow w-64" placeholder="Search password" />
+                        <input type="text" className="grow w-[400px]" placeholder="Search password" />
                     </label>
                 </div>
             </div>
             <div className='flex flex-row items-center'>
-              
-                <div className='flex flex-row '>
-                    <Image src="/profile_pictures/1.jpeg" width={48} height={48} className='rounded-full border border-gray-400 ml-4 cursor-pointer' />
+                <button> <AiOutlineQuestion className='text-gray-200 bg-[#323232] hover:text-gray-50 duration-300 hover:shadow-xl hover:border-gray-400 border border-transparent w-7 h-7 mr-2 p-1 rounded-full'/></button>
+                <div className='flex flex-row relative'>
+                    <Profile isUserActive={isUserActive}/> 
                 </div>
             </div>
         </div>
         {/* Banner */}
         <div className='w-full bg-gray-800 h-[34%] flex flex-row overflow-hidden'>
             <div className='w-1/4 flex justify-center items-center'>
-              <Image src="/idea.svg" width={256} height={256} alt='Icon' className='rounded-full bg-gray-500 m-24'/>
+              <Image src="/lock.svg" width={256} height={256} alt='Icon' className='rounded-full bg-gray-500 m-20 p-6'/>
             </div>
             <div className='w-3/4 relative justify-center space-y-2 flex flex-col'>
               <button className='absolute right-4 top-4'> <IoClose className='text-gray-200 w-5 h-5'/> </button>
