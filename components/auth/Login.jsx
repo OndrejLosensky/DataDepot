@@ -50,6 +50,7 @@ const Login = () => {
           }, 2000); 
       }
   };
+
   const renderStepContent = () => {
     switch (step) {
       case 1:
@@ -72,6 +73,7 @@ const Login = () => {
                 className="block bg-[#3D3D3D] text-md w-[85%]  border mb-6 my-4 mt-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                 placeholder="Your e-mail"
                 required
+                autoFocus
               />
               <button type="submit" className="py-2 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-6 w-[85%]">
                 Continue
@@ -118,9 +120,10 @@ const Login = () => {
                 name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="block bg-[#3D3D3D] text-md w-full border my-4 mt-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                className="focused block bg-[#3D3D3D] text-md w-full border my-4 mt-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                 placeholder="Password"
                 required
+                autoFocus
               />
               {showPassword ? (
                 <FiEyeOff onClick={handleTogglePasswordVisibility} className="absolute right-4 top-7 text-gray-400 cursor-pointer" />
