@@ -5,6 +5,8 @@ import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { AiOutlineQuestion } from "react-icons/ai";
 import Profile from './Profile';
 import { IoCloseOutline } from "react-icons/io5";
+import GeneratePassword from './GeneratePassword';
+import { BsArrow90DegLeft } from "react-icons/bs";
 
 
 const PasswordManager = ({isUserActive}) => {
@@ -16,6 +18,8 @@ const PasswordManager = ({isUserActive}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [app, setApp] = useState('');
+
+  const [showGeneratePasswordComponent, setShowGeneratePasswordComponent] = useState(false);
 
   useEffect(() => {
     fetchFolders();
@@ -61,14 +65,20 @@ const PasswordManager = ({isUserActive}) => {
   };
 
   const handleAddPasswordSubmit = async () => {
-    // Implement the logic to submit password data to the server
     console.log('Add Password form submitted');
   };
 
 
   return (
     <div className='w-auto h-full overflow-hidden space-y-6 mr-4'>
-        {/* Navbar */}
+        {showGeneratePasswordComponent ? (
+          <div>
+              <button className='flex flex-row items-center px-4 text-gray-200 py-1 bg-gray-700 mb-4 rounded-lg shadow-lg' onClick={() => setShowGeneratePasswordComponent(false)} > <BsArrow90DegLeft className='mr-2'/> Back </button>
+              <GeneratePassword onClose={() => setShowGeneratePasswordComponent(false)}/>
+          </div>
+        ) : (
+          <div className='space-y-6'>
+             {/* Navbar */}
         <div className='flex flex-row justify-between overflow-hidden h-[6%] items-center'>
         <div className='flex flex-row gap-x-4'>
           <button
@@ -77,7 +87,12 @@ const PasswordManager = ({isUserActive}) => {
           >
             + Add Password
           </button>
-          <button className='border border-gray-300 text-gray-300 px-4 py-2 rounded-md'>Generate Secure Password</button>
+          <button
+                onClick={() => setShowGeneratePasswordComponent(true)} // Toggle visibility of GeneratePasswordComponent
+                className='border border-gray-300 text-gray-300 px-4 py-2 rounded-md'
+              >
+                Generate Secure Password
+              </button>
           <div>
             <label className="input input-bordered h-10 flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
@@ -254,6 +269,8 @@ const PasswordManager = ({isUserActive}) => {
           </div>
 
         </div>
+          </div>
+        )}
     </div>
   )
 }
