@@ -148,9 +148,9 @@ const Dashboard = ({isUserActive}) => {
               {activeComponent === 'Files' && <Files isUserActive={isUserActive} />}
               {activeComponent === 'Settings' && <Settings setActiveComponent={setActiveComponent} />}
               {activeComponent === 'Overview' && <Overview isUserActive={isUserActive}/>}
-              {activeComponent === 'PasswordManager' && <PasswordManager isLoading={isUserActive}/>}
+              {activeComponent === 'PasswordManager' && <PasswordManager isUserActive={isUserActive}/>}
               {activeComponent === 'Analytics' && <Analytics />}
-              {activeComponent === 'Users' && <Users />}
+              {activeComponent === 'Users' && <Users/>}
               {activeComponent === 'Lab' && <Lab/>}
             </div>
         </div>
