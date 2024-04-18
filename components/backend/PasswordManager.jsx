@@ -52,11 +52,11 @@ const PasswordManager = ({isUserActive}) => {
           </div>
 
           <div className='grid grid-cols-4 w-full mt-6 gap-6'>
-            <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+            <div className='h-64 bg-[#20263d] rounded-xl border border-gray-500'>
                   <div className='h-2/3 flex justify-center items-center uppercase text-5xl text-gray-300 font-semibold'>
                         Music
                   </div>
-                  <div className='h-1/3 bg-gray-600 border-t rounded-b-xl border-gray-400 flex flex-row justify-between'>
+                  <div className='h-1/3 bg-[#303444] border-t-[0.5px] rounded-b-xl border-gray-500 flex flex-row justify-between'>
                       <div className='flex flex-col p-4' >
                         <h1 className='text-2xl font-bold text-gray-300'> Music players </h1>
                         <p className='font-seminold text-gray-400'> 11 items </p>
@@ -64,11 +64,11 @@ const PasswordManager = ({isUserActive}) => {
                       <button className='flex flex-row items-center m-4 text-gray-200 '> Open <MdOutlineKeyboardDoubleArrowRight className='ml-2' /> </button>
                   </div>
             </div>  
-            <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+            <div className='h-64 bg-[#20263d] rounded-xl border border-gray-500'>
                   <div className='h-2/3 flex justify-center items-center uppercase text-5xl text-gray-300 font-semibold'>
                         Socials
                   </div>
-                  <div className='h-1/3 bg-gray-600 border-t rounded-b-xl border-gray-400 flex flex-row justify-between'>
+                  <div className='h-1/3 bg-[#303444] border-t-[0.5px] rounded-b-xl border-gray-500 flex flex-row justify-between'>
                       <div className='flex flex-col p-4' >
                         <h1 className='text-2xl font-bold text-gray-300'> Social apps </h1>
                         <p className='font-seminold text-gray-400'> 11 items </p>
@@ -76,11 +76,11 @@ const PasswordManager = ({isUserActive}) => {
                       <button className='flex flex-row items-center m-4 text-gray-200 '> Open <MdOutlineKeyboardDoubleArrowRight className='ml-2' /> </button>
                   </div>
             </div>
-            <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+            <div className='h-64 bg-[#20263d] rounded-xl border border-gray-500'>
                   <div className='h-2/3 flex justify-center items-center uppercase text-5xl text-gray-300 font-semibold'>
                         Banks
                   </div>
-                  <div className='h-1/3 bg-gray-600 border-t rounded-b-xl border-gray-400 flex flex-row justify-between'>
+                  <div className='h-1/3 bg-[#303444] border-t-[0.5px] rounded-b-xl border-gray-500 flex flex-row justify-between'>
                       <div className='flex flex-col p-4' >
                         <h1 className='text-2xl font-bold text-gray-300'> Bank apps </h1>
                         <p className='font-seminold text-gray-400'> 11 items </p>

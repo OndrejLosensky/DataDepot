@@ -60,7 +60,7 @@ const Files = ({isUserActive}) => {
       </div>
 
       <div className='grid grid-cols-4 w-full mt-6 gap-6'>
-        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+        <div className='h-64 bg-[#20263d] rounded-xl border border-gray-500'>
             <div className='h-[80%] flex flex-col justify-between '>
                 <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
                    <AiOutlineTag/>
@@ -75,7 +75,7 @@ const Files = ({isUserActive}) => {
                   <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
                 </div>
             </div>
-            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+            <div className='h-[20%] bg-[#303444] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
               <VscOpenPreview className='cursor-pointer'/>
               <AiOutlineTag className='cursor-pointer'/>
               <MdOutlineFileDownload className='cursor-pointer'/>
@@ -83,7 +83,7 @@ const Files = ({isUserActive}) => {
               <BsThreeDotsVertical className='cursor-pointer'/>
             </div>  
         </div>  
-        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+        <div className='h-64 bg-[#20263d] rounded-xl border border-gray-500'>
             <div className='h-[80%] flex flex-col justify-between '>
                 <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
                    <AiOutlineTag/>
@@ -98,7 +98,7 @@ const Files = ({isUserActive}) => {
                   <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
                 </div>
             </div>
-            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+            <div className='h-[20%] bg-[#303444] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
               <VscOpenPreview className='cursor-pointer'/>
               <AiOutlineTag className='cursor-pointer'/>
               <MdOutlineFileDownload className='cursor-pointer'/>
@@ -106,7 +106,7 @@ const Files = ({isUserActive}) => {
               <BsThreeDotsVertical className='cursor-pointer'/>
             </div>  
         </div>  
-        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+        <div className='h-64 bg-[#20263d] rounded-xl border border-gray-500'>
             <div className='h-[80%] flex flex-col justify-between '>
                 <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
                    <AiOutlineTag/>
@@ -121,7 +121,7 @@ const Files = ({isUserActive}) => {
                   <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
                 </div>
             </div>
-            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+            <div className='h-[20%] bg-[#303444] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
               <VscOpenPreview className='cursor-pointer'/>
               <AiOutlineTag className='cursor-pointer'/>
               <MdOutlineFileDownload className='cursor-pointer'/>
@@ -129,7 +129,7 @@ const Files = ({isUserActive}) => {
               <BsThreeDotsVertical className='cursor-pointer'/>
             </div>  
         </div>  
-        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+        <div className='h-64 bg-[#20263d] rounded-xl border border-gray-500'>
             <div className='h-[80%] flex flex-col justify-between '>
                 <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
                    <AiOutlineTag/>
@@ -144,7 +144,7 @@ const Files = ({isUserActive}) => {
                   <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
                 </div>
             </div>
-            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+            <div className='h-[20%] bg-[#303444] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
               <VscOpenPreview className='cursor-pointer'/>
               <AiOutlineTag className='cursor-pointer'/>
               <MdOutlineFileDownload className='cursor-pointer'/>
@@ -152,7 +152,7 @@ const Files = ({isUserActive}) => {
               <BsThreeDotsVertical className='cursor-pointer'/>
             </div>  
         </div>  
-        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+        <div className='h-64 bg-[#20263d] rounded-xl border border-gray-500'>
             <div className='h-[80%] flex flex-col justify-between '>
                 <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
                    <AiOutlineTag/>
@@ -167,7 +167,7 @@ const Files = ({isUserActive}) => {
                   <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
                 </div>
             </div>
-            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+            <div className='h-[20%] bg-[#303444] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
               <VscOpenPreview className='cursor-pointer'/>
               <AiOutlineTag className='cursor-pointer'/>
               <MdOutlineFileDownload className='cursor-pointer'/>
@@ -175,7 +175,7 @@ const Files = ({isUserActive}) => {
               <BsThreeDotsVertical className='cursor-pointer'/>
             </div>  
         </div>  
-        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+        <div className='h-64 bg-[#20263d] rounded-xl border border-gray-500'>
             <div className='h-[80%] flex flex-col justify-between '>
                 <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
                    <AiOutlineTag/>
@@ -190,7 +190,7 @@ const Files = ({isUserActive}) => {
                   <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
                 </div>
             </div>
-            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+            <div className='h-[20%] bg-[#303444] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
               <VscOpenPreview className='cursor-pointer'/>
               <AiOutlineTag className='cursor-pointer'/>
               <MdOutlineFileDownload className='cursor-pointer'/>
@@ -198,7 +198,7 @@ const Files = ({isUserActive}) => {
               <BsThreeDotsVertical className='cursor-pointer'/>
             </div>  
         </div>  
-        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+        <div className='h-64 bg-[#20263d] rounded-xl border border-gray-500'>
             <div className='h-[80%] flex flex-col justify-between '>
                 <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
                    <AiOutlineTag/>
@@ -213,7 +213,7 @@ const Files = ({isUserActive}) => {
                   <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
                 </div>
             </div>
-            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+            <div className='h-[20%] bg-[#303444] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
               <VscOpenPreview className='cursor-pointer'/>
               <AiOutlineTag className='cursor-pointer'/>
               <MdOutlineFileDownload className='cursor-pointer'/>
@@ -221,7 +221,7 @@ const Files = ({isUserActive}) => {
               <BsThreeDotsVertical className='cursor-pointer'/>
             </div>  
         </div>  
-        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+        <div className='h-64 bg-[#20263d] rounded-xl border border-gray-500'>
             <div className='h-[80%] flex flex-col justify-between '>
                 <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
                    <AiOutlineTag/>
@@ -236,7 +236,7 @@ const Files = ({isUserActive}) => {
                   <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
                 </div>
             </div>
-            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+            <div className='h-[20%] bg-[#303444] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
               <VscOpenPreview className='cursor-pointer'/>
               <AiOutlineTag className='cursor-pointer'/>
               <MdOutlineFileDownload className='cursor-pointer'/>
@@ -244,7 +244,7 @@ const Files = ({isUserActive}) => {
               <BsThreeDotsVertical className='cursor-pointer'/>
             </div>  
         </div>  
-        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
+        <div className='h-64 bg-[#20263d] rounded-xl border border-gray-500'>
             <div className='h-[80%] flex flex-col justify-between '>
                 <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
                    <AiOutlineTag/>
@@ -259,7 +259,7 @@ const Files = ({isUserActive}) => {
                   <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
                 </div>
             </div>
-            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
+            <div className='h-[20%] bg-[#303444] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
               <VscOpenPreview className='cursor-pointer'/>
               <AiOutlineTag className='cursor-pointer'/>
               <MdOutlineFileDownload className='cursor-pointer'/>
@@ -267,29 +267,7 @@ const Files = ({isUserActive}) => {
               <BsThreeDotsVertical className='cursor-pointer'/>
             </div>  
         </div>  
-        <div className='h-64 bg-gray-700 rounded-xl border border-gray-500'>
-            <div className='h-[80%] flex flex-col justify-between '>
-                <label className='flex flex-row space-x-2 w-28 px-2 py-1 mt-2 ml-2 rounded-lg text-gray-100 shadow-lg justify-center items-center bg-red-500'>
-                   <AiOutlineTag/>
-                   Personal
-                </label>
-                <div className='flex flex-col'>
-                  <div className='flex text-xl flex-row space-x-2 items-center text-gray-100 font-medium'>
-                    <FaFilePdf className='text-red-600 w-10 h-8'/>
-                    filename.pdf
-                  </div>
-                  <p className='ml-2 mt-1 text-gray-300'> Size: 352 KB</p>
-                  <p className='ml-2 mb-4 text-gray-300'> Date: 17.4.2024 20:01 </p>
-                </div>
-            </div>
-            <div className='h-[20%] bg-[#272e39] text-gray-100 px-5 rounded-b-xl border-t border-gray-600 flex flex-row items-center justify-between'>
-              <VscOpenPreview className='cursor-pointer'/>
-              <AiOutlineTag className='cursor-pointer'/>
-              <MdOutlineFileDownload className='cursor-pointer'/>
-              <IoShareSocialOutline className='cursor-pointer'/>
-              <BsThreeDotsVertical className='cursor-pointer'/>
-            </div>  
-        </div>  
+
       </div>
     </div>
 </div>
