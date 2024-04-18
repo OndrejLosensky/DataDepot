@@ -13,7 +13,7 @@ const Lab = () => {
 
     return (
         <div className='w-full h-full flex flex-row justify-center items-center space-x-4'>
-            <div className='w-[15%] h-full border-r border-gray-400 flex flex-col items-center'>
+            <div className='w-[13%] h-full border-r border-gray-400 flex flex-col items-center'>
                     <h2 className='p-2 text-2xl font-semibold text-center text-gray-200 my-4'> Components </h2>
                     <div className='space-y-3 flex flex-col'>
                         <button className={`px-8 py-2 justify-center rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer duration-300 ${activeComponent === 'getStarted' ? 'underline underline-offset-8 text-purple-50' : ''}`} onClick={() => handleComponentClick('getStarted')}> Get Started </button>

@@ -1,5 +1,6 @@
 // TradingViewWidget.jsx
 import React, { useEffect, useRef, memo } from 'react';
+import { MdOutlineKeyboardArrowLeft,MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 function TradingViewWidget() {
   const container = useRef();
@@ -43,7 +44,7 @@ function TradingViewWidget() {
             ]
           ],
           "chartOnly": false,
-          "width": 1050,
+          "width": 1200,
           "height": 700,
           "locale": "en",
           "colorTheme": "dark",
@@ -81,8 +82,26 @@ function TradingViewWidget() {
   );
 
   return (
-    <div className="tradingview-widget-containers" ref={container}>
-      <div className="tradingview-widget-container__widget"></div>
+    <div className='w-full h-full'>
+      <div className="tradingview-widget-containers" ref={container}>
+        <div className="tradingview-widget-container__widget"></div>
+      </div>
+      <div className="flex space-x-2 mt-16 justify-center items-center">
+          <button
+            type="button"
+            className="inline-flex cursor-pointer items-center justify-center rounded-md bg-purple-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:border-secondary-accent hover:bg-secondary-accent focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:border-secondary disabled:hover:bg-secondary disabled:hover:text-white dark:focus:ring-white/80"
+          >
+            <MdOutlineKeyboardArrowLeft className="mr-2 h-5 w-5" />
+            Prev
+          </button>
+          <button
+            type="button"
+            className="inline-flex cursor-pointer items-center justify-center rounded-md bg-purple-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:border-secondary-accent hover:bg-secondary-accent focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:border-secondary disabled:hover:bg-secondary disabled:hover:text-white dark:focus:ring-white/80"
+          >
+            Next
+            <MdOutlineKeyboardArrowRight className="ml-2 h-5 w-5" />
+          </button>
+        </div>
     </div>
   );
 }
