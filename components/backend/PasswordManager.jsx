@@ -1,32 +1,139 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image'
 import { IoClose } from "react-icons/io5";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { AiOutlineQuestion } from "react-icons/ai";
 import Profile from './Profile';
+import { IoCloseOutline } from "react-icons/io5";
+
 
 const PasswordManager = ({isUserActive}) => {
+  const [folders, setFolders] = useState([]);
+  const [newFolderName, setNewFolderName] = useState('');
+  const [showNewFolderInput, setShowNewFolderInput] = useState(false);
+  const [showAddPasswordInput, setShowAddPasswordInput] = useState(false);
+  const [selectedFolder, setSelectedFolder] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [app, setApp] = useState('');
+
+  useEffect(() => {
+    fetchFolders();
+  }, []);
+
+  const fetchFolders = async () => {
+    try {
+      const response = await fetch('/api/getFolders');
+      if (response.ok) {
+        const data = await response.json();
+        setFolders(data);
+      } else {
+        console.error('Failed to fetch folders:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Failed to fetch folders:', error.message);
+    }
+  };
+
+  const handleNewFolderSubmit = async (e) => {
+    e.preventDefault();
+    if (newFolderName.trim() !== '') {
+      try {
+        const response = await fetch('/api/newFolder', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ folderName: newFolderName }),
+        });
+        if (response.ok) {
+          await fetchFolders(); // Refresh folders after creating new one
+          setNewFolderName('');
+        } else {
+          console.error('Failed to create folder:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Failed to create folder:', error.message);
+      }
+    }
+    setShowNewFolderInput(false); // Close the dropdown after creating the folder
+
+  };
+
+  const handleAddPasswordSubmit = async () => {
+    // Implement the logic to submit password data to the server
+    console.log('Add Password form submitted');
+  };
+
+
   return (
     <div className='w-auto h-full overflow-hidden space-y-6 mr-4'>
         {/* Navbar */}
         <div className='flex flex-row justify-between overflow-hidden h-[6%] items-center'>
-            <div className='flex flex-row gap-x-4'>
-                <button className='bg-purple-500 text-gray-200 px-4 py-2 rounded-md shadow-md hover:bg-purple-600 duration-300'> + Add Password </button>
-                <button className='border border-gray-300 text-gray-300 px-4 py-2 rounded-md'> Generate Secure Password</button>
-                <div>
-                    <label className="input input-bordered h-10 flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
-                        <input type="text" className="grow w-[400px]" placeholder="Search password" />
-                    </label>
-                </div>
-            </div>
-            <div className='flex flex-row items-center'>
-                <button> <AiOutlineQuestion className='text-gray-200 bg-[#323232] hover:text-gray-50 duration-300 hover:shadow-xl hover:border-gray-400 border border-transparent w-7 h-7 mr-2 p-1 rounded-full'/></button>
-                <div className='flex flex-row relative'>
-                    <Profile isUserActive={isUserActive}/> 
-                </div>
-            </div>
+        <div className='flex flex-row gap-x-4'>
+          <button
+            onClick={() => setShowAddPasswordInput(!showAddPasswordInput)}
+            className='bg-purple-500 text-gray-200 px-4 py-2 rounded-md shadow-md hover:bg-purple-600 duration-300'
+          >
+            + Add Password
+          </button>
+          <button className='border border-gray-300 text-gray-300 px-4 py-2 rounded-md'>Generate Secure Password</button>
+          <div>
+            <label className="input input-bordered h-10 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
+              <input type="text" className="grow w-[400px]" placeholder="Search password" />
+            </label>
+          </div>
         </div>
+        <div className='flex flex-row items-center'>
+          <button> <AiOutlineQuestion className='text-gray-200 bg-[#323232] hover:text-gray-50 duration-300 hover:shadow-xl hover:border-gray-400 border border-transparent w-7 h-7 mr-2 p-1 rounded-full' /></button>
+          <div className='flex flex-row relative'>
+            <Profile isUserActive={isUserActive} />
+          </div>
+        </div>
+      </div>
+
+        {showAddPasswordInput && (
+        <div className='flex flex-col items-center'>
+          <select
+            className="p-2 border rounded-md"
+            value={selectedFolder}
+            onChange={(e) => setSelectedFolder(e.target.value)}
+          >
+            <option value="">Select Folder</option>
+            {folders.map(folder => (
+              <option key={folder.id} value={folder.id}>{folder.name}</option>
+            ))}
+          </select>
+          <input
+            type='text'
+            placeholder='Enter username'
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className='mt-2 p-2 border rounded-md'
+          />
+          <input
+            type='password'
+            placeholder='Enter password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className='mt-2 p-2 border rounded-md'
+          />
+          <input
+            type='text'
+            placeholder='Enter app'
+            value={app}
+            onChange={(e) => setApp(e.target.value)}
+            className='mt-2 p-2 border rounded-md'
+          />
+          <button
+            onClick={handleAddPasswordSubmit}
+            className='mt-2 px-4 py-2 bg-purple-500 text-gray-200 rounded-md shadow-md hover:bg-purple-600 duration-300'
+          >
+            Add Password
+          </button>
+        </div>
+      )}
         {/* Banner */}
         <div className='w-full bg-gray-800 h-[34%] flex flex-row overflow-hidden'>
             <div className='w-1/4 flex justify-center items-center'>
@@ -46,12 +153,67 @@ const PasswordManager = ({isUserActive}) => {
 
          {/* Passwords (cards with folders) */}
          <div className='w-full h-[60%] flex flex-col overflow-hidden'>
-          <div className='flex flex-row justify-between items-center'> 
-            <h1 className='text-2xl font-semibold text-gray-200'> Password folders</h1>
-            <button className='px-4 py-1 text-gray-200 bg-purple-500 rounded-md shadow-md hover:bg-purple-600 duration-300'> + New folder </button>
+         <div className='flex flex-row justify-between items-center'> 
+          <h1 className='text-2xl font-semibold text-gray-200'> Password folders</h1>
+          <div className='relative'>
+            <button
+              onClick={() => setShowNewFolderInput(!showNewFolderInput)}
+              className='px-4 py-1 text-gray-200 bg-purple-500 rounded-md shadow-md hover:bg-purple-600 duration-300'
+            >
+              + New folder
+            </button>
+            {/* Container for input and button */}
+            {showNewFolderInput && (
+              <div className='absolute bg-[#41434e] top-full right-0 p-2 mt-2 rounded-lg shadow-lg z-10'>
+                <div className='flex flex-row justify-between items-center'>
+                  <p className='font-light text-sm text-gray-300'> Create new folder</p>
+                  <IoCloseOutline className='text-gray-200 hover:bg-gray-600 '  onClick={() => setShowNewFolderInput(!showNewFolderInput)}/>
+                </div>
+                <div className='flex flex-col items-center'>
+                  <input
+                    type='text'
+                    placeholder='Enter folder name'
+                    value={newFolderName}
+                    onChange={(e) => setNewFolderName(e.target.value)}
+                    className='mt-2 p-1 text-sm border rounded-md'
+                  />
+                  <button
+                    type='submit'
+                    onClick={handleNewFolderSubmit}
+                    className='mt-2 px-2 py-1 text-sm w-full bg-purple-500 text-gray-200 rounded-md shadow-md hover:bg-purple-600 duration-300'
+                  >
+                    Create Folder
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
           </div>
 
+
           <div className='grid grid-cols-4 w-full mt-6 gap-6'>
+          {folders.map((folder) => (
+            <div key={folder.id} className='h-64 bg-[#20263d] rounded-xl border border-gray-500'>
+              <div className='h-2/3 flex justify-center items-center uppercase text-5xl text-gray-300 font-semibold'>
+                {folder.name}
+              </div>
+              <div className='h-1/3 bg-[#303444] border-t-[0.5px] rounded-b-xl border-gray-500 flex flex-col justify-between'>
+                <div className='flex flex-row justify-between items-center p-4'>
+                  <div className='flex flex-col'>
+                    <h1 className='text-2xl font-semibold text-gray-300'>{folder.name} passwords</h1>
+                    <p className='text-gray-400'>{folder.passwordCount} items</p>
+                  </div>
+                  <button className='flex items-center justify-center rounded-full text-gray-200 bg-transparent  hover:bg-gray-600 duration-300'>
+                  <MdOutlineKeyboardDoubleArrowRight className='text-4xl' />
+                </button>
+                  
+                </div>
+              </div>
+            </div>
+          ))}
+
+
+            {/* 
             <div className='h-64 bg-[#20263d] rounded-xl border border-gray-500'>
                   <div className='h-2/3 flex justify-center items-center uppercase text-5xl text-gray-300 font-semibold'>
                         Music
@@ -88,6 +250,7 @@ const PasswordManager = ({isUserActive}) => {
                       <button className='flex flex-row items-center m-4 text-gray-200 '> Open <MdOutlineKeyboardDoubleArrowRight className='ml-2' /> </button>
                   </div>
             </div>    
+            */}
           </div>
 
         </div>
