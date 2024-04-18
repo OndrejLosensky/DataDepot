@@ -264,7 +264,7 @@ const Overview = ({ isUserActive}) => {
 
             {/* Bottom level */}
             <div className='h-[45%]'>
-            <div className='w-full  bg-[#20263d] h-full rounded-lg shadow-lg border border-gray-500 overflow-y-auto'>
+            <div className='w-full  bg-[#20263d] h-full  justify-center items-center flex flex-col rounded-lg shadow-lg border border-gray-500 overflow-y-auto'>
                 {/* 
                 <div className='flex flex-col'>
                     <div className='flex flex-row py-3 bg-[#191e31]  w-full justify-between px-4 items-center'> 
@@ -334,6 +334,11 @@ const Overview = ({ isUserActive}) => {
                     </div>
                 </div>
                 */}
+                    <div className='flex opacity-95 mb-2 flex-row justify-center items-center mt-4'>
+                        <Image src="/logo/light.svg" width={32} height={32} />
+                        <p className='pt-1 text-2xl text-gray-100 pl-2'> DataDepot</p>
+                    </div>
+                    <h1 className='text-xl text-gray-300 font-light text-center '> Coming soon... </h1>
             </div>
 
             </div>
