@@ -35,3 +35,12 @@ Also the Overview component was merged into the Analytics.
 Spent hours today: `3 Hours `
 
 ---
+
+
+## Day 19.4. 2024
+
+Today I created an BTC graph using **Chart.js** So i could learn about using it for the analytics. The btc graph is inside the Lab. Then I added new button that will be for switch files or passwords layout. And the main thing I did was creating new more simple UI for the LoginPage that I will finish soon. 
+
+Also I found some inspiration how to adjust the whole UI inside the dashboard. More updates coming soon. This is **4th day** in a row that I added to this file.
+
+Spent hours today: `1 Hour 57 min`
