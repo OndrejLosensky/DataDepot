@@ -11,6 +11,8 @@ import { FaCheckCircle } from 'react-icons/fa';
 import { FiAlertCircle } from 'react-icons/fi';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { IoCloseSharp } from "react-icons/io5";
+import { FaWarehouse } from "react-icons/fa";
+import { BsArrow90DegLeft } from "react-icons/bs";
 
 
 const Login = () => {
@@ -55,62 +57,77 @@ const Login = () => {
     switch (step) {
       case 1:
         return (
-          <div className="flex flex-col  justify-center">
-            <div className='w-full h-16 border-b border-gray-400 items-left flex items-center justify-between px-8'>
-              <p className='text-left text-2xl text-[#DFDFDF]'>Login</p>
-              <Link className='ml-1 px-2 py-2 rounded-full hover:bg-gray-700 duration-300' href="/"><IoCloseSharp className='w-6 h-6 text-[#DFDFDF]'/></Link>
+          <div className="flex flex-col h-full items-center justify-between">
+            <div className="flex flex-row space-x-1 mt-12">
+              <FaWarehouse className='w-10 mr-2 h-auto text-[#DFDFDF]'/>
+              <h2 className='text-2xl pt-2 text-[#DFDFDF]'> DataDepot – Sign in </h2>
             </div>
 
-            <h2 className=' text-[#DFDFDF] text-xl font-semibold ml-8 pt-10'>Welcome to DataDepot</h2>
-           
-           <div className='items-center flex flex-col'>
-           <form className='w-full justify-center flex flex-col items-center' onSubmit={(e) => { e.preventDefault(); setStep(2); }}>
-              <input
-                type="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="block bg-[#3D3D3D] text-md w-[85%]  border mb-6 my-4 mt-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                placeholder="Your e-mail"
-                required
-                autoFocus
-              />
-              <button type="submit" className="py-2 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-6 w-[85%]">
-                Continue
-              </button>
-            </form>
-            <div className='flex flex-row items-center w-[85%] mt-2 mb-4'>
-              <div className='w-1/2 mr-2 border-b-[1.5px] h-0 border-gray-500'></div>
-              <p className='text-xs'> OR</p>
-              <div className='w-1/2 ml-2 border-b-[1.5px] h-0 border-gray-500'></div>
+            {/* Login */}
+            <div className='w-2/4 flex flex-col'>
+              <Link className='ml-1 absolute left-2 top-2 px-4 py-2 rounded-full hover:bg-gray-700 duration-300 flex flex-row items-center' href="/"><BsArrow90DegLeft className='w-4 h-4 mr-2 text-[#DFDFDF]'/> Back </Link>
+                <h2 className=' text-[#DFDFDF] text-3xl text-center font-semibold pt-10'>Welcome Back</h2>
+                <p className='text-center font-light mt-1'> Please enter your login credentials or create new account </p>
+              
+              <div className='items-center flex flex-col'>
+              <form className='w-full justify-center flex flex-col items-center' onSubmit={(e) => { e.preventDefault(); setStep(2); }}>
+                  <input
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="block bg-[#3D3D3D] text-md w-full  border mb-6 my-4 mt-4 px-2 py-3 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                    placeholder="Your e-mail"
+                    required
+                    autoFocus
+                  />
+                  <button type="submit" className="py-3 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-6 w-full">
+                    Continue
+                  </button>
+                </form>
+                <div className='flex flex-row items-center mx-auto w-full justify-center mt-2 mb-4'>
+                  <div className='w-1/2 mr-2 border-b-[1.5px] h-0 border-gray-500'></div>
+                  <p className='text-xs'> OR</p>
+                  <div className='w-1/2 ml-2 border-b-[1.5px] h-0 border-gray-500'></div>
+                </div>
+
+
+               <div className='flex flex-row w-full space-x-4'>
+                <button className='w-full relative border-[#DFDFDF] text-sm hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-3 my-2 flex flex-row items-center justify-between px-6'>
+                    <AiFillApple className=' w-7 h-7 mr-2'/> Continue with Apple
+                  </button>
+
+                  <button className='w-full relative border-[#DFDFDF] text-sm hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-3 my-2 flex flex-row items-center justify-between px-6'>
+                    <Image src='/icons/google_btn.svg' alt="Google icon" width={28} height={28} className=''/>
+                    Continue with Google
+                  </button>
+               </div>
+
+
+                <p className='mb-8 mt-6 text-md flex flex-col items-center '>New to DataDepot? <Link className='font-semibold pt-1 text-blue-500' href="/auth/register"> Sign Up</Link></p>
+              </div>
             </div>
 
-
-            <button className='w-[85%] border-[#DFDFDF] hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-2 my-2 flex flex-row items-center justify-center'>
-              <AiFillApple className='absolute left-12 w-7 h-7 mr-2'/> Continue with Apple
-            </button>
-
-            <button className='w-[85%] border-[#DFDFDF] hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-2 my-2 mb-8 flex flex-row items-center justify-center'>
-              Continue with Google
-              <Image src='/icons/google_btn.svg' alt="Google icon" width={28} height={28} className='absolute left-12'/>
-            </button>
-
-
-            <p className='mb-8 mt-2 text-md flex flex-col items-center '>New to DataDepot? <Link className='font-semibold pt-1 text-blue-500' href="/auth/register"> Sign Up</Link></p>
-           </div>
+            <div className='mb-8'>
+              <p>Join DataDepot for free!</p>
+            </div>
+            
           </div>
         );
       case 2:
         return (
-          <div className="flex flex-col  justify-center">
-            <div className='w-full h-16 border-b border-gray-400 items-left flex items-center justify-between px-8'>
-              <p className='text-left text-2xl text-[#DFDFDF]'>Login</p>
-              <Link className='ml-1 px-2 py-2 rounded-full hover:bg-gray-700 duration-300' href="/"><IoCloseSharp className='w-6 h-6 text-[#DFDFDF]'/></Link>
+          <div className="flex flex-col h-full items-center justify-between">
+            <div className="flex flex-row space-x-1 mt-12">
+              <FaWarehouse className='w-10 mr-2 h-auto text-[#DFDFDF]'/>
+              <h2 className='text-2xl pt-2 text-[#DFDFDF]'> DataDepot  – Sign in  </h2>
             </div>
 
+            {/* Login */}
+            <div className='w-2/4 flex flex-col'>
+            <Link className='ml-1 absolute left-2 top-2 px-4 py-2 rounded-full hover:bg-gray-700 duration-300 flex flex-row items-center' href="/"><BsArrow90DegLeft className='w-4 h-4 mr-2 text-[#DFDFDF]'/> Back </Link>
 
-            <h2 className=' text-[#DFDFDF] text-xl font-semibold ml-8 pt-8'>Enter your password</h2>
-           
+            <h2 className=' text-[#DFDFDF] text-2xl font-semibold pt-10 mb-1 text-center'>Enter your password</h2>
+
            <div className='items-center flex flex-col'>
             
            <form className='flex flex-col w-full items-center' onSubmit={handleLogin}>
@@ -149,7 +166,12 @@ const Login = () => {
 
 
             <p className='mb-8 text-sm'>Forgot password? Create new <span className='underline text-blue-500'>here</span></p>
-           </div>
+            </div>
+
+            </div>
+            <div className='mb-8'>
+              <p>Join DataDepot for free!</p>
+            </div>
           </div>
         );
       default:
@@ -188,7 +210,7 @@ const Login = () => {
               <span>Wrong email / password! Please try again</span>
             </div>
           )}
-        <div className="w-[450px] bg-[#262626]  shadow-xl bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-2xl">
+        <div className="w-full h-full mx-auto backdrop-filter backdrop-blur-lg rounded-2xl">
           
           {renderStepContent()}
         </div>
