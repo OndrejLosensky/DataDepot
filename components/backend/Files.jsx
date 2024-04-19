@@ -25,7 +25,7 @@ const Files = ({isUserActive}) => {
   return (
     <div className='w-auto h-full overflow-hidden space-y-6 mr-4'>
     {/* Navbar */}
-    <div className='flex flex-row justify-between overflow-hidden h-[6%] items-center'>
+    <div className='flex flex-row justify-between overflow-hidden h-[4%] items-center'>
         <div className='flex flex-row gap-x-4'>
             <button className='bg-purple-500 text-gray-200 px-4 py-2 rounded-md shadow-md hover:bg-purple-600 duration-300'> + Add File</button>
             <div>
@@ -46,7 +46,7 @@ const Files = ({isUserActive}) => {
     {/* Banner */}
     <div className='w-full bg-gray-800 h-[19%] flex flex-row overflow-hidden'>
         <div className='w-1/4 flex justify-center items-center'>
-          <Image src="/file.svg" width={256} height={256} alt='Icon' className='rounded-full bg-gray-500 m-20 p-4'/>
+          <Image src="/file.svg" width={256} height={256} alt='Icon' className='rounded-full bg-gray-500 m-24 p-4'/>
         </div>
         <div className='w-3/4 relative justify-center space-y-2 flex flex-col'>
           <button className='absolute right-4 top-4'> <IoClose className='text-gray-200 w-5 h-5'/> </button>
@@ -54,8 +54,8 @@ const Files = ({isUserActive}) => {
           <p className='font-light text-gray-300'> You can store your documents, zip files and many more here and make them as much as organized as you like </p>
           <br />
           <div className='flex flex-row space-x-6'>
-              <button className='px-4 py-2 bg-purple-500 text-gray-200 rounded-md shadow-md'> See how it works</button>
-              <button className='text-gray-300 px-4 py-2 border border-gray-200 rounded-md'> Maybe later</button>
+              <button className='px-4 py-2 bg-purple-500 text-gray-200 hover:bg-purple-600 duration-300 rounded-md shadow-md'> See how it works</button>
+              <button className='text-gray-300 px-4 py-2 border border-gray-300 hover:bg-gray-300 hover:text-gray-800 duration-500 rounded-md'> Maybe later</button>
           </div>
         </div>
     </div>

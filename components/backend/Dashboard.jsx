@@ -106,7 +106,7 @@ const Dashboard = ({isUserActive}) => {
             <div className={`shadow-lg h-screen border-r-[0.3px] border-gray-600 sticky left-0 top-0 justify-between bg-[#2d2f36] text-gray-200 flex flex-col duration-200 ${sidebarVisible ? 'w-[15%]' : 'w-[5%]'}`}>
             {/* Toggle sidebar button */}
             <div className={`tooltip absolute ${sidebarVisible ? 'translate-x-0':'translate-x-0'} duration-300 right-0 top-1/2 tooltip-right`} data-tip={toolTipData}>
-              <div className={`absolute top-1/2 right-0 transform -translate-y-1/2 bg-[#555555] border-gray-500 border text-gray-50 w-6 h-6 ${sidebarVisible ? 'rounded-l-lg':'rounded-r-lg'} flex justify-center items-center cursor-pointer`} onClick={toggleSidebar}>
+              <div className={`absolute top-1/2 right-0 transform -translate-y-1/2 bg-[#555555] border-gray-500 border text-gray-50 w-6 h-6 ${sidebarVisible ? 'rounded-l-lg':'rounded-l-lg'} flex justify-center items-center cursor-pointer`} onClick={toggleSidebar}>
                 <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 ${sidebarVisible ? 'rotate-0 duration-500' : 'rotate-180 duration-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
