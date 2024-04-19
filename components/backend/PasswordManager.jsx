@@ -7,7 +7,9 @@ import Profile from './Profile';
 import { IoCloseOutline } from "react-icons/io5";
 import GeneratePassword from './GeneratePassword';
 import { BsArrow90DegLeft } from "react-icons/bs";
-
+import { MdFormatListBulleted } from "react-icons/md";
+import { LuLayoutGrid } from "react-icons/lu";
+import { FaCheck } from 'react-icons/fa'; // Import the check icon
 
 const PasswordManager = ({isUserActive}) => {
   const [folders, setFolders] = useState([]);
@@ -20,6 +22,14 @@ const PasswordManager = ({isUserActive}) => {
   const [app, setApp] = useState('');
 
   const [showGeneratePasswordComponent, setShowGeneratePasswordComponent] = useState(false);
+
+  const [selectedIcon, setSelectedIcon] = useState('list'); 
+
+  const handleIconClick = (icon) => {
+    setSelectedIcon(icon);
+  };
+
+
 
   useEffect(() => {
     fetchFolders();
@@ -170,7 +180,25 @@ const PasswordManager = ({isUserActive}) => {
          <div className='w-full h-[60%] flex flex-col overflow-hidden'>
          <div className='flex flex-row justify-between items-center'> 
           <h1 className='text-2xl font-semibold text-gray-200'> Password folders</h1>
-          <div className='relative'>
+          <div className='relative flex flex-row space-x-4'>
+            <div className='flex flex-row w-36 justify-between items-center border border-gray-400 rounded-xl'>
+              <div 
+                className={`w-1/2 flex flex-row items-center justify-center space-x-2 border-r py-2 rounded-l-xl px-3 cursor-pointer duration-300 ${selectedIcon === 'list' ? 'bg-gray-600' : ''}`}
+                onClick={() => handleIconClick('list')}
+              >
+                {selectedIcon === 'list' && <FaCheck className="text-purple-500 w-3 h-3 ml-1" />} 
+                <MdFormatListBulleted className='w-5 h-5'/>
+              </div>
+
+              <div 
+                className={`px-3 py-2 w-1/2 flex flex-row items-center justify-center space-x-2 rounded-r-xl cursor-pointer duration-300 ${selectedIcon === 'grid' ? 'bg-gray-600' : ''}`}
+                onClick={() => handleIconClick('grid')}
+              >
+                {selectedIcon === 'grid' && <FaCheck className="text-purple-500 w-3 h-3 ml-1" />}
+                <LuLayoutGrid className='w-5 h-5'/>
+              </div>
+            </div>
+
             <button
               onClick={() => setShowNewFolderInput(!showNewFolderInput)}
               className='px-4 py-1 text-gray-200 bg-purple-500 rounded-md shadow-md hover:bg-purple-600 duration-300'

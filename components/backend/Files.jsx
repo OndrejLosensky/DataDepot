@@ -9,10 +9,18 @@ import { VscOpenPreview } from "react-icons/vsc";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaFilePdf } from "react-icons/fa";
+import { MdFormatListBulleted } from "react-icons/md";
+import { LuLayoutGrid } from "react-icons/lu";
+import { FaCheck } from 'react-icons/fa'; 
 
 const Files = ({isUserActive}) => {
   const [fileTypeFilter, setFileTypeFilter] = useState('');
   const [sortOption, setSortOption] = useState('');
+  const [selectedIcon, setSelectedIcon] = useState('list'); 
+
+  const handleIconClick = (icon) => {
+    setSelectedIcon(icon);
+  };
 
   return (
     <div className='w-auto h-full overflow-hidden space-y-6 mr-4'>
@@ -56,7 +64,27 @@ const Files = ({isUserActive}) => {
      <div className='w-full h-[75%] flex flex-col overflow-hidden'>
       <div className='flex flex-row justify-between items-center'> 
         <h1 className='text-2xl font-semibold text-gray-200'> Files folders</h1>
-        <button className='px-4 py-1 text-gray-200 bg-purple-500 rounded-md shadow-md hover:bg-purple-600 duration-300'> + New folder </button>
+        <div className='flex flex-row items-center space-x-4'>
+          <div className='flex flex-row w-36 justify-between items-center border border-gray-400 rounded-xl'>
+              <div 
+                className={`w-1/2 flex flex-row items-center justify-center space-x-2 border-r py-2 rounded-l-xl px-3 cursor-pointer duration-300 ${selectedIcon === 'list' ? 'bg-gray-600' : ''}`}
+                onClick={() => handleIconClick('list')}
+              >
+                {selectedIcon === 'list' && <FaCheck className="text-purple-500 w-3 h-3 ml-1" />} 
+                <MdFormatListBulleted className='w-5 h-5'/>
+              </div>
+
+              <div 
+                className={`px-3 py-2 w-1/2 flex flex-row items-center justify-center space-x-2 rounded-r-xl cursor-pointer duration-300 ${selectedIcon === 'grid' ? 'bg-gray-600' : ''}`}
+                onClick={() => handleIconClick('grid')}
+              >
+                {selectedIcon === 'grid' && <FaCheck className="text-purple-500 w-3 h-3 ml-1" />}
+                <LuLayoutGrid className='w-5 h-5'/>
+            </div>
+          </div>
+
+          <button className='px-4 py-2 text-gray-200 bg-purple-500 rounded-md shadow-md hover:bg-purple-600 duration-300'> + New folder </button>
+        </div>
       </div>
 
       <div className='grid grid-cols-4 w-full mt-6 gap-6'>
