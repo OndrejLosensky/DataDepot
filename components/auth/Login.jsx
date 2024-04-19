@@ -108,8 +108,8 @@ const Login = () => {
               </div>
             </div>
 
-            <div className='mb-8'>
-              <p>Join DataDepot for free!</p>
+            <div className='mb-4'>
+              <p className='w-[55%] text-wrap mx-auto text-center text-md font-light'>Join DataDepot for free! Quickly login or create an account and start using the app. By joining you agree to our Privacy Policy Terms</p>
             </div>
             
           </div>
@@ -126,12 +126,14 @@ const Login = () => {
             <div className='w-2/4 flex flex-col'>
             <Link className='ml-1 absolute left-2 top-2 px-4 py-2 rounded-full hover:bg-gray-700 duration-300 flex flex-row items-center' href="/"><BsArrow90DegLeft className='w-4 h-4 mr-2 text-[#DFDFDF]'/> Back </Link>
 
-            <h2 className=' text-[#DFDFDF] text-2xl font-semibold pt-10 mb-1 text-center'>Enter your password</h2>
+            <h2 className=' text-[#DFDFDF] text-2xl font-semibold pt-10 mb-0 text-center'>Enter your password</h2>
+            <p className='text-center font-light mt-1 mb-2'> Please enter your credentials or sign up</p>
+
 
            <div className='items-center flex flex-col'>
             
            <form className='flex flex-col w-full items-center' onSubmit={handleLogin}>
-            <div className="relative w-[85%]">
+            <div className="relative w-full">
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
@@ -150,11 +152,11 @@ const Login = () => {
             </div>
 
             {isLoading ? (
-              <button type="submit" className="py-2 rounded-md opacity-80 bg-purple-500 text-[#fffddd] duration-300 mb-2 w-[85%]">
+              <button type="submit" className="py-2 rounded-md opacity-80 bg-purple-500 text-[#fffddd] duration-300 mb-2 w-full">
                 <span className="loading loading-spinner loading-sm"></span> Loading
               </button>
             ) : (
-              <button type="submit" className="py-2 rounded-md bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-2 w-[85%]">
+              <button type="submit" className="py-2 rounded-md bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-2 w-full">
                 Login
               </button>
             )}
@@ -169,8 +171,8 @@ const Login = () => {
             </div>
 
             </div>
-            <div className='mb-8'>
-              <p>Join DataDepot for free!</p>
+            <div className='mb-4'>
+              <p className='w-[55%] text-wrap mx-auto text-center text-md font-light'>Join DataDepot for free! Quickly login or create an account and start using the app. By joining you agree to our Privacy Policy Terms</p>
             </div>
           </div>
         );
@@ -211,7 +213,7 @@ const Login = () => {
             </div>
           )}
         <div className="w-full h-full mx-auto backdrop-filter backdrop-blur-lg rounded-2xl">
-          
+          <div> <p className='absolute bottom-2 right-2 text-sm text-gray-400 font-thin'> © 2024 DataDepot </p> </div>
           {renderStepContent()}
         </div>
       </div>
