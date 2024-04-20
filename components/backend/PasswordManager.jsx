@@ -180,8 +180,8 @@ const PasswordManager = ({isUserActive}) => {
               <p className='font-light text-gray-300'> You can store your passwords here and make them as much as organized as you like </p>
               <br />
               <div className='flex flex-row space-x-6'>
-                  <button className='px-4 py-2 bg-purple-500 text-gray-200 rounded-md shadow-md'> See how it works</button>
-                  <button className='text-gray-300 px-4 py-2 border border-gray-200 rounded-md'> Maybe later</button>
+                  <button className='px-4 py-2 bg-purple-500 hover:bg-purple-600 duration-300 text-gray-200 rounded-md shadow-md'> See how it works</button>
+                  <button className='text-gray-300 px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-300 hover:text-gray-800 duration-500 '> Maybe later</button>
               </div>
             </div>
         </div>
@@ -189,7 +189,7 @@ const PasswordManager = ({isUserActive}) => {
          {/* Passwords (cards with folders) */}
          <div className='w-full h-[60%] flex flex-col overflow-hidden'>
          <div className='flex flex-row justify-between items-center'> 
-          <h1 className='text-2xl font-semibold text-gray-200'> Password folders</h1>
+          <h1 className='text-2xl font-semibold text-gray-200'> Passwords <span className='font-thin text-lg'> (325)</span></h1>
           <div className='relative flex flex-row space-x-4'>
             <div className='flex flex-row w-36 justify-between items-center border border-gray-400 rounded-xl'>
               <div 
@@ -246,22 +246,28 @@ const PasswordManager = ({isUserActive}) => {
 
           <div className='grid grid-cols-4 w-full mt-6 gap-6'>
           {folders.map((folder) => (
-            <div key={folder.id} className='h-64 bg-[#20263d] rounded-xl border border-gray-500'>
-              <div className='h-2/3 flex justify-center items-center uppercase text-5xl text-gray-300 font-semibold'>
-                {folder.name}
-              </div>
-              <div className='h-1/3 bg-[#303444] border-t-[0.5px] rounded-b-xl border-gray-500 flex flex-col justify-between'>
-                <div className='flex flex-row justify-between items-center p-4'>
-                  <div className='flex flex-col'>
-                    <h1 className='text-2xl font-semibold text-gray-300'>{folder.name} passwords</h1>
-                    <p className='text-gray-400'>{folder.passwordCount} items</p>
+            <div key={folder.id} className={`rounded-xl border cursor-pointer mb- duration-300 ${selectedIcon === 'list' ? 'border-gray-500 hover:border-gray-300' : 'border-gray-500 hover:border-gray-300'}`}>
+              {selectedIcon === 'list' ? (
+                <div className='flex items-center justify-between bg-gray-700 rounded-xl p-4'>
+                  <div className='flex flex-row justify-between items-center w-full'>
+                    <h1 className='text-2xl font-semibold text-gray-300'>{folder.name}</h1>
+                    <p className='text-gray-400'>{folder.passwordCount} 0 items</p>
                   </div>
-                  <button className='flex items-center justify-center rounded-full text-gray-200 bg-transparent  hover:bg-gray-600 duration-300'>
-                  <MdOutlineKeyboardDoubleArrowRight className='text-4xl' />
-                </button>
-                  
                 </div>
-              </div>
+              ) : (
+                <div className='h-36 bg-[#20263d] rounded-xl border-t-[0.5px] border-gray-500'>
+                  <div className='h-full bg-[#303444] rounded-xl flex flex-col justify-between'>
+                    <div className='p-4 flex flex-row justify-between items-center'>
+                      <h1 className='text-2xl font-semibold text-gray-300'>{folder.name}</h1>
+                      <p className='text-gray-400'>{folder.passwordCount} 0 items</p>
+                    </div>
+                    <div className='flex flex-col justify-center items-start p-4 text-gray-300'>
+                      <h2 className='font-medium'>{folder.name}</h2>
+                      <p> Created: 20/4/2024</p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
 
