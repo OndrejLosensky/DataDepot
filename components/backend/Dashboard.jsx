@@ -22,6 +22,7 @@ import { MdLockOutline } from "react-icons/md";
 import { IoChevronLeft, IoChevronRight } from 'react-icons/io5';
 import ProgressBarRadial from './upload/ProgressBarRadial';
 import { FaUsersCog } from "react-icons/fa";
+import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import Users from './Users';
 import Lab from './Lab';
 import { ImLab } from "react-icons/im";
@@ -75,7 +76,7 @@ const Dashboard = ({isUserActive}) => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 500);
   }, []);
 
   const handleComponentClick = (component) => {
@@ -121,7 +122,7 @@ const Dashboard = ({isUserActive}) => {
               <div className='mt-2 space-y-3 flex flex-col'>
                 <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'} rounded-md  text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Files' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('Files')}> <LuFiles className={`${sidebarVisible ? '':'w-6 h-10'}`} /> {sidebarVisible && 'Files'} </button>
                 <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'PasswordManager' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('PasswordManager')}> <MdLockOutline className={`${sidebarVisible ? '':'w-6 h-10'}`} /> {sidebarVisible && 'Passwords'} </button>
-                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4 mt-8'} rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Analytics' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('Analytics')}> <RiDashboard3Line className={`${sidebarVisible ? '':'w-6 h-10'}`} /> {sidebarVisible && 'Analytics'} </button>
+                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4 mt-8'} rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Analytics' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('Analytics')}> <IoAnalyticsOutline className={`${sidebarVisible ? '':'w-6 h-10'}`} /> {sidebarVisible && 'Analytics'} </button>
                 <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Users' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('Users')}> <FaUsersCog className={`${sidebarVisible ? '':'w-6 h-10'}`} /> {sidebarVisible && 'Users'} </button>
                 <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Lab' ? 'bg-purple-500 text-purple-200' : ''}`} onClick={() => handleComponentClick('Lab')}> <ImLab className={`${sidebarVisible ? '':'w-6 h-10'}`} /> {sidebarVisible && 'Lab'} </button>
 

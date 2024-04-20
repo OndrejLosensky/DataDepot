@@ -40,17 +40,15 @@ const Login = () => {
           setIsLoading(true);
           // Redirect to dashboard upon successful login
           router.push('/backend/dashboard');
-          setTimeout(() => {
-            setSuccessAlertVisible(false);
-            setIsLoading(false);
-          },4000);
+          setSuccessAlertVisible(false);
+          setIsLoading(false);
          
       } catch (err) {
           setErrorAlertVisible(true);
           setError(err.message);
           setTimeout(() => {
             setErrorAlertVisible(false);
-          }, 3000); 
+          }, 5000); 
       }
   };
 
