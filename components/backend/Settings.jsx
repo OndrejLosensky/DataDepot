@@ -3,7 +3,7 @@ import { HiArrowLongLeft } from "react-icons/hi2";
 import Image from 'next/image';
 const Settings = ({ setActiveComponent }) => {
   const handleGoBack = () => {
-    setActiveComponent('Overview');
+    setActiveComponent('Analytics');
   };
 
   const [activeTab, setActiveTab] = useState(0);

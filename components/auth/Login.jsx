@@ -13,6 +13,7 @@ import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { IoCloseSharp } from "react-icons/io5";
 import { FaWarehouse } from "react-icons/fa";
 import { BsArrow90DegLeft } from "react-icons/bs";
+import { FaGithub } from "react-icons/fa";
 
 
 const Login = () => {
@@ -85,21 +86,25 @@ const Login = () => {
                     Continue
                   </button>
                 </form>
-                <div className='flex flex-row items-center mx-auto w-full justify-center mt-2 mb-4'>
-                  <div className='w-1/2 mr-2 border-b-[1.5px] h-0 border-gray-500'></div>
-                  <p className='text-xs'> OR</p>
-                  <div className='w-1/2 ml-2 border-b-[1.5px] h-0 border-gray-500'></div>
+                <div className='flex flex-row items-center mx-auto w-full justify-between mt-2 mb-4'>
+                  <div className='w-[35%] mr-2 border-b-[1.5px] h-0 border-gray-500'></div>
+                  <p className='text-xs w-[30%] text-center'> Or Continue With</p>
+                  <div className='w-[35%] ml-2 border-b-[1.5px] h-0 border-gray-500'></div>
                 </div>
 
 
-               <div className='flex flex-row w-full space-x-4'>
-                <button className='w-full relative border-[#DFDFDF] text-sm hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-3 my-2 flex flex-row items-center justify-between px-6'>
-                    <AiFillApple className=' w-7 h-7 mr-2'/> Continue with Apple
+               <div className='flex flex-row w-full justify-center m-1 items-center'>
+                  <button className='p-3 m-3 border-[#DFDFDF] text-sm hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-full flex flex-row items-center center'>
+                    <AiFillApple className=' w-7 h-7'/> 
                   </button>
 
-                  <button className='w-full relative border-[#DFDFDF] text-sm hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-lg py-3 my-2 flex flex-row items-center justify-between px-6'>
+                  <button className='p-3 m-3 border-[#DFDFDF] text-sm hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-full flex flex-row items-center justify-between'>
                     <Image src='/icons/google_btn.svg' alt="Google icon" width={28} height={28} className=''/>
-                    Continue with Google
+                    
+                  </button>
+
+                  <button className='p-3 m-3 border-[#DFDFDF] text-sm hover:bg-[#3D3D3D] duration-300 text-[#DFDFDF] border rounded-full  flex flex-row items-center justify-between'>
+                    <FaGithub className=' w-7 h-7 '/>
                   </button>
                </div>
 
