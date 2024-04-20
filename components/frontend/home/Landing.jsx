@@ -19,6 +19,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import { CiLock } from "react-icons/ci";
 
 export function Video() {
   return (
@@ -90,8 +91,8 @@ const Landing = () => {
   
           <div className="mt-12 mb-32 grid grid-cols-1 gap-6 text-left md:grid-cols-3">
             <FeatureCard hovered={hovered1} setHovered={setHovered1} icon={IoPricetagOutline} heading="Labeling system" description="Create custom label for the file cards, filter them by names, change the tags, group them." />
-            <FeatureCard hovered={hovered2} setHovered={setHovered2} icon={FaRegFolder} heading="Multiple file types" description="DataDepot supports files such as PDF, DOCX, XLSX , PPTX, ZIP and others. See more in the docs" />
-            <FeatureCard hovered={hovered3} setHovered={setHovered3} icon={FaRegFileAlt} heading="Simple folder system" description="Create folder, where you can store your documents and sort them. Easily export whole folder as an zip file" />
+            <FeatureCard hovered={hovered2} setHovered={setHovered2} icon={FaRegFolder} heading="Folder system" description="DataDepot supports foldering system for your passwords and files. You can create as many folders you want." />
+            <FeatureCard hovered={hovered3} setHovered={setHovered3} icon={CiLock} heading="Password Generator" description="Dont know any password to think of for your important apps? Generate it inside the Password Manager" />
           </div>
         </div>
       </section>

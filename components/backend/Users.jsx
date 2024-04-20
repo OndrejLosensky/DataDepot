@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { HiDownload } from "react-icons/hi";
+import { db } from  '../../src/app/firebaseConfig'; // Import db from your firebaseConfig.js
 
 const Users = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const usersCollection = db.collection('users');
+        const snapshot = await usersCollection.get();
+        const fetchedUsers = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setUsers(fetchedUsers);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className='w-full h-full'>
       {/* Navbar */}
@@ -31,14 +49,17 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="hover:bg-gray-700 text-center">
-              <td className="border-b-[0.5px] border-gray-500 px-4 py-2">1</td>
-              <td className="border-b-[0.5px] border-gray-500 px-4 py-2">ondra@gmail.com</td>
-              <td className="border-b-[0.5px] border-gray-500 px-4 py-2">1.04.2024</td>
-              <td className="border-b-[0.5px] border-gray-500 px-4 py-2"><div className='bg-green-500 w-20 mx-auto rounded-md text-gray-200'>Active</div></td>
-              <td className="border-b-[0.5px] border-gray-500 px-4 py-2">Admin</td>
-            </tr>
-            {/* Add more rows for each user */}
+            {users.map((user, index) => (
+              <tr key={user.id} className="hover:bg-gray-700 text-center">
+                <td className="border-b-[0.5px] border-gray-500 px-4 py-2">{index + 1}</td>
+                <td className="border-b-[0.5px] border-gray-500 px-4 py-2">{user.username}</td>
+                <td className="border-b-[0.5px] border-gray-500 px-4 py-2">{user.createdIn}</td>
+                <td className="border-b-[0.5px] border-gray-500 px-4 py-2">
+                  <div className={`bg-${user.status === 'Active' ? 'green' : 'red'}-500 w-20 mx-auto rounded-md text-gray-200`}>{user.status}</div>
+                </td>
+                <td className="border-b-[0.5px] border-gray-500 px-4 py-2">{user.role}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

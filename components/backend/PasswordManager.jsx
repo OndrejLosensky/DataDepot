@@ -10,6 +10,7 @@ import { BsArrow90DegLeft } from "react-icons/bs";
 import { MdFormatListBulleted } from "react-icons/md";
 import { LuLayoutGrid } from "react-icons/lu";
 import { FaCheck } from 'react-icons/fa'; // Import the check icon
+import Help from './Help';
 
 const PasswordManager = ({isUserActive}) => {
   const [folders, setFolders] = useState([]);
@@ -21,7 +22,7 @@ const PasswordManager = ({isUserActive}) => {
   const [password, setPassword] = useState('');
   const [app, setApp] = useState('');
 
-  const [showGeneratePasswordComponent, setShowGeneratePasswordComponent] = useState(false);
+  const [selectedComponent, setSelectedComponent] = useState('password'); // 'password', 'generate', 'help'
 
   const [selectedIcon, setSelectedIcon] = useState('list'); 
 
@@ -81,10 +82,17 @@ const PasswordManager = ({isUserActive}) => {
 
   return (
     <div className='w-auto h-full overflow-hidden space-y-6 mr-4'>
-        {showGeneratePasswordComponent ? (
+        {selectedComponent === 'help' && (
+          <div className='w-full h-full overflow-hidden'>
+            <button className='flex flex-row absolute top-4 items-center px-4 text-gray-200 py-1 bg-gray-700 mb-4 rounded-lg shadow-lg' onClick={() => setSelectedComponent('password')} > <BsArrow90DegLeft className='mr-2'/> Back </button>
+            <Help onClose={() => setSelectedComponent('help')} />
+          </div>
+        )}
+
+        {selectedComponent === 'generate' ? (
           <div>
-              <button className='flex flex-row items-center px-4 text-gray-200 py-1 bg-gray-700 mb-4 rounded-lg shadow-lg' onClick={() => setShowGeneratePasswordComponent(false)} > <BsArrow90DegLeft className='mr-2'/> Back </button>
-              <GeneratePassword onClose={() => setShowGeneratePasswordComponent(false)}/>
+            <button className='flex flex-row items-center px-4 text-gray-200 py-1 bg-gray-700 mb-4 rounded-lg shadow-lg' onClick={() => setSelectedComponent('password')} > <BsArrow90DegLeft className='mr-2'/> Back </button>
+            <GeneratePassword onClose={() => setSelectedComponent('generate')} />
           </div>
         ) : (
           <div className='space-y-6'>
@@ -98,20 +106,22 @@ const PasswordManager = ({isUserActive}) => {
             + Add Password
           </button>
           <button
-                onClick={() => setShowGeneratePasswordComponent(true)} // Toggle visibility of GeneratePasswordComponent
+                 onClick={() => setSelectedComponent('generate')}// Toggle visibility of GeneratePasswordComponent
                 className='border border-gray-300 text-gray-300 px-4 py-2 rounded-md'
               >
                 Generate Secure Password
               </button>
           <div>
-            <label className="input input-bordered h-10 flex items-center gap-2">
+            <label className="input relative input-bordered h-10 flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
               <input type="text" className="grow w-[400px]" placeholder="Search password" />
+              <kbd className="kbd kbd-sm ">⌘</kbd>
+              <kbd className="kbd kbd-sm">K</kbd>
             </label>
           </div>
         </div>
         <div className='flex flex-row items-center'>
-          <button> <AiOutlineQuestion className='text-gray-200 bg-[#323232] hover:text-gray-50 duration-300 hover:shadow-xl hover:border-gray-400 border border-transparent w-7 h-7 mr-2 p-1 rounded-full' /></button>
+          <button  onClick={() => setSelectedComponent('help')}> <AiOutlineQuestion className='text-gray-200 bg-[#323232] hover:text-gray-50 duration-300 hover:shadow-xl hover:border-gray-400 border border-transparent w-7 h-7 mr-2 p-1 rounded-full' /></button>
           <div className='flex flex-row relative'>
             <Profile isUserActive={isUserActive} />
           </div>

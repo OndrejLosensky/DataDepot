@@ -43,14 +43,14 @@ const Login = () => {
           setTimeout(() => {
             setSuccessAlertVisible(false);
             setIsLoading(false);
-          },2000);
+          },4000);
          
       } catch (err) {
           setErrorAlertVisible(true);
           setError(err.message);
           setTimeout(() => {
             setErrorAlertVisible(false);
-          }, 2000); 
+          }, 3000); 
       }
   };
 
@@ -59,9 +59,23 @@ const Login = () => {
       case 1:
         return (
           <div className="flex flex-col h-full items-center justify-between">
-            <div className="flex flex-row space-x-1 mt-12">
-              <FaWarehouse className='w-10 mr-2 h-auto text-[#DFDFDF]'/>
-              <h2 className='text-2xl pt-2 text-[#DFDFDF]'> DataDepot – Sign in </h2>
+            <div className='flex flex-col items-center w-1/2 space-y-2'>
+              <div className="flex flex-row space-x-1 mt-12">
+                <FaWarehouse className='w-10 mr-2 h-auto text-[#DFDFDF]'/>
+                <h2 className='text-2xl pt-2 text-[#DFDFDF]'> DataDepot – Sign in </h2>
+              </div>
+              {successAlertVisible && (
+                  <div role="alert" className={` text-green-500 absolute top-24 justify-center w-screen py-5 px-4 rounded flex items-center`}>
+                    <FaCheckCircle className="mr-2" />
+                    <span>Login was successfull!</span>
+                  </div>
+                )}
+                 {errorAlertVisible && (
+                  <div role="alert" className={`text-red-500 justify-center w-screen py-5 px-4 rounded flex items-center`}>
+                    <FiAlertCircle className="mr-2" />
+                    <span>Wrong email / password! Please try again</span>
+                  </div>
+                )}
             </div>
 
             {/* Login */}
@@ -72,17 +86,26 @@ const Login = () => {
               
               <div className='items-center flex flex-col'>
               <form className='w-full justify-center flex flex-col items-center' onSubmit={(e) => { e.preventDefault(); setStep(2); }}>
+                <label className='relative w-full'>
                   <input
                     type="email"
                     name="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="block bg-[#3D3D3D] text-md w-full  border mb-6 my-4 mt-4 px-2 py-3 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                    className="block bg-[#3D3D3D] text-md w-full border mb-6 my-4 mt-4 px-2 py-3 pl-12 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                     placeholder="Your e-mail"
                     required
                     autoFocus
                   />
-                  <button type="submit" className="py-3 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-6 w-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="absolute top-[45%] left-4 transform -translate-y-1/2 w-4 h-4 opacity-70">
+                    <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
+                    <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
+                  </svg>
+                </label>
+
+
+                  
+                  <button type="submit" className="py-3 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-600 duration-300 mb-6 w-full">
                     Continue
                   </button>
                 </form>
@@ -122,9 +145,23 @@ const Login = () => {
       case 2:
         return (
           <div className="flex flex-col h-full items-center justify-between">
-            <div className="flex flex-row space-x-1 mt-12">
-              <FaWarehouse className='w-10 mr-2 h-auto text-[#DFDFDF]'/>
-              <h2 className='text-2xl pt-2 text-[#DFDFDF]'> DataDepot  – Sign in  </h2>
+           <div className='flex flex-col items-center w-1/2 space-y-2'>
+              <div className="flex flex-row space-x-1 mt-12">
+                <FaWarehouse className='w-10 mr-2 h-auto text-[#DFDFDF]'/>
+                <h2 className='text-2xl pt-2 text-[#DFDFDF]'> DataDepot – Sign in </h2>
+              </div>
+                {successAlertVisible && (
+                  <div role="alert" className={` text-green-500 absolute top-24 justify-center w-screen py-5 px-4 rounded flex items-center`}>
+                    <FaCheckCircle className="mr-2" />
+                    <span>Login was successfull!</span>
+                  </div>
+                )}
+                 {errorAlertVisible && (
+                  <div role="alert" className={`text-red-500 justify-center w-screen py-5 px-4 rounded flex items-center`}>
+                    <FiAlertCircle className="mr-2" />
+                    <span>Wrong email / password! Please try again</span>
+                  </div>
+                )}
             </div>
 
             {/* Login */}
@@ -205,18 +242,6 @@ const Login = () => {
 
       {/* Right Side with Form */}
       <div className="w-1/2 relative flex flex-col justify-center items-center">
-        {successAlertVisible && (
-          <div role="alert" className={` text-green-500 justify-center w-screen py-5 px-4 rounded flex items-center`}>
-            <FaCheckCircle className="mr-2" />
-            <span>Login was successfull!</span>
-          </div>
-        )}
-        {errorAlertVisible && (
-            <div role="alert" className={`text-red-500 justify-center w-screen py-5 px-4 rounded flex items-center`}>
-              <FiAlertCircle className="mr-2" />
-              <span>Wrong email / password! Please try again</span>
-            </div>
-          )}
         <div className="w-full h-full mx-auto backdrop-filter backdrop-blur-lg rounded-2xl">
           <div> <p className='absolute bottom-2 right-2 text-sm text-gray-400 font-thin'> © 2024 DataDepot </p> </div>
           {renderStepContent()}

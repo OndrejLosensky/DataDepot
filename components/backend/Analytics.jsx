@@ -29,8 +29,11 @@ const Overview = ({ isUserActive}) => {
         datasets: [
           {
             label: 'Passwords',
-            data: [0,15,52,469,120,200,300,310,340,356],
-            fill: false,
+            data: [53,43,52,469,120,200,300,310,340,356],
+            fill: {
+              target: 'origin',
+              above: 'rgba(30, 197, 92, 0.2)', // Color for the area above the line
+            },
             borderColor: '#22c55d',
             tension: 0.3,
           },
@@ -43,8 +46,11 @@ const Overview = ({ isUserActive}) => {
         datasets: [
           {
             label: 'Folders',
-            data: [0,1,3,5,7,11,12,15,24,1],
-            fill: false,
+            data: [4,3,3,5,7,11,12,15,24,1],
+            fill: {
+              target: 'origin',
+              above: 'rgba(238, 68, 67, 0.2)', // Color for the area above the line
+            },
             borderColor: '#ef4444',
             tension: 0.3,
           },
@@ -56,8 +62,11 @@ const Overview = ({ isUserActive}) => {
         datasets: [
           {
             label: 'Passwords',
-            data: [1081, 1277, 1508, 1781, 2104, 2488, 2944, 3476,2348,1797]            ,
-            fill: false,
+            data: [1498, 1277, 1508, 1781, 2104, 2488, 2944, 3476,2348,1797]            ,
+            fill: {
+              target: 'origin',
+              above: 'rgba(30, 197, 92, 0.2)', // Color for the area above the line
+            },
             borderColor: '#22c55d',
             tension: 0.3,
           },
