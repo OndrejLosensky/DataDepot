@@ -83,21 +83,21 @@ const PasswordManager = ({isUserActive}) => {
   return (
     <div className='w-auto h-full overflow-hidden space-y-6 mr-4'>
         {selectedComponent === 'help' && (
-          <div className='w-full h-full overflow-hidden'>
+          <div className='w-full h-full overflow-hidden mb-12'>
             <button className='flex flex-row absolute top-4 items-center px-4 text-gray-200 py-1 bg-gray-700 mb-4 rounded-lg shadow-lg' onClick={() => setSelectedComponent('password')} > <BsArrow90DegLeft className='mr-2'/> Back </button>
             <Help onClose={() => setSelectedComponent('help')} />
           </div>
         )}
 
         {selectedComponent === 'generate' ? (
-          <div>
-            <button className='flex flex-row items-center px-4 text-gray-200 py-1 bg-gray-700 mb-4 rounded-lg shadow-lg' onClick={() => setSelectedComponent('password')} > <BsArrow90DegLeft className='mr-2'/> Back </button>
+          <div className='w-auto h-full'>
+            <button className='flex flex-row absolute top-4 items-center px-4 text-gray-200 py-1 bg-gray-700 rounded-lg shadow-lg' onClick={() => setSelectedComponent('password')} > <BsArrow90DegLeft className='mr-2'/> Back </button>
             <GeneratePassword onClose={() => setSelectedComponent('generate')} />
           </div>
         ) : (
           <div className='space-y-6'>
              {/* Navbar */}
-        <div className='flex flex-row justify-between overflow-hidden h-[6%] items-center'>
+        <div className='flex flex-row justify-between overflow-hidden py-1  h-[5%] items-center'>
         <div className='flex flex-row gap-x-4'>
           <button
             onClick={() => setShowAddPasswordInput(!showAddPasswordInput)}
@@ -170,7 +170,7 @@ const PasswordManager = ({isUserActive}) => {
         </div>
       )}
         {/* Banner */}
-        <div className='w-full bg-gray-800 h-[19%] flex flex-row overflow-hidden'>
+        <div className='w-full bg-gray-800 h-1/4 flex flex-row overflow-hidden'>
             <div className='w-1/4 flex justify-center items-center'>
               <Image src="/lock.svg" width={256} height={256} alt='Icon' className='rounded-full bg-gray-500 m-24 p-6'/>
             </div>

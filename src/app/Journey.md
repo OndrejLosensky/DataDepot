@@ -44,3 +44,9 @@ Today I created an BTC graph using **Chart.js** So i could learn about using it 
 Also I found some inspiration how to adjust the whole UI inside the dashboard. More updates coming soon. This is **4th day** in a row that I added to this file.
 
 Spent hours today: `1 Hour 57 min`
+
+
+## Day 20.4. 2024 
+Today I finally tried creating basic logic behind the folder system for passwords. Also It can fetch the date with number of added password (This function will be used inside the Analytics page)
+
+Also I created the functionality to open help page which is just blank now. 

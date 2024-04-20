@@ -44,13 +44,13 @@ const Files = ({isUserActive}) => {
         ) : (
           <div className='space-y-6 '>
             {/* Navbar */}
-            <div className='flex flex-row justify-between overflow-hidden h-[4%] items-center'>
+            <div className='flex flex-row justify-between overflow-hidden py-1 h-[4%] items-center'>
             <div className='flex flex-row gap-x-4'>
                 <button className='bg-purple-500 text-gray-200 px-4 py-2 rounded-md shadow-md hover:bg-purple-600 duration-300'> + Add File</button>
                 <div>
-                    <label className="input input-bordered h-10 flex items-center gap-2">
+                  <label className="input input-bordered h-10 flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
-                        <input type="text" className="grow w-[400px]" placeholder="Search file..." />
+                        <input type="text" className="grow w-64" placeholder="Search Files" />
                         <kbd className="kbd kbd-sm">⌘</kbd>
                         <kbd className="kbd kbd-sm">K</kbd>
                     </label>
@@ -65,7 +65,7 @@ const Files = ({isUserActive}) => {
             </div>
             </div>
             {/* Banner */}
-            <div className='w-full bg-gray-800 h-[19%] flex flex-row overflow-hidden'>
+            <div className='w-full bg-gray-800 h-[20%] flex flex-row overflow-hidden'>
             <div className='w-1/4 flex justify-center items-center'>
               <Image src="/file.svg" width={256} height={256} alt='Icon' className='rounded-full bg-gray-500 m-24 p-4'/>
             </div>
