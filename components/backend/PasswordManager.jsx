@@ -24,7 +24,7 @@ const PasswordManager = ({isUserActive}) => {
 
   const [selectedComponent, setSelectedComponent] = useState('password'); // 'password', 'generate', 'help'
 
-  const [selectedIcon, setSelectedIcon] = useState('list'); 
+  const [selectedIcon, setSelectedIcon] = useState('grid'); 
 
   const handleIconClick = (icon) => {
     setSelectedIcon(icon);
