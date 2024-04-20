@@ -8,11 +8,9 @@ export default function handler(req, res) {
     const query = `
         SELECT 
             date(creation_date) AS date, 
-            count(*) AS count 
+            COUNT(*) AS count 
         FROM 
             password 
-        WHERE 
-            creation_date >= date('now', '-7 days') 
         GROUP BY 
             date(creation_date)
         ORDER BY 
