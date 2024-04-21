@@ -179,15 +179,15 @@ const Login = () => {
                 name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="focused block bg-[#3D3D3D] text-md w-full border my-4 mt-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                className="focused block bg-[#3D3D3D] text-md w-full border my-4 mt-4 px-2 py-3 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                 placeholder="Password"
                 required
                 autoFocus
               />
               {showPassword ? (
-                <FiEyeOff onClick={handleTogglePasswordVisibility} className="absolute right-4 top-7 text-gray-400 cursor-pointer" />
+                <FiEyeOff onClick={handleTogglePasswordVisibility} className="absolute right-4 top-8 text-gray-400 cursor-pointer" />
               ) : (
-                <FiEye onClick={handleTogglePasswordVisibility} className="absolute right-4 top-7 text-gray-400 cursor-pointer" />
+                <FiEye onClick={handleTogglePasswordVisibility} className="absolute right-4 top-8 text-gray-400 cursor-pointer" />
               )}
             </div>
 
