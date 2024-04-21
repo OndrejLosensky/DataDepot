@@ -24,7 +24,7 @@ const HomeV2 = () => {
 
       <section className='flex justify-center items-center'>
         <div className='mx-auto w-screen mt-28 mb-18 flex flex-row items-center justify-between'>
-          <div className='w-[40%] mt-20 ml-24 justify-left items-left flex flex-col items-left space-y-8 text-center lg:px-8'>
+          <div className='md:w-[40%] sm:w-[80%] mt-20 ml-24 justify-left items-left flex flex-col items-left space-y-8 text-center lg:px-8'>
             <div className='flex flex-row items-center gap-x-6'>
               <p className='px-4 text-sm py-1 rounded-full bg-[#6b22b4bd] border border-purple-700 text-[#eedffc] font-bold'>
                 Demo release
@@ -53,7 +53,7 @@ const HomeV2 = () => {
 
             </div>
           </div>
-          <div className='w-[60%] relative '> 
+          <div className='relative '> 
               <div className='rounded-lg'>
                 <img src='/sidebarVisible.svg' alt="dashboard image" className='translate-x-60 pt-12 scale-125 h-[880px] rounded-lg' />
               </div>

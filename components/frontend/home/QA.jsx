@@ -11,7 +11,7 @@ const QA = ({ question, answer }) => {
   return (
     <div className="border-b border-gray-500 cursor-pointer py-4" onClick={toggleAnswer}>
       <div className="flex justify-between items-center">
-        <h2 className="text-lg font-semibold text-gray-100">{question}</h2>
+        <h2 className="sm:text-sm md:text-lg font-semibold text-gray-100">{question}</h2>
         <button
           className="text-gray-200 focus:outline-none"
           onClick={toggleAnswer}

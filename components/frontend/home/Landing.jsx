@@ -82,7 +82,7 @@ const Landing = () => {
             Efficient & Secure: Smart way to store files
           </span>
            */}
-          <span className="relative z-[0] text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-300 via-rose-300  to-violet-300">
+          <span className="relative z-[0] md:text-3xl lg:text-4xl sm:text-2xl   font-black text-transparent bg-clip-text bg-gradient-to-r from-red-300 via-rose-300  to-violet-300">
             Efficient & Secure: Smart way to store files
           </span>
           <p className="mt-2 mb-2 text-lg text-text">
@@ -100,7 +100,7 @@ const Landing = () => {
 
       <section className='mb-[200px] overflow-hidden '>
         <div className="mx-auto max-w-6xl space-y-24 md:space-y-36">
-          <div data-aos='fade-up' className="flex flex-col items-center justify-between gap-6 lg:flex-row ">
+          <div data-aos='fade-up' className="flex flex-col items-center justify-between gap-6 lg:flex-row m-4">
             <div className="max-w-md space-y-6 text-center lg:text-left">
               <span className="inline-flex items-center rounded-full border-2 border-indigo-200 bg-indigo-200 px-2 py-1 text-sm font-semibold text-indigo-600 shadow-sm">
                 <MdOutlineDashboardCustomize className="mr-1 h-5 w-5" />
@@ -146,7 +146,7 @@ const Landing = () => {
             </div>
           </div>
   
-          <div data-aos='fade-up'  className="flex flex-col items-center justify-between gap-6 lg:flex-row ">
+          <div data-aos='fade-up'  className="flex flex-col items-center justify-between gap-6 lg:flex-row m-4">
             <div className="max-w-md space-y-6 text-center lg:text-left">
               <span className="inline-flex items-center rounded-full border-2 border-cyan-200 bg-cyan-200 px-2 py-1 text-sm font-semibold text-cyan-700 shadow-sm">
                 <IoAnalyticsOutline className="mr-1 h-5 w-5" />
@@ -213,19 +213,19 @@ const Landing = () => {
 
         <h1 className=' text-md text-purple-500 font-semibold mt-48 text-center'> Pricing comparison</h1>
         <h1 className='text-3xl font-bold text-gray-200 text-center mb-2'> What you can get in each plan </h1>
-        <p className='mx-auto mb-16 w-1/3 text-center text-gray-400'> Below is an table with complete list of included features in each plan. Make sure to check what plan suits you the best.</p>
+        <p className='mx-auto mb-16 md:w-1/3 sm:2/3  text-center text-gray-400'> Below is an table with complete list of included features in each plan. Make sure to check what plan suits you the best.</p>
         
-        <div className='w-[60%] mx-auto flex flex-row'>
+        <div className='sm:w-[80%] md:w-[65%] mx-auto flex flex-row'>
             <div className='w-1/4'>
                 <div className='h-24'> 
                 </div>
                 <div className='space-y-4 text-gray-200 font-light'>
                   <p className='border-b-[1px] border-gray-400 pb-2 font-bold'>Features</p>
                   <p className='border-b-[0.5px] border-gray-400 pb-2 '>All file types</p>
-                  <p className='border-b-[0.5px] border-gray-400 pb-2 '>Unlimited label colors</p>
+                  <p className='border-b-[0.5px] border-gray-400 pb-2 '>Label colors</p>
                   <p className='border-b-[0.5px] border-gray-400 pb-2 '>Support 24/7</p>
                   <p className='border-b-[0.5px] border-gray-400 pb-2 '>10GB storage</p>
-                  <p className='border-b-[0.5px] border-gray-400 pb-2 '>Generate text with AI</p>
+                  <p className='border-b-[0.5px] border-gray-400 pb-2 '>Generative AI</p>
               </div>
               </div>
             <div className='w-1/4'>
@@ -346,7 +346,7 @@ const Landing = () => {
       <WhyChoose/>     
      </section>
 
-     <section id='demo' className='mb-32'>
+     <section id='demo' className='mb-32 m-8'>
       <p className='text-center text-xl text-[#a554f1] pt-12'>demo</p>
       <h1 className='text-3xl font-bold text-gray-300 text-center'> Learn more by watching how everything looks & works</h1>
           <Video/>
@@ -356,8 +356,8 @@ const Landing = () => {
         <div className="z-[-1] flex place-items-center before:dark:bg-gradient-to-br before:dark:from-blue-400 before:dark:to-violet-500 before:dark:opacity-[20%] before:absolute before:h-[300px] before:w-full sm:before:w-[500px] before:translate-x-[380px] before:translate-y-[70px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-red-500 after:via-yellow-400 after:blur-2xl after:content-['']  after:dark:from-rose-800 after:dark:via-blue-200 after:dark:opacity-100 "></div>
 
           <section className='text-center mb-48 pt-32 justify-center flex flex-col'>
-            <h1 className='text-3xl font-black text-[#DFDFDF]'> Join DataDepot blog to see all news.</h1>
-            <p className='text-lg w-2/5 mx-auto my-8 text-gray-300 font-thin'>  Stay up to date with new releases, updates and changes. Also you can follow me on my Github to see more apps like this. It is completely free to do it. </p>
+            <h1 className='md:text-3xl sm:text-2xl font-black text-[#DFDFDF]'> Join DataDepot blog to see all news.</h1>
+            <p className='md:text-lg  sm:text-md w-2/5 mx-auto my-8 text-gray-300 font-thin'>  Stay up to date with new releases, updates and changes. Also you can follow me on my Github to see more apps like this. It is completely free to do it. </p>
             <div className='flex flex-row items-center justify-center gap-x-4'>
               <Link className='py-2 px-6 rounded-full bg-gray-300 text-gray-800 hover:-translate-y-1 duration-300 hover:bg-gray-200 shadow-lg' href="/frontend/blog"> Join the Blog </Link>
               <button className='flex flex-row py-2 text-gray-300 hover:text-gray-100 duration-200 items-center' onClick={() => scrollToAnchor('demo')}> See the Demo  <FaArrowRightLong className='w-6 h-4 ml-2'/> </button>

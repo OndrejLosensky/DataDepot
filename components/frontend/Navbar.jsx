@@ -46,7 +46,6 @@ function Navbar ({ isDarkMode, toggleTheme }) {
           const label = document.querySelector('.cursor-pointer');
   
           if (label) {
-            // Simulates a click on the label
             label.click();
           }
         }
