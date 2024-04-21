@@ -144,7 +144,7 @@ const GeneratePassword = () => {
           />
           <label htmlFor="includeSymbols">Include Special Symbols</label>
         </div>
-        <p className='text-gray-200 font-light pt-4'> The heighest <span className='px-2 py-1 bg-gray-500 rounded-lg text-gray-200'>score</span> is <strong>100</strong>. It contains 64 characters, capital letters, numbers & special characters.  </p>
+        <p className='text-gray-200 font-light pt-4'> The heighest <span className='px-[4px] py-[2px] mx-[2px] bg-gray-500 rounded-md text-gray-200'>score</span> is <strong>100</strong>. It contains 64 characters, capital letters, numbers & special characters.  </p>
         <div className="text-white mb-4 mt-8">Password Strength: <span className={getStrengthColor()}>{calculateStrength()}</span></div>
         <button
           className="bg-purple-500 hover:bg-purple-600 mt-4 duration-300 text-white font-bold py-2 px-4 rounded"
@@ -154,16 +154,17 @@ const GeneratePassword = () => {
         </button>
       </div>
 
-      <div className="w-[10%]">
+      {/* 
+      <div className="w-[100%]">
         <h3 className="text-xl text-white mb-2">Password History</h3>
-        {/* 
+        
         <ul className="text-white">
           {passwordHistory.map((pw, index) => (
             <li key={index}>{pw}</li>
           ))}
         </ul>
-        */}
       </div>
+      */}
     </div>
   );
 };

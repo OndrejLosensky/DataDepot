@@ -50,3 +50,10 @@ Spent hours today: `1 Hour 57 min`
 Today I finally tried creating basic logic behind the folder system for passwords. Also It can fetch the date with number of added password (This function will be used inside the Analytics page)
 
 Also I created the functionality to open help page which is just blank now. 
+
+P.S. Today I did not have mood to work as I was really exhausted from last week.
+
+Spent hours today: `1 Hour 39 min`
+
+## Day 21.4. 2024 
+Today I have created almost functional responsive landing page. Also I found out more ideas to adjsut my UI. The register page has an new UI same as the login page that i did yesterday. 

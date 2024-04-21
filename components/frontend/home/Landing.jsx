@@ -74,7 +74,7 @@ const Landing = () => {
         </div>
       </section>
       */}
-      <section id='features' className="w-full overflow-x-hidden h-auto mt-6 p-6 text-center">
+      <section id='features' className="w-full overflow-x-hidden h-auto mt-36 p-6 text-center">
         <div className="mx-auto w-full max-w-6xl">
           <h1 className=' text-md text-purple-500 font-semibold'> Featuring</h1>
           {/*

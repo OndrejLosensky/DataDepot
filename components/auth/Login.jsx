@@ -135,7 +135,7 @@ const Login = () => {
             </div>
 
             <div className='mb-4'>
-              <p className='w-[55%] text-wrap mx-auto text-center text-md font-light'>Join DataDepot for free! Quickly login or create an account and start using the app. By joining you agree to our Privacy Policy Terms</p>
+              <p className='w-[60%] text-wrap mx-auto text-center text-md font-light'>Join DataDepot for free! Quickly login or create an account and start using the app. By joining you agree to our Privacy Policy Terms</p>
             </div>
             
           </div>
@@ -212,7 +212,7 @@ const Login = () => {
 
             </div>
             <div className='mb-4'>
-              <p className='w-[55%] text-wrap mx-auto text-center text-md font-light'>Join DataDepot for free! Quickly login or create an account and start using the app. By joining you agree to our Privacy Policy Terms</p>
+              <p className='w-[60%] text-wrap mx-auto text-center text-md font-light'>Join DataDepot for free! Quickly login or create an account and start using the app. By joining you agree to our Privacy Policy Terms</p>
             </div>
           </div>
         );

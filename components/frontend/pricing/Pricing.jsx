@@ -38,7 +38,7 @@ const Pricing = () => {
         <div className='flex justify-center mt-8 p-4'>
           <div className='grid sm:grid-cols-1 md:grid-cols-1 space-y-8 lg:grid-cols-1 xl:grid-cols-3 gap-x-8'>
 
-          <div className='w-[400px] h-[480px] bg-[#262626] opacity-65 rounded-2xl shadow-xl self-end'>
+          <div className='w-[400px] h-[480px] bg-[#262626] opacity-85 rounded-2xl shadow-xl self-end'>
             <div className='h-1/3 w-full bg-[#323232] border-b-[0.3px] border-gray-500 shadow-md rounded-t-2xl flex items-end relative'>
               <div className='flex flex-col mb-4'>
                 <span className='w-7 h-7 ml-8 mb-2 bg-gradient-to-br from-[#6157FF] to-[#EE49FD] rounded-full'></span>
@@ -101,7 +101,7 @@ const Pricing = () => {
             </div>
           </div>
     
-          <div className='w-[400px] h-[480px] bg-[#262626] opacity-65 rounded-2xl shadow-xl self-end'>
+          <div className='w-[400px] h-[480px] bg-[#262626] opacity-85 rounded-2xl shadow-xl self-end'>
               <div className='h-1/3 w-full bg-[#323232] border-b-[0.3px] border-gray-500 shadow-md rounded-t-2xl flex items-end relative'>
                 <div className='flex flex-col mb-4'>
                   <span className='w-7 h-7 ml-8 mb-2 bg-gradient-to-br from-[#FF4066] to-[#FFF16A] rounded-full'></span>

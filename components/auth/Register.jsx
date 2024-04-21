@@ -231,14 +231,12 @@ const Register = () => {
                   </button>
                 </div>
   
-  
-                <button  onClick={() => setStep(2)}> step 2 </button>
-                <p className="mb-8 mt-2 items-center text-md flex flex-col">Already have an account? <Link className="font-semibold pt-1 text-blue-500" href="/auth/login"> Login </Link></p>
+                  <p className="mb-8 mt-2 items-center text-md flex flex-col">Already have an account? <Link className="font-semibold pt-1 text-blue-500" href="/auth/login"> Login </Link></p>
               </div>
             </div>
   
             <div className="mb-4">
-              <p className="w-[55%] text-wrap mx-auto text-center text-md font-light">Join DataDepot for free! Quickly login or create an account and start using the app. By joining you agree to our Privacy Policy Terms</p>
+              <p className="w-[60%] text-wrap mx-auto text-center text-md font-light">Join DataDepot for free! Quickly login or create an account and start using the app. By joining you agree to our Privacy Policy Terms</p>
             </div>
   
           </div>
