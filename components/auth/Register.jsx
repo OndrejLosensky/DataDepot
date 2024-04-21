@@ -39,6 +39,11 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [passwordError, setPasswordError] = useState('');
+  const [selectedGender, setSelectedGender] = useState(null);
+
+  const handleGenderSelect = (gender) => {
+    setSelectedGender(gender);
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -156,7 +161,7 @@ const Register = () => {
               <p className="text-center font-light mt-1 mb-2 text-gray-200"> Please create an account or switch to login. <span className="text-xs">(fields with * are optional)</span> </p>
   
               <div className="items-center flex flex-col w-full">
-                <form className="w-full" onSubmit={handleRegister}>
+                <form className="w-full" >
                   <input
                     type="email"
                     name="email"
@@ -199,7 +204,7 @@ const Register = () => {
                       <FiEye onClick={handleToggleConfirmPasswordVisibility} className="absolute right-4 top-4 text-gray-400 cursor-pointer" />
                     )}
   
-                    <button type="submit" className="py-3 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-600 duration-300 mb-6 w-full">
+                    <button type="submit" onClick={() => setStep(2)} className="py-3 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-600 duration-300 mb-6 w-full">
                       Continue
                     </button>
                   </div>
@@ -317,14 +322,14 @@ const Register = () => {
               
               <h2 className='py-4 text-lg text-gray-300 font-medium'> Who are you?</h2>
               <div className='w-1/3 h-1/4 mb-4 flex flex-row space-x-8'>
-                <div className='w-1/2 flex flex-col justify-center items-center rounded-lg shadow-sm border border-gray-500 cursor-pointer bg-[#3d3d40] text-[#DFDFDF] duration-300 hover:bg-[#48484b] hover:border-gray-400 hover:shadow-lg'>
-                      <FaMale className='w-8 h-8 mb-1'/>
-                      Male
-                </div>
-                <div className='w-1/2 flex flex-col justify-center items-center rounded-lg shadow-sm border border-gray-500 cursor-pointer bg-[#3d3d40] text-[#DFDFDF] duration-300 hover:bg-[#48484b] hover:border-gray-400 hover:shadow-lg'>
-                      <FaFemale className='w-8 h-8 mb-1'/>
-                      Female
-                </div>
+                  <div className={`w-1/2 flex flex-col justify-center items-center rounded-lg shadow-sm border cursor-pointer bg-[#3d3d40] text-[#DFDFDF] duration-300 ${selectedGender === 'male' ? 'bg-[#48484b] border-2 border-purple-300 shadow-lg' : 'hover:bg-[#48484b] hover:border-gray-400 hover:shadow-lg'}`} onClick={() => handleGenderSelect('male')}>
+                        <FaMale className='w-8 h-8 mb-1'/>
+                        Male
+                  </div>
+                  <div className={`w-1/2 flex flex-col justify-center items-center rounded-lg shadow-sm border cursor-pointer bg-[#3d3d40] text-[#DFDFDF] duration-300 ${selectedGender === 'female' ? 'bg-[#48484b] border-2 border-purple-300 shadow-lg' : 'hover:bg-[#48484b] hover:border-gray-400 hover:shadow-lg'}`} onClick={() => handleGenderSelect('female')}>
+                        <FaFemale className='w-8 h-8 mb-1'/>
+                        Female
+                  </div>
               </div> 
               
               <button className="py-2 rounded-md bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mt-4 mb-2 w-1/3" onClick={() => setStep(4)} >Continue</button>
@@ -370,7 +375,7 @@ const Register = () => {
                   </label>
                 ))}
               </div>
-              <button className="py-2 rounded-md bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mt-4 mb-2 w-1/3" onClick={() => handleRegister()} >Register</button>
+              <button className="py-2 rounded-md bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mt-4 mb-2 w-1/3" onClick={handleRegister} >Register</button>
               <button className="rounded-md bg-transparent text-[#c4c4c4] hover:text-[#e6e6e6] duration-300 flex flex-row items-center py-1 mb-6 mt-2" onClick={() => setStep(3)}> 
                 <HiOutlineArrowLongLeft className='mr-2 font-thin'/> 
                 Previous
