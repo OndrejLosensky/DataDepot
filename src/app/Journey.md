@@ -73,6 +73,8 @@ I did not have much time, because I needed to learn for my final exams, but I ha
 
 Also whole code needs to be refractored and simplified so it doesnt get laggy, there is so many unused imports for some type of icons or I dont even know what. 
 
+At the end of the day i finally downloaded VS Cod Insiders so I can try new features and while learning those features a fixed the password uploading to the database. Now you can add folders, passwords and manage them.
+
 *Today is the 7th day in a row working on the project so here are few images of the look:*
 <img width="500" alt="Snímek obrazovky 2024-04-22 v 19 59 32" src="https://github.com/OndrejLosensky/DataDepot-v1/assets/127244546/ecc8b942-2616-4847-a189-5f6d42ce272b">
 <img width="500" alt="Snímek obrazovky 2024-04-22 v 19 59 57" src="https://github.com/OndrejLosensky/DataDepot-v1/assets/127244546/71928e60-9cc4-4a9b-949e-4fee0e0851cb">
