@@ -255,9 +255,9 @@ const PasswordManager = ({isUserActive}) => {
                   </div>
                 </div>
               ) : (
-                <div className='h-36 bg-[#20263d] rounded-xl border-t-[0.5px] border-gray-500'>
+                <div className='h-32 bg-[#20263d] rounded-xl border-t-[0.5px] border-gray-500'>
                   <div className='h-full bg-[#303444] rounded-xl flex flex-col justify-between'>
-                    <div className='p-4 flex flex-row justify-between items-center'>
+                    <div className='p-3 flex flex-row justify-between items-center'>
                       <h1 className='text-2xl font-semibold text-gray-300'>{folder.name}</h1>
                       <p className='text-gray-400'>{folder.passwordCount} 0 items</p>
                     </div>
