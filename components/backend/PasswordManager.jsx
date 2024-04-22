@@ -17,13 +17,14 @@ import Passwords from './Passwords';
 const PasswordManager = ({ isUserActive }) => {
   const [folders, setFolders] = useState([]);
   const [newFolderName, setNewFolderName] = useState('');
+  const [newPassword, setNewPassword] = useState('');
   const [showNewFolderInput, setShowNewFolderInput] = useState(false);
   const [showAddPasswordInput, setShowAddPasswordInput] = useState(false);
   const [selectedFolder, setSelectedFolder] = useState(null);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [app, setApp] = useState('');
-  const [selectedComponent, setSelectedComponent] = useState('password'); // 'password', 'generate', 'help'
+  const [selectedComponent, setSelectedComponent] = useState('folders'); // 'password', 'generate', 'help'
   const [selectedIcon, setSelectedIcon] = useState('grid');
 
 
@@ -42,7 +43,7 @@ const PasswordManager = ({ isUserActive }) => {
 
   const handleClosePasswordsPage = () => {
     setSelectedFolder(null);
-    setSelectedComponent('password');
+    setSelectedComponent('folders');
   };
 
   const fetchFolders = async () => {
@@ -87,14 +88,36 @@ const PasswordManager = ({ isUserActive }) => {
   
 
   const handleAddPasswordSubmit = async () => {
-    console.log('Add Password form submitted');
+    try {
+      const response = await axios.post('/api/newPassword', {
+        folderId: selectedFolder,
+        username: username,
+        password: password,
+        app: app,
+      });
+
+      if (response.data.success) {
+        console.log("Password added successfully!");
+        // Optionally, you can reset the input fields after successful submission
+        setUsername('');
+        setPassword('');
+        setApp('');
+        setSelectedFolder('');
+        await fetchFolders();
+      } else {
+        console.error('Failed to add password:', response.data.error);
+      }
+    } catch (error) {
+      console.error('Failed to add password:', error.message);
+    }
+    setShowAddPasswordInput(false);
   };
 
   return (
     <div className='w-auto h-full overflow-hidden space-y-6 mr-4'>
       {selectedComponent === 'help' && (
         <div className='w-full h-full overflow-hidden mb-12'>
-          <button className='flex flex-row absolute top-4 items-center px-4 text-gray-200 py-1 bg-gray-700 mb-4 rounded-lg shadow-lg' onClick={() => setSelectedComponent('password')} > <BsArrow90DegLeft className='mr-2'/> Back </button>
+          <button className='flex flex-row absolute top-4 items-center px-4 text-gray-200 py-1 bg-gray-700 mb-4 rounded-lg shadow-lg' onClick={() => setSelectedComponent('folders')} > <BsArrow90DegLeft className='mr-2'/> Back </button>
           <Help onClose={() => setSelectedComponent('help')} />
         </div>
       )}
@@ -107,7 +130,7 @@ const PasswordManager = ({ isUserActive }) => {
 
       {selectedComponent === 'generate' ? (
         <div className='w-auto h-full'>
-          <button className='flex flex-row absolute top-4 items-center px-4 text-gray-200 py-1 bg-gray-700 rounded-lg shadow-lg' onClick={() => setSelectedComponent('password')} > <BsArrow90DegLeft className='mr-2'/> Back </button>
+          <button className='flex flex-row absolute top-4 items-center px-4 text-gray-200 py-1 bg-gray-700 rounded-lg shadow-lg' onClick={() => setSelectedComponent('folders')} > <BsArrow90DegLeft className='mr-2'/> Back </button>
           <GeneratePassword onClose={() => setSelectedComponent('generate')} />
         </div>
       ) : (
@@ -146,50 +169,50 @@ const PasswordManager = ({ isUserActive }) => {
 
           {showAddPasswordInput && (
             <div className='flex flex-col items-center'>
-              <select
-                className="p-2 border rounded-md"
-                value={selectedFolder}
-                onChange={(e) => setSelectedFolder(e.target.value)}
-              >
-                <option value="">Select Folder</option>
-                {folders.map(folder => (
-                  <option key={folder.id} value={folder.id}>{folder.name}</option>
-                ))}
-              </select>
-              <input
-                type='text'
-                placeholder='Enter username'
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className='mt-2 p-2 border rounded-md'
-              />
-              <input
-                type='password'
-                placeholder='Enter password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className='mt-2 p-2 border rounded-md'
-              />
-              <input
-                type='text'
-                placeholder='Enter app'
-                value={app}
-                onChange={(e) => setApp(e.target.value)}
-                className='mt-2 p-2 border rounded-md'
-              />
-              <button
-                onClick={handleAddPasswordSubmit}
-                className='mt-2 px-4 py-2 bg-purple-500 text-gray-200 rounded-md shadow-md hover:bg-purple-600 duration-300'
-              >
-                Add Password
-              </button>
-            </div>
+            <select
+              className="p-2 border rounded-md"
+              value={selectedFolder}
+              onChange={(e) => setSelectedFolder(e.target.value)}
+            >
+              <option value="">Select Folder</option>
+              {folders.map(folder => (
+                <option key={folder.id} value={folder.id}>{folder.name}</option>
+              ))}
+            </select>
+            <input
+              type='text'
+              placeholder='Enter username'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className='mt-2 p-2 border rounded-md'
+            />
+            <input
+              type='password'
+              placeholder='Enter password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className='mt-2 p-2 border rounded-md'
+            />
+            <input
+              type='text'
+              placeholder='Enter app'
+              value={app}
+              onChange={(e) => setApp(e.target.value)}
+              className='mt-2 p-2 border rounded-md'
+            />
+            <button
+              onClick={handleAddPasswordSubmit}
+              className='mt-2 px-4 py-2 bg-purple-500 text-gray-200 rounded-md shadow-md hover:bg-purple-600 duration-300'
+            >
+              Add Password
+            </button>
+          </div>
           )}
 
           {/* Banner */}
           <div className='w-full bg-gray-800 h-1/4 flex flex-row overflow-hidden'>
             <div className='w-1/4 flex justify-center items-center'>
-              <Image src="/lock.svg" width={256} height={256} alt='Icon' className='rounded-full bg-gray-500 m-24 p-6' />
+              <Image src="/lock.svg" width={256} height={256} alt='Icon for banner' className='rounded-full bg-gray-500 m-24 p-6' />
             </div>
             <div className='w-3/4 relative justify-center space-y-2 flex flex-col'>
               <button className='absolute right-4 top-4'> <IoClose className='text-gray-200 w-5 h-5' /> </button>
