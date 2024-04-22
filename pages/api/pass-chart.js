@@ -3,18 +3,19 @@
 import sqlite3 from 'sqlite3';
 
 export default function handler(req, res) {
-    const db = new sqlite3.Database('db/test.sqlite');
+    const db = new sqlite3.Database('./db/test.sqlite');
 
     const query = `
-        SELECT 
-            date(creation_date) AS date, 
-            COUNT(*) AS count 
-        FROM 
-            password 
-        GROUP BY 
-            date(creation_date)
-        ORDER BY 
-            date(creation_date);
+                SELECT 
+                strftime('%Y-%m-%d', creation_date) AS date, 
+                COUNT(*) AS count 
+            FROM 
+                password 
+            GROUP BY 
+                date(creation_date)
+            ORDER BY 
+                date(creation_date);
+
     `;
 
     db.all(query, (err, rows) => {

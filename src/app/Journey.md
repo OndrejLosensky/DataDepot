@@ -83,6 +83,6 @@ At the end of the day i finally downloaded VS Cod Insiders so I can try new feat
 
 
 
-Spent hours today: `1 hour 30 min`
+Spent hours today: `2 Hours 30 min`
 
 --- 

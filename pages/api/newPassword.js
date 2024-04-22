@@ -5,6 +5,12 @@ function openDB() {
   return new sqlite3.Database('./db/test.sqlite');
 }
 
+const currentDate = new Date();
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // January is 0!
+    const year = currentDate.getFullYear();
+    const dateCreated = `${year}–${month}-${day}`;
+
 export default function handler(req, res) {
   if (req.method === 'POST') {
     const { folderId, username, password, app } = req.body;
@@ -13,8 +19,8 @@ export default function handler(req, res) {
 
     // Insert the password into the database
     db.run(
-      'INSERT INTO password (folder_id, username, password, app) VALUES (?, ?, ?, ?)',
-      [folderId, username, password, app],
+      'INSERT INTO password (folder_id, username, password, app, creation_date) VALUES (?, ?, ?, ?, ?)',
+      [folderId, username, password, app,dateCreated],
       function(err) {
         if (err) {
           console.error('Error inserting password:', err.message);

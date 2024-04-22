@@ -227,7 +227,7 @@ const PasswordManager = ({ isUserActive }) => {
           </div>
 
           {/* Passwords (cards with folders) */}
-          <div className='w-full h-[60%] flex flex-col overflow-hidden'>
+          <div className='w-full h-[60%] min-h-[300px] flex flex-col overflow-hidden'>
             <div className='flex flex-row justify-between items-center'>
               <h1 className='text-2xl font-semibold text-gray-200'> Passwords <span className='font-thin text-lg'> (325)</span></h1>
               <div className='relative flex flex-row space-x-4'>
