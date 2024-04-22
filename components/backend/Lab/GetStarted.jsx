@@ -11,7 +11,7 @@ const GetStarted = () => {
         <h2 className='text-4xl text-gray-200 mt-1 font-semibold'>DataDepot Lab</h2>
       </div>
         <p className='font-light text-lg pb-1 text-gray-300'> This is space for testing new components, AI models and more...</p>
-        <p className='font-light text-lg w-1/2 text-center pt-3'> Mainly I am testing some software components that have something to do with API. Like a CoinGeckoAPI & BinanceAPI for crypto, stocks etc. Ai API's and generally my ideas that I think about implementing somehow </p>
+        <p className='font-light text-lg w-1/2 text-center pt-3'> Mainly I am testing some software components that have something to do with API. Like a CoinGeckoAPI & BinanceAPI for crypto, stocks etc. Ai APIs and generally my ideas that I think about implementing somehow </p>
         <div className="flex space-x-2 mt-16">
           <button
             type="button"
