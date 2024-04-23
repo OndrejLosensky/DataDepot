@@ -91,3 +91,9 @@ Spent hours today: `2 Hours 30 min`
 I have cleared out the code a little today, I tried to remove all unused imports of components or icons. 
 
 Also it finally fetches the number of added passwords and folders to the Analytics page. The page with the passwords is still kinda broken. After a while stalled API requests crash the database, but I cannot find the solution for it today.     
+
+Lastly I made basic UI design for the passwords page (when you open the folder/vault with passwords.) It calculates the stength of the password, shows name, app and password. Also I added number of passwords in the current folder, some action buttons and more. In the next step I would like to have an option to re-generate current password with the algorithm that creates them. Also automatically applying icons for the names of the folders would be cool. Maybe with some AI algorithm that would predict it.
+
+Spent hours today: `2 Hours 46 min`
+
+--- 
