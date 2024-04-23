@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { FaArrowLeftLong } from "react-icons/fa6";
 import { AiFillApple } from 'react-icons/ai';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -10,7 +9,6 @@ import { useRouter } from 'next/router';
 import { FaCheckCircle } from 'react-icons/fa';
 import { FiAlertCircle } from 'react-icons/fi';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
-import { IoCloseSharp } from "react-icons/io5";
 import { FaWarehouse } from "react-icons/fa";
 import { BsArrow90DegLeft } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
@@ -38,7 +36,8 @@ const Login = () => {
           await signInWithEmailAndPassword(auth, email, password);
           setSuccessAlertVisible(true);
           setIsLoading(true);
-          // Redirect to dashboard upon successful login
+          
+          // Redirects to dashboard upon successful login
           router.push('/backend/dashboard');
           setSuccessAlertVisible(false);
           setIsLoading(false);

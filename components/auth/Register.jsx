@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { FaArrowLeftLong } from "react-icons/fa6";
 import { AiFillApple } from 'react-icons/ai';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -10,7 +9,6 @@ import { useRouter } from 'next/router';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { FaCheckCircle } from 'react-icons/fa';
 import { FiAlertCircle } from 'react-icons/fi';
-import { IoCloseSharp } from "react-icons/io5";
 import { FaMale, FaFemale } from "react-icons/fa";
 import { FaWarehouse } from "react-icons/fa";
 import { BsArrow90DegLeft } from "react-icons/bs";
@@ -56,6 +54,7 @@ const Register = () => {
         setSuccessAlertVisible(true);
         setIsLoading(true);
         await createUserWithEmailAndPassword(auth, email, password);
+
         // Redirect to dashboard upon successful registration
         router.push('/backend/dashboard');
         setSuccessAlertVisible(false);
@@ -253,9 +252,9 @@ const Register = () => {
 
             <div className='items-center w-2/3 mt-2 flex flex-col'>
               <h1 className='text-3xl font-bold text-gray-200 pb-2 '> Step 2 - Additional info</h1>
-              <p className='text-gray-300 w-1/2 mb-4 text-center'>You can tell us more about yourself, but everything is <strong>optional</strong>. It's up to you! This data is stored inside your folder that you can edit any time.</p>
+              <p className='text-gray-300 w-1/2 mb-4 text-center'>You can tell us more about yourself, but everything is <strong>optional</strong>. It is up to you! This data is stored inside your folder that you can edit any time.</p>
               <div className='w-1/3 flex mt-4 flex-col items-start'>
-                <p className='text-gray-300 font-medium'> What's your full name? *</p>
+                <p className='text-gray-300 font-medium'> What is your full name? *</p>
                 <input
                   type="name"
                   name="text"
@@ -316,7 +315,7 @@ const Register = () => {
 
             <div className='items-center w-2/3  h-2/3 mt-36 flex flex-col'>
               <h1 className='text-3xl font-bold text-gray-200 pb-2 '> Step 3 - Additional info</h1>
-             <p className='text-gray-300 w-1/2 mb-4 text-center'>You can tell us more about yourself, but everything is <strong>optional</strong>. It's up to you! This data is stored inside your folder that you can edit any time.</p>
+             <p className='text-gray-300 w-1/2 mb-4 text-center'>You can tell us more about yourself, but everything is <strong>optional</strong>. It is up to you! This data is stored inside your folder that you can edit any time.</p>
               
               <h2 className='py-4 text-lg text-gray-300 font-medium'> Who are you?</h2>
               <div className='w-1/3 h-1/4 mb-4 flex flex-row space-x-8'>

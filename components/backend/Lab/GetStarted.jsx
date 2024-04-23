@@ -1,6 +1,6 @@
 import React from 'react'
 import { ImLab } from "react-icons/im";
-import { MdOutlineKeyboardArrowLeft,MdOutlineKeyboardArrowRight } from "react-icons/md";
+import {MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const GetStarted = () => {
   return (

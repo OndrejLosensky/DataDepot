@@ -16,14 +16,6 @@ const Settings = ({ setActiveComponent }) => {
     <div className='overflow-y-auto'>
       <button onClick={handleGoBack} className='text-gray-200 flex flex-row items-center mt-2 mb-1 h-8'> <HiArrowLongLeft className='mr-2 w-6 h-8'/> Back</button>
       <h1 className='text-4xl text-gray-100 font-semibold'>Account Settings</h1>
-      {/*
-      <ul className='gap-x-8 flex flex-row text-gray-300 mt-4 nav-links'>
-        <li className='border-b-[2px] border-gray-200 cursor-pointer active' data-target='details'>My details</li>
-        <li className='border-b-[2px] border-gray-200 cursor-pointer' data-target='app'>App settings</li>
-        <li className='border-b-[2px] border-gray-200 cursor-pointer' data-target='password'>Password</li>
-        <li className='border-b-[2px] border-gray-200 cursor-pointer' data-target='delete'>Delete</li>
-      </ul>
-       */}
             <div className='relative border-b mt-4 border-gray-600'>
                 <ul className='flex w-[600px] flex-row justify-between  text-center items-center text-gray-300 mr-8'>
                     {["Details", "App", "Password", "Delete", "Theme", "Backup"].map((name, index) => (
@@ -50,12 +42,12 @@ const Settings = ({ setActiveComponent }) => {
                     </div>
                     <div className='w-2/3'>
                         <div className='flex flex-row gap-x-8 mt-10'>
-                            <Image src="/profile_pictures/1.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer border-2 border-purple-500' />
-                            <Image src="/profile_pictures/2.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
-                            <Image src="/profile_pictures/3.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
-                            <Image src="/profile_pictures/4.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
-                            <Image src="/profile_pictures/5.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
-                            <Image src="/profile_pictures/6.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
+                            <Image alt='profile picture' src="/profile_pictures/1.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer border-2 border-purple-500' />
+                            <Image alt='profile picture' src="/profile_pictures/2.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
+                            <Image alt='profile picture' src="/profile_pictures/3.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
+                            <Image alt='profile picture' src="/profile_pictures/4.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
+                            <Image alt='profile picture' src="/profile_pictures/5.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
+                            <Image alt='profile picture' src="/profile_pictures/6.jpeg" width={105} height={105} className='rounded-full mt-4 cursor-pointer' />
                         </div>
                         <h2 className='text-gray-200 py-2 text-xl mt-8 font-semibold'> Username</h2>
                         <label className="input input-bordered border-gray-500 mr-12 bg-[#222222] flex items-center gap-2">
@@ -199,7 +191,7 @@ const Settings = ({ setActiveComponent }) => {
             {activeTab === 5 && (
                 <div id='backup' className='h-[500px] mt-8 bg-[#21273e] rounded-lg border justify-center items-center flex flex-col mb-12 border-[#686868] shadow-xl'>
                     <div className='flex opacity-75 mb-2 flex-row justify-center mt-4'>
-                        <Image src="/logo/light.svg" width={32} height={32} />
+                        <Image alt='Logo' src="/logo/light.svg" width={32} height={32} />
                         <p className='pt-1 text-2xl text-gray-100 pl-2'> DataDepot</p>
                     </div>
                     <h1 className='text-4xl text-gray-300 font-bold '> Coming soon... </h1>

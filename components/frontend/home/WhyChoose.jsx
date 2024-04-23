@@ -1,5 +1,4 @@
 import React from 'react'
-import SectionTitle from '../layout/SectionTitle'
 import Image from 'next/image';
 import Link from 'next/link';
 

@@ -7,6 +7,7 @@ const Passwords = ({ folder, onClose }) => {
         <h1 className='text-2xl text-gray-200 font-semibold'>Passwords for {folder.name}</h1>
         <button onClick={onClose} className="text-gray-300 hover:text-gray-200 transition duration-300 ease-in-out">Close</button>
       </div>
+      
       {/* Display passwords for the selected folder */}
       <div className='mt-20'>
         {folder.passwords.map(password => (

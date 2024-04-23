@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { FaArrowRightLong } from 'react-icons/fa6';
@@ -41,7 +42,7 @@ const HomeV2 = () => {
             </h1>
             <p className='text-md text-left py-2 text-gray-400'>
               Simplify data management with DataDepot. Effortlessly store,
-              organize, and access your documents,files, passwords and more from anywhere. Whether you're
+              organize, and access your documents,files, passwords and more from anywhere. Whether you are
               a student, professional, or business owner, DataDepot streamlines
               your workflow and boosts productivity.
             </p>
@@ -55,7 +56,7 @@ const HomeV2 = () => {
           </div>
           <div className='relative '> 
               <div className='rounded-lg'>
-                <img src='/sidebarVisible.svg' alt="dashboard image" className='translate-x-60 pt-16 scale-125 h-[720px] rounded-lg' />
+                <Image width={1000} height={1000} src='/sidebarVisible.svg' alt="dashboard image" className='translate-x-60 pt-16 scale-125 h-[820px] rounded-lg' />
               </div>
           </div>
         </div>

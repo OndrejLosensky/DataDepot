@@ -1,6 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
-import { FaArrowLeftLong } from 'react-icons/fa6';
 import { FaWarehouse } from "react-icons/fa";
 import { useTypewriter, Cursor} from "react-simple-typewriter";
 

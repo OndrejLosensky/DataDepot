@@ -45,12 +45,12 @@ const GeneratePassword = () => {
     if (includeNumbers) characterTypes++;
     if (includeSymbols) characterTypes++;
   
-    strength += lengthBonus * 25; // Max score for length
+    strength += lengthBonus * 25; 
   
     if (characterTypes >= 3) {
-      strength += 25; // Max score for complexity
+      strength += 25; 
     } else {
-      strength += (characterTypes / 3) * 25; // Linear score for complexity
+      strength += (characterTypes / 3) * 25; 
     }
   
     return Math.round(strength * 2);

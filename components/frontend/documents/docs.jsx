@@ -77,21 +77,21 @@ const Docs = () => {
     <div className="mt-8">
         <div className="py-6">
             <h3 id='dashboard' className='text-xl font-semibold text-gray-200'>Dashboard Overview</h3>
-            <p className='max-w-prose text-gray-300'>Upon logging in to DataDepot, you'll be greeted by a clean and intuitive dashboard that serves as your central hub for managing your files.
+            <p className='max-w-prose text-gray-300'>Upon logging in to DataDepot, you will be greeted by a clean and intuitive dashboard that serves as your central hub for managing your files.
             The dashboard provides easy access to all the essential features and tools you need to organize, upload, and view your files effortlessly.</p>
             <Image src="/homepage.svg" alt='Dashboard Overview' width={900} height={512} className='my-6 rounded-lg shadow-lg' />
         </div>
         
         <div className="py-6">
             <h3 id='upload' className='text-xl font-semibold text-gray-200'>File Upload</h3>
-            <p className='max-w-prose text-gray-300'>Uploading files to DataDepot is a breeze. Simply click on the "Upload" button located prominently on the dashboard, and you can either select files from your local device or drag and drop them directly into the designated area.
+            <p className='max-w-prose text-gray-300'>Uploading files to DataDepot is a breeze. Simply click on the Upload button located prominently on the dashboard, and you can either select files from your local device or drag and drop them directly into the designated area.
             Our platform supports various file formats, ensuring you can store all your important documents, images, and presentations with ease.</p>
             <Image src="/fileUpload.svg" alt='File Upload' width={900} height={302} className='my-6 rounded-lg shadow-lg' />
         </div>
         
         <div className="py-6">
             <h3 id='files' className='text-xl font-semibold text-gray-200'>File Preview</h3>
-            <p className='max-w-prose text-gray-300'>Previewing files within DataDepot is seamless and hassle-free. Whether it's a PDF document, a Word file, or an image, you can instantly view its contents without having to download or open it externally. This feature saves you time and allows you to quickly glance through your files to find the information you need.</p>
+            <p className='max-w-prose text-gray-300'>Previewing files within DataDepot is seamless and hassle-free. Whether its a PDF document, a Word file, or an image, you can instantly view its contents without having to download or open it externally. This feature saves you time and allows you to quickly glance through your files to find the information you need.</p>
         </div>
     </div>
 </div>

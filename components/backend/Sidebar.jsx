@@ -7,7 +7,6 @@ import { FiAlertCircle } from 'react-icons/fi';
 import ProgressBar from './upload/ProgressBar';
 import { signOut } from "firebase/auth";
 import { useRouter } from 'next/router';
-import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../../src/app/firebaseConfig';
 
 const Sidebar = ({ isOpen, toggleSidebar, setActiveComponent }) => {
@@ -17,16 +16,13 @@ const Sidebar = ({ isOpen, toggleSidebar, setActiveComponent }) => {
   const router = useRouter();
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-  // Modify the handleLogout function to show the confirmation dialog
   const handleLogout = async () => {
-      // Display confirmation dialog
       const shouldLogout = window.confirm('Are you sure you want to log out?');
       
-      // If user confirms, proceed with logout
       if (shouldLogout) {
           try {
               await signOut(auth);
-              router.push('/'); // Redirect to the landing page after logout
+              router.push('/'); // Redirects to the landing page after logout
           } catch (error) {
               console.error('Error signing out:', error);
           }

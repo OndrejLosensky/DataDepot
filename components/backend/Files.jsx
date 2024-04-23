@@ -39,7 +39,6 @@ const Files = ({isUserActive}) => {
         {selectedComponent === 'generate' ? (
           <div>
             <button className='flex flex-row items-center px-4 text-gray-200 py-1 bg-gray-700 mb-4 rounded-lg shadow-lg' onClick={() => setSelectedComponent('password')} > <BsArrow90DegLeft className='mr-2'/> Back </button>
-            <GeneratePassword onClose={() => setSelectedComponent('generate')} />
           </div>
         ) : (
           <div className='space-y-6 '>
@@ -59,7 +58,6 @@ const Files = ({isUserActive}) => {
             <div className='flex flex-row items-center'>
                 <button onClick={() => setSelectedComponent('help')}> <AiOutlineQuestion className='text-gray-200 bg-[#323232] hover:text-gray-50 duration-300 hover:shadow-xl hover:border-gray-400 border border-transparent w-7 h-7 mr-2 p-1 rounded-full'/></button>
                 <div className='flex flex-row relative'>
-                    {/*  <button> <AiOutlineQuestion className='text-gray-300 w-10 h-10 mr-2 bg-gray-700 rounded-full p-2'/> </button> */}
                     <Profile isUserActive={isUserActive}/> 
                 </div>
             </div>

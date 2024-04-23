@@ -3,8 +3,6 @@ import { HiOutlineChevronDown } from 'react-icons/hi';
 import { IoArrowUp, IoArrowDown } from "react-icons/io5";
 import axios from 'axios';
 import {FaExclamationCircle, FaCheckCircle} from 'react-icons/fa';
-import { IoMdClose } from "react-icons/io";
-
 
 const ControlPanel = ({ fileTypeFilter, setFileTypeFilter, setSortOption }) => {
     const dropdownRef = useRef(null);
@@ -30,9 +28,9 @@ const ControlPanel = ({ fileTypeFilter, setFileTypeFilter, setSortOption }) => {
       };
       const intervalId = setInterval(() => {
         fetchLabels();
-      }, 10000); // Auto-fetch every 10 seconds
+      }, 10000); 
       return () => clearInterval(intervalId); 
-    }, []); // Empty dependency array to fetch labels only once on component mount
+    }, []); 
 
     const handleFileTypeFilter = (fileType) => {
         setFileTypeFilter(fileType);
@@ -57,7 +55,7 @@ const ControlPanel = ({ fileTypeFilter, setFileTypeFilter, setSortOption }) => {
     const toggleSortOption = () => {
         const newSortOption = sortOption === 'asc' ? 'desc' : 'asc';
         setSortOptionLocal(newSortOption);
-        setSortOption(newSortOption); // Pass value to parent component
+        setSortOption(newSortOption);
     };
 
     const handleColorSelect = (e, color) => {
@@ -67,7 +65,7 @@ const ControlPanel = ({ fileTypeFilter, setFileTypeFilter, setSortOption }) => {
     
 
     const createNewLabel = async (e) => {
-        e.preventDefault(); // Prevent page reload
+        e.preventDefault(); 
         try {
             await axios.post('/api/createLabel', { name: newLabelName, color: selectedColor });
             setSuccessCreatingAlertVisible(true);
@@ -88,19 +86,17 @@ const ControlPanel = ({ fileTypeFilter, setFileTypeFilter, setSortOption }) => {
     const [selectedLabels, setSelectedLabels] = useState([]);
 
     const handleLabelFilter = (label) => {
-        // Toggle label selection
         const updatedLabels = selectedLabels.includes(label)
             ? selectedLabels.filter((l) => l !== label)
             : [...selectedLabels, label];
         setSelectedLabels(updatedLabels);
     };
 
-    // Modify fetchFiles function to include label filter criteria
     const fetchFiles = async () => {
         try {
             const response = await axios.get('/api/getFiles', {
                 params: {
-                    labels: selectedLabels.join(','), // Pass selected labels as a comma-separated string
+                    labels: selectedLabels.join(','),
                 },
             });
             setFiles(response.data);

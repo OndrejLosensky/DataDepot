@@ -1,8 +1,6 @@
-import ThemeController from '../ThemeController'
 import Link from 'next/link';
 import { FaWarehouse } from "react-icons/fa";
 import React, {useEffect, useState} from 'react';
-import { FaArrowRightLong } from 'react-icons/fa6';
 
 function Navbar ({ isDarkMode, toggleTheme }) {
     const [isScrolled, setIsScrolled] = useState(false);

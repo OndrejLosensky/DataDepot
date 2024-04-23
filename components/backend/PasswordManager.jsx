@@ -10,7 +10,7 @@ import GeneratePassword from './GeneratePassword';
 import { BsArrow90DegLeft } from "react-icons/bs";
 import { MdFormatListBulleted } from "react-icons/md";
 import { LuLayoutGrid } from "react-icons/lu";
-import { FaCheck } from 'react-icons/fa'; // Import the check icon
+import { FaCheck } from 'react-icons/fa';
 import Help from './Help';
 import Passwords from './Passwords';
 
@@ -24,7 +24,7 @@ const PasswordManager = ({ isUserActive }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [app, setApp] = useState('');
-  const [selectedComponent, setSelectedComponent] = useState('folders'); // 'password', 'generate', 'help'
+  const [selectedComponent, setSelectedComponent] = useState('folders'); // 'folders', 'generate', 'help', 'passwordsPage'
   const [selectedIcon, setSelectedIcon] = useState('grid');
 
 
@@ -74,7 +74,7 @@ const PasswordManager = ({ isUserActive }) => {
           body: JSON.stringify({ folderName: newFolderName }),
         });
         if (response.ok) {
-          await fetchFolders(); // Refresh folders after creating new one
+          await fetchFolders(); 
           setNewFolderName('');
         } else {
           console.error('Failed to create folder:', response.statusText);
@@ -83,7 +83,7 @@ const PasswordManager = ({ isUserActive }) => {
         console.error('Failed to create folder:', error.message);
       }
     }
-    setShowNewFolderInput(false); // Close the dropdown after creating the folder
+    setShowNewFolderInput(false);
   };
   
 
@@ -98,13 +98,12 @@ const PasswordManager = ({ isUserActive }) => {
 
         if (response.data.success) {
             console.log("Password added successfully!");
-            // Optionally, you can reset the input fields after successful submission
             setUsername('');
             setPassword('');
             setApp('');
             setSelectedFolder('');
             await fetchFolders();
-            await fetchTotalPasswords(); // Fetch total passwords after adding a new one
+            await fetchTotalPasswords(); 
         } else {
             console.error('Failed to add password:', response.data.error);
         }
@@ -128,7 +127,7 @@ const PasswordManager = ({ isUserActive }) => {
 
     useEffect(() => {
         fetchTotalPasswords();
-    }, []); // Run once when component mounts
+    }, []);
 
   return (
     <div className='w-auto h-full overflow-hidden space-y-6 mr-4'>
@@ -162,7 +161,7 @@ const PasswordManager = ({ isUserActive }) => {
                 + Add Password
               </button>
               <button
-                onClick={() => setSelectedComponent('generate')} // Toggle visibility of GeneratePasswordComponent
+                onClick={() => setSelectedComponent('generate')}
                 className='border border-gray-300 text-gray-300 px-4 py-2 rounded-md'
               >
                 Generate Secure Password

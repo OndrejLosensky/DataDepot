@@ -6,7 +6,7 @@ import PasswordsFolder from './Lab/PasswordsFolder';
 import PasswordsChart from './Lab/PasswordsChart';
 
 const Lab = () => {
-    const [activeComponent, setActiveComponent] = useState('getStarted'); // Default active component
+    const [activeComponent, setActiveComponent] = useState('getStarted'); 
 
     const handleComponentClick = (component) => {
         setActiveComponent(component);

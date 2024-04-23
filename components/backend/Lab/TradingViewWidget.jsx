@@ -1,4 +1,3 @@
-// TradingViewWidget.jsx
 import React, { useEffect, useRef, memo } from 'react';
 import { MdOutlineKeyboardArrowLeft,MdOutlineKeyboardArrowRight } from "react-icons/md";
 

@@ -32,15 +32,14 @@ const Overview = ({ isUserActive}) => {
             data: [53,43,52,469,120,200,300,310,340,356],
             fill: {
               target: 'origin',
-              above: 'rgba(30, 197, 92, 0.2)', // Color for the area above the line
+              above: 'rgba(30, 197, 92, 0.2)',
             },
             borderColor: '#22c55d',
             tension: 0.3,
           },
         ]
       };
-  
-      // Data for folders chart
+
       const foldersData = {
         labels: ['1','2','3','4','5','6','7','8','9','10'],
         datasets: [
@@ -49,7 +48,7 @@ const Overview = ({ isUserActive}) => {
             data: [4,3,3,5,7,11,12,15,24,1],
             fill: {
               target: 'origin',
-              above: 'rgba(238, 68, 67, 0.2)', // Color for the area above the line
+              above: 'rgba(238, 68, 67, 0.2)',
             },
             borderColor: '#ef4444',
             tension: 0.3,
@@ -65,7 +64,7 @@ const Overview = ({ isUserActive}) => {
             data: [1498, 1277, 1508, 1781, 2104, 2488, 2944, 3476,2348,1797]            ,
             fill: {
               target: 'origin',
-              above: 'rgba(30, 197, 92, 0.2)', // Color for the area above the line
+              above: 'rgba(30, 197, 92, 0.2)',
             },
             borderColor: '#22c55d',
             tension: 0.3,
@@ -75,15 +74,15 @@ const Overview = ({ isUserActive}) => {
       const options = {
         scales: {
           x: {
-            display: false // Hide x-axis labels
+            display: false // Hides x-axis labels
           },
           y: {
-            display: false // Hide y-axis labels
+            display: false // Hides y-axis labels
           }
         },
         plugins: {
           legend: {
-            display: false // Hide the legend
+            display: false // Hides the legend
           }
         }
       };

@@ -1,11 +1,7 @@
 import React, {useState} from 'react'
 import { IoPricetagOutline } from "react-icons/io5";
-import { IoShieldCheckmarkOutline } from "react-icons/io5";
-import { IoSunny } from "react-icons/io5";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { FaBell } from "react-icons/fa";
 import { FaRegFolder } from "react-icons/fa6";
-import { FaRegFileAlt } from "react-icons/fa";
 import WhyChoose from './About';
 import HomeV2 from './HomeV2';
 import Pricing from '../pricing/Pricing'; 
@@ -20,6 +16,7 @@ import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { CiLock } from "react-icons/ci";
+import Image from 'next/image';
 
 export function Video() {
   return (
@@ -54,26 +51,10 @@ const Landing = () => {
 
   return (
     <div className='max-w-screen h-auto min-h-screen overflow-x-hidden'>
+      {/* Hero */}
       <HomeV2/>
 
-      {/* 
-      <section className="py-12 h-screen px-8 md:py-36 xl:px-0">
-        <div className="mx-auto max-w-6xl space-y-8 md:space-y-16">
-          <div className="mx-auto flex w-full max-w-5xl flex-col items-center space-y-8 text-center lg:px-8">
-            <h1 className="text-6xl font-bold">
-              <span className="text-gradient-to-r text-gray-200 from-red-500 to-green-400 text-clip">
-                Experience DataDepot: Your All-in-One Document Management Solution
-              </span>
-            </h1>
-            <p className="text-lg font-thing text-gray-300 md:max-w-3xl">
-              Simplify document management with DataDepot. Effortlessly store, organize, and access your documents from anywhere. Whether you're a student, professional, or business owner, DataDepot streamlines your workflow and boosts productivity.
-            </p>
-            
-          </div>
-          <Image src="/homepage.svg" height={400} width={1300} alt='Showcase image' className='mb-36 rounded-xl boeder border-gray-500 shadow-lg'/>
-        </div>
-      </section>
-      */}
+       {/* Features */}
       <section id='features' className="w-full overflow-x-hidden h-auto mt-36 p-6 text-center">
         <div className="mx-auto w-full max-w-6xl">
           <h1 className=' text-md text-purple-500 font-semibold'> Featuring</h1>
@@ -96,8 +77,8 @@ const Landing = () => {
           </div>
         </div>
       </section>
-
-
+      
+       {/* Features - Extended */}
       <section className='mb-[200px] overflow-hidden '>
         <div className="mx-auto max-w-6xl space-y-24 md:space-y-36">
           <div data-aos='fade-up' className="flex flex-col items-center justify-between gap-6 lg:flex-row m-4">
@@ -115,9 +96,11 @@ const Landing = () => {
             </div>
   
             <div className="max-w-lg">
-              <img
+              <Image
+                height={100}
+                width={100}
                 src="/sidebarHidden.svg"
-                alt=""
+                alt="Screenshot"
                 className="w-full"
               />
             </div>
@@ -138,9 +121,11 @@ const Landing = () => {
             </div>
   
             <div className="max-w-lg">
-              <img
+              <Image
+                height={100}
+                width={100}
                 src="/settings.svg"
-                alt=""
+                alt="Showcase image"
                 className="w-full"
               />
             </div>
@@ -156,14 +141,16 @@ const Landing = () => {
                 Simple statistics
               </h3>
               <p className="text-lg text-gray-300 font-medium">
-                Who wouldn't be exited to see how many files he opened in the past work week. Or maybe how many files have been uploaded. See many interesting anylytics next to the settings tab
+                Who wouldnt be exited to see how many files he opened in the past work week. Or maybe how many files have been uploaded. See many interesting anylytics next to the settings tab
               </p>
             </div>
   
             <div className="max-w-lg">
-              <img
+              <Image
+                height={100}
+                width={100}
                 src="/sidebarVisible.svg"
-                alt=""
+                alt="Showcase"
                 className="w-full"
               />
             </div>
@@ -171,43 +158,12 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* Pricing options */}
       <section id='pricing'  className='mt-64'>
         <Pricing/>
       </section>
 
-
-      {/*
-      <section className='w-screen h-[700px] flex flex-row' >
-         <div className='w-[60%] [h-90%] bg-gradient-to-br mr-20 from-cyan-500 to-green-500 '></div>
-         <div className='w-[40%] justify-center h-full flex flex-col'>
-          <h1 className=' text-md text-purple-500 font-semibold'> AI Model</h1>
-          <h2 className='text-3xl text-gray-100 font-bold pb-4'> Introducing new AI model: DataAI</h2>
-          <p className='w-[80%] text-gray-300 pb-10'> Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </p>
-            <div className='flex flex-row space-x-16 pb-8 pt-4'>
-              <div className='flex flex-col border-l border-gray-200 pl-8 space-y-4 py-1'> 
-                  <p className='text-2xl text-gray-100 fond-bold'> AI Model V1 </p>  
-                  <p> Simple model</p>
-              </div>
-              <div className='flex flex-col border-l border-gray-200 pl-8 space-y-4 py-1'> 
-                  <p className='text-2xl text-gray-100 fond-bold'> AI Model V1 </p>  
-                  <p> Simple model</p>
-              </div>
-            </div>
-            <div className='flex flex-row space-x-16'>
-              <div className='flex flex-col border-l border-gray-200 pl-8 space-y-4 py-1'> 
-                  <p className='text-2xl text-gray-100 fond-bold'> AI Model V1 </p>  
-                  <p> Simple model </p>
-              </div>
-              <div className='flex flex-col border-l border-gray-200 pl-8 space-y-4 py-1'> 
-                  <p className='text-2xl text-gray-100 fond-bold'> AI Model V1 </p>  
-                  <p> Simple model</p>
-              </div>
-            </div>
-         </div>
-      </section>
-      */}
-
-
+       {/* Pricing - Extended */}
       <section data-aos='fade-up'  className='max-w-screen overflow-y-hidden overflow-x-hidden  h-[800px] mb-[250px]'>
       <div className="z-[-1] flex place-items-center before:dark:bg-gradient-to-br before:dark:from-blue-500 before:dark:to-purple-500 before:dark:opacity-[25%] before:absolute before:h-[160px] before:w-full sm:before:w-[350px] before:translate-x-[400px] before:translate-y-[250px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-red-500 after:via-yellow-400 after:blur-2xl after:content-['']  after:dark:from-rose-800 after:dark:via-blue-200 after:dark:opacity-100"></div>
 
@@ -341,18 +297,20 @@ const Landing = () => {
       */}
       </section>
 
-
+       {/* Q & A */}
       <section id='questions'>
       <WhyChoose/>     
-     </section>
+      </section>
 
-     <section id='demo' className='mb-32 m-8'>
+       {/* Demov video */}
+      <section id='demo' className='mb-32 m-8'>
       <p className='text-center text-xl text-[#a554f1] pt-12'>demo</p>
       <h1 className='text-3xl font-bold text-gray-300 text-center'> Learn more by watching how everything looks & works</h1>
           <Video/>
-     </section>
+      </section>
 
-     <div id='join' className='max-h-1/2 overflow-x-hidden '>
+       {/* Join section */}
+      <div id='join' className='max-h-1/2 overflow-x-hidden '>
         <div className="z-[-1] flex place-items-center before:dark:bg-gradient-to-br before:dark:from-blue-400 before:dark:to-violet-500 before:dark:opacity-[20%] before:absolute before:h-[300px] before:w-full sm:before:w-[500px] before:translate-x-[380px] before:translate-y-[70px] before:rounded-full before:bg-gradient-to-br before:from-warning before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-red-500 after:via-yellow-400 after:blur-2xl after:content-['']  after:dark:from-rose-800 after:dark:via-blue-200 after:dark:opacity-100 "></div>
 
           <section className='text-center mb-48 pt-32 justify-center flex flex-col'>

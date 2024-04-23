@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ref, uploadBytes } from "firebase/storage";
 import { storage } from '../../../src/app/firebaseConfig';
 

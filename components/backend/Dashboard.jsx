@@ -17,26 +17,22 @@ import { signOut } from "firebase/auth";
 import { useRouter } from 'next/router';
 import { auth } from '../../src/app/firebaseConfig';
 import { IoAnalyticsOutline } from "react-icons/io5";
-import { RiDashboard3Line } from "react-icons/ri";
 import { MdLockOutline } from "react-icons/md";
-import { IoChevronLeft, IoChevronRight } from 'react-icons/io5';
 import ProgressBarRadial from './upload/ProgressBarRadial';
 import { FaUsersCog } from "react-icons/fa";
-import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import Users from './Users';
 import Lab from './Lab';
 import { ImLab } from "react-icons/im";
 
 const Dashboard = ({isUserActive}) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [activeComponent, setActiveComponent] = useState('Analytics'); // Default active component
+  const [activeComponent, setActiveComponent] = useState('Analytics');
   const router = useRouter();
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [sidebarVisible, setSidebarVisible] = useState(true);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      // Check if CMD (Meta) key and H key are pressed simultaneously
       if (event.ctrlKey && event.key === 'h') {
         toggleSidebar();
       }
@@ -47,32 +43,26 @@ const Dashboard = ({isUserActive}) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [sidebarVisible]); // Include sidebarVisible in the dependency array if needed
+  }, [sidebarVisible]);
 
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
   };
 
-  // Conditional class to hide the sidebar when it's collapsed
-  const sidebarClass = sidebarVisible ? 'w-[15%]' : 'w-[5%]';
-
 
   const handleLogout = async () => {
-    // Display confirmation dialog
     const shouldLogout = window.confirm('Are you sure you want to log out?');
     
-    // If user confirms, proceed with logout
     if (shouldLogout) {
         try {
             await signOut(auth);
-            router.push('/'); // Redirect to the landing page after logout
+            router.push('/'); // Redirects to the landing page after logout
         } catch (error) {
             console.error('Error signing out:', error);
         }
     }
   };
 
-  // Simulating loading completion after 2 seconds
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
@@ -115,7 +105,7 @@ const Dashboard = ({isUserActive}) => {
             </div>
             <div>
               <div className='flex flex-row justify-center py-4 border-b border-gray-400'>
-                <Image src="/logo/light.svg" width={32} height={32} />
+                <Image alt='logo' src="/logo/light.svg" width={32} height={32} />
                 {sidebarVisible && <p className='text-2xl text-gray-100 pl-2'> DataDepot</p>}
               </div>
               {sidebarVisible && <p className='mx-4 pb-1'></p>}

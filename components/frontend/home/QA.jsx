@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiMinus, FiPlus } from 'react-icons/fi'; // Assuming you have imported icons for plus and minus
+import { FiMinus, FiPlus } from 'react-icons/fi'; 
 
 const QA = ({ question, answer }) => {
   const [showAnswer, setShowAnswer] = useState(false);
