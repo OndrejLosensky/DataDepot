@@ -104,6 +104,7 @@ const PasswordManager = ({ isUserActive }) => {
         setApp('');
         setSelectedFolder('');
         await fetchFolders();
+        await fetchTotalPasswords();
       } else {
         console.error('Failed to add password:', response.data.error);
       }
@@ -112,6 +113,21 @@ const PasswordManager = ({ isUserActive }) => {
     }
     setShowAddPasswordInput(false);
   };
+
+  const [totalCount, setTotalCount] = useState(0);
+        
+  const fetchTotalPasswords = async () => {
+      try {
+          const response = await axios.get('/api/totalPasswords');
+          setTotalCount(response.data.totalCount);
+      } catch (error) {
+          console.error(error);
+      }
+
+
+      fetchTotalPasswords();
+  };
+
 
   return (
     <div className='w-auto h-full overflow-hidden space-y-6 mr-4'>
@@ -229,7 +245,7 @@ const PasswordManager = ({ isUserActive }) => {
           {/* Passwords (cards with folders) */}
           <div className='w-full h-[60%] min-h-[300px] flex flex-col overflow-hidden'>
             <div className='flex flex-row justify-between items-center'>
-              <h1 className='text-2xl font-semibold text-gray-200'> Passwords <span className='font-thin text-lg'> (325)</span></h1>
+              <h1 className='text-2xl font-semibold text-gray-200'> Passwords <span className='font-thin text-lg'>({totalCount})</span></h1>
               <div className='relative flex flex-row space-x-4'>
                 <div className='flex flex-row w-36 justify-between items-center border border-gray-400 rounded-xl'>
                   <div
