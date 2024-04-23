@@ -162,7 +162,7 @@ const PasswordManager = ({ isUserActive }) => {
               </button>
               <button
                 onClick={() => setSelectedComponent('generate')}
-                className='border border-gray-300 text-gray-300 px-4 py-2 rounded-md'
+                className='border border-gray-300 hover:bg-[#323a59] hover:border-gray-100 duration-300 text-gray-300 px-4 py-2 rounded-md'
               >
                 Generate Secure Password
               </button>
@@ -184,44 +184,53 @@ const PasswordManager = ({ isUserActive }) => {
           </div>
 
           {showAddPasswordInput && (
-            <div className='flex flex-col items-center'>
-            <select
-              className="p-2 border rounded-md"
-              value={selectedFolder}
-              onChange={(e) => setSelectedFolder(e.target.value)}
-            >
-              <option value="">Select Folder</option>
-              {folders.map(folder => (
-                <option key={folder.id} value={folder.id}>{folder.name}</option>
-              ))}
-            </select>
-            <input
-              type='text'
-              placeholder='Enter username'
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className='mt-2 p-2 border rounded-md'
-            />
-            <input
-              type='password'
-              placeholder='Enter password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className='mt-2 p-2 border rounded-md'
-            />
-            <input
-              type='text'
-              placeholder='Enter app'
-              value={app}
-              onChange={(e) => setApp(e.target.value)}
-              className='mt-2 p-2 border rounded-md'
-            />
-            <button
-              onClick={handleAddPasswordSubmit}
-              className='mt-2 px-4 py-2 bg-purple-500 text-gray-200 rounded-md shadow-md hover:bg-purple-600 duration-300'
-            >
-              Add Password
-            </button>
+            <div className='absolute flex flex-col w-auto mx-auto z-10 px-8 h-[385px] justify-center p-2 rounded-lg shadow-lg bg-[#41434e]'>
+               <div className='flex flex-row justify-between items-center mb-2'>
+                      <p className='font-light text-lg text-gray-300'> Create new folder</p>
+                      <IoCloseOutline className='text-gray-200 hover:bg-gray-600 rounded-full w-6 h-6 ' onClick={() => setShowAddPasswordInput(!showAddPasswordInput)} />
+                </div>
+              <p> Where does the password belong to?</p>
+              <select
+                className="p-2 border rounded-md"
+                value={selectedFolder}
+                onChange={(e) => setSelectedFolder(e.target.value)}
+              >
+                <option value="">Select Folder</option>
+                {folders.map(folder => (
+                  <option key={folder.id} value={folder.id}>{folder.name}</option>
+                ))}
+              </select>
+              <p className='mt-2'> Enter the name of the app </p>
+              <input
+                type='text'
+                placeholder='Enter app'
+                value={app}
+                onChange={(e) => setApp(e.target.value)}
+                className='p-2 border rounded-md'
+              />
+              <p className='mt-2'> App username/e-mails </p>
+              <input
+                type='text'
+                placeholder='Enter username'
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className='p-2 border rounded-md'
+              />
+              <p className='mt-2'> Password for the app </p>
+              <input
+                type='password'
+                placeholder='Enter password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className='p-2 border rounded-md'
+              />
+
+              <button
+                onClick={handleAddPasswordSubmit}
+                className='mt-2 px-4 py-2 bg-purple-500 text-gray-200 rounded-md shadow-md hover:bg-purple-600 duration-300'
+              >
+                Add Password
+              </button>
           </div>
           )}
 
@@ -303,7 +312,7 @@ const PasswordManager = ({ isUserActive }) => {
               {folders.map((folder) => (
                 <div onClick={() => handleFolderClick(folder)}  key={folder.id} className={`rounded-xl border cursor-pointer duration-300 ${selectedIcon === 'list' ? 'border-gray-500 hover:border-gray-300' : 'border-gray-500 hover:border-gray-300'}`}>
                   {selectedIcon === 'list' ? (
-                    <div className='flex items-center justify-between bg-gray-700 rounded-xl p-4'>
+                    <div className='flex items-center justify-between bg-[#303444] rounded-xl p-4'>
                       <div className='flex flex-row justify-between items-center w-full'>
                         <h1 className='text-2xl font-semibold text-gray-300'>{folder.name}</h1>
                         <p className='text-gray-400'>{folder.passwords ? folder.passwords.length : 0} {folder.passwords && folder.passwords.length === 1 ? 'item' : 'items'}</p>
@@ -317,7 +326,7 @@ const PasswordManager = ({ isUserActive }) => {
                           <p className='text-gray-400'>{folder.passwords ? folder.passwords.length : 0} {folder.passwords && folder.passwords.length === 1 ? 'item' : 'items'}</p>
                         </div>
                         <div className='flex flex-col justify-center items-start p-4 text-gray-300'>
-                          <h2 className='font-medium'>{folder.name}</h2>
+                          <h2 className='font-medium'>{folder.description}</h2>
                           <p className='font-light text-gray-300'>{folder.date_created}</p>
                         </div>
                       </div>
