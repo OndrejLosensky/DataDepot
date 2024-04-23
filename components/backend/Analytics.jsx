@@ -4,6 +4,7 @@ import Chart from 'chart.js/auto';
 import Profile from './Profile';
 import { GoArrowDownLeft, GoArrowUpRight } from "react-icons/go";
 import { auth } from '../../src/app/firebaseConfig';
+import axios from 'axios';
 
 const Overview = ({ isUserActive}) => {
     const passwordsChartRef = useRef(null);
@@ -152,6 +153,37 @@ const Overview = ({ isUserActive}) => {
       };
   
     }, []);
+
+
+    const [totalCountPasswords, setTotalCountPasswords] = useState(0);
+    const [totalCountFolders, setTotalCountFolders] = useState(0);
+        
+    const fetchTotalPasswords = async () => {
+      try {
+          const response = await axios.get('/api/totalPasswords');
+          setTotalCountPasswords(response.data.totalCount);
+      } catch (error) {
+          console.error(error);
+      }
+    };
+  
+      useEffect(() => {
+          fetchTotalPasswords();
+      }, []);
+
+    const fetchTotalFolders = async () => {
+        try {
+            const response = await axios.get('/api/totalFolders');
+            setTotalCountFolders(response.data.totalCount);
+        } catch (error) {
+            console.error(error);
+        }
+      };
+    
+        useEffect(() => {
+            fetchTotalFolders();
+        }, []);
+  
     
   return (
     <div className='w-auto h-full overflow-hidden'>
@@ -222,8 +254,8 @@ const Overview = ({ isUserActive}) => {
                     <div className='flex flex-col w-1/2'>
                         <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Passwords stored</h1>
                         <div className='flex flex-row items-end'>
-                            <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>356</p>
-                            <p className='text-sm text-green-500 mb-1 ml-1 flex flex-row items-center'> <GoArrowUpRight className='mr-1'/>  +348% </p>
+                            <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>{totalCountPasswords}</p>
+                            <p className='text-sm text-green-500 mb-1 ml-1 flex flex-row items-center'> <GoArrowUpRight className='mr-1'/>  +100% </p>
                         </div>
                     </div>
                     <canvas className='p-6  w-1/2' ref={passwordsChartRef}></canvas>
@@ -233,8 +265,8 @@ const Overview = ({ isUserActive}) => {
                     <div className='flex flex-col w-1/2'>
                         <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Folders stored</h1>
                         <div className='flex flex-row items-end'>
-                            <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>2</p>
-                            <p className='text-sm text-red-500 mb-1 ml-1 flex flex-row items-center'> <GoArrowDownLeft className='mr-1'/> -90% </p>
+                            <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>{totalCountFolders}</p>
+                            <p className='text-sm text-red-500 mb-1 ml-1 flex flex-row items-center'> <GoArrowDownLeft className='mr-1'/> +100% </p>
                         </div>
                     </div>
                     <canvas className='p-6  w-1/2' ref={foldersChartRef}></canvas>
