@@ -86,3 +86,8 @@ At the end of the day i finally downloaded VS Cod Insiders so I can try new feat
 Spent hours today: `2 Hours 30 min`
 
 --- 
+
+## Day 8 - 23.4.2024
+I have cleared out the code a little today, I tried to remove all unused imports of components or icons. 
+
+Also it finally fetches the number of added passwords and folders to the Analytics page. The page with the passwords is still kinda broken. After a while stalled API requests crash the database, but I cannot find the solution for it today.     

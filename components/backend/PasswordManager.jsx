@@ -48,20 +48,16 @@ const PasswordManager = ({ isUserActive }) => {
 
   const fetchFolders = async () => {
     try {
-      const fetchData = async () => {
-        try {
-            const response = await axios.get('/api/getFolders');
-            setFolders(response.data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    fetchData();
+        const response = await axios.get('/api/getFolders');
+        setFolders(response.data);
     } catch (error) {
-      console.error('Failed to fetch folders:', error.message);
+        console.error('Failed to fetch folders:', error.message);
+        // Ensure that even if there's an error, the response is sent
+        setFolders([]); // Set an empty array or handle the error state accordingly
     }
-  };
+};
+
+
 
   const handleNewFolderSubmit = async () => {
     if (newFolderName.trim() !== '') {
@@ -118,7 +114,7 @@ const PasswordManager = ({ isUserActive }) => {
         
   const fetchTotalPasswords = async () => {
     try {
-        const response = await axios.get('/api/totalPasswords');
+        const response = await axios.get('/api/totalFolders');
         setTotalCount(response.data.totalCount);
     } catch (error) {
         console.error(error);
@@ -139,7 +135,7 @@ const PasswordManager = ({ isUserActive }) => {
       )}
 
       {selectedComponent === 'passwordsPage' && (
-        <div className='w-full h-full overflow-hidden mb-12'>
+        <div className='w-full h-full mb-12'>
           <Passwords folder={selectedFolder} onClose={handleClosePasswordsPage} />
         </div>
       )}
@@ -150,7 +146,7 @@ const PasswordManager = ({ isUserActive }) => {
           <GeneratePassword onClose={() => setSelectedComponent('generate')} />
         </div>
       ) : (
-        <div className='space-y-6'>
+        <div className={`space-y-6 ${selectedComponent === 'passwordsPage' ? 'hidden':''}`}>
           {/* Navbar */}
           <div className='flex flex-row justify-between overflow-hidden py-1  h-[5%] items-center'>
             <div className='flex flex-row gap-x-4'>
@@ -254,7 +250,7 @@ const PasswordManager = ({ isUserActive }) => {
           {/* Passwords (cards with folders) */}
           <div className='w-full h-[60%] min-h-[300px] flex flex-col overflow-hidden'>
             <div className='flex flex-row justify-between items-center'>
-              <h1 className='text-2xl font-semibold text-gray-200'> Passwords <span className='font-thin text-lg'>({totalCount})</span></h1>
+              <h1 className='text-2xl font-semibold text-gray-200'> Folders <span className='font-thin text-lg'>({totalCount})</span></h1>
               <div className='relative flex flex-row space-x-4'>
                 <div className='flex flex-row w-36 justify-between items-center border border-gray-400 rounded-xl'>
                   <div
@@ -308,19 +304,19 @@ const PasswordManager = ({ isUserActive }) => {
               </div>
             </div>
 
-            <div className='grid grid-cols-4 w-full mt-6 gap-6'>
+            <div className='grid grid-cols-4 w-full mt-6 gap-4'>
               {folders.map((folder) => (
-                <div onClick={() => handleFolderClick(folder)}  key={folder.id} className={`rounded-xl border cursor-pointer duration-300 ${selectedIcon === 'list' ? 'border-gray-500 hover:border-gray-300' : 'border-gray-500 hover:border-gray-300'}`}>
+                <div onClick={() => handleFolderClick(folder)}  key={folder.id} className={`rounded-sm border cursor-pointer duration-300 ${selectedIcon === 'list' ? 'border-gray-500 hover:border-gray-300' : 'border-gray-500 hover:border-gray-300'}`}>
                   {selectedIcon === 'list' ? (
-                    <div className='flex items-center justify-between bg-[#303444] rounded-xl p-4'>
+                    <div className='flex items-center justify-between bg-[#303444] rounded-sm p-4'>
                       <div className='flex flex-row justify-between items-center w-full'>
                         <h1 className='text-2xl font-semibold text-gray-300'>{folder.name}</h1>
                         <p className='text-gray-400'>{folder.passwords ? folder.passwords.length : 0} {folder.passwords && folder.passwords.length === 1 ? 'item' : 'items'}</p>
                       </div>
                     </div>
                   ) : (
-                    <div className='h-32 bg-[#20263d] rounded-xl border-t-[0.5px] border-gray-500'>
-                      <div className='h-full bg-[#303444] rounded-xl flex flex-col justify-between'>
+                    <div className='h-32 bg-[#20263d] rounded-sm border-t-[0.5px] border-gray-500'>
+                      <div className='h-full bg-[#303444] rounded-sm flex flex-col justify-between'>
                         <div className='p-3 flex flex-row justify-between items-center'>
                           <h1 className='text-2xl font-semibold text-gray-300'>{folder.name}</h1>
                           <p className='text-gray-400'>{folder.passwords ? folder.passwords.length : 0} {folder.passwords && folder.passwords.length === 1 ? 'item' : 'items'}</p>

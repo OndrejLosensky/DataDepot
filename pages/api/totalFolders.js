@@ -1,23 +1,27 @@
 import sqlite3 from 'sqlite3';
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
     const db = new sqlite3.Database('db/test.sqlite');
 
-    const query = `
-        SELECT COUNT(*) AS totalCount 
-        FROM folder;
-    `;
+    try {
+        const query = `
+            SELECT COUNT(*) AS totalCount 
+            FROM folder;
+        `;
 
-    db.get(query, (err, result) => {
-        if (err) {
-            console.error(err.message);
-            res.status(500).json({ error: 'Internal Server Error' });
-            return;
-        }
+        const result = await new Promise((resolve, reject) => {
+            db.get(query, (err, result) => {
+                if (err) reject(err);
+                resolve(result);
+            });
+        });
 
         const totalCount = result ? result.totalCount : 0;
-
         res.status(200).json({ totalCount });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    } finally {
         db.close();
-    });
+    }
 }

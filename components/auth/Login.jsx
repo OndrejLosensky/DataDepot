@@ -32,11 +32,10 @@ const Login = () => {
   const handleLogin = async (e) => {
       e.preventDefault();
        try {
-          // Sign in user with email and password
-          await signInWithEmailAndPassword(auth, email, password);
-          setSuccessAlertVisible(true);
           setIsLoading(true);
-          
+          setSuccessAlertVisible(true);      
+          // Sign in user with email and password
+          await signInWithEmailAndPassword(auth, email, password);    
           // Redirects to dashboard upon successful login
           router.push('/backend/dashboard');
           setSuccessAlertVisible(false);

@@ -243,8 +243,8 @@ const Overview = ({ isUserActive}) => {
                     <div className='flex flex-col w-1/2'>
                         <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Files stored</h1>
                         <div className='flex flex-row items-end'>
-                            <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>1797</p>
-                            <p className='text-sm text-green-500 mb-1 ml-1 flex flex-row items-center'> <GoArrowUpRight className='mr-1'/> +18% </p>
+                            <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>0</p>
+                            <p className='text-sm text-green-500 mb-1 ml-1 flex flex-row items-center'> <GoArrowUpRight className='mr-1'/> +0% </p>
                         </div>
                     </div>
                     <canvas className='p-6  w-1/2' ref={filesChartRef}></canvas>
@@ -392,7 +392,7 @@ const Overview = ({ isUserActive}) => {
                 </div>
                 */}
                     <div className='flex opacity-95 mb-2 flex-row justify-center items-center mt-4'>
-                        <Image src="/logo/light.svg" width={32} height={32} />
+                        <Image src="/logo/light.svg" width={32} height={32} alt='logo' />
                         <p className='pt-1 text-2xl text-gray-100 pl-2'> DataDepot</p>
                     </div>
                     <h1 className='text-xl text-gray-300 font-light text-center '> Coming soon... </h1>
