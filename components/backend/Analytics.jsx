@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Chart from 'chart.js/auto';
 import Profile from './Profile';
 import { GoArrowDownLeft, GoArrowUpRight } from "react-icons/go";
+import { auth } from '../../src/app/firebaseConfig';
 
 const Overview = ({ isUserActive}) => {
     const passwordsChartRef = useRef(null);
@@ -12,6 +13,20 @@ const Overview = ({ isUserActive}) => {
     const foldersChartInstance = useRef(null);
     const filesChartInstance = useRef(null);
     const [selectedOption, setSelectedOption] = useState('Last 7 days');
+
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        if (user) {
+          setUser(user);
+        } else {
+          setUser(null);
+        }
+      });
+
+      return () => unsubscribe();
+    }, []);
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
@@ -142,10 +157,12 @@ const Overview = ({ isUserActive}) => {
     <div className='w-auto h-full overflow-hidden'>
         {/* Navbar */}
         <div className='flex flex-row justify-between overflow-hidden h-[10%] items-center'>
-            <div className='pl-2'>
+            {user && (
+              <div className='pl-2'>
+                <p className=''> Welcome back,<span className='text-gray-200'> {user.email}</span> 👋</p>
                 <h1 className='text-2xl text-[#DFDFDF] font-bold'> Analytics</h1>
-                <p className='text-gray-400 font-thin'>All needed information here </p>
-            </div>
+              </div>
+            )}
             <div className='flex flex-row items-center'>
                 <div>
                     <button
