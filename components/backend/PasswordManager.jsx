@@ -89,45 +89,46 @@ const PasswordManager = ({ isUserActive }) => {
 
   const handleAddPasswordSubmit = async () => {
     try {
-      const response = await axios.post('/api/newPassword', {
-        folderId: selectedFolder,
-        username: username,
-        password: password,
-        app: app,
-      });
+        const response = await axios.post('/api/newPassword', {
+            folderId: selectedFolder,
+            username: username,
+            password: password,
+            app: app,
+        });
 
-      if (response.data.success) {
-        console.log("Password added successfully!");
-        // Optionally, you can reset the input fields after successful submission
-        setUsername('');
-        setPassword('');
-        setApp('');
-        setSelectedFolder('');
-        await fetchFolders();
-        await fetchTotalPasswords();
-      } else {
-        console.error('Failed to add password:', response.data.error);
-      }
+        if (response.data.success) {
+            console.log("Password added successfully!");
+            // Optionally, you can reset the input fields after successful submission
+            setUsername('');
+            setPassword('');
+            setApp('');
+            setSelectedFolder('');
+            await fetchFolders();
+            await fetchTotalPasswords(); // Fetch total passwords after adding a new one
+        } else {
+            console.error('Failed to add password:', response.data.error);
+        }
     } catch (error) {
-      console.error('Failed to add password:', error.message);
+        console.error('Failed to add password:', error.message);
     }
     setShowAddPasswordInput(false);
-  };
+};
+
 
   const [totalCount, setTotalCount] = useState(0);
         
   const fetchTotalPasswords = async () => {
-      try {
-          const response = await axios.get('/api/totalPasswords');
-          setTotalCount(response.data.totalCount);
-      } catch (error) {
-          console.error(error);
-      }
-
-
-      fetchTotalPasswords();
+    try {
+        const response = await axios.get('/api/totalPasswords');
+        setTotalCount(response.data.totalCount);
+    } catch (error) {
+        console.error(error);
+    }
   };
 
+    useEffect(() => {
+        fetchTotalPasswords();
+    }, []); // Run once when component mounts
 
   return (
     <div className='w-auto h-full overflow-hidden space-y-6 mr-4'>
