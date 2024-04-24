@@ -99,3 +99,12 @@ Spent hours today: `2 Hours 46 min`
 --- 
 
 ## Day 9 - 24.4.2024 
+Today I did not have the time to create some really usefull function to move on with the project, but i managed to create API endpoint that make the function to delete folders.
+
+Also description input was added inside the form when creating new folder.
+
+*Tommorow I got my first final exams so i need to sleep and get ready for that*
+
+Spent hours today: `39 mins`
+
+--- 
