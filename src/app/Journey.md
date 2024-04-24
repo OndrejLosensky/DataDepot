@@ -97,3 +97,5 @@ Lastly I made basic UI design for the passwords page (when you open the folder/v
 Spent hours today: `2 Hours 46 min`
 
 --- 
+
+## Day 9 - 24.4.2024 

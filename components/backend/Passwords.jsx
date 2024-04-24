@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { FaTimes, FaEdit, FaTrash, FaApple, FaCopy } from 'react-icons/fa';
+import axios from 'axios';
 
-const Passwords = ({ folder, onClose, onEditFolder, onDeleteFolder }) => {
+const Passwords = ({ folder, onClose, onEditFolder }) => {
+  const [errorAlert, setErrorAlert] = useState(false);
+  const [successAlert,setSuccessAlert] = useState(false);
+
   const calculatePasswordStrength = (password) => {
     // Just a dummy function to calculate password strength
     const length = password.length;
@@ -37,6 +41,21 @@ const Passwords = ({ folder, onClose, onEditFolder, onDeleteFolder }) => {
     );
   };
 
+  const [deleted, setDeleted] = useState(false);
+
+  const deleteFolder = async (id) => {
+      try {
+          await axios.delete(`/api/deleteFolder?id=${id}`);
+          setDeleted(true);
+          onClose();
+      } catch (error) {
+          console.error('Failed to delete folder:', error.message);
+      }
+  };
+
+  if (deleted) {
+      return null;
+  }
   return (
     <div className="p-6 w-full h-full bg-gradient-to-r from-purple-900 to-indigo-900 rounded-lg shadow-lg">
       <div className='flex flex-row justify-between items-center'>
@@ -45,13 +64,13 @@ const Passwords = ({ folder, onClose, onEditFolder, onDeleteFolder }) => {
           <button className='bg-purple-500 px-4 py-2 rounded-md shadow-lg text-gray-200'> + Add Password </button>
         </div>
         <div className="flex items-center">
-          <button onClick={onEditFolder} className="text-white hover:text-gray-200 mr-2">
+          <button onClick={onEditFolder} className="text-gray-400 w-6 h-6 hover:text-gray-200 duration-300 mr-2">
             <FaEdit />
           </button>
-          <button onClick={onDeleteFolder} className="text-white hover:text-gray-200">
+          <button onClick={() => deleteFolder(folder.id)} className="text-gray-400 w-6 h-6 hover:text-red-500 duration-300">
             <FaTrash />
           </button>
-          <button onClick={onClose} className="text-white hover:text-gray-200 ml-2">
+          <button onClick={onClose} className="text-gray-400 duration-300 hover:text-gray-200 w-6 h-6 ml-2">
             <FaTimes />
           </button>
         </div>

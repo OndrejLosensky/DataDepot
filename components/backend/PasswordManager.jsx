@@ -13,11 +13,12 @@ import { LuLayoutGrid } from "react-icons/lu";
 import { FaCheck } from 'react-icons/fa';
 import Help from './Help';
 import Passwords from './Passwords';
+import { IoFolderOpenOutline } from "react-icons/io5";
 
 const PasswordManager = ({ isUserActive }) => {
   const [folders, setFolders] = useState([]);
   const [newFolderName, setNewFolderName] = useState('');
-  const [newPassword, setNewPassword] = useState('');
+  const [newFolderDescription, setNewFolderDescription] = useState('');
   const [showNewFolderInput, setShowNewFolderInput] = useState(false);
   const [showAddPasswordInput, setShowAddPasswordInput] = useState(false);
   const [selectedFolder, setSelectedFolder] = useState(null);
@@ -44,6 +45,7 @@ const PasswordManager = ({ isUserActive }) => {
   const handleClosePasswordsPage = () => {
     setSelectedFolder(null);
     setSelectedComponent('folders');
+    fetchFolders();
   };
 
   const fetchFolders = async () => {
@@ -59,28 +61,33 @@ const PasswordManager = ({ isUserActive }) => {
 
 
 
-  const handleNewFolderSubmit = async () => {
-    if (newFolderName.trim() !== '') {
+const handleNewFolderSubmit = async () => {
+  if (newFolderName.trim() !== '' && newFolderDescription.trim() !== '') {
       try {
-        const response = await fetch('/api/newFolder', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ folderName: newFolderName }),
-        });
-        if (response.ok) {
-          await fetchFolders(); 
-          setNewFolderName('');
-        } else {
-          console.error('Failed to create folder:', response.statusText);
-        }
+          const response = await fetch('/api/newFolder', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ 
+                  folderName: newFolderName,
+                  folderDescription: newFolderDescription
+              }),
+          });
+          if (response.ok) {
+              await fetchFolders();
+              setNewFolderName('');
+              setNewFolderDescription('');
+          } else {
+              console.error('Failed to create folder:', response.statusText);
+          }
       } catch (error) {
-        console.error('Failed to create folder:', error.message);
+          console.error('Failed to create folder:', error.message);
       }
-    }
-    setShowNewFolderInput(false);
-  };
+  }
+  setShowNewFolderInput(false);
+};
+
   
 
   const handleAddPasswordSubmit = async () => {
@@ -278,23 +285,30 @@ const PasswordManager = ({ isUserActive }) => {
                 </button>
                 {/* Container for input and button */}
                 {showNewFolderInput && (
-                  <div className='absolute bg-[#41434e] top-full right-0 p-2 mt-2 rounded-lg shadow-lg z-10'>
+                  <div className='absolute bg-[#41434e] w-full top-full right-0 p-2 mt-2 rounded-lg shadow-lg z-10'>
                     <div className='flex flex-row justify-between items-center'>
-                      <p className='font-light text-sm text-gray-300'> Create new folder</p>
-                      <IoCloseOutline className='text-gray-200 hover:bg-gray-600 ' onClick={() => setShowNewFolderInput(!showNewFolderInput)} />
+                      <p className='font-light text-lg text-gray-300'> Create new folder</p>
+                      <IoCloseOutline className='text-gray-200 hover:bg-gray-600 w-6 h-6 rounded-full duration-200 cursor-pointer ' onClick={() => setShowNewFolderInput(!showNewFolderInput)} />
                     </div>
-                    <div className='flex flex-col items-center'>
+                    <div className='flex w-full flex-col items-center'>
                       <input
                         type='text'
                         placeholder='Enter folder name'
                         value={newFolderName}
                         onChange={(e) => setNewFolderName(e.target.value)}
-                        className='mt-2 p-1 text-sm border rounded-md'
+                        className='mt-2 p-2 w-full text-sm border rounded-md'
+                      />
+                      <input
+                        type='text'
+                        placeholder='Enter folder description'
+                        value={newFolderDescription}
+                        onChange={(e) => setNewFolderDescription(e.target.value)}
+                        className='mt-2 w-full p-2 text-sm border rounded-md'
                       />
                       <button
                         type='submit'
                         onClick={handleNewFolderSubmit}
-                        className='mt-2 px-2 py-1 text-sm w-full bg-purple-500 text-gray-200 rounded-md shadow-md hover:bg-purple-600 duration-300'
+                        className='mt-4 px-2 py-1 text-sm w-full bg-purple-500 text-gray-200 rounded-md shadow-md hover:bg-purple-600 duration-300'
                       >
                         Create Folder
                       </button>
@@ -310,7 +324,10 @@ const PasswordManager = ({ isUserActive }) => {
                   {selectedIcon === 'list' ? (
                     <div className='flex items-center justify-between bg-[#303444] rounded-sm p-4'>
                       <div className='flex flex-row justify-between items-center w-full'>
-                        <h1 className='text-2xl font-semibold text-gray-300'>{folder.name}</h1>
+                          <div className='flex flex-row items-center'>
+                            <IoFolderOpenOutline className='mr-2 w-6 h-6'/>
+                            <h1 className='text-xl font-semibold text-gray-300'>{folder.name}</h1>
+                          </div>
                         <p className='text-gray-400'>{folder.passwords ? folder.passwords.length : 0} {folder.passwords && folder.passwords.length === 1 ? 'item' : 'items'}</p>
                       </div>
                     </div>
@@ -318,11 +335,14 @@ const PasswordManager = ({ isUserActive }) => {
                     <div className='h-32 bg-[#20263d] rounded-sm border-t-[0.5px] border-gray-500'>
                       <div className='h-full bg-[#303444] rounded-sm flex flex-col justify-between'>
                         <div className='p-3 flex flex-row justify-between items-center'>
-                          <h1 className='text-2xl font-semibold text-gray-300'>{folder.name}</h1>
+                          <div className='flex flex-row items-center'>
+                            <IoFolderOpenOutline className='mr-2 w-6 h-6'/>
+                            <h1 className='text-xl font-semibold text-gray-300'>{folder.name}</h1>
+                          </div>
                           <p className='text-gray-400'>{folder.passwords ? folder.passwords.length : 0} {folder.passwords && folder.passwords.length === 1 ? 'item' : 'items'}</p>
                         </div>
                         <div className='flex flex-col justify-center items-start p-4 text-gray-300'>
-                          <h2 className='font-medium'>{folder.description}</h2>
+                          <p className='font-thin'>{folder.description}</p>
                           <p className='font-light text-gray-300'>{folder.date_created}</p>
                         </div>
                       </div>
