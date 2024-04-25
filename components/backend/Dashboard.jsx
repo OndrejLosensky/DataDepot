@@ -43,7 +43,7 @@ const Dashboard = ({isUserActive}) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [sidebarVisible]);
+  },);
 
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
