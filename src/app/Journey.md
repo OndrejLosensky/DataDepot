@@ -108,3 +108,16 @@ Also description input was added inside the form when creating new folder.
 Spent hours today: `39 mins`
 
 --- 
+
+## Day 10 - 25.4. 2024 
+Today I got the first half of my practical exams. So i was tired, but I managed to create better alerts for when you delete password folder, then also I added alert that asks again if you want to delete the chosen folder. 
+
+As a last thing I made new form to add password directly in the opened folder. It looks like its a new line but with blank inputs. Also I have prepared better Strength indicator and upgraded copyToClipboard function too.
+
+I still haven't gotten to the part where I need to figure out how to solve the stalled requests when managing the folders. It will be laggy soon i think.
+
+*Tommorow is the second part of practical exams*
+
+Spent hours today: `1 Hours 57 mins`
+
+--- 
