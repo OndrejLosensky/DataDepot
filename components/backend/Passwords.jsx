@@ -10,6 +10,7 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
   const calculatePasswordStrength = (password) => {
     // Just a dummy function to calculate password strength
     const length = password.length;
+    if (length < 3) return "Super weak";
     if (length < 6) return "Weak";
     if (length < 10) return "Medium";
     return "Strong";
@@ -24,11 +25,14 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
     let color1 = "gray-600";
     let color2 = "gray-600";
     let color3 = "gray-600";
+    let color4 = "gray-600";
 
     if (strength === "Strong") {
-      color1 = color2 = color3 = "green-500";
+      color1 = color2 = color3 = color4 = "green-500";
     } else if (strength === "Medium") {
-      color1 = color2 = "yellow-500";
+      color1 = color2 = color3 = "yellow-500";
+    } else if(strength === "Weak") {
+      color1 = color2 = "orange-500";
     } else {
       color1 = "red-500";
     }
@@ -38,6 +42,7 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
         <div className={`w-10 h-1 mr-1 rounded-full bg-${color1}`}></div>
         <div className={`w-10 h-1 mr-1 rounded-full bg-${color2}`}></div>
         <div className={`w-10 h-1 rounded-full bg-${color3}`}></div>
+        <div className={`w-10 h-1 rounded-full bg-${color4}`}></div>
       </div>
     );
   };
@@ -93,23 +98,23 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
       {/* Display passwords for the selected folder */}
       <div className=''>
         {folder.passwords.map(password => (
-          <div key={password.id} className="bg-gray-800 rounded-md p-4 mb-4 flex justify-between items-center">
-            <p className="text-gray-300 flex-1 flex flex-row items-center">
+          <div key={password.id} className="bg-gray-800 rounded-md space-x-4 p-4 mb-4 flex justify-between items-center">
+            <p className="text-gray-300 flex-1 flex py-2 flex-row items-center">
               <FaApple className='mr-2'/>
               {password.app}
             </p>
-            <p className="text-gray-300 flex-1">{password.username}</p>
-            <p className="text-gray-300 flex-1">
+            <p className="text-gray-300 flex-1 py-2">{password.username}</p>
+            <p className="text-gray-300 flex-1 py-2">
               {password.password}
               <button onClick={() => copyToClipboard(password.password)} className="ml-2 text-white hover:text-gray-200">
                 <FaCopy />
               </button>
             </p>
-            <div className="text-gray-300 flex-1">
+            <div className="text-gray-300 flex-1 py-1">
               {calculatePasswordStrength(password.password)}
               {renderStrengthIndicator(calculatePasswordStrength(password.password))}
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center py-2">
               <button className="text-white hover:text-purple-400 duration-300 mr-2">
                 <FaEdit />
               </button>
