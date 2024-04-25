@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaTimes, FaEdit, FaTrash, FaApple, FaCopy, FaPlus } from 'react-icons/fa';
-import { CiCircleCheck } from "react-icons/ci";
-import { IoIosCloseCircleOutline } from "react-icons/io";
+import { FaTimes, FaEdit, FaTrash, FaApple, FaCopy, FaPlus, FaCheck } from 'react-icons/fa';
+import { IoCloseOutline } from "react-icons/io5";
 
 const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
   const [deleted, setDeleted] = useState(false);
@@ -25,9 +24,20 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
     return "Strong";
   };
 
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text);
-    showAlert('success', 'Password copied to clipboard!');
+  const [copiedPasswords, setCopiedPasswords] = useState({});
+
+  const copyToClipboard = (password) => {
+    navigator.clipboard.writeText(password);
+    setCopiedPasswords((prevCopiedPasswords) => ({
+      ...prevCopiedPasswords,
+      [password]: true,
+    }));
+    setTimeout(() => {
+      setCopiedPasswords((prevCopiedPasswords) => ({
+        ...prevCopiedPasswords,
+        [password]: false,
+      }));
+    }, 2000); // Reset copied state after 2 seconds
   };
 
   const renderStrengthIndicator = (strength) => {
@@ -127,26 +137,6 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
         </div>
       </div>
       <p className="text-gray-300 mt-4">{folder.description}</p>
-      
-      {/* Add Password Form */}
-      {showAddPasswordInput && (
-        <div className="bg-gray-800 rounded-md p-4 mt-6">
-          <h2 className="text-gray-300 mb-2">Add New Password</h2>
-          <div className="flex flex-col">
-            <label htmlFor="username" className="text-gray-300">Username:</label>
-            <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} className="input" />
-          </div>
-          <div className="flex flex-col mt-2">
-            <label htmlFor="password" className="text-gray-300">Password:</label>
-            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input" />
-          </div>
-          <div className="flex flex-col mt-2">
-            <label htmlFor="app" className="text-gray-300">App:</label>
-            <input type="text" id="app" value={app} onChange={(e) => setApp(e.target.value)} className="input" />
-          </div>
-          <button onClick={handleAddPasswordSubmit} className="bg-green-500 px-4 py-2 mt-4 rounded-md shadow-lg text-gray-200">Submit</button>
-        </div>
-      )}
 
       {/* Header row */}
       <div className='bg-gray-700 rounded-md p-4 mb-4 mt-6'>
@@ -158,19 +148,41 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
           <p className="text-gray-300">Actions</p>
         </div>
       </div>
+
+      {/* Add Password Form */}
+      {showAddPasswordInput && (
+        <div className="bg-gray-800 rounded-md mb-3 flex flex-row items-center justify-between p-4 mt-3">
+          <div className="flex flex-col">
+            <input placeholder='app' type="text" id="app" value={app} onChange={(e) => setApp(e.target.value)} className="py-2 flex flex-1 bg-transparent border" />
+          </div>
+          <div className="flex ">
+            <input placeholder='username' type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} className="py-2 flex flex-1 bg-transparent border" />
+          </div>
+          <div className="flex flex-col">
+            <input placeholder='password' type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className="py-2 flex flex-1 bg-transparent border" />
+          </div>
+          <div>
+            Strength
+          </div>
+          <div className='flex flex-row items-center space-x-4'>
+            <button onClick={handleAddPasswordSubmit} className="bg-purple-500 px-4 py-2 rounded-md shadow-lg text-gray-200">Submit</button>
+            <button onClick={() => setShowAddPasswordInput(!showAddPasswordInput)} className='bg-red-500 text-gray-200 px-2 py-2 rounded-md shadow-lg'> Cancel </button>
+          </div>
+        </div>
+      )}
       
       {/* Display passwords for the selected folder */}
       <div className=''>
-        {passwords.map(password => (
-          <div key={password.id} className="bg-gray-800 rounded-md space-x-4 p-4 mb-4 flex justify-between items-center">
+        {passwords.map((password) => (
+          <div key={password.id} className="bg-gray-800 rounded-md space-x-4 p-4 mb-3 flex justify-between items-center">
             <p className="text-gray-300 flex-1 flex py-2 flex-row items-center">
-              <FaApple className='mr-2'/>
+              <FaApple className="mr-2" />
               {password.app}
             </p>
             <p className="text-gray-300 flex-1 py-2">{password.username}</p>
             <p className="text-gray-300 flex-1 py-2">
               <button onClick={() => copyToClipboard(password.password)} className="mr-2 text-white hover:text-gray-200">
-                <FaCopy />
+                {copiedPasswords[password.password] ? <FaCheck className='text-green-500 w-3 h-3'  /> : <FaCopy className='' />}
               </button>
               {password.password}
             </p>
