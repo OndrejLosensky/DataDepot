@@ -191,7 +191,10 @@ const Overview = ({ isUserActive}) => {
         <div className='flex flex-row justify-between overflow-hidden h-[10%] items-center'>
             {user && (
               <div className='pl-2'>
-                <p className=''> Welcome back,<span className='text-gray-200'> {user.email}</span> 👋</p>
+                <span className="relative text-transparent font-light bg-clip-text bg-gradient-to-r from-gray-200  to-gray-300">
+                  Welcome back,<span className='font-semibold'> {user.email}</span>
+                </span>
+                👋
                 <h1 className='text-2xl text-[#DFDFDF] font-bold'> Analytics</h1>
               </div>
             )}

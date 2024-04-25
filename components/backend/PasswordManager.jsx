@@ -14,6 +14,7 @@ import { FaCheck } from 'react-icons/fa';
 import Help from './Help';
 import Passwords from './Passwords';
 import { IoFolderOpenOutline } from "react-icons/io5";
+import { FaRegCircleCheck } from "react-icons/fa6";
 
 const PasswordManager = ({ isUserActive }) => {
   const [folders, setFolders] = useState([]);
@@ -155,7 +156,8 @@ const handleNewFolderSubmit = async () => {
       )}
 
       {alert && (
-        <div className={`absolute bottom-6 right-4 bg-${alert.type === 'success' ? 'green' : 'red'}-500 text-white text-center py-2 px-6`}>
+        <div className={`absolute bottom-6  flex flex-row items-center right-4 bg-${alert.type === 'success' ? 'green' : 'red'}-500 text-white text-center py-4 px-10`}>
+          {alert.type === 'success' ? <FaRegCircleCheck className='mr-2'/> : <IoCloseOutline className='mr-2'/>}
           {alert.message}
         </div>
       )}
