@@ -90,19 +90,23 @@ const GeneratePassword = () => {
             </button>
           </div>
         </div>
-        <div className="flex items-center mb-4">
-          <label htmlFor="passwordLength" className="mr-2 mt-4 text-white">Password Length:</label>
-          <input
-            type="range"
-            id="passwordLength"
-            name="passwordLength"
-            min="8"
-            max="64"
-            value={passwordLength}
-            onChange={(e) => setPasswordLength(parseInt(e.target.value))}
-            className="slider appearance-none mt-4 rounded-full w-4/5 h-2 bg-gray-300 outline-none"
-          />
-          <span className="text-white ml-2 mt-4">{passwordLength}</span>
+        <div className="flex items-start flex-row">
+        <div className='flex flex-row items-center w-full'>
+            <label htmlFor="passwordLength" className="mr-2 mt-4 text-white">Password Length:</label>
+            <input
+              type="range"
+              id="passwordLength"
+              name="passwordLength"
+              min="8"
+              max="32"
+              step="4"
+              value={passwordLength}
+              onChange={(e) => setPasswordLength(parseInt(e.target.value))}
+              className="slider appearance-none mt-4 rounded-full w-4/5 h-2 bg-gray-300 outline-none"
+            />
+            <span className="text-white ml-2 mt-4">{passwordLength}</span>
+        </div>
+
         </div>
         <div className="flex items-center mb-4 mt-8 text-white">
           <input

@@ -41,27 +41,33 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
       <div className="flex mt-1">
         <div className={`w-10 h-1 mr-1 rounded-full bg-${color1}`}></div>
         <div className={`w-10 h-1 mr-1 rounded-full bg-${color2}`}></div>
-        <div className={`w-10 h-1 rounded-full bg-${color3}`}></div>
+        <div className={`w-10 h-1 mr-1 rounded-full bg-${color3}`}></div>
         <div className={`w-10 h-1 rounded-full bg-${color4}`}></div>
       </div>
     );
   };
 
   const deleteFolder = async (id) => {
-    try {
-      await axios.delete(`/api/deleteFolder?id=${id}`);
-      setDeleted(true);
-      onClose();
-      showAlert('success', 'Folder deleted successfully.');
-    } catch (error) {
-      console.error('Failed to delete folder:', error.message);
-      showAlert('error', 'Failed to delete folder.');
-    }
-  };
+    const shouldDelete = window.confirm('Are you sure you want to delete this folder?')
+    if(shouldDelete) {
+      try {
+        await axios.delete(`/api/deleteFolder?id=${id}`);
+        setDeleted(true);
+        onClose();
+        showAlert('success', 'Folder deleted successfully.');
+      } catch (error) {
+        console.error('Failed to delete folder:', error.message);
+        showAlert('error', 'Failed to delete folder.');
+      }
 
-  if (deleted) {
-    return null;
+      if (deleted) {
+        return null;
+      }
+    };
   }
+    
+
+ 
 
   return (
     <div className="p-6 w-full h-full bg-gradient-to-r from-purple-900 to-indigo-900 rounded-lg shadow-lg">
@@ -105,10 +111,10 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
             </p>
             <p className="text-gray-300 flex-1 py-2">{password.username}</p>
             <p className="text-gray-300 flex-1 py-2">
-              {password.password}
               <button onClick={() => copyToClipboard(password.password)} className="ml-2 text-white hover:text-gray-200">
                 <FaCopy />
               </button>
+              {password.password}
             </p>
             <div className="text-gray-300 flex-1 py-1">
               {calculatePasswordStrength(password.password)}
@@ -118,7 +124,7 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
               <button className="text-white hover:text-purple-400 duration-300 mr-2">
                 <FaEdit />
               </button>
-              <button className="text-white hover:text-purple-400 duration-300">
+              <button className="text-white hover:text-red-400 duration-300">
                 <FaTrash />
               </button>
             </div>
