@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
-import { FaTimes, FaEdit, FaTrash, FaApple, FaCopy } from 'react-icons/fa';
+import React, { useState } from 'react';
 import axios from 'axios';
+import { FaTimes, FaEdit, FaTrash, FaApple, FaCopy } from 'react-icons/fa';
+import { CiCircleCheck } from "react-icons/ci";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
-const Passwords = ({ folder, onClose, onEditFolder }) => {
-  const [errorAlert, setErrorAlert] = useState(false);
-  const [successAlert,setSuccessAlert] = useState(false);
+const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
+  const [deleted, setDeleted] = useState(false);
 
   const calculatePasswordStrength = (password) => {
     // Just a dummy function to calculate password strength
@@ -16,7 +17,7 @@ const Passwords = ({ folder, onClose, onEditFolder }) => {
 
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
-    alert('Password copied to clipboard!');
+    showAlert('success', 'Password copied to clipboard!');
   };
 
   const renderStrengthIndicator = (strength) => {
@@ -41,21 +42,22 @@ const Passwords = ({ folder, onClose, onEditFolder }) => {
     );
   };
 
-  const [deleted, setDeleted] = useState(false);
-
   const deleteFolder = async (id) => {
-      try {
-          await axios.delete(`/api/deleteFolder?id=${id}`);
-          setDeleted(true);
-          onClose();
-      } catch (error) {
-          console.error('Failed to delete folder:', error.message);
-      }
+    try {
+      await axios.delete(`/api/deleteFolder?id=${id}`);
+      setDeleted(true);
+      onClose();
+      showAlert('success', 'Folder deleted successfully.');
+    } catch (error) {
+      console.error('Failed to delete folder:', error.message);
+      showAlert('error', 'Failed to delete folder.');
+    }
   };
 
   if (deleted) {
-      return null;
+    return null;
   }
+
   return (
     <div className="p-6 w-full h-full bg-gradient-to-r from-purple-900 to-indigo-900 rounded-lg shadow-lg">
       <div className='flex flex-row justify-between items-center'>

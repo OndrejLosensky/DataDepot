@@ -28,6 +28,13 @@ const PasswordManager = ({ isUserActive }) => {
   const [selectedComponent, setSelectedComponent] = useState('folders'); // 'folders', 'generate', 'help', 'passwordsPage'
   const [selectedIcon, setSelectedIcon] = useState('grid');
 
+  const [alert, setAlert] = useState(null);
+  const showAlert = (type, message) => {
+    setAlert({ type, message });
+    setTimeout(() => {
+      setAlert(null);
+    }, 3000); // Hide the alert after 3 seconds
+  };
 
   const handleIconClick = (icon) => {
     setSelectedIcon(icon);
@@ -143,7 +150,13 @@ const handleNewFolderSubmit = async () => {
 
       {selectedComponent === 'passwordsPage' && (
         <div className='w-full h-full mb-12'>
-          <Passwords folder={selectedFolder} onClose={handleClosePasswordsPage} />
+          <Passwords folder={selectedFolder} onClose={handleClosePasswordsPage} showAlert={showAlert} />
+        </div>
+      )}
+
+      {alert && (
+        <div className={`absolute bottom-6 right-4 bg-${alert.type === 'success' ? 'green' : 'red'}-500 text-white text-center py-2 px-6`}>
+          {alert.message}
         </div>
       )}
 
