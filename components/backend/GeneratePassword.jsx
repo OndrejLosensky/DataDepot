@@ -115,6 +115,7 @@ const GeneratePassword = () => {
             checked={includeCapital}
             onChange={() => setIncludeCapital(!includeCapital)}
             className="mr-2"
+            defaultChecked
           />
           <label htmlFor="includeCapital">Include Capital Letters</label>
         </div>
@@ -148,7 +149,6 @@ const GeneratePassword = () => {
           />
           <label htmlFor="includeSymbols">Include Special Symbols</label>
         </div>
-        <p className='text-gray-200 font-light pt-4'> The heighest <span className='px-[4px] py-[2px] mx-[2px] bg-gray-500 rounded-md text-gray-200'>score</span> is <strong>100</strong>. It contains 64 characters, capital letters, numbers & special characters.  </p>
         <div className="text-white mb-4 mt-8">Password Strength: <span className={getStrengthColor()}>{calculateStrength()}</span></div>
         <button
           className="bg-purple-500 hover:bg-purple-600 mt-4 duration-300 text-white font-bold py-2 px-4 rounded"
@@ -158,8 +158,10 @@ const GeneratePassword = () => {
         </button>
       </div>
 
-      {/* 
-      <div className="w-[100%]">
+      <div className="w-[100%] absolute bottom-4">
+        <p className='text-gray-200 font-light items-center pb-2 flex justify-center mx-auto text-center'> The heighest <span className='px-[4px] py-[2px] mx-1 bg-gray-500 rounded-md text-gray-200'>score</span> is <strong>100</strong>. It contains 32 characters, capital letters, numbers & special characters.  </p>
+
+        {/* 
         <h3 className="text-xl text-white mb-2">Password History</h3>
         
         <ul className="text-white">
@@ -167,8 +169,8 @@ const GeneratePassword = () => {
             <li key={index}>{pw}</li>
           ))}
         </ul>
+        */}
       </div>
-      */}
     </div>
   );
 };

@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaTimes, FaEdit, FaTrash, FaApple, FaCopy } from 'react-icons/fa';
+import { FaTimes, FaEdit, FaTrash, FaApple, FaCopy, FaPlus } from 'react-icons/fa';
 import { CiCircleCheck } from "react-icons/ci";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
 const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
   const [deleted, setDeleted] = useState(false);
+  const [showAddPasswordInput, setShowAddPasswordInput] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [app, setApp] = useState('');
+  const [passwords, setPasswords] = useState([]);
+
+  useEffect(() => {
+    setPasswords(folder.passwords);
+  }, [folder]);
 
   const calculatePasswordStrength = (password) => {
     // Just a dummy function to calculate password strength
@@ -65,16 +74,45 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
       }
     };
   }
-    
 
- 
+  const handleAddPasswordSubmit = async () => {
+    try {
+        const response = await axios.post('/api/newPassword', {
+            folderId: folder.id,
+            username: username,
+            password: password,
+            app: app,
+        });
+
+        if (response.data.success) {
+            console.log("Password added successfully!");
+            setUsername('');
+            setPassword('');
+            setApp('');
+            showAlert('success', 'Password added successfully!');
+            // Fetch updated passwords
+            const updatedPasswordsResponse = await axios.get(`/api/getPasswordsForFolder?folderId=${folder.id}`);
+            if (updatedPasswordsResponse.data.success) {
+              setPasswords(updatedPasswordsResponse.data.passwords);
+            }
+            setShowAddPasswordInput(false); 
+        } else {
+            console.error('Failed to add password:', response.data.error);
+            showAlert('error', 'Failed to add password.');
+        }
+    } catch (error) {
+        console.error('Failed to add password:', error.message);
+        showAlert('error', 'Failed to add password.');
+    }
+};
+
 
   return (
     <div className="p-6 w-full h-full bg-gradient-to-r from-purple-900 to-indigo-900 rounded-lg shadow-lg">
       <div className='flex flex-row justify-between items-center'>
         <div className='flex flex-row items-center space-x-4'>
-          <h1 className='text-3xl text-gray-100 font-bold'>Passwords for {folder.name} <span className='text-gray-300 font-thin'>({folder.passwords.length})</span></h1>
-          <button className='bg-purple-500 px-4 py-2 rounded-md shadow-lg text-gray-200'> + Add Password </button>
+          <h1 className='text-3xl text-gray-100 font-bold'>Passwords for {folder.name} <span className='text-gray-300 font-thin'>({passwords.length})</span></h1>
+          <button onClick={() => setShowAddPasswordInput(true)} className='bg-purple-500 px-4 py-2 rounded-md shadow-lg text-gray-200 flex flex-row items-center'> <FaPlus className='mr-2'/> Add Password </button>
         </div>
         <div className="flex items-center">
           <button onClick={onEditFolder} className="text-gray-400 w-6 h-6 hover:text-gray-200 duration-300 mr-2">
@@ -90,6 +128,26 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
       </div>
       <p className="text-gray-300 mt-4">{folder.description}</p>
       
+      {/* Add Password Form */}
+      {showAddPasswordInput && (
+        <div className="bg-gray-800 rounded-md p-4 mt-6">
+          <h2 className="text-gray-300 mb-2">Add New Password</h2>
+          <div className="flex flex-col">
+            <label htmlFor="username" className="text-gray-300">Username:</label>
+            <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} className="input" />
+          </div>
+          <div className="flex flex-col mt-2">
+            <label htmlFor="password" className="text-gray-300">Password:</label>
+            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input" />
+          </div>
+          <div className="flex flex-col mt-2">
+            <label htmlFor="app" className="text-gray-300">App:</label>
+            <input type="text" id="app" value={app} onChange={(e) => setApp(e.target.value)} className="input" />
+          </div>
+          <button onClick={handleAddPasswordSubmit} className="bg-green-500 px-4 py-2 mt-4 rounded-md shadow-lg text-gray-200">Submit</button>
+        </div>
+      )}
+
       {/* Header row */}
       <div className='bg-gray-700 rounded-md p-4 mb-4 mt-6'>
         <div className='flex flex-row justify-between'>
@@ -103,7 +161,7 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
       
       {/* Display passwords for the selected folder */}
       <div className=''>
-        {folder.passwords.map(password => (
+        {passwords.map(password => (
           <div key={password.id} className="bg-gray-800 rounded-md space-x-4 p-4 mb-4 flex justify-between items-center">
             <p className="text-gray-300 flex-1 flex py-2 flex-row items-center">
               <FaApple className='mr-2'/>
@@ -111,7 +169,7 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
             </p>
             <p className="text-gray-300 flex-1 py-2">{password.username}</p>
             <p className="text-gray-300 flex-1 py-2">
-              <button onClick={() => copyToClipboard(password.password)} className="ml-2 text-white hover:text-gray-200">
+              <button onClick={() => copyToClipboard(password.password)} className="mr-2 text-white hover:text-gray-200">
                 <FaCopy />
               </button>
               {password.password}
