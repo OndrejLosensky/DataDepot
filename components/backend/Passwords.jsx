@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaTimes, FaEdit, FaTrash, FaApple, FaCopy, FaPlus, FaCheck } from 'react-icons/fa';
-import { IoCloseOutline } from "react-icons/io5";
+import { TbPasswordFingerprint } from "react-icons/tb";
 
 const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
   const [deleted, setDeleted] = useState(false);
@@ -94,6 +94,11 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
             app: app,
         });
 
+        if (!password || !app) {
+          showAlert('error', 'Please fill out both password and app fields.');
+          return;
+      }
+
         if (response.data.success) {
             console.log("Password added successfully!");
             setUsername('');
@@ -114,7 +119,15 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
         console.error('Failed to add password:', error.message);
         showAlert('error', 'Failed to add password.');
     }
-};
+  };
+
+  const handleDeleteSinglePassword = async () => {
+    try {
+      showAlert('success', 'Successfully deleted the password');
+    } catch (error) {
+      showAlert('error', 'Failed to delete the selected password');
+    }
+  };
 
 
   return (
@@ -122,7 +135,7 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
       <div className='flex flex-row justify-between items-center'>
         <div className='flex flex-row items-center space-x-4'>
           <h1 className='text-3xl text-gray-100 font-bold'>Passwords for {folder.name} <span className='text-gray-300 font-thin'>({passwords.length})</span></h1>
-          <button onClick={() => setShowAddPasswordInput(true)} className='bg-purple-500 px-4 py-2 rounded-md shadow-lg text-gray-200 flex flex-row items-center'> <FaPlus className='mr-2'/> Add Password </button>
+          <button onClick={() => setShowAddPasswordInput(!showAddPasswordInput)} className='bg-purple-500 px-4 py-2 rounded-md shadow-lg text-gray-200 flex flex-row items-center'> <FaPlus className='mr-2'/> Add Password </button>
         </div>
         <div className="flex items-center">
           <button onClick={onEditFolder} className="text-gray-400 w-6 h-6 hover:text-gray-200 duration-300 mr-2">
@@ -151,17 +164,17 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
 
       {/* Add Password Form */}
       {showAddPasswordInput && (
-        <div className="bg-gray-800 rounded-md mb-3 flex flex-row items-center justify-between p-4 mt-3">
-          <div className="flex flex-col">
-            <input placeholder='app' type="text" id="app" value={app} onChange={(e) => setApp(e.target.value)} className="py-2 flex flex-1 bg-transparent border" />
+        <div className="bg-gray-800 rounded-md space-x-4 mb-3 flex flex-row w-full items-center justify-between p-4 mt-3">
+          <div className="flex flex-col w-1/5  border rounded-md border-gray-400">
+            <input placeholder='app' type="text" id="app" value={app} autoFocus onChange={(e) => setApp(e.target.value)} className="py-2 px-3 flex bg-transparent" />
           </div>
-          <div className="flex ">
-            <input placeholder='username' type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} className="py-2 flex flex-1 bg-transparent border" />
+          <div className="flex  border w-1/5 rounded-md border-gray-400 ">
+            <input placeholder='username' type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} className="py-2 px-3 flex flex-1 bg-transparent " />
           </div>
-          <div className="flex flex-col">
-            <input placeholder='password' type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className="py-2 flex flex-1 bg-transparent border" />
+          <div className="flex flex-col w-1/5 border rounded-md border-gray-400">
+            <input placeholder='password' type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className="py-2 px-3 flex flex-1 bg-transparent" />
           </div>
-          <div>
+          <div className=''>
             Strength
           </div>
           <div className='flex flex-row items-center space-x-4'>
@@ -174,9 +187,9 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
       {/* Display passwords for the selected folder */}
       <div className=''>
         {passwords.map((password) => (
-          <div key={password.id} className="bg-gray-800 rounded-md space-x-4 p-4 mb-3 flex justify-between items-center">
+          <div key={password.id} className="bg-gray-800 rounded-md w-full space-x-4 p-4 mb-3 flex justify-between items-center">
             <p className="text-gray-300 flex-1 flex py-2 flex-row items-center">
-              <FaApple className="mr-2" />
+              <TbPasswordFingerprint className="mr-2 cursor-pointer text-gray-300 hover:text-gray-100 duration-300 w-6 h-6" />
               {password.app}
             </p>
             <p className="text-gray-300 flex-1 py-2">{password.username}</p>
@@ -195,7 +208,7 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
                 <FaEdit />
               </button>
               <button className="text-white hover:text-red-400 duration-300">
-                <FaTrash />
+                <FaTrash onClick={handleDeleteSinglePassword} />
               </button>
             </div>
           </div>
