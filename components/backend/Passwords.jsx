@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaTimes, FaEdit, FaTrash, FaApple, FaCopy, FaPlus, FaCheck } from 'react-icons/fa';
-import { TbPasswordFingerprint } from "react-icons/tb";
+import PasswordIcons from './upload/PasswordIcons';
+import { RiLockLine } from 'react-icons/ri';
 
 const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
   const [deleted, setDeleted] = useState(false);
@@ -10,6 +11,20 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
   const [password, setPassword] = useState('');
   const [app, setApp] = useState('');
   const [passwords, setPasswords] = useState([]);
+  const [showIcons, setShowIcons] = useState(true);
+
+
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [selectedIcon, setSelectedIcon] = useState(null);
+
+  const handleDropdownClick = (passwordId) => {
+    setOpenDropdown(passwordId);
+  };
+
+  const handleIconSelect = (icon) => {
+    setSelectedIcon(icon);
+    setOpenDropdown(null); // Close the dropdown when an icon is selected
+  };
 
   useEffect(() => {
     setPasswords(folder.passwords);
@@ -85,50 +100,73 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
     };
   }
 
+  const handleClose = () => {
+    setShowIcons(false);
+  };
+
   const handleAddPasswordSubmit = async () => {
     try {
-        const response = await axios.post('/api/newPassword', {
-            folderId: folder.id,
-            username: username,
-            password: password,
-            app: app,
-        });
+      const response = await axios.post('/api/newPassword', {
+        folderId: folder.id,
+        username: username,
+        password: password,
+        app: app,
+      });
 
-        if (!password || !app) {
-          showAlert('error', 'Please fill out both password and app fields.');
-          return;
+      if (!password || !app) {
+        showAlert('error', 'Please fill out both password and app fields.');
+        return;
       }
 
-        if (response.data.success) {
-            console.log("Password added successfully!");
-            setUsername('');
-            setPassword('');
-            setApp('');
-            showAlert('success', 'Password added successfully!');
-            // Fetch updated passwords
-            const updatedPasswordsResponse = await axios.get(`/api/getPasswordsForFolder?folderId=${folder.id}`);
-            if (updatedPasswordsResponse.data.success) {
-              setPasswords(updatedPasswordsResponse.data.passwords);
-            }
-            setShowAddPasswordInput(false); 
-        } else {
-            console.error('Failed to add password:', response.data.error);
-            showAlert('error', 'Failed to add password.');
-        }
-    } catch (error) {
-        console.error('Failed to add password:', error.message);
+      if (response.data.success) {
+        console.log("Password added successfully!");
+        setUsername('');
+        setPassword('');
+        setApp('');
+        showAlert('success', 'Password added successfully!');
+        // Fetch updated passwords
+        fetchPasswords();
+        setShowAddPasswordInput(false); 
+      } else {
+        console.error('Failed to add password:', response.data.error);
         showAlert('error', 'Failed to add password.');
+      }
+    } catch (error) {
+      console.error('Failed to add password:', error.message);
+      showAlert('error', 'Failed to add password.');
     }
   };
 
-  const handleDeleteSinglePassword = async () => {
+  const fetchPasswords = async () => {
     try {
-      showAlert('success', 'Successfully deleted the password');
+      const updatedPasswordsResponse = await axios.get(`/api/getPasswordsForFolder?folderId=${folder.id}`);
+      if (updatedPasswordsResponse.data.success) {
+        setPasswords(updatedPasswordsResponse.data.passwords);
+      }
+    } catch (error) {
+      console.error('Failed to fetch passwords:', error.message);
+      showAlert('error', 'Failed to fetch passwords.');
+    }
+  };
+
+  const handleDeleteSinglePassword = async (passwordId, folderId) => {
+    try {
+      const response = await axios.post('/api/deletePassword', {
+        passwordId: passwordId,
+        folderId: folderId
+      });
+
+      if (response.status === 200) {
+        showAlert('success', 'Successfully deleted the password');
+        // Fetch updated passwords
+        fetchPasswords();
+      } else {
+        showAlert('error', 'Failed to delete the selected password');
+      }
     } catch (error) {
       showAlert('error', 'Failed to delete the selected password');
     }
   };
-
 
   return (
     <div className="p-6 w-full h-full bg-gradient-to-r from-purple-900 to-indigo-900 rounded-lg shadow-lg">
@@ -175,7 +213,8 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
             <input placeholder='password' type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className="py-2 px-3 flex flex-1 bg-transparent" />
           </div>
           <div className=''>
-            Strength
+              {calculatePasswordStrength(password)}
+              {renderStrengthIndicator(calculatePasswordStrength(password))}
           </div>
           <div className='flex flex-row items-center space-x-4'>
             <button onClick={handleAddPasswordSubmit} className="bg-purple-500 px-4 py-2 rounded-md shadow-lg text-gray-200">Submit</button>
@@ -184,36 +223,57 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
         </div>
       )}
       
-      {/* Display passwords for the selected folder */}
-      <div className=''>
-        {passwords.map((password) => (
-          <div key={password.id} className="bg-gray-800 rounded-md w-full space-x-4 p-4 mb-3 flex justify-between items-center">
-            <p className="text-gray-300 flex-1 flex py-2 flex-row items-center">
-              <TbPasswordFingerprint className="mr-2 cursor-pointer text-gray-300 hover:text-gray-100 duration-300 w-6 h-6" />
-              {password.app}
-            </p>
-            <p className="text-gray-300 flex-1 py-2">{password.username}</p>
-            <p className="text-gray-300 flex-1 py-2">
-              <button onClick={() => copyToClipboard(password.password)} className="mr-2 text-white hover:text-gray-200">
-                {copiedPasswords[password.password] ? <FaCheck className='text-green-500 w-3 h-3'  /> : <FaCopy className='' />}
-              </button>
-              {password.password}
-            </p>
-            <div className="text-gray-300 flex-1 py-1">
-              {calculatePasswordStrength(password.password)}
-              {renderStrengthIndicator(calculatePasswordStrength(password.password))}
-            </div>
-            <div className="flex items-center py-2">
-              <button className="text-white hover:text-purple-400 duration-300 mr-2">
-                <FaEdit />
-              </button>
-              <button className="text-white hover:text-red-400 duration-300">
-                <FaTrash onClick={handleDeleteSinglePassword} />
-              </button>
-            </div>
-          </div>
-        ))}
+   {/* Display passwords for the selected folder */}
+<div className="">
+  {passwords.map((password) => (
+    <div key={password.id} className="bg-gray-800 rounded-md w-full space-x-4 p-4 mb-3 flex justify-between items-center relative">
+
+      {openDropdown === password.id && (
+        <div className='absolute top-0 left-0 z-10'>
+          <PasswordIcons
+            onClose={() => setOpenDropdown(null)}
+            onSelectIcon={(icon) => handleIconSelect(icon, password.id)}
+            selectedIcon={selectedIcon}
+          />
+        </div>
+      )}
+
+      <div className="flex items-center">
+        <button
+          className="text-gray-300 hover:text-gray-100 duration-300"
+          onClick={() => setOpenDropdown(openDropdown === password.id ? null : password.id)}
+        >
+          {selectedIcon || <RiLockLine className="mr-2 cursor-pointer text-gray-300 hover:text-gray-100 duration-300 w-6 h-6" />}
+        </button>
       </div>
+
+      <p className="text-gray-300 flex-1 py-2">{password.username}</p>
+      <p className="text-gray-300 flex-1 py-2">
+        <button onClick={() => copyToClipboard(password.password)} className="mr-2 text-white hover:text-gray-200">
+          {copiedPasswords[password.password] ? <FaCheck className='text-green-500 w-3 h-3'  /> : <FaCopy className='' />}
+        </button>
+        {password.password}
+      </p>
+      <div className="text-gray-300 flex-1 py-1">
+        {calculatePasswordStrength(password.password)}
+        {renderStrengthIndicator(calculatePasswordStrength(password.password))}
+      </div>
+      <div className="flex items-center py-2">
+        <button className="text-white hover:text-purple-400 duration-300 mr-2">
+          <FaEdit />
+        </button>
+        <button
+          className="text-white hover:text-red-400 duration-300"
+          onClick={() => handleDeleteSinglePassword(password.id, folder.id)}
+        >
+          <FaTrash />
+        </button>
+      </div>
+    </div>
+  ))}
+</div>
+
+
     </div>
   );
 };
