@@ -109,6 +109,7 @@ const handleNewFolderSubmit = async () => {
 
         if (response.data.success) {
             console.log("Password added successfully!");
+            showAlert('success', 'Successfully deleted the password');
             setUsername('');
             setPassword('');
             setApp('');
@@ -117,6 +118,7 @@ const handleNewFolderSubmit = async () => {
             await fetchTotalPasswords(); 
         } else {
             console.error('Failed to add password:', response.data.error);
+            showAlert('error', 'Failed to delete create the password');
         }
     } catch (error) {
         console.error('Failed to add password:', error.message);
