@@ -13,17 +13,12 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
   const [passwords, setPasswords] = useState([]);
   const [showIcons, setShowIcons] = useState(true);
 
-
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [selectedIcon, setSelectedIcon] = useState(null);
+  const [selectedIcons, setSelectedIcons] = useState({});
 
-  const handleDropdownClick = (passwordId) => {
-    setOpenDropdown(passwordId);
-  };
-
-  const handleIconSelect = (icon) => {
-    setSelectedIcon(icon);
-    setOpenDropdown(null); // Close the dropdown when an icon is selected
+  const handleIconSelect = (icon, passwordId) => {
+    setSelectedIcons({ ...selectedIcons, [passwordId]: icon });
+    setOpenDropdown(false);
   };
 
   useEffect(() => {
@@ -223,7 +218,7 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
         </div>
       )}
       
-   {/* Display passwords for the selected folder */}
+  {/* Display passwords for the selected folder */}
 <div className="">
   {passwords.map((password) => (
     <div key={password.id} className="bg-gray-800 rounded-md w-full space-x-4 p-4 mb-3 flex justify-between items-center relative">
@@ -233,17 +228,17 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
           <PasswordIcons
             onClose={() => setOpenDropdown(null)}
             onSelectIcon={(icon) => handleIconSelect(icon, password.id)}
-            selectedIcon={selectedIcon}
+            selectedIcon={selectedIcons[password.id]}
           />
         </div>
       )}
 
       <div className="flex items-center">
         <button
-          className="text-gray-300 hover:text-gray-100 duration-300"
+          className="text-gray-300 w-6 h-6 flex items-center justify-center hover:text-gray-100 duration-300"
           onClick={() => setOpenDropdown(openDropdown === password.id ? null : password.id)}
         >
-          {selectedIcon || <RiLockLine className="mr-2 cursor-pointer text-gray-300 hover:text-gray-100 duration-300 w-6 h-6" />}
+          {selectedIcons[password.id] || <RiLockLine className="mr-2 cursor-pointer flex items-center justify-center text-gray-300 hover:text-gray-100 duration-300 w-5 h-5" />}
         </button>
       </div>
 
@@ -272,7 +267,6 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
     </div>
   ))}
 </div>
-
 
     </div>
   );
