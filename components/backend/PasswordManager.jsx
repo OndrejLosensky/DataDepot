@@ -16,6 +16,7 @@ import Passwords from './Passwords';
 import { IoFolderOpenOutline } from "react-icons/io5";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import SearchInput from './SearchInput';
+import Pagination from './Pagination';
 
 const PasswordManager = ({ isUserActive }) => {
   const [folders, setFolders] = useState([]);
@@ -148,6 +149,11 @@ const handleNewFolderSubmit = async () => {
         fetchTotalPasswords();
     }, []);
 
+  
+  const closeBanner = () => {
+    // hidden banner and display controls of passwords instead!!!
+  }
+
   return (
     <div className='w-auto h-full overflow-hidden space-y-6 mr-4'>
       {selectedComponent === 'help' && (
@@ -192,7 +198,7 @@ const handleNewFolderSubmit = async () => {
               >
                 Generate Secure Password
               </button>
-              <div className='absolute left-[38%] z-10 '>
+              <div className='z-10 '>
                 <SearchInput placeholder="Search passwords"/>
               </div>
             </div>
@@ -256,12 +262,12 @@ const handleNewFolderSubmit = async () => {
           )}
 
           {/* Banner */}
-          <div className='w-full bg-gray-800 h-1/4 flex flex-row overflow-hidden'>
+          <div className='w-full bg-gray-800 h-[250px] flex flex-row overflow-hidden'>
             <div className='w-1/4 flex justify-center items-center'>
-              <Image src="/lock.svg" width={256} height={256} alt='Icon for banner' className='rounded-full bg-gray-500 m-24 p-6' />
+              <Image src="/lock.svg" width={150} height={150} alt='Icon for banner' className='rounded-full bg-gray-500 m-16 p-6' />
             </div>
             <div className='w-3/4 relative justify-center space-y-2 flex flex-col'>
-              <button className='absolute right-4 top-4'> <IoClose className='text-gray-200 w-5 h-5' /> </button>
+              <button className='absolute right-4 top-4 hover:bg-gray-600 duration-300 p-1 rounded-full' onClick={closeBanner}> <IoClose className='text-gray-200 w-5 h-5' /> </button>
               <h1 className='text-3xl font-bold text-gray-200'> Welcome to PasswordDepot</h1>
               <p className='font-light text-gray-300'> You can store your passwords here and make them as much as organized as you like </p>
               <br />
@@ -343,7 +349,7 @@ const handleNewFolderSubmit = async () => {
                     <div className='flex items-center justify-between bg-[#303444] rounded-sm p-4'>
                       <div className='flex flex-row justify-between items-center w-full'>
                           <div className='flex flex-row items-center'>
-                            <IoFolderOpenOutline className='mr-2 w-6 h-6'/>
+                            <Image alt='static icon' width={48} height={24} src="/google.png" className='mr-2'/>
                             <h1 className='text-xl font-semibold text-gray-300'>{folder.name}</h1>
                           </div>
                         <p className='text-gray-400'>{folder.passwords ? folder.passwords.length : 0} {folder.passwords && folder.passwords.length === 1 ? 'item' : 'items'}</p>
@@ -354,7 +360,7 @@ const handleNewFolderSubmit = async () => {
                       <div className='h-full bg-[#303444] rounded-sm flex flex-col justify-between'>
                         <div className='p-3 flex flex-row justify-between items-center'>
                           <div className='flex flex-row items-center'>
-                            <IoFolderOpenOutline className='mr-2 w-6 h-6'/>
+                            <Image alt='static icon' width={48} height={24} src="/google.png" className='mr-2'/>
                             <h1 className='text-xl font-semibold text-gray-300'>{folder.name}</h1>
                           </div>
                           <p className='text-gray-400'>{folder.passwords ? folder.passwords.length : 0} {folder.passwords && folder.passwords.length === 1 ? 'item' : 'items'}</p>
@@ -369,6 +375,8 @@ const handleNewFolderSubmit = async () => {
                 </div>
               ))}
             </div>
+
+                <Pagination/>
           </div>
         </div>
       )}

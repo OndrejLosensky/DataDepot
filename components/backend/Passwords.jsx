@@ -3,6 +3,7 @@ import axios from 'axios';
 import { FaTimes, FaEdit, FaTrash, FaApple, FaCopy, FaPlus, FaCheck } from 'react-icons/fa';
 import PasswordIcons from './upload/PasswordIcons';
 import { RiLockLine } from 'react-icons/ri';
+import Image from 'next/image';
 
 const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
   const [deleted, setDeleted] = useState(false);
@@ -167,6 +168,7 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
     <div className="p-6 w-full h-full bg-gradient-to-r from-purple-900 to-indigo-900 rounded-lg shadow-lg">
       <div className='flex flex-row justify-between items-center'>
         <div className='flex flex-row items-center space-x-4'>
+          <Image alt='static icon' width={48} height={24} src="/google.png" className='mr-2'/>
           <h1 className='text-3xl text-gray-100 font-bold'>Passwords for {folder.name} <span className='text-gray-300 font-thin'>({passwords.length})</span></h1>
           <button onClick={() => setShowAddPasswordInput(!showAddPasswordInput)} className='bg-purple-500 px-4 py-2 rounded-md shadow-lg text-gray-200 flex flex-row items-center'> <FaPlus className='mr-2'/> Add Password </button>
         </div>

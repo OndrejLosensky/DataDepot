@@ -42,14 +42,6 @@ const SearchInput = ({placeholder}) => {
       <kbd className="kbd kbd-sm ">⌘</kbd>
       <kbd className="kbd kbd-sm">K</kbd>
     </label>
-    {isClicked && (
-      <div className="absolute top-full left-0 bg-gray-600 flex items-center justify-center  w-[450px] h-32 border-gray-400 border-[1px] rounded shadow-lg mt-2">
-        {searchItems.map(item => (
-          <div key={item.id} className="p-2">{item.name}</div>
-        ))}
-        <p> No items to search for currently...</p>
-      </div>
-    )}
   </div>
   );
 };
