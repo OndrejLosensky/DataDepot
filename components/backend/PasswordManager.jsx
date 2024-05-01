@@ -15,6 +15,7 @@ import Help from './Help';
 import Passwords from './Passwords';
 import { IoFolderOpenOutline } from "react-icons/io5";
 import { FaRegCircleCheck } from "react-icons/fa6";
+import SearchInput from './SearchInput';
 
 const PasswordManager = ({ isUserActive }) => {
   const [folders, setFolders] = useState([]);
@@ -28,6 +29,11 @@ const PasswordManager = ({ isUserActive }) => {
   const [app, setApp] = useState('');
   const [selectedComponent, setSelectedComponent] = useState('folders'); // 'folders', 'generate', 'help', 'passwordsPage'
   const [selectedIcon, setSelectedIcon] = useState('grid');
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleInputClick = () => {
+    setIsClicked(true);
+  };
 
   const [alert, setAlert] = useState(null);
   const showAlert = (type, message) => {
@@ -186,13 +192,8 @@ const handleNewFolderSubmit = async () => {
               >
                 Generate Secure Password
               </button>
-              <div>
-                <label className="input relative input-bordered h-10 flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
-                  <input type="text" className="grow w-[400px]" placeholder="Search password" />
-                  <kbd className="kbd kbd-sm ">⌘</kbd>
-                  <kbd className="kbd kbd-sm">K</kbd>
-                </label>
+              <div className='absolute left-[38%] z-10 '>
+                <SearchInput placeholder="Search passwords"/>
               </div>
             </div>
             <div className='flex flex-row items-center'>

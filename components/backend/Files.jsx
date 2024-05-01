@@ -14,6 +14,7 @@ import { LuLayoutGrid } from "react-icons/lu";
 import { FaCheck } from 'react-icons/fa'; 
 import { BsArrow90DegLeft } from "react-icons/bs";
 import Help from './Help';
+import SearchInput from './SearchInput';
 
 const Files = ({isUserActive}) => {
   const [fileTypeFilter, setFileTypeFilter] = useState('');
@@ -47,12 +48,7 @@ const Files = ({isUserActive}) => {
             <div className='flex flex-row gap-x-4'>
                 <button className='bg-purple-500 text-gray-200 px-4 py-2 rounded-md shadow-md hover:bg-purple-600 duration-300'> + Add File</button>
                 <div>
-                  <label className="input input-bordered h-10 flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
-                        <input type="text" className="grow w-64" placeholder="Search Files" />
-                        <kbd className="kbd kbd-sm">⌘</kbd>
-                        <kbd className="kbd kbd-sm">K</kbd>
-                    </label>
+                    <SearchInput placeholder="Search files"/>
                 </div>
             </div>
             <div className='flex flex-row items-center'>
