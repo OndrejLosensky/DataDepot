@@ -17,6 +17,8 @@ import { IoFolderOpenOutline } from "react-icons/io5";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import SearchInput from './SearchInput';
 import Pagination from './Pagination';
+import { CiFolderOff } from "react-icons/ci";
+
 
 const PasswordManager = ({ isUserActive }) => {
   const [folders, setFolders] = useState([]);
@@ -31,6 +33,13 @@ const PasswordManager = ({ isUserActive }) => {
   const [selectedComponent, setSelectedComponent] = useState('folders'); // 'folders', 'generate', 'help', 'passwordsPage'
   const [selectedIcon, setSelectedIcon] = useState('grid');
   const [isClicked, setIsClicked] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
+  const [showFeature, setShowFeature] = useState(false);
+
+  const closeBanner = () => {
+    setShowBanner(false);
+    setShowFeature(true);
+  };
 
   const handleInputClick = () => {
     setIsClicked(true);
@@ -74,6 +83,9 @@ const PasswordManager = ({ isUserActive }) => {
     }
 };
 
+const truncateText = (text, maxLength) => {
+  return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+};
 
 
 const handleNewFolderSubmit = async () => {
@@ -148,11 +160,6 @@ const handleNewFolderSubmit = async () => {
     useEffect(() => {
         fetchTotalPasswords();
     }, []);
-
-  
-  const closeBanner = () => {
-    // hidden banner and display controls of passwords instead!!!
-  }
 
   return (
     <div className='w-auto h-full overflow-hidden space-y-6 mr-4'>
@@ -262,6 +269,7 @@ const handleNewFolderSubmit = async () => {
           )}
 
           {/* Banner */}
+          {showBanner && (
           <div className='w-full bg-gray-800 h-[250px] flex flex-row overflow-hidden'>
             <div className='w-1/4 flex justify-center items-center'>
               <Image src="/lock.svg" width={150} height={150} alt='Icon for banner' className='rounded-full bg-gray-500 m-16 p-6' />
@@ -277,6 +285,12 @@ const handleNewFolderSubmit = async () => {
               </div>
             </div>
           </div>
+        )}
+        {showFeature && (
+          <div className="flex items-center justify-center h-[200px] transition-height duration-300">
+            <h1 className="text-3xl font-semibold text-gray-300">Feature Coming Soon</h1>
+          </div>
+        )}
 
           {/* Passwords (cards with folders) */}
           <div className='w-full h-[60%] min-h-[300px] flex flex-col overflow-hidden'>
@@ -342,15 +356,16 @@ const handleNewFolderSubmit = async () => {
               </div>
             </div>
 
-            <div className='grid grid-cols-4 w-full mt-6 gap-4'>
-              {folders.map((folder) => (
+            <div className='grid grid-cols-4 w-[100%] mt-6 gap-4 relative'>
+            {folders.length > 0 ? (
+              folders.map((folder) => (
                 <div onClick={() => handleFolderClick(folder)}  key={folder.id} className={`rounded-sm border cursor-pointer duration-300 ${selectedIcon === 'list' ? 'border-gray-500 hover:border-gray-300' : 'border-gray-500 hover:border-gray-300'}`}>
                   {selectedIcon === 'list' ? (
                     <div className='flex items-center justify-between bg-[#303444] rounded-sm p-4'>
                       <div className='flex flex-row justify-between items-center w-full'>
                           <div className='flex flex-row items-center'>
                             <Image alt='static icon' width={48} height={24} src="/google.png" className='mr-2'/>
-                            <h1 className='text-xl font-semibold text-gray-300'>{folder.name}</h1>
+                            <h1 className='text-xl font-semibold text-gray-300'>{truncateText(folder.name, 20)}</h1>
                           </div>
                         <p className='text-gray-400'>{folder.passwords ? folder.passwords.length : 0} {folder.passwords && folder.passwords.length === 1 ? 'item' : 'items'}</p>
                       </div>
@@ -365,16 +380,24 @@ const handleNewFolderSubmit = async () => {
                           </div>
                           <p className='text-gray-400'>{folder.passwords ? folder.passwords.length : 0} {folder.passwords && folder.passwords.length === 1 ? 'item' : 'items'}</p>
                         </div>
-                        <div className='flex flex-col justify-center items-start p-4 text-gray-300'>
-                          <p className='font-thin'>{folder.description}</p>
+                        <div className='flex flex-col justify-center items-start p-4 text-gray-300 pb-2'>
+                          <p className='font-thin'>{truncateText(folder.description, 30)}</p>
                           <p className='font-light text-gray-300'>{folder.date_created}</p>
                         </div>
                       </div>
                     </div>
                   )}
                 </div>
-              ))}
-            </div>
+              ))
+            ) : (
+              <div className=" h-full text-gray-400 flex absolute mt-36 ml-[630px]">
+                 <div className='h-12 flex flex-row space-x-2 items-center'>
+                    <CiFolderOff className='w-10 h-10'/>
+                   <h2 className='text-xl'> No folders were found ... </h2>
+                 </div>
+              </div>
+            )}
+          </div>
 
                 <Pagination/>
           </div>
