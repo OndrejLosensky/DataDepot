@@ -121,3 +121,16 @@ I still haven't gotten to the part where I need to figure out how to solve the s
 Spent hours today: `1 Hours 57 mins`
 
 --- 
+
+
+## Day 11 - 1.5. 2024
+For last few days i did not have any time and motivation to work on this project as my final exams are getting closer and closer.
+
+Today I have created simple pagination component for future expansion of password manager. Then i created Search Input component with animated grow effect when clicked inside. And Lastly I have added state where it says no folders if users doesnt have any folders.
+
+Also the banner is now closeable and ready to have password health/statistics displayed.
+
+Yesterday i worked a little too and managed to create cool feature where is it possible to change icon for each row of passwords (It doesnt save the selected icon to the database yet). And also each password can be deleted now from those lists.
+
+Spent hours combined: `4 Hours 23 mins`
+
