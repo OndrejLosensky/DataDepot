@@ -134,3 +134,5 @@ Yesterday i worked a little too and managed to create cool feature where is it p
 
 Spent hours combined: `4 Hours 23 mins`
 
+--- 
+
