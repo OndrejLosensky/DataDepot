@@ -8,7 +8,7 @@ import { auth } from '../../src/app/firebaseConfig'
 import { useRouter } from 'next/router';
 import { FaCheckCircle } from 'react-icons/fa';
 import { FiAlertCircle } from 'react-icons/fi';
-import { FiEye, FiEyeOff } from 'react-icons/fi';
+import { FiEye, FiEyeOff, FiLock } from 'react-icons/fi';
 import { FaWarehouse } from "react-icons/fa";
 import { BsArrow90DegLeft } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
@@ -34,7 +34,6 @@ const Login = () => {
        try {
           setIsLoading(true);
           setSuccessAlertVisible(true);      
-          // Sign in user with email and password
           await signInWithEmailAndPassword(auth, email, password);    
           // Redirects to dashboard upon successful login
           router.push('/backend/dashboard');
@@ -172,26 +171,30 @@ const Login = () => {
             
            <form className='flex flex-col w-full items-center' onSubmit={handleLogin}>
             <div className="relative w-full">
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="focused block bg-[#3D3D3D] text-md w-full border my-4 mt-4 px-2 py-3 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                placeholder="Password"
-                required
-                autoFocus
-              />
-              {showPassword ? (
-                <FiEyeOff onClick={handleTogglePasswordVisibility} className="absolute right-4 top-8 text-gray-400 cursor-pointer" />
-              ) : (
-                <FiEye onClick={handleTogglePasswordVisibility} className="absolute right-4 top-8 text-gray-400 cursor-pointer" />
-              )}
+              <label className='relative w-full'>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="block bg-[#3D3D3D] text-md w-full border mb-6 my-4 mt-4 px-2 py-3 pl-12 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                    placeholder="Your password"
+                    required
+                    autoFocus
+                  />
+                                  <FiLock className="absolute top-[60%] left-4 transform -translate-y-1/2 w-4 h-4 opacity-70" />
+
+                  {showPassword ? (
+                    <FiEyeOff onClick={handleTogglePasswordVisibility} className="absolute right-4 top-8 text-gray-400 cursor-pointer" />
+                  ) : (
+                    <FiEye onClick={handleTogglePasswordVisibility} className="absolute right-4 top-8 text-gray-400 cursor-pointer" />
+                  )}
+                </label>
             </div>
 
             {isLoading ? (
               <button type="submit" className="py-2 rounded-md opacity-80 bg-purple-500 text-[#fffddd] duration-300 mb-2 w-full">
-                <span className="loading loading-spinner loading-sm"></span> Loading
+                <span className="loading loading-spinner loading-sm"></span>
               </button>
             ) : (
               <button type="submit" className="py-2 rounded-md bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mb-2 w-full">
@@ -232,7 +235,6 @@ const Login = () => {
           objectFit="cover"
         />
         <div className="absolute inset-0 bg-black opacity-30"></div>
-        <p className='text-gray-200 absolute bottom-2 px-2 py-1 bg-sky-900 rounded-lg'> E-mail: <span className='font-bold'>ondra@gmail.com</span> | heslo: <span className='font-bold'>  123456</span> </p>
       </div>
 
 

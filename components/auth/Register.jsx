@@ -38,6 +38,11 @@ const Register = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [passwordError, setPasswordError] = useState('');
   const [selectedGender, setSelectedGender] = useState(null);
+  const [selectedPicture, setSelectedPicture] = useState(null);
+
+    const handleInputClick = (index) => {
+        setSelectedPicture(index);
+    };
 
   const handleGenderSelect = (gender) => {
     setSelectedGender(gender);
@@ -354,25 +359,26 @@ const Register = () => {
             </div>
         
             <div className='items-center w-2/3  h-2/3 mt-36 flex flex-col'>
-              <h1 className='text-3xl font-bold text-gray-200 pb-2 '> Step 4 - Select the usage of DataDepot</h1>
-              <p className='text-gray-300 w-1/2 mb-4 text-center'>Select minimally <strong>one</strong> thing that you want to use DataDepot for</p>
+              <h1 className='text-3xl font-bold text-gray-200 pb-2 '> Step 4 - Select default profile picture</h1>
+              <p className='text-gray-300 w-1/2 mb-4 text-center'>Select one image to have as your profile picture or add custom</p>
               
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                {options.map(option => (
-                  <label key={option.id} htmlFor={`option-${option.id}`} className="flex items-center px-3 py-1 bg-[#2f3858] rounded-md cursor-pointer">
-                    <input
-                      type="checkbox"
-                      id={`option-${option.id}`}
-                      value={option.id}
-                      checked={selectedOptions.includes(option.id)}
-                      onChange={() => handleOptionToggle(option.id)}
-                      className="mr-2"
-                    />
-                    <span className="text-gray-200">{option.title}</span>
-                  </label>
+              <div className="grid grid-cols-3 gap-4 mb-4">
+                {[1, 2, 3, 4, 5, 6].map(index => (
+                  <Image 
+                      key={index}
+                      alt={`profile picture ${index}`}
+                      src={`/profile_pictures/${index}.jpeg`}
+                      width={105}
+                      height={105}
+                      onClick={() => handleInputClick(index)}
+                      className={`rounded-full mt-4 cursor-pointer ${
+                          selectedPicture === index ? 'border-4 scale-105 border-purple-500' : ''
+                      }`}
+                  />
                 ))}
               </div>
-              <button className="py-2 rounded-md bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mt-4 mb-2 w-1/3" onClick={handleRegister} >Register</button>
+
+              <button className="py-2 rounded-md bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mt-4 mb-2 w-1/3" onClick={() => setStep(5)}> Continue</button>
               <button className="rounded-md bg-transparent text-[#c4c4c4] hover:text-[#e6e6e6] duration-300 flex flex-row items-center py-1 mb-6 mt-2" onClick={() => setStep(3)}> 
                 <HiOutlineArrowLongLeft className='mr-2 font-thin'/> 
                 Previous
@@ -384,6 +390,47 @@ const Register = () => {
             </div>
           </div>
         );
+        case 5:
+          return (
+            <div className="w-screen flex flex-col justify-between items-center h-screen">
+              <div className="flex flex-col items-center w-1/2 space-y-2">
+                <div className="flex flex-row space-x-1 mt-12">
+                  <FaWarehouse className="w-10 mr-2 h-auto text-[#DFDFDF]" />
+                  <h2 className="text-2xl pt-2 text-[#DFDFDF]"> DataDepot – Sign up </h2>
+                </div>
+              </div>
+          
+              <div className='items-center w-2/3  h-2/3 mt-36 flex flex-col'>
+                <h1 className='text-3xl font-bold text-gray-200 pb-2 '> Step 4 - Select the usage of DataDepot</h1>
+                <p className='text-gray-300 w-1/2 mb-4 text-center'>Select minimally <strong>one</strong> thing that you want to use DataDepot for</p>
+                
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  {options.map(option => (
+                    <label key={option.id} htmlFor={`option-${option.id}`} className="flex items-center px-3 py-1 bg-[#2f3858] rounded-md cursor-pointer">
+                      <input
+                        type="checkbox"
+                        id={`option-${option.id}`}
+                        value={option.id}
+                        checked={selectedOptions.includes(option.id)}
+                        onChange={() => handleOptionToggle(option.id)}
+                        className="mr-2"
+                      />
+                      <span className="text-gray-200">{option.title}</span>
+                    </label>
+                  ))}
+                </div>
+                <button className="py-2 rounded-md bg-purple-500 text-[#fffddd] hover:bg-purple-700 duration-300 mt-4 mb-2 w-1/3" onClick={handleRegister} >Register</button>
+                <button className="rounded-md bg-transparent text-[#c4c4c4] hover:text-[#e6e6e6] duration-300 flex flex-row items-center py-1 mb-6 mt-2" onClick={() => setStep(4)}> 
+                  <HiOutlineArrowLongLeft className='mr-2 font-thin'/> 
+                  Previous
+                </button>
+             </div>
+          
+             <div className="mb-4">
+                <p className="w-[55%] text-wrap mx-auto text-center text-md font-light">Join DataDepot for free! Quickly login or create an account and start using the app. By joining you agree to our Privacy Policy Terms</p>
+              </div>
+            </div>
+          );
       default:
         return null;
     }
@@ -401,7 +448,6 @@ const Register = () => {
             objectFit="cover"
           />
           <div className="absolute inset-0 bg-black opacity-30"></div>
-          <p className="text-gray-200 absolute bottom-2 px-2 py-1 bg-sky-900 rounded-lg"> E-mail: <span className="font-bold">ondra@gmail.com</span> | heslo: <span className="font-bold"> 123456</span> </p>
         </div>
       )}
   
