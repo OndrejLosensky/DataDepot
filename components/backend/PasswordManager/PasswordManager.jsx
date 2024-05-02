@@ -18,6 +18,7 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import SearchInput from '../SearchInput';
 import Pagination from './Pagination';
 import { CiFolderOff } from "react-icons/ci";
+import FolderPerPage from './FolderPerPage';
 
 
 const PasswordManager = ({ isUserActive }) => {
@@ -162,7 +163,7 @@ const handleNewFolderSubmit = async () => {
     }, []);
 
   return (
-    <div className='w-auto h-full overflow-hidden space-y-6 mr-4'>
+    <div className='w-auto h-[100%] overflow-hidden mr-4'>
       {selectedComponent === 'help' && (
         <div className='w-full h-full overflow-hidden mb-12'>
           <button className='flex flex-row absolute top-4 items-center px-4 text-gray-200 py-1 bg-gray-700 mb-4 rounded-lg shadow-lg' onClick={() => setSelectedComponent('folders')} > <BsArrow90DegLeft className='mr-2'/> Back </button>
@@ -189,9 +190,9 @@ const handleNewFolderSubmit = async () => {
           <GeneratePassword onClose={() => setSelectedComponent('generate')} />
         </div>
       ) : (
-        <div className={`space-y-6 ${selectedComponent === 'passwordsPage' ? 'hidden':''}`}>
+        <div className={` h-[100%] space-y-6 ${selectedComponent === 'passwordsPage' ? 'hidden':''}`}>
           {/* Navbar */}
-          <div className='flex flex-row justify-between overflow-hidden py-1  h-[5%] items-center'>
+          <div className='flex flex-row justify-between overflow-hidden py-1 h-[5%]  items-center'>
             <div className='flex flex-row gap-x-4'>
               <button
                 onClick={() => setShowAddPasswordInput(!showAddPasswordInput)}
@@ -270,7 +271,7 @@ const handleNewFolderSubmit = async () => {
 
           {/* Banner */}
           {showBanner && (
-          <div className='w-full bg-gray-800 h-[250px] flex flex-row overflow-hidden'>
+          <div className='w-full bg-gray-800 h-[25%] flex flex-row overflow-hidden'>
             <div className='w-1/4 flex justify-center items-center'>
               <Image src="/lock.svg" width={150} height={150} alt='Icon for banner' className='rounded-full bg-gray-500 m-16 p-6' />
             </div>
@@ -287,14 +288,14 @@ const handleNewFolderSubmit = async () => {
           </div>
         )}
         {showFeature && (
-          <div className="flex items-center justify-center h-[200px] transition-height duration-300">
+          <div className="flex items-center justify-center h-[25%] transition-height duration-300">
             <h1 className="text-3xl font-semibold text-gray-300">Feature Coming Soon</h1>
           </div>
         )}
 
           {/* Passwords (cards with folders) */}
-          <div className='w-full h-[60%] min-h-[300px] flex flex-col overflow-hidden'>
-            <div className='flex flex-row justify-between items-center'>
+          <div className='w-full h-[70%] flex flex-col overflow-hidden'>
+            <div className='flex flex-row h-1/6 justify-between items-center '>
               <h1 className='text-2xl font-semibold text-gray-200'> Folders <span className='font-thin text-lg'>({totalCount})</span></h1>
               <div className='relative flex flex-row space-x-4'>
                 <div className='flex flex-row w-36 justify-between items-center border border-gray-400 rounded-xl'>
@@ -356,12 +357,12 @@ const handleNewFolderSubmit = async () => {
               </div>
             </div>
 
-            <div className='grid grid-cols-4 w-[100%] mt-6 gap-4 relative'>
+            <div className='grid grid-cols-4 h-4/6 w-[100%] gap-4 relative '>
             {folders.length > 0 ? (
               folders.map((folder) => (
-                <div onClick={() => handleFolderClick(folder)}  key={folder.id} className={`rounded-sm border cursor-pointer duration-300 ${selectedIcon === 'list' ? 'border-gray-500 hover:border-gray-300' : 'border-gray-500 hover:border-gray-300'}`}>
+                <div key={folder.id} className={`duration-300 ${selectedIcon === 'list' ? 'border-gray-500 hover:border-gray-300' : 'border-gray-500 hover:border-gray-300'}`}>
                   {selectedIcon === 'list' ? (
-                    <div className='flex items-center justify-between bg-[#303444] rounded-sm p-4'>
+                    <div onClick={() => handleFolderClick(folder)} className='flex h-16 cursor-pointer items-center justify-between bg-[#303444] rounded-sm p-4 border border-gray-500 hover:border-gray-200 duration-300'>
                       <div className='flex flex-row justify-between items-center w-full'>
                           <div className='flex flex-row items-center'>
                             <Image alt='static icon' width={48} height={24} src="/google.png" className='mr-2'/>
@@ -371,7 +372,7 @@ const handleNewFolderSubmit = async () => {
                       </div>
                     </div>
                   ) : (
-                    <div className='h-32 bg-[#20263d] rounded-sm border-t-[0.5px] border-gray-500'>
+                    <div onClick={() => handleFolderClick(folder)} className='h-32 bg-[#20263d] cursor-pointer rounded-sm border border-gray-500 hover:border-gray-200 duration-300'>
                       <div className='h-full bg-[#303444] rounded-sm flex flex-col justify-between'>
                         <div className='p-3 flex flex-row justify-between items-center'>
                           <div className='flex flex-row items-center'>
@@ -399,8 +400,8 @@ const handleNewFolderSubmit = async () => {
             )}
           </div>
 
-          <div className='flex flex-row w-full items-center justify-between mt-[280px]' >
-            <div> Folders per page 5  </div>
+          <div className='flex flex-row w-full h-1/3 items-center justify-between' >
+            <FolderPerPage/>
             <Pagination/>
           </div>
           </div>
