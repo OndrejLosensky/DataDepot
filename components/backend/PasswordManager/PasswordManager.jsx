@@ -4,18 +4,18 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image'
 import { IoClose } from "react-icons/io5";
 import { AiOutlineQuestion } from "react-icons/ai";
-import Profile from './Profile';
+import Profile from '../Profile';
 import { IoCloseOutline } from "react-icons/io5";
 import GeneratePassword from './GeneratePassword';
 import { BsArrow90DegLeft } from "react-icons/bs";
 import { MdFormatListBulleted } from "react-icons/md";
 import { LuLayoutGrid } from "react-icons/lu";
 import { FaCheck } from 'react-icons/fa';
-import Help from './Help';
+import Help from '../Help';
 import Passwords from './Passwords';
 import { IoFolderOpenOutline } from "react-icons/io5";
 import { FaRegCircleCheck } from "react-icons/fa6";
-import SearchInput from './SearchInput';
+import SearchInput from '../SearchInput';
 import Pagination from './Pagination';
 import { CiFolderOff } from "react-icons/ci";
 

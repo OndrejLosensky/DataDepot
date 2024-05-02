@@ -3,12 +3,11 @@ import React, { useState, useEffect } from 'react';
 import RequireAuth from '../../components/auth/RequireAuth';
 import Loading from '../Loading';
 import Image from 'next/image';
-import Sidebar from './Sidebar';
 import Head from 'next/head';
 import Files from './Files';
 import Settings from './Settings';
-import Analytics from './Analytics'; // Import Overview component
-import PasswordManager from './PasswordManager'; // Import PasswordManager component
+import Analytics from './Analytics/Analytics'; // Import Overview component
+import PasswordManager from './PasswordManager/PasswordManager'; // Import PasswordManager component
 import { LuFiles } from "react-icons/lu";
 import { IoSettingsOutline } from "react-icons/io5";
 import { TbLogout2 } from "react-icons/tb";

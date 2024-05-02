@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaTimes, FaEdit, FaTrash, FaApple, FaCopy, FaPlus, FaCheck } from 'react-icons/fa';
-import PasswordIcons from './upload/PasswordIcons';
+import PasswordIcons from '../upload/PasswordIcons';
 import { RiLockLine } from 'react-icons/ri';
 import Image from 'next/image';
 import { TbLockAccessOff } from "react-icons/tb";

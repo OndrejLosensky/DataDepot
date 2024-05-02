@@ -1,9 +1,9 @@
 import React, {useEffect, useRef, useState} from 'react'
 import Image from 'next/image'
 import Chart from 'chart.js/auto';
-import Profile from './Profile';
+import Profile from '../Profile';
 import { GoArrowDownLeft, GoArrowUpRight } from "react-icons/go";
-import { auth } from '../../src/app/firebaseConfig';
+import { auth } from '../../../src/app/firebaseConfig';
 import axios from 'axios';
 
 const Overview = ({ isUserActive}) => {
