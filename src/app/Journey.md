@@ -136,3 +136,15 @@ Spent hours combined: `4 Hours 23 mins`
 
 --- 
 
+## Day 12 - 2.5. 2024
+Today I have added new component for selecting how many folders user wants to see on the page. Then I finally fixed the layout of the Whole password manager. In the morning I have also made little adjuments in the folders of this project and grouped some components. 
+
+Also I have found some inspiration that I will integrate later on. Its some cool UI features to make everything look even better. 
+
+I have also found out that the current grid of those password folders it broken when i try to rezise to list view and that pagination doesnt work yet.
+
+I plan to implement working statistics soon so i can see already what i am doing how many times a day etc.
+
+Spent hours today: `1 Hour 57 mins`
+
+---
