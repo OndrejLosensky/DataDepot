@@ -115,7 +115,6 @@ const GeneratePassword = () => {
             checked={includeCapital}
             onChange={() => setIncludeCapital(!includeCapital)}
             className="mr-2"
-            defaultChecked
           />
           <label htmlFor="includeCapital">Include Capital Letters</label>
         </div>
