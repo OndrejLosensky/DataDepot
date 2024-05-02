@@ -4,6 +4,7 @@ import { FaTimes, FaEdit, FaTrash, FaApple, FaCopy, FaPlus, FaCheck } from 'reac
 import PasswordIcons from './upload/PasswordIcons';
 import { RiLockLine } from 'react-icons/ri';
 import Image from 'next/image';
+import { TbLockAccessOff } from "react-icons/tb";
 
 const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
   const [deleted, setDeleted] = useState(false);
@@ -16,6 +17,32 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
 
   const [openDropdown, setOpenDropdown] = useState(null);
   const [selectedIcons, setSelectedIcons] = useState({});
+
+  const [editedName, setEditedName] = useState(folder.name);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleEditName = () => {
+    setIsEditing(true);
+  };
+
+  const handleSaveName = async () => {
+    try {
+      const response = await axios.post('/api/changeFolderName', {
+        folderId: folder.id,
+        newName: editedName
+      });
+
+      if (response.data.success) {
+        showAlert('success', 'Name of the folder changed');
+        setIsNameEditing(false);
+      } else {
+        showAlert('error', response.data.error || 'Failed to update folder name');
+      }
+    } catch (error) {
+      console.error('Failed to update folder name:', error.message);
+      showAlert('error', 'Failed to update folder name');
+    }
+  };
 
   const handleIconSelect = (icon, passwordId) => {
     setSelectedIcons({ ...selectedIcons, [passwordId]: icon });
@@ -166,16 +193,30 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
 
   return (
     <div className="p-6 w-full h-full bg-gradient-to-r from-purple-900 to-indigo-900 rounded-lg shadow-lg">
-      <div className='flex flex-row justify-between items-center'>
+       <div className='flex flex-row justify-between items-center'>
         <div className='flex flex-row items-center space-x-4'>
           <Image alt='static icon' width={48} height={24} src="/google.png" className='mr-2'/>
-          <h1 className='text-3xl text-gray-100 font-bold'>Passwords for {folder.name} <span className='text-gray-300 font-thin'>({passwords.length})</span></h1>
-          <button onClick={() => setShowAddPasswordInput(!showAddPasswordInput)} className='bg-purple-500 px-4 py-2 rounded-md shadow-lg text-gray-200 flex flex-row items-center'> <FaPlus className='mr-2'/> Add Password </button>
+          {isEditing ? (
+            <input
+              type="text"
+              value={editedName}
+              onChange={(e) => setEditedName(e.target.value)}
+              className="text-3xl text-gray-100 font-bold bg-transparent border-b border-gray-100 focus:outline-none"
+            />
+          ) : (
+            <h1 className='text-3xl text-gray-100 font-bold'>{editedName} <span className='text-gray-300 font-thin'>({passwords.length})</span></h1>
+          )}
+          {isEditing ? (
+            <button onClick={handleSaveName} className='bg-green-500 px-4 py-2 rounded-md shadow-lg text-gray-200'>Save</button>
+          ) : (
+            <button onClick={handleEditName} className='text-gray-400 w-6 h-6 hover:text-gray-200 duration-300'>
+              <FaEdit />
+            </button>
+          )}
+                    <button onClick={() => setShowAddPasswordInput(!showAddPasswordInput)} className='bg-purple-500 px-4 py-2 rounded-md shadow-lg text-gray-200 flex flex-row items-center'> <FaPlus className='mr-2'/> Add Password </button>
+
         </div>
         <div className="flex items-center">
-          <button onClick={onEditFolder} className="text-gray-400 w-6 h-6 hover:text-gray-200 duration-300 mr-2">
-            <FaEdit />
-          </button>
           <button onClick={() => deleteFolder(folder.id)} className="text-gray-400 w-6 h-6 hover:text-red-500 duration-300">
             <FaTrash />
           </button>
@@ -219,56 +260,60 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
           </div>
         </div>
       )}
-      
   {/* Display passwords for the selected folder */}
 <div className="">
-  {passwords.map((password) => (
-    <div key={password.id} className="bg-gray-800 rounded-md w-full space-x-4 p-4 mb-3 flex justify-between items-center relative">
+  {passwords.length === 0 ? ( 
+    <div className="text-gray-300 py-4 items-center flex w-full h-full justify-center mt-72 text-3xl font-thin"> <TbLockAccessOff className='mr-2  w-12 h-12 text-gray-400'/> No passwords</div>
+  ) : (
+    passwords.map((password) => (
+      <div key={password.id} className="bg-gray-800 rounded-md w-full space-x-4 p-4 mb-3 flex justify-between items-center relative">
 
-      {openDropdown === password.id && (
-        <div className='absolute top-0 left-0 z-10'>
-          <PasswordIcons
-            onClose={() => setOpenDropdown(null)}
-            onSelectIcon={(icon) => handleIconSelect(icon, password.id)}
-            selectedIcon={selectedIcons[password.id]}
-          />
+        {openDropdown === password.id && (
+          <div className='absolute top-0 left-0 z-10'>
+            <PasswordIcons
+              onClose={() => setOpenDropdown(null)}
+              onSelectIcon={(icon) => handleIconSelect(icon, password.id)}
+              selectedIcon={selectedIcons[password.id]}
+            />
+          </div>
+        )}
+
+        <div className="flex items-center">
+          <button
+            className="text-gray-300 w-6 h-6 flex items-center justify-center hover:text-gray-100 duration-300"
+            onClick={() => setOpenDropdown(openDropdown === password.id ? null : password.id)}
+          >
+            {selectedIcons[password.id] || <RiLockLine className="mr-2 cursor-pointer flex items-center justify-center text-gray-300 hover:text-gray-100 duration-300 w-5 h-5" />}
+          </button>
         </div>
-      )}
 
-      <div className="flex items-center">
-        <button
-          className="text-gray-300 w-6 h-6 flex items-center justify-center hover:text-gray-100 duration-300"
-          onClick={() => setOpenDropdown(openDropdown === password.id ? null : password.id)}
-        >
-          {selectedIcons[password.id] || <RiLockLine className="mr-2 cursor-pointer flex items-center justify-center text-gray-300 hover:text-gray-100 duration-300 w-5 h-5" />}
-        </button>
+        <p className="text-gray-300 flex-1 py-2">{password.username}</p>
+        <p className="text-gray-300 flex-1 py-2">
+          <button onClick={() => copyToClipboard(password.password)} className="mr-2 text-white hover:text-gray-200">
+            {copiedPasswords[password.password] ? <FaCheck className='text-green-500 w-3 h-3'  /> : <FaCopy className='' />}
+          </button>
+          {password.password}
+        </p>
+        <div className="text-gray-300 flex-1 py-1">
+          {calculatePasswordStrength(password.password)}
+          {renderStrengthIndicator(calculatePasswordStrength(password.password))}
+        </div>
+        <div className="flex items-center py-2">
+          <button className="text-white hover:text-purple-400 duration-300 mr-2">
+            <FaEdit />
+          </button>
+          <button
+            className="text-white hover:text-red-400 duration-300"
+            onClick={() => handleDeleteSinglePassword(password.id, folder.id)}
+          >
+            <FaTrash />
+          </button>
+        </div>
       </div>
-
-      <p className="text-gray-300 flex-1 py-2">{password.username}</p>
-      <p className="text-gray-300 flex-1 py-2">
-        <button onClick={() => copyToClipboard(password.password)} className="mr-2 text-white hover:text-gray-200">
-          {copiedPasswords[password.password] ? <FaCheck className='text-green-500 w-3 h-3'  /> : <FaCopy className='' />}
-        </button>
-        {password.password}
-      </p>
-      <div className="text-gray-300 flex-1 py-1">
-        {calculatePasswordStrength(password.password)}
-        {renderStrengthIndicator(calculatePasswordStrength(password.password))}
-      </div>
-      <div className="flex items-center py-2">
-        <button className="text-white hover:text-purple-400 duration-300 mr-2">
-          <FaEdit />
-        </button>
-        <button
-          className="text-white hover:text-red-400 duration-300"
-          onClick={() => handleDeleteSinglePassword(password.id, folder.id)}
-        >
-          <FaTrash />
-        </button>
-      </div>
-    </div>
-  ))}
+    ))
+  )}
 </div>
+
 
     </div>
   );

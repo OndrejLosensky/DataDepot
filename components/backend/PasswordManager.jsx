@@ -399,7 +399,10 @@ const handleNewFolderSubmit = async () => {
             )}
           </div>
 
-                <Pagination/>
+          <div className='flex flex-row w-full items-center justify-between mt-[280px]' >
+            <div> Folders per page 5  </div>
+            <Pagination/>
+          </div>
           </div>
         </div>
       )}

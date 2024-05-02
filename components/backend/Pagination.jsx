@@ -32,11 +32,11 @@ const Pagination = () => {
   };
 
   return (
-    <div className='flex flex-row items-center justify-center rounded-md absolute bottom-4 right-[29%]'>
+    <div className='flex flex-row items-center justify-between rounded-md '>
       {totalPages > 1 && (
         <div className="border rounded-md border-gray-500 flex">
           <button
-            className={`border-r rounded-l-md border-gray-500 px-3 py-1 flex items-center justify-center duration-200 ${currentPage === 1 ? 'cursor-not-allowed bg-gray-700' : 'bg-gray-500 hover:bg-gray-600'}`}
+            className={`border-r rounded-l-md border-gray-500 px-3 py-1 flex items-center justify-center duration-200 ${currentPage === 1 ? 'cursor-not-allowed bg-gray-800' : 'bg-gray-700 hover:bg-gray-600'}`}
             onClick={handlePreviousPage}
             disabled={currentPage === 1}
           >
@@ -46,7 +46,7 @@ const Pagination = () => {
             {getPageNumbers().map((page) => (
               <li
                 key={page}
-                className={`cursor-pointer border border-gray-500 px-3 py-1 ${currentPage === page ? 'bg-purple-400 text-white' : 'hover:bg-gray-200'}`}
+                className={`cursor-pointer border border-gray-500 px-3 py-1 ${currentPage === page ? 'bg-purple-400 text-gray-200' : 'hover:bg-gray-600'}`}
                 onClick={() => handlePageChange(page)}
               >
                 {page}
@@ -54,7 +54,7 @@ const Pagination = () => {
             ))}
           </ul>
           <button
-            className={`rounded-r-md border-l border-gray-500 px-3 py-1 flex items-center duration-200 justify-center ${currentPage === totalPages ? 'cursor-not-allowed bg-gray-200' : 'bg-gray-500 hover:bg-gray-600'}`}
+            className={`rounded-r-md border-l border-gray-500 px-3 py-1 flex items-center duration-200 justify-center ${currentPage === totalPages ? 'cursor-not-allowed bg-gray-800' : 'bg-gray-700 hover:bg-gray-600'}`}
             onClick={handleNextPage}
             disabled={currentPage === totalPages}
           >
