@@ -8,21 +8,22 @@ const PasswordGraph = () => {
     const passwordsChartInstance = useRef(null);
     const [totalCountPasswords, setTotalCountPasswords] = useState(0);
     const [passwordData, setPasswordData] = useState([]);
+    const [prevCount, setPrevCount] = useState(0);
     const [percentChange, setPercentChange] = useState(0);
 
     const fetchTotalPasswords = async () => {
         try {
             const response = await axios.get('/api/totalPasswords');
             const currentCount = response.data.totalCount;
-            const change = currentCount - totalCountPasswords;
-            const percent = totalCountPasswords !== 0 ? (change / totalCountPasswords) * 100 : 100;
-            setPercentChange(percent);
             setTotalCountPasswords(currentCount);
+            const change = currentCount - prevCount;
+            const percent = prevCount !== 0 ? (change / prevCount) * 100 : 100;
+            setPercentChange(percent);
+            setPrevCount(currentCount);
         } catch (error) {
             console.error(error);
         }
     };
-    
     const fetchPasswordData = async () => {
         try {
             const response = await axios.get('/api/passwords');
@@ -114,7 +115,7 @@ const PasswordGraph = () => {
                     <p className={`text-sm mb-1 ml-1 flex flex-row items-center ${percentChange >= 0 ? 'text-green-500' : 'text-red-500'}`}>
                         {percentChange >= 0 ? <GoArrowUpRight className='mr-1'/> : <GoArrowDownLeft className='mr-1'/>}
                         {percentChange.toFixed(2)}%
-                    </p>                
+                    </p>           
                 </div>
             </div>
             <canvas className='p-6 w-1/2' ref={passwordsChartRef}></canvas>
