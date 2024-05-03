@@ -16,26 +16,15 @@ export default async function handler(req, res) {
   const formattedDate = sevenDaysAgo.toISOString().split('T')[0]; // Format as YYYY-MM-DD
 
   // Fetch data from the password table for the last 7 days
-  db.all('SELECT creation_date FROM password WHERE creation_date >= ?', [formattedDate], (err, rows) => {
+  db.all('SELECT creation_date, COUNT(*) AS count FROM password WHERE creation_date >= ? GROUP BY creation_date', [formattedDate], (err, rows) => {
     if (err) {
       console.error(err.message);
       return res.status(500).json({ message: 'Internal Server Error' });
     }
 
-    // Process the data and count passwords for each date
-    const passwordCounts = {};
-    rows.forEach(row => {
-      const date = row.creation_date;
-      if (!passwordCounts[date]) {
-        passwordCounts[date] = 1;
-      } else {
-        passwordCounts[date]++;
-      }
-    });
-
     // Close the database connection
     db.close();
 
-    return res.status(200).json(passwordCounts);
+    return res.status(200).json(rows);
   });
 }
