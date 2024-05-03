@@ -25,6 +25,31 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
     setIsEditing(true);
   };
 
+  const [folderToDelete, setFolderToDelete] = useState(null);
+
+  const deleteFolder = async (id) => {
+    setFolderToDelete(id);
+    document.getElementById('delete_modal').showModal();
+  };
+
+  const onCloseModal = () => {
+    document.getElementById('delete_modal').close();
+  };
+
+  const confirmDelete = async () => {
+    try {
+      await axios.delete(`/api/deleteFolder?id=${folderToDelete}`);
+      setDeleted(true);
+      showAlert('success', 'Folder deleted successfully.');
+    } catch (error) {
+      console.error('Failed to delete folder:', error.message);
+      showAlert('error', 'Failed to delete folder.');
+    } finally {
+      onClose();
+    }
+  };
+
+
   const handleSaveName = async () => {
     try {
       const response = await axios.post('/api/changeFolderName', {
@@ -103,25 +128,6 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
       </div>
     );
   };
-
-  const deleteFolder = async (id) => {
-    const shouldDelete = window.confirm('Are you sure you want to delete this folder?')
-    if(shouldDelete) {
-      try {
-        await axios.delete(`/api/deleteFolder?id=${id}`);
-        setDeleted(true);
-        onClose();
-        showAlert('success', 'Folder deleted successfully.');
-      } catch (error) {
-        console.error('Failed to delete folder:', error.message);
-        showAlert('error', 'Failed to delete folder.');
-      }
-
-      if (deleted) {
-        return null;
-      }
-    };
-  }
 
   const handleClose = () => {
     setShowIcons(false);
@@ -226,6 +232,21 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
         </div>
       </div>
       <p className="text-gray-300 mt-4">{folder.description}</p>
+      
+
+      <dialog id="delete_modal" className="modal">
+        <div className="modal-box">
+          <h3 className="font-bold text-xl text-gray-200">Are you sure you want to delete the folder?</h3>
+          <p className="py-4 text-gray-300">By deleting this folder you will lose all the content inside without any option to re-do that</p>
+          <div className='flex flex-row items-center space-x-6 mt-4 justify-between w-full'>
+            <button onClick={onCloseModal} className='w-1/2 text-center text-gray-400 hover:bg-gray-200 duration-300 hover:text-gray-800 py-4 border border-gray-400 rounded-md'> Close</button>
+            <button onClick={confirmDelete}  className='w-1/2 text-center text-gray-200 hover:bg-red-600 duration-300 bg-red-500 rounded-md shadow-lg py-4'> Delete </button>
+          </div>
+        </div>
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
 
       {/* Header row */}
       <div className='bg-gray-700 rounded-md p-4 mb-4 mt-6'>
