@@ -148,3 +148,14 @@ I plan to implement working statistics soon so i can see already what i am doing
 Spent hours today: `1 Hour 57 mins`
 
 ---
+
+## Day 13 - 3.5. 2024
+Today I have only added 7 Google fonts that i will choose to use. My most possible choice is Inter or Sora font. 
+
+Also i made functional chart according to uploaded passwords inside the Analytics page. It now works somehow. Later on I will do the same for passwords and folders.  
+
+New section thought added: **Coding Snippets** (Efficient way to store code of different languages, developments and more...). I have also searched for some inspo to create good-looking UI. v
+
+Spent hours today: `2 Hours 18 mins`
+
+--- 
