@@ -22,6 +22,9 @@ import { FaUsersCog } from "react-icons/fa";
 import Users from './Users';
 import Lab from './Lab';
 import { ImLab } from "react-icons/im";
+import CodeSnippets from './CodeSnippets';
+import { FaCode } from "react-icons/fa6";
+
 
 const Dashboard = ({isUserActive}) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -109,12 +112,12 @@ const Dashboard = ({isUserActive}) => {
               </div>
               {sidebarVisible && <p className='mx-4 pb-1'></p>}
               <div className='mt-2 space-y-3 flex flex-col'>
-                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'} rounded-md  hover:text-purple-400 duration-300 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Files' ? 'bg-purple-500 text-purple-200 hover:text-purple-100' : ''}`} onClick={() => handleComponentClick('Files')}> <LuFiles className={`${sidebarVisible ? '':'w-5 h-12'}`} /> {sidebarVisible && 'Files'} </button>
-                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md hover:text-purple-400 duration-300 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'PasswordManager' ? 'bg-purple-500 text-purple-200 hover:text-purple-100' : ''}`} onClick={() => handleComponentClick('PasswordManager')}> <MdLockOutline className={`${sidebarVisible ? '':'w-5 h-12'}`} /> {sidebarVisible && 'Passwords'} </button>
-                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4 mt-8'} rounded-md hover:text-purple-400 duration-300 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Analytics' ? 'bg-purple-500 text-purple-200 hover:text-purple-100' : ''}`} onClick={() => handleComponentClick('Analytics')}> <IoAnalyticsOutline className={`${sidebarVisible ? '':'w-5 h-12'}`} /> {sidebarVisible && 'Analytics'} </button>
-                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md hover:text-purple-400 duration-300 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Users' ? 'bg-purple-500 text-purple-200 hover:text-purple-100' : ''}`} onClick={() => handleComponentClick('Users')}> <FaUsersCog className={`${sidebarVisible ? '':'w-5 h-12'}`} /> {sidebarVisible && 'Users'} </button>
-                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md hover:text-purple-400 duration-300 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Lab' ? 'bg-purple-500 text-purple-200 hover:text-purple-100' : ''}`} onClick={() => handleComponentClick('Lab')}> <ImLab className={`${sidebarVisible ? '':'w-5 h-12'}`} /> {sidebarVisible && 'Lab'} </button>
-
+                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'} rounded-md  hover:text-purple-200 duration-300 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Files' ? 'bg-purple-500 text-purple-200 hover:text-purple-100' : ''}`} onClick={() => handleComponentClick('Files')}> <LuFiles className={`${sidebarVisible ? '':'w-5 h-12'}`} /> {sidebarVisible && 'Files'} </button>
+                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md hover:text-purple-200 duration-300 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'PasswordManager' ? 'bg-purple-500 text-purple-200 hover:text-purple-100' : ''}`} onClick={() => handleComponentClick('PasswordManager')}> <MdLockOutline className={`${sidebarVisible ? '':'w-5 h-12'}`} /> {sidebarVisible && 'Passwords'} </button>
+                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md hover:text-purple-200 duration-300 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'CodeSnippets' ? 'bg-purple-500 text-purple-200 hover:text-purple-100' : ''}`} onClick={() => handleComponentClick('CodeSnippets')}> <FaCode className={`${sidebarVisible ? '':'w-5 h-12'}`} /> {sidebarVisible && 'Coding'} </button>
+                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4 mt-8'} rounded-md hover:text-purple-200 duration-300 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Analytics' ? 'bg-purple-500 text-purple-200 hover:text-purple-100' : ''}`} onClick={() => handleComponentClick('Analytics')}> <IoAnalyticsOutline className={`${sidebarVisible ? '':'w-5 h-12'}`} /> {sidebarVisible && 'Analytics'} </button>
+                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md hover:text-purple-200 duration-300 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Users' ? 'bg-purple-500 text-purple-200 hover:text-purple-100' : ''}`} onClick={() => handleComponentClick('Users')}> <FaUsersCog className={`${sidebarVisible ? '':'w-5 h-12'}`} /> {sidebarVisible && 'Users'} </button>
+                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md hover:text-purple-200 duration-300 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Lab' ? 'bg-purple-500 text-purple-200 hover:text-purple-100' : ''}`} onClick={() => handleComponentClick('Lab')}> <ImLab className={`${sidebarVisible ? '':'w-5 h-12'}`} /> {sidebarVisible && 'Lab'} </button>
               </div>
             </div>
             <div className='w-full flex flex-col space-y-2 mb-6'>
@@ -139,6 +142,8 @@ const Dashboard = ({isUserActive}) => {
               {activeComponent === 'PasswordManager' && <PasswordManager isUserActive={isUserActive}/>}
               {activeComponent === 'Users' && <Users/>}
               {activeComponent === 'Lab' && <Lab/>}
+              {activeComponent === 'CodeSnippets' && <CodeSnippets/>}
+
             </div>
         </div>
       )}

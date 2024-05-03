@@ -10,6 +10,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+        sora: ['Sora', 'sans-serif'],
+        urbanist: ['Urbanist', 'sans-serif'],
+        handlee: ['Handlee', 'cursive'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        freeman: ['Freeman', 'sans-serif']
+      },
       dropShadow: {
         glow: [
           "0 0px 8px rgba(64,210, 235, 0.25)",

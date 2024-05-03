@@ -277,8 +277,8 @@ const handleNewFolderSubmit = async () => {
             </div>
             <div className='w-3/4 relative justify-center space-y-2 flex flex-col'>
               <button className='absolute right-4 top-4 hover:bg-gray-600 duration-300 p-1 rounded-full' onClick={closeBanner}> <IoClose className='text-gray-200 w-5 h-5' /> </button>
-              <h1 className='text-3xl font-bold text-gray-200'> Welcome to PasswordDepot</h1>
-              <p className='font-light text-gray-300'> You can store your passwords here and make them as much as organized as you like </p>
+              <h1 className='text-3xl font-bold text-gray-200 font-inter'> Welcome to PasswordDepot</h1>
+              <p className='font-light text-gray-300 font-roboto'> You can store your passwords here and make them as much as organized as you like </p>
               <br />
               <div className='flex flex-row space-x-6'>
                 <button className='px-4 py-2 bg-purple-500 hover:bg-purple-600 duration-300 text-gray-200 rounded-md shadow-md'> See how it works</button>
