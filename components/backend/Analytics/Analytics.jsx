@@ -6,6 +6,7 @@ import { GoArrowDownLeft, GoArrowUpRight } from "react-icons/go";
 import { auth } from '../../../src/app/firebaseConfig';
 import axios from 'axios';
 import SearchInput from '../SearchInput';
+import PasswordGraph from '../Lab/PasswordGraph';
 
 const Overview = ({ isUserActive}) => {
     const passwordsChartRef = useRef(null);
@@ -159,19 +160,7 @@ const Overview = ({ isUserActive}) => {
     const [totalCountPasswords, setTotalCountPasswords] = useState(0);
     const [totalCountFolders, setTotalCountFolders] = useState(0);
         
-    const fetchTotalPasswords = async () => {
-      try {
-          const response = await axios.get('/api/totalPasswords');
-          setTotalCountPasswords(response.data.totalCount);
-      } catch (error) {
-          console.error(error);
-      }
-    };
-  
-      useEffect(() => {
-          fetchTotalPasswords();
-      }, []);
-
+   
     const fetchTotalFolders = async () => {
         try {
             const response = await axios.get('/api/totalFolders');
@@ -251,6 +240,7 @@ const Overview = ({ isUserActive}) => {
                     <canvas className='p-6  w-1/2' ref={filesChartRef}></canvas>
                 </div>
 
+                {/*                 
                 <div className='bg-[#20263d] w-1/3 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 
                     <div className='flex flex-col w-1/2'>
                         <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Passwords stored</h1>
@@ -259,8 +249,10 @@ const Overview = ({ isUserActive}) => {
                             <p className='text-sm text-green-500 mb-1 ml-1 flex flex-row items-center'> <GoArrowUpRight className='mr-1'/>  +100% </p>
                         </div>
                     </div>
-                    <canvas className='p-6  w-1/2' ref={passwordsChartRef}></canvas>
-                </div>
+                    <PasswordGraph/>
+                </div>*/}
+
+                <PasswordGraph/>
 
                 <div className='bg-[#20263d]  w-1/3 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 
                     <div className='flex flex-col w-1/2'>
