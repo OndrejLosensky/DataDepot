@@ -59,6 +59,7 @@ const Register = () => {
         setSuccessAlertVisible(true);
         setIsLoading(true);
         await createUserWithEmailAndPassword(auth, email, password);
+        //await addUserDataToFirestore(user.uid, email, username, age, phoneNumber);
 
         // Redirect to dashboard upon successful registration
         router.push('/backend/dashboard');
@@ -131,6 +132,23 @@ const Register = () => {
     }
   };
   
+  async function addUserDataToFirestore(userId, email, username, age, phoneNumber) {
+    try {
+        const docRef = await addDoc(collection(db, "profiles"), {
+            userId: userId,
+            email: email,
+            username: username,
+            age: age,
+            phoneNumber: phoneNumber
+            // Add any other user data you need
+        });
+        console.log("Document written with ID: ", docRef.id);
+        return true;
+    } catch (e) {
+        console.error("Error adding document: ", e);
+        return false;
+    }
+  } 
 
   const renderStepContent = () => {
     switch (step) {
@@ -145,7 +163,7 @@ const Register = () => {
               {successAlertVisible && (
                 <div role="alert" className="text-green-500 absolute top-24 justify-center w-screen py-5 px-4 rounded flex items-center">
                   <FaCheckCircle className="mr-2" />
-                  <span>Login was successful!</span>
+                  <span>Register was successfull!</span>
                 </div>
               )}
               {errorAlertVisible && (
@@ -208,7 +226,7 @@ const Register = () => {
                       <FiEye onClick={handleToggleConfirmPasswordVisibility} className="absolute right-4 top-4 text-gray-400 cursor-pointer" />
                     )}
   
-                    <button type="submit" onClick={() => setStep(2)} className="py-3 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-600 duration-300 mb-6 w-full">
+                    <button type="submit" onClick={handleContinue} className="py-3 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-600 duration-300 mb-6 w-full">
                       Continue
                     </button>
                   </div>

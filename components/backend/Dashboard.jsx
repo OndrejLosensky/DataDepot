@@ -24,6 +24,7 @@ import Lab from './Lab';
 import { ImLab } from "react-icons/im";
 import CodeSnippets from './CodeSnippets';
 import { FaCode } from "react-icons/fa6";
+import Link from 'next/link';
 
 
 const Dashboard = ({isUserActive}) => {
@@ -75,6 +76,19 @@ const Dashboard = ({isUserActive}) => {
     setActiveComponent(component);
   };
 
+  const onCloseModal = () => {
+    document.getElementById('logout_modal').close();
+  };
+
+  const confirmDelete = async () => {
+    try {
+      await signOut(auth);
+      router.push('/'); // Redirects to the landing page after logout
+  } catch (error) {
+      console.error('Error signing out:', error);
+  }
+  };
+
   const toolTipData = sidebarVisible ? 'Close the sidebar' : 'Open the sidebar';
 
   return (
@@ -110,6 +124,7 @@ const Dashboard = ({isUserActive}) => {
                 <Image alt='logo' src="/logo/light.svg" width={32} height={32} />
                 {sidebarVisible && <p className='text-2xl text-gray-100 pl-2'> DataDepot</p>}
               </div>
+              
               {sidebarVisible && <p className='mx-4 pb-1'></p>}
               <div className='mt-2 space-y-3 flex flex-col'>
                 <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'} rounded-md  hover:text-purple-200 duration-300 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Files' ? 'bg-purple-500 text-purple-200 hover:text-purple-100' : ''}`} onClick={() => handleComponentClick('Files')}> <LuFiles className={`${sidebarVisible ? '':'w-5 h-12'}`} /> {sidebarVisible && 'Files'} </button>
@@ -122,7 +137,7 @@ const Dashboard = ({isUserActive}) => {
             </div>
             <div className='w-full flex flex-col space-y-2 mb-6'>
               {sidebarVisible ?  (<ProgressBar />) : (<ProgressBarRadial/>)}
-              <button onClick={handleLogout} className={`flex items-center ${sidebarVisible ? 'px-4 py-2 mx-5':'mx-4 px-2 py-2'} justify-center bg-[#454545] border border-gray-300 rounded-lg hover:text-gray-50 hover:border-gray-50 hover:bg-[#606060] duration-300`}>
+              <button onClick={()=>document.getElementById('logout_modal').showModal()} className={`flex items-center ${sidebarVisible ? 'px-4 py-2 mx-5':'mx-4 px-2 py-2'} justify-center bg-[#454545] border border-gray-300 rounded-lg hover:text-gray-50 hover:border-gray-50 hover:bg-[#606060] duration-300`}>
                 <TbLogout2 className={`${sidebarVisible ? 'mr-2':'w-6 h-6'}`} />
                 {sidebarVisible && <span className="text-white">Sign out</span>}
               </button>
@@ -130,9 +145,24 @@ const Dashboard = ({isUserActive}) => {
                 <IoSettingsOutline className={`${sidebarVisible ? 'mr-2':'w-6 h-6'}`} />
                 {sidebarVisible && <span className="text-gray-200">Settings</span>}
               </button>
+              <Link className='text-center' href="/testFirebaseConn">  Send Message </Link>
             </div>
 
             </div>
+
+            <dialog id="logout_modal" className="modal">
+              <div className="modal-box">
+                <h3 className="font-bold text-xl text-gray-200">Are you sure you want to log out?</h3>
+                <p className="py-4 text-gray-300">Clicking on the sign out button will take you to landing page. You can then login again if you need to.</p>
+                <div className='flex flex-row items-center space-x-6 mt-4 justify-between w-full'>
+                  <button onClick={onCloseModal} className='w-1/2 text-center text-gray-400 hover:bg-gray-200 duration-300 hover:text-gray-800 py-3 border border-gray-400 rounded-md'> Cancel</button>
+                  <button onClick={confirmDelete}  className='w-1/2 text-center text-gray-200 hover:bg-red-600 duration-300 bg-red-500 rounded-md shadow-lg py-3'> Sign out </button>
+                </div>
+              </div>
+              <form method="dialog" className="modal-backdrop">
+                <button>close</button>
+              </form>
+            </dialog>
 
 
             <div className={`m-4 ${sidebarVisible ? 'w-[85%]':'w-[95%]'}`}>

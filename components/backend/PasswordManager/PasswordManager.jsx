@@ -268,7 +268,6 @@ const handleNewFolderSubmit = async () => {
               </button>
           </div>
           )}
-
           {/* Banner */}
           {showBanner && (
           <div className='w-full bg-gray-800 h-[25%] flex flex-row overflow-hidden'>
@@ -282,7 +281,7 @@ const handleNewFolderSubmit = async () => {
               <br />
               <div className='flex flex-row space-x-6'>
                 <button className='px-4 py-2 bg-purple-500 hover:bg-purple-600 duration-300 text-gray-200 rounded-md shadow-md'> See how it works</button>
-                <button className='text-gray-300 px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-300 hover:text-gray-800 duration-500 '> Maybe later</button>
+                <button className='text-gray-300 px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-300 hover:text-gray-800 duration-500 ' onClick={closeBanner}> Maybe later</button>
               </div>
             </div>
           </div>

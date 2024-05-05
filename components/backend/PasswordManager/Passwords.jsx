@@ -239,8 +239,8 @@ const Passwords = ({ folder, onClose, onEditFolder, showAlert }) => {
           <h3 className="font-bold text-xl text-gray-200">Are you sure you want to delete the folder?</h3>
           <p className="py-4 text-gray-300">By deleting this folder you will lose all the content inside without any option to re-do that</p>
           <div className='flex flex-row items-center space-x-6 mt-4 justify-between w-full'>
-            <button onClick={onCloseModal} className='w-1/2 text-center text-gray-400 hover:bg-gray-200 duration-300 hover:text-gray-800 py-4 border border-gray-400 rounded-md'> Close</button>
-            <button onClick={confirmDelete}  className='w-1/2 text-center text-gray-200 hover:bg-red-600 duration-300 bg-red-500 rounded-md shadow-lg py-4'> Delete </button>
+            <button onClick={onCloseModal} className='w-1/2 text-center text-gray-400 hover:bg-gray-200 duration-300 hover:text-gray-800 py-3 border border-gray-400 rounded-md'> Cancel</button>
+            <button onClick={confirmDelete}  className='w-1/2 text-center text-gray-200 hover:bg-red-600 duration-300 bg-red-500 rounded-md shadow-lg py-3'> Delete </button>
           </div>
         </div>
         <form method="dialog" className="modal-backdrop">
