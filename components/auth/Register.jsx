@@ -59,7 +59,7 @@ const Register = () => {
         setSuccessAlertVisible(true);
         setIsLoading(true);
         await createUserWithEmailAndPassword(auth, email, password);
-        //await addUserDataToFirestore(user.uid, email, username, age, phoneNumber);
+        await addUserDataToFirestore(user.uid, email, username, age, phoneNumber);
 
         // Redirect to dashboard upon successful registration
         router.push('/backend/dashboard');
@@ -140,7 +140,6 @@ const Register = () => {
             username: username,
             age: age,
             phoneNumber: phoneNumber
-            // Add any other user data you need
         });
         console.log("Document written with ID: ", docRef.id);
         return true;
@@ -226,7 +225,7 @@ const Register = () => {
                       <FiEye onClick={handleToggleConfirmPasswordVisibility} className="absolute right-4 top-4 text-gray-400 cursor-pointer" />
                     )}
   
-                    <button type="submit" onClick={handleContinue} className="py-3 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-600 duration-300 mb-6 w-full">
+                    <button type="submit" onClick={() => setStep(2)} className="py-3 rounded-md shadow-lg bg-purple-500 text-[#fffddd] hover:bg-purple-600 duration-300 mb-6 w-full">
                       Continue
                     </button>
                   </div>
@@ -281,7 +280,8 @@ const Register = () => {
                 <input
                   type="name"
                   name="text"
-                  value={formData.password}
+                  //value={formData.name}
+                  value="Ondřej"
                   onChange={handleChange}
                   className="block bg-[#3D3D3D] text-md w-full border mt-2 my-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                   placeholder="Full name"
@@ -293,7 +293,8 @@ const Register = () => {
                 <input
                   type="tel"
                   name="phone"
-                  value={formData.password}
+                  //value={formData.phoneNumber}
+                  value="333666999"
                   onChange={handleChange}
                   className="block bg-[#3D3D3D] text-md w-full border my-2 mb-2 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                   placeholder="Phone number"
@@ -305,7 +306,8 @@ const Register = () => {
                 <input
                     type="number"
                     name="age"
-                    value={formData.password}
+                    //value={formData.age}
+                    value="19"
                     onChange={handleChange}
                     className="block bg-[#3D3D3D] text-md w-full  border my-2 mb-4 px-2 py-2 text-[#DFDFDF] rounded-md border-[#B6B6B6] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                     placeholder="Your age"
