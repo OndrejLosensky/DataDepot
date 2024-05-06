@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const PasswordChart = () => {
+const FolderChart = () => {
     const [passwordData, setPasswordData] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('/api/pass-chart');
-                setPasswordData(response.data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchData();
-    }, []);
+    const fetchTotalFolders = async () => {
+        try {
+            const response = await axios.get('/api/totalFolders');
+            setTotalCountFolders(response.data.totalCount);
+        } catch (error) {
+            console.error(error);
+        }
+      };
+    
+        useEffect(() => {
+            fetchTotalFolders();
+        }, []);
 
     return (
         <div className="container mx-auto p-4 bg-gray-900 text-white">
@@ -42,4 +42,4 @@ const PasswordChart = () => {
     );
 };
 
-export default PasswordChart;
+export default FolderChart;

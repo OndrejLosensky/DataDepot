@@ -7,6 +7,7 @@ import { auth } from '../../../src/app/firebaseConfig';
 import axios from 'axios';
 import SearchInput from '../SearchInput';
 import PasswordGraph from '../Lab/PasswordGraph';
+import FolderGraph from '../Lab/FolderGraph';
 
 const Overview = ({ isUserActive}) => {
     const passwordsChartRef = useRef(null);
@@ -40,39 +41,7 @@ const Overview = ({ isUserActive}) => {
       const generateRandomData = () => {
         return Array.from({ length: 6 }, () => Math.floor(Math.random() * 100));
       };
-  
-      // Data for passwords chart
-      const passwordsData = {
-        labels: ['1','2','3','4','5','6','7','8','9','10'],
-        datasets: [
-          {
-            label: 'Passwords',
-            data: [53,43,52,469,120,200,300,310,340,356],
-            fill: {
-              target: 'origin',
-              above: 'rgba(30, 197, 92, 0.2)',
-            },
-            borderColor: '#22c55d',
-            tension: 0.3,
-          },
-        ]
-      };
 
-      const foldersData = {
-        labels: ['1','2','3','4','5','6','7','8','9','10'],
-        datasets: [
-          {
-            label: 'Folders',
-            data: [4,3,3,5,7,11,12,15,24,1],
-            fill: {
-              target: 'origin',
-              above: 'rgba(238, 68, 67, 0.2)',
-            },
-            borderColor: '#ef4444',
-            tension: 0.3,
-          },
-        ]
-      };
   
       const filesData = {
         labels: ['1','2','3','4','5','6','7','8','9','10'],
@@ -105,29 +74,6 @@ const Overview = ({ isUserActive}) => {
         }
       };
   
-      // Create passwords chart
-      if (passwordsChartRef && passwordsChartRef.current) {
-        if (passwordsChartInstance.current) {
-          passwordsChartInstance.current.destroy();
-        }
-        passwordsChartInstance.current = new Chart(passwordsChartRef.current, {
-          type: 'line',
-          data: passwordsData,
-          options: options
-        });
-      }
-  
-      // Create folders chart
-      if (foldersChartRef && foldersChartRef.current) {
-        if (foldersChartInstance.current) {
-          foldersChartInstance.current.destroy();
-        }
-        foldersChartInstance.current = new Chart(foldersChartRef.current, {
-          type: 'line',
-          data: foldersData,
-          options: options
-        });
-      }
 
       // Create files chart
       if (filesChartRef && filesChartRef.current) {
@@ -254,7 +200,10 @@ const Overview = ({ isUserActive}) => {
 
                 <PasswordGraph/>
 
+                <FolderGraph/>
+                {/*  
                 <div className='bg-[#20263d]  w-1/3 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 
+         
                     <div className='flex flex-col w-1/2'>
                         <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Folders stored</h1>
                         <div className='flex flex-row items-end'>
@@ -264,6 +213,7 @@ const Overview = ({ isUserActive}) => {
                     </div>
                     <canvas className='p-6  w-1/2' ref={foldersChartRef}></canvas>
                 </div>
+                */}
             </div>
             {/* Middle level */}
             <div className='flex flex-row space-x-6 h-[35%]'>

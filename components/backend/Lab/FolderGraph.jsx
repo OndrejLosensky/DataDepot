@@ -3,62 +3,59 @@ import Chart from 'chart.js/auto';
 import axios from 'axios';
 import { GoArrowDownLeft, GoArrowUpRight } from "react-icons/go";
 
-const PasswordGraph = () => {
+const FolderGraph = () => {
     const passwordsChartRef = useRef(null);
     const passwordsChartInstance = useRef(null);
-    const [totalCountPasswords, setTotalCountPasswords] = useState(0);
-    const [passwordData, setPasswordData] = useState([]);
+    const [totalCountFolders, setTotalCountFolders] = useState(0);
+    const [folderData, setFolderData] = useState([]);
     const [prevCount, setPrevCount] = useState(0);
     const [percentChange, setPercentChange] = useState(0);
 
-    const fetchTotalPasswords = async () => {
-        try {
-            const response = await axios.get('/api/totalPasswords');
-            const currentCount = response.data.totalCount;
-            setTotalCountPasswords(currentCount);
-            const change = currentCount - prevCount;
-            const percent = prevCount !== 0 ? (change / prevCount) * 100 : 100;
-            setPercentChange(percent);
-            setPrevCount(currentCount);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-    const fetchPasswordData = async () => {
-        try {
-            const response = await axios.get('/api/passwords');
-            setPasswordData(response.data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
     useEffect(() => {
-        fetchTotalPasswords();
-        fetchPasswordData();
+        const fetchTotalFolders = async () => {
+            try {
+                const response = await axios.get('/api/totalFolders');
+                const currentCount = response.data.totalCount;
+                const change = currentCount - prevCount;
+                const percent = prevCount !== 0 ? (change / prevCount) * 100 : 100;
+                setPercentChange(percent);
+                setPrevCount(currentCount);
+                setTotalCountFolders(currentCount);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        const fetchFolderData = async () => {
+            try {
+                const response = await axios.get('/api/folders-v2');
+                console.log(response.data); // Log folder data to console
+                setFolderData(response.data);
+            } catch (error) {
+                console.error("Error fetching folder data:", error);
+            }
+        };
+        
+
+        fetchTotalFolders();
+        fetchFolderData();
     }, []);
 
     useEffect(() => {
-        // Fetch data from the API
-        const updateChart = () => {
-            if (!passwordData) return;
+        if (!folderData || folderData.length === 0) return;
 
-            const labels = passwordData.map(row => row.creation_date);
-            const data = passwordData.map(row => row.count);
+        const updateChart = () => {
+            const labels = folderData.map(row => row.date_created);
+            const data = folderData.map(row => row.count);
 
             if (passwordsChartInstance.current) {
                 passwordsChartInstance.current.data.labels = labels;
                 passwordsChartInstance.current.data.datasets[0].data = data;
 
-                // Set the minimum value of the Y-axis scale to zero
-                passwordsChartInstance.current.options.scales.y.min = 0;
-
                 passwordsChartInstance.current.update();
             }
         };
 
-        // Create passwords chart
-        if (passwordsChartRef && passwordsChartRef.current) {
+        if (passwordsChartRef.current) {
             if (passwordsChartInstance.current) {
                 passwordsChartInstance.current.destroy();
             }
@@ -67,7 +64,7 @@ const PasswordGraph = () => {
                 data: {
                     labels: [],
                     datasets: [{
-                        label: 'Passwords',
+                        label: 'Folders',
                         data: [],
                         fill: {
                             target: 'origin',
@@ -80,15 +77,15 @@ const PasswordGraph = () => {
                 options: {
                     scales: {
                         x: {
-                            display: false // Hides x-axis labels
+                            display: false
                         },
                         y: {
-                            display: false // Hides y-axis labels
+                            display: false
                         }
                     },
                     plugins: {
                         legend: {
-                            display: false // Hides the legend
+                            display: false
                         }
                     }
                 }
@@ -97,31 +94,24 @@ const PasswordGraph = () => {
             updateChart();
         }
 
-        return () => {
-            // Cleanup on component unmount
-            if (passwordsChartInstance.current) {
-                passwordsChartInstance.current.destroy();
-            }
-        };
-
-    }, [passwordData]);
+    }, [folderData]);
 
     return (
-        <div className='bg-[#20263d] w-1/3 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 
+        <div className='bg-[#20263d] w-1/3 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'>
             <div className='flex flex-col w-1/2'>
-                <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Passwords stored</h1>
+                <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Folders stored</h1>
                 <div className='flex flex-row items-end'>
-                    <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>{totalCountPasswords}</p>
+                    <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>{totalCountFolders}</p>
                     <p className={`text-sm mb-1 ml-1 flex flex-row items-center ${percentChange >= 0 ? 'text-green-500' : 'text-red-500'}`}>
                         {percentChange >= 0 ? <GoArrowUpRight className='mr-1'/> : <GoArrowDownLeft className='mr-1'/>}
                         {percentChange.toFixed(2)}%
-                    </p>           
+                    </p>
                 </div>
             </div>
             <canvas className='p-6 w-1/2' ref={passwordsChartRef}></canvas>
             {/* 
             <div className="w-full h-full flex items-center justify-center flex-col ">
-                <h1 className="text-gray-200 text-3xl text-center font-semibold pt-6">Password Data</h1>
+                <h1 className="text-gray-200 text-3xl text-center font-semibold pt-6">Folder Data</h1>
                 <div className="w-full h-1/2 flex flex-col items-center justify-center">
                     <table className="border-collapse border border-gray-600 text-gray-200 mt-4">
                         <thead>
@@ -131,9 +121,9 @@ const PasswordGraph = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {passwordData.map((row, index) => (
+                            {folderData.map((row, index) => (
                                 <tr key={index}>
-                                    <td className="border border-gray-600 px-4 py-2">{row.creation_date}</td>
+                                    <td className="border border-gray-600 px-4 py-2">{row.date_created}</td>
                                     <td className="border border-gray-600 px-4 py-2">{row.count}</td>
                                 </tr>
                             ))}
@@ -146,4 +136,4 @@ const PasswordGraph = () => {
     );
 }
 
-export default PasswordGraph;
+export default FolderGraph;

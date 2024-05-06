@@ -6,7 +6,7 @@ import PasswordsFolder from './Lab/PasswordsFolder';
 import PasswordsChart from './Lab/PasswordsChart';
 import PasswordGraph from './Lab/PasswordGraph';
 import Typography from './Lab/Typography';
-
+import FolderGraph from './Lab/FolderGraph';
 const Lab = () => {
     const [activeComponent, setActiveComponent] = useState('getStarted'); 
 
@@ -26,6 +26,8 @@ const Lab = () => {
                         <button className={`px-8 py-2 justify-center rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer duration-300 ${activeComponent === 'passwordsFolder' ? 'underline underline-offset-8 text-purple-50' : ''}`} onClick={() => handleComponentClick('passwordsFolder')}>Folders </button>
                         <button className={`px-8 py-2 justify-center rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer duration-300 ${activeComponent === 'passwordsChart' ? 'underline underline-offset-8 text-purple-50' : ''}`} onClick={() => handleComponentClick('passwordsChart')}>Passwords </button>
                         <button className={`px-8 py-2 justify-center rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer duration-300 ${activeComponent === 'passwordGraph' ? 'underline underline-offset-8 text-purple-50' : ''}`} onClick={() => handleComponentClick('passwordGraph')}>Charts </button>
+                        <button className={`px-8 py-2 justify-center rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer duration-300 ${activeComponent === 'folderGraph' ? 'underline underline-offset-8 text-purple-50' : ''}`} onClick={() => handleComponentClick('folderGraph')}>Folders </button>
+
                         <p className='text-center pt-6 uppercase text-gray-200 font-semibold border-b border-gray-500'> Typography</p>
                         <button className={`px-8 py-2 justify-center rounded-md text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer duration-300 ${activeComponent === 'typography' ? 'underline underline-offset-8 text-purple-50' : ''}`} onClick={() => handleComponentClick('typography')}>Fonts</button>
 
@@ -38,6 +40,7 @@ const Lab = () => {
                 {activeComponent === 'passwordsFolder' && <PasswordsFolder/>}
                 {activeComponent === 'passwordsChart' && <PasswordsChart/>}
                 {activeComponent === 'passwordGraph' && <PasswordGraph/>}
+                {activeComponent === 'folderGraph' && <FolderGraph/>}
                 {activeComponent === 'tradingView' && <TradingViewWidget/>}
                 {activeComponent === 'typography' && <Typography/>}
             </div>
