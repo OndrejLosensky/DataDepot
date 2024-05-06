@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HiDownload } from "react-icons/hi";
-import { db } from  '../../src/app/firebaseConfig'; // Import db from your firebaseConfig.js
-
+import { db } from  '../../src/app/firebaseConfig';
+import SearchInput from '../backend/SearchInput';
 const Users = () => {
   const [users, setUsers] = useState([]);
 
@@ -30,10 +30,7 @@ const Users = () => {
       {/* Navbar */}
       <div className='flex flex-row justify-between mb-4'>
         <div>
-          <label className="input input-bordered h-10 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
-            <input type="text" className="grow w-[400px]" placeholder="Search username" />
-          </label>
+          <SearchInput placeholder="Search for user"/>
         </div>
         <div className='space-x-2 flex flex-row'>
           <button className='px-4 py-2 rounded-md bg-purple-500 hover:bg-purple-600 duration-300 shadow-md text-gray-200'> + Add User</button>
