@@ -1,6 +1,6 @@
 {
-  "name": "school-storing-database",
-  "version": "0.1.0",
+  "name": "datadepot",
+  "version": "0.6.9",
   "private": true,
   "scripts": {
     "dev": "next dev",
