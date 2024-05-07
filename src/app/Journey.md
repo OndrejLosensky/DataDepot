@@ -159,3 +159,12 @@ New section thought added: **Coding Snippets** (Efficient way to store code of d
 Spent hours today: `2 Hours 18 mins`
 
 --- 
+
+## Day 14 - 7.5. 2024
+Today I learn basic of Typescript and tried to create simple to-do component for testing. Then I tried to make working percentage count for the analytics graphs but i gave up after 3 hours of trying. I will complete the UI first. 
+
+I spent like 6 hours of this day to learn for my final exams, so not much time left. 
+
+Spent hours today: `4 Hours 22 mins`
+
+–––
