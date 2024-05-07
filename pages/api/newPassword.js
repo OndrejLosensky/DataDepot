@@ -1,37 +1,47 @@
 import sqlite3 from 'sqlite3';
+import { open } from 'sqlite';
 
-// Function to open the SQLite database
-function openDB() {
-  return new sqlite3.Database('./db/test.sqlite');
-}
+export default async function handler(req, res) {
+    if (req.method !== 'POST') {
+        return res.status(405).end(); // Method Not Allowed
+    }
 
-const currentDate = new Date();
-    const day = String(currentDate.getDate()).padStart(2, '0');
-    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // January is 0!
-    const year = currentDate.getFullYear();
-    const dateCreated = `${year}–${month}-${day}`;
-
-export default function handler(req, res) {
-  if (req.method === 'POST') {
     const { folderId, username, password, app } = req.body;
 
-    const db = openDB();
+    try {
+        const db = await open({
+            filename: './db/test.sqlite',
+            driver: sqlite3.Database
+        });
 
-    // Insert the password into the database
-    db.run(
-      'INSERT INTO password (folder_id, username, password, app, creation_date) VALUES (?, ?, ?, ?, ?)',
-      [folderId, username, password, app,dateCreated],
-      function(err) {
-        if (err) {
-          console.error('Error inserting password:', err.message);
-          res.status(500).json({ success: false, error: 'Server error' });
-        } else {
-          res.status(201).json({ success: true, data: { id: this.lastID } });
+        // Get the current item count for the folder
+        const folder = await db.get('SELECT item_count FROM folder WHERE id = ?', [folderId]);
+        if (!folder) {
+            await db.close();
+            return res.status(404).json({ error: 'Folder not found' });
         }
-        db.close(); // Close the database connection after the operation is complete
-      }
-    );
-  } else {
-    res.status(405).json({ success: false, error: 'Method Not Allowed' });
-  }
+
+        const maxItemCount = 5; // Set your maximum item count here
+        if (folder.item_count >= maxItemCount) {
+            window.alert("Full capacity");
+            await db.close();
+            return res.status(400).json({ error: 'Folder item count limit exceeded' });
+        }
+
+        // Insert the password into the database
+        await db.run(
+            'INSERT INTO password (folder_id, username, password, app, creation_date) VALUES (?, ?, ?, ?, ?)',
+            [folderId, username, password, app, new Date().toISOString()]
+        );
+
+        // Increment item_count for the folder
+        await db.run('UPDATE folder SET item_count = item_count + 1 WHERE id = ?', [folderId]);
+
+        await db.close();
+
+        return res.status(201).json({ success: true, message: 'Password added successfully' });
+    } catch (error) {
+        console.error(error.message);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
 }
