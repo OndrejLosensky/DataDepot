@@ -51,6 +51,8 @@ const FolderGraph = () => {
                 passwordsChartInstance.current.data.labels = labels;
                 passwordsChartInstance.current.data.datasets[0].data = data;
 
+                passwordsChartInstance.current.options.scales.y.min = 0;
+
                 passwordsChartInstance.current.update();
             }
         };
