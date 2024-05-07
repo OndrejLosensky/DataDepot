@@ -21,17 +21,17 @@ export default async function handler(req, res) {
             return res.status(404).json({ error: 'Folder not found' });
         }
 
-        const maxItemCount = 5; // Set your maximum item count here
+        const maxItemCount = 100; // Set your maximum item count here
         if (folder.item_count >= maxItemCount) {
-            window.alert("Full capacity");
             await db.close();
             return res.status(400).json({ error: 'Folder item count limit exceeded' });
         }
 
-        // Insert the password into the database
+        // Insert the password into the database with the current date
+        const currentDate = new Date().toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
         await db.run(
             'INSERT INTO password (folder_id, username, password, app, creation_date) VALUES (?, ?, ?, ?, ?)',
-            [folderId, username, password, app, new Date().toISOString()]
+            [folderId, username, password, app, currentDate]
         );
 
         // Increment item_count for the folder
