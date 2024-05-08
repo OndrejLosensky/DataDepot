@@ -111,7 +111,7 @@ const PasswordGraph = () => {
 
 
     return (
-        <div className='bg-[#20263d] w-1/4 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 
+        <div className='bg-[#20263d] w-full h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 
             <div className='flex flex-col w-2/3'>
                 <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Passwords</h1>
                 <div className='pl-4 flex'>

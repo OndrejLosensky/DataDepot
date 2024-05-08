@@ -36,7 +36,7 @@ const PercentageFolderCount = () => {
       {data && (
         <div className='flex flex-col'>
           <h2 className='text-4xl text-purple-500 font-bold'> {data.totalCount}</h2>
-          <div className={parseFloat(calculatePercentage(data.todayCount, data.yesterdayCount)) < 0 ? "text-red-500" : "text-green-500"}>
+          <div className={parseFloat(calculatePercentage(data.todayCount, data.yesterdayCount)) < 0 ? "text-red-500 text-sm" : "text-green-500 text-sm"}>
             {parseFloat(calculatePercentage(data.todayCount, data.yesterdayCount)) < 0 ? (
               <HiMiniArrowTrendingDown className="inline-block mr-1" />
             ) : (

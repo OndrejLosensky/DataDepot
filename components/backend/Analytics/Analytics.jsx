@@ -13,6 +13,10 @@ import { LuFolderCog } from "react-icons/lu";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import PercentageSnippetCount from '../Lab/PercentageSnippetCount';
 import SnippetGraph from '../Lab/SnippetGraph';
+import { FaLock } from "react-icons/fa";
+import { BsJournalCode } from "react-icons/bs";
+import { LuFolderTree } from "react-icons/lu";
+import { FaCode, FaFolderTree } from 'react-icons/fa6';
 
 
 const Overview = ({ isUserActive}) => {
@@ -267,10 +271,10 @@ const Overview = ({ isUserActive}) => {
                     <p className='pt-2'> Biggest folders that you currently have:</p>
                    </div>
                    <div className='flex h-[80%] w-auto pt-4 pb-4 items-start justify-between flex-row space-x-4 mr-4'>
-                      <div className='w-1/4 h-full flex flex-col items-center justify-center rounded-md bg-gray-600'>
-                              <div className='h-[80%] relative text-gray-600 cursor-pointer bg-sky-300 rounded-t-md w-full flex items-center justify-center'>
+                      <div className='w-1/4 h-full flex flex-col items-center justify-center  rounded-md bg-gray-600'>
+                              <div className='h-[80%] relative text-gray-600 cursor-pointer bg-sky-200  rounded-t-md w-full flex items-center justify-center'>
                                   <BsThreeDotsVertical className='absolute top-4  w-4 h-4 right-4 cursor-pointer'/>
-                                   <div className='w-16 flex items-center justify-center h-16 rounded-full bg-sky-500 text-gray-200'>
+                                   <div className='w-16 flex items-center justify-center h-16 rounded-full bg-sky-600  text-gray-200'>
                                       <LuFolderCog className='w-8 h-8'/>
                                    </div>
                               </div>
@@ -280,9 +284,10 @@ const Overview = ({ isUserActive}) => {
                               </div>
                       </div>
                       <div className='w-1/4 h-full flex flex-col items-center justify-center rounded-md bg-gray-600'>
-                            <div className='h-[80%] bg-sky-300 rounded-t-md w-full flex items-center justify-center'>
-                              <div className='w-16 flex items-center justify-center h-16 rounded-full bg-sky-500 text-gray-200'>
-                                  <LuFolderCog className='w-8 h-8'/>
+                            <div className='h-[80%] relative text-gray-600 bg-emerald-200 cursor-pointer rounded-t-md w-full flex items-center justify-center'>
+                              <BsThreeDotsVertical className='absolute top-4  w-4 h-4 right-4 cursor-pointer'/>
+                              <div className='w-16 flex items-center justify-center h-16 rounded-full bg-emerald-600 text-gray-200'>
+                                  <FaCode className='w-8 h-8'/>
                               </div>
                               </div>
                               <div className='h-[20%] w-full rounded-b-md bg-gray-500 text-gray-100 flex flex-row justify-between items-center px-4'>
@@ -291,9 +296,10 @@ const Overview = ({ isUserActive}) => {
                               </div>
                       </div>
                       <div className='w-1/4 h-full flex flex-col items-center justify-center rounded-md bg-gray-600'>
-                              <div className='h-[80%] bg-sky-300 rounded-t-md w-full flex items-center justify-center'>
-                                   <div className='w-16 flex items-center justify-center h-16 rounded-full bg-sky-500 text-gray-200'>
-                                      <LuFolderCog className='w-8 h-8'/>
+                              <div className='h-[80%] relative bg-amber-200 text-gray-600  cursor-pointer rounded-t-md w-full flex items-center justify-center'>
+                                    <BsThreeDotsVertical className='absolute top-4  w-4 h-4 right-4 cursor-pointer'/>
+                                   <div className='w-16 flex items-center justify-center h-16 rounded-full bg-amber-600 text-gray-200'>
+                                      <BsJournalCode className='w-8 h-8'/>
                                    </div>
                               </div>
                               <div className='h-[20%] w-full rounded-b-md bg-gray-500 text-gray-100 flex flex-row justify-between items-center px-4'>
@@ -302,9 +308,10 @@ const Overview = ({ isUserActive}) => {
                               </div>
                       </div>
                       <div className='w-1/4 h-full flex flex-col items-center justify-center rounded-md bg-gray-600'>
-                              <div className='h-[80%] bg-sky-300 rounded-t-md w-full flex items-center justify-center'>
-                                   <div className='w-16 flex items-center justify-center h-16 rounded-full bg-sky-500 text-gray-200'>
-                                      <LuFolderCog className='w-8 h-8'/>
+                              <div className='h-[80%] relative bg-fuchsia-200 text-gray-600 cursor-pointer rounded-t-md w-full flex items-center justify-center'>
+                                  <BsThreeDotsVertical className='absolute top-4  w-4 h-4 right-4 cursor-pointer'/>
+                                   <div className='w-16 flex items-center justify-center h-16 rounded-full bg-fuchsia-600 text-gray-200'>
+                                      <FaFolderTree className='w-8 h-8'/>
                                    </div>
                               </div>
                               <div className='h-[20%] w-full rounded-b-md bg-gray-500 text-gray-100 flex flex-row justify-between items-center px-4'>

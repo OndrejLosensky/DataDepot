@@ -9,6 +9,7 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 const CodeSnippets = ({ isUserActive }) => {
     const [snippets, setSnippets] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
     const [snippetsPerPage] = useState(9);
     const [modalOpen, setModalOpen] = useState(false);
     const [snippetText, setSnippetText] = useState("");
@@ -20,7 +21,7 @@ const CodeSnippets = ({ isUserActive }) => {
         setTimeout(() => {
           setAlert(null);
         }, 3000); // Hide the alert after 3 seconds
-      };
+    };
 
     useEffect(() => {
         fetchSnippets();
@@ -30,6 +31,7 @@ const CodeSnippets = ({ isUserActive }) => {
         try {
             const response = await axios.get("/api/getSnippets");
             setSnippets(response.data);
+            setTotalPages(Math.ceil(response.data.length / snippetsPerPage));
         } catch (error) {
             console.error('Error fetching snippets:', error);
         }
@@ -42,11 +44,9 @@ const CodeSnippets = ({ isUserActive }) => {
                 code: code,
             });
 
-            if  (code || snippetText == 0) {
+            if (!code || snippetText === "") {
                 showAlert("error", "You need to insert the code");
-            }
-
-            if (response.status === 200) {
+            } else if (response.status === 200) {
                 fetchSnippets();
                 setModalOpen(false);
                 setSnippetText("");
@@ -71,14 +71,21 @@ const CodeSnippets = ({ isUserActive }) => {
         }
     };
 
+    const paginate = (pageNumber) => {
+        if (pageNumber < 1) {
+            pageNumber = 1;
+        } else if (pageNumber > totalPages) {
+            pageNumber = totalPages;
+        }
+        setCurrentPage(pageNumber);
+    };
+
     const indexOfLastSnippet = currentPage * snippetsPerPage;
     const indexOfFirstSnippet = indexOfLastSnippet - snippetsPerPage;
     const currentSnippets = snippets.slice(
         indexOfFirstSnippet,
         indexOfLastSnippet
     );
-
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
         <div className="w-full h-full flex flex-col space-y-8">
@@ -89,7 +96,7 @@ const CodeSnippets = ({ isUserActive }) => {
                 </div>
             )}
 
-            <div className="flex flex-row items-center justify-between h-[10%]">
+            <div className="flex flex-row items-center justify-between h-[5%]">
                 <div className="flex flex-row space-x-4">
                     <button
                         className="px-4 py-2 rounded-md bg-purple-500 text-gray-100"
@@ -103,7 +110,7 @@ const CodeSnippets = ({ isUserActive }) => {
                     <Profile isUserActive={isUserActive} />
                 </div>
             </div>
-            <div className="h-[80%] overflow-y-auto">
+            <div className="h-[85%] overflow-y-auto">
                 <h2 className="text-xl font-sora font-semibold text-left text-gray-200 ">
                     {" "}
                     Coding Snippets{" "}
@@ -121,6 +128,13 @@ const CodeSnippets = ({ isUserActive }) => {
                             onDelete={() => deleteSnippet(snippet.id)}
                         />
                     ))}
+                    {/* Placeholder cards to ensure 3x3 grid */}
+                    {currentSnippets.length < 9 &&
+                        Array(9 - currentSnippets.length)
+                            .fill(null)
+                            .map((_, index) => (
+                                <div key={index} className="bg-transparent h-1/3"></div>
+                            ))}
                 </div>
             </div>
 
@@ -181,10 +195,18 @@ const CodeSnippets = ({ isUserActive }) => {
             )}
 
             <div className="h-[10%] flex items-end justify-center">
+                {/* Previous Button */}
+                <button
+                    onClick={() => paginate(currentPage - 1)}
+                    className="px-3 py-1 mx-1 rounded-md bg-purple-500 text-gray-100"
+                    disabled={currentPage === 1}
+                >
+                    Previous
+                </button>
                 {/* Pagination */}
                 <nav className="inline-flex">
                     {Array.from(
-                        { length: Math.ceil(snippets.length / snippetsPerPage) },
+                        { length: totalPages },
                         (_, i) => (
                             <button
                                 key={i}
@@ -200,6 +222,14 @@ const CodeSnippets = ({ isUserActive }) => {
                         )
                     )}
                 </nav>
+                {/* Next Button */}
+                <button
+                    onClick={() => paginate(currentPage + 1)}
+                    className="px-3 py-1 mx-1 rounded-md bg-purple-500 text-gray-100"
+                    disabled={currentPage === totalPages}
+                >
+                    Next
+                </button>
             </div>
         </div>
     );
