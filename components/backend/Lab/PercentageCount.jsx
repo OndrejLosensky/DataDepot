@@ -29,9 +29,9 @@ const PercentageCount = () => {
   };
 
   return (
-    <div className='mt-2'>
+    <div className='mt-4'>
       {data && (
-        <div className='flex flex-row items-end space-x-2'>
+        <div className='flex flex-col'>
             {/* 
           <div>
             <p>Total passwords: {data.totalCount}</p>
@@ -44,9 +44,9 @@ const PercentageCount = () => {
             {parseFloat(calculatePercentage(data.todayCount, data.yesterdayCount)) < 0 ? (
               <CgArrowBottomLeft className="inline-block mr-1" />
             ) : (
-              <CgArrowTopRight className="inline-block mr-1" />
+              <CgArrowTopRight className="inline-block  mr-1" />
             )}
-            {calculatePercentage(data.todayCount, data.yesterdayCount)}%
+            {calculatePercentage(data.todayCount, data.yesterdayCount)}% (+{data.todayCount})
           </div>
         </div>
       )}

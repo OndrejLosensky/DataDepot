@@ -32,17 +32,17 @@ const PercentageFolderCount = () => {
   console.log(error); // Check if there are any errors
 
   return (
-    <div className='mt-2'>
+    <div className='mt-4 '>
       {data && (
-        <div className='flex flex-row items-end space-x-2'>
+        <div className='flex flex-col'>
           <h2 className='text-4xl text-purple-500 font-bold'> {data.totalCount}</h2>
           <div className={parseFloat(calculatePercentage(data.todayCount, data.yesterdayCount)) < 0 ? "text-red-500" : "text-green-500"}>
             {parseFloat(calculatePercentage(data.todayCount, data.yesterdayCount)) < 0 ? (
               <CgArrowBottomLeft className="inline-block mr-1" />
             ) : (
-              <CgArrowTopRight className="inline-block mr-1" />
+              <CgArrowTopRight className="inline-block  mr-1" />
             )}
-            {calculatePercentage(data.todayCount, data.yesterdayCount)}%
+            {calculatePercentage(data.todayCount, data.yesterdayCount)}% (+{data.todayCount})
           </div>
         </div>
       )}
