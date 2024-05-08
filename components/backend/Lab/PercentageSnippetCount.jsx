@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { HiMiniArrowTrendingUp, HiMiniArrowTrendingDown} from "react-icons/hi2";
 
-const PercentageCount = () => {
+const PercentageFolderCount = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/growth');
+        const response = await fetch('/api/allSnippets');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -28,17 +28,13 @@ const PercentageCount = () => {
     return growthPercentage;
   };
 
+  console.log(data); // Check if data is fetched correctly
+  console.log(error); // Check if there are any errors
+
   return (
-    <div className='mt-4'>
+    <div className='mt-4 '>
       {data && (
         <div className='flex flex-col'>
-            {/* 
-          <div>
-            <p>Total passwords: {data.totalCount}</p>
-            <p>Passwords added yesterday: {data.yesterdayCount}</p>
-            <p>Passwords added today: {data.todayCount}</p>
-          </div>
-          */}
           <h2 className='text-4xl text-purple-500 font-bold'> {data.totalCount}</h2>
           <div className={parseFloat(calculatePercentage(data.todayCount, data.yesterdayCount)) < 0 ? "text-red-500" : "text-green-500"}>
             {parseFloat(calculatePercentage(data.todayCount, data.yesterdayCount)) < 0 ? (
@@ -50,8 +46,11 @@ const PercentageCount = () => {
           </div>
         </div>
       )}
+      {error && (
+        <div>Error: {error}</div>
+      )}
     </div>
   );
 };
 
-export default PercentageCount;
+export default PercentageFolderCount;

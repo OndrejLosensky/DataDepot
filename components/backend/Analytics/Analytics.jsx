@@ -11,6 +11,7 @@ import FolderGraph from '../Lab/FolderGraph';
 import PieChart from '../Lab/PieChart';
 import { LuFolderCog } from "react-icons/lu";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import PercentageSnippetCount from '../Lab/PercentageSnippetCount';
 
 
 const Overview = ({ isUserActive}) => {
@@ -191,6 +192,7 @@ const Overview = ({ isUserActive}) => {
                             <p className='text-sm text-red-500 mb-1 ml-1 flex flex-row items-center'> <GoArrowUpRight className='mr-1'/> +0% </p>
                         </div>
                     </div>
+                    <PercentageSnippetCount/>
                 </div>
 
                 <div className='bg-[#20263d] w-1/4 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 

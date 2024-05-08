@@ -172,9 +172,9 @@ const Dashboard = ({isUserActive}) => {
               {activeComponent === 'Settings' && <Settings setActiveComponent={setActiveComponent} />}
               {activeComponent === 'Analytics' && <Analytics isUserActive={isUserActive}/>}
               {activeComponent === 'PasswordManager' && <PasswordManager isUserActive={isUserActive}/>}
-              {activeComponent === 'Notes' && <Notes/>}
+              {activeComponent === 'Notes' && <Notes isUserActive={isUserActive}/>}
               {activeComponent === 'Lab' && <Lab/>}
-              {activeComponent === 'CodeSnippets' && <CodeSnippets/>}
+              {activeComponent === 'CodeSnippets' && <CodeSnippets isUserActive={isUserActive}/>}
 
             </div>
         </div>

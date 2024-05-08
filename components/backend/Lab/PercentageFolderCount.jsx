@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CgArrowTopRight, CgArrowBottomLeft } from "react-icons/cg";
+import { HiMiniArrowTrendingUp, HiMiniArrowTrendingDown} from "react-icons/hi2";
 
 const PercentageFolderCount = () => {
   const [data, setData] = useState(null);
@@ -38,9 +38,9 @@ const PercentageFolderCount = () => {
           <h2 className='text-4xl text-purple-500 font-bold'> {data.totalCount}</h2>
           <div className={parseFloat(calculatePercentage(data.todayCount, data.yesterdayCount)) < 0 ? "text-red-500" : "text-green-500"}>
             {parseFloat(calculatePercentage(data.todayCount, data.yesterdayCount)) < 0 ? (
-              <CgArrowBottomLeft className="inline-block mr-1" />
+              <HiMiniArrowTrendingDown className="inline-block mr-1" />
             ) : (
-              <CgArrowTopRight className="inline-block  mr-1" />
+              <HiMiniArrowTrendingUp className="inline-block  mr-1" />
             )}
             {calculatePercentage(data.todayCount, data.yesterdayCount)}% (+{data.todayCount})
           </div>
