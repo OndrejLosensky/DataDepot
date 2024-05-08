@@ -8,6 +8,10 @@ import axios from 'axios';
 import SearchInput from '../SearchInput';
 import PasswordGraph from '../Lab/PasswordGraph';
 import FolderGraph from '../Lab/FolderGraph';
+import PieChart from '../Lab/PieChart';
+import { LuFolderCog } from "react-icons/lu";
+import { BsThreeDotsVertical } from "react-icons/bs";
+
 
 const Overview = ({ isUserActive}) => {
     const passwordsChartRef = useRef(null);
@@ -51,9 +55,9 @@ const Overview = ({ isUserActive}) => {
             data: [1498, 1277, 1508, 1781, 2104, 2488, 2944, 3476,2348,1797]            ,
             fill: {
               target: 'origin',
-              above: 'rgba(30, 197, 92, 0.2)',
+              above: 'rgba(210, 77, 82, 0.2)',
             },
-            borderColor: '#22c55d',
+            borderColor: '#fa5861',
             tension: 0.3,
           },
         ]
@@ -120,6 +124,10 @@ const Overview = ({ isUserActive}) => {
             fetchTotalFolders();
         }, []);
   
+         const data = {
+    labels: ['Notes', 'Files', 'Passwords', 'Coding snippets'],
+    values: [12, 19, 3, 5]
+  };
     
   return (
     <div className='w-auto h-full overflow-hidden'>
@@ -175,15 +183,25 @@ const Overview = ({ isUserActive}) => {
         <div className='w-full space-y-6 h-[90%] flex flex-col overflow-hidden'>
             {/* Top level */}
             <div className='flex flex-row space-x-6 justify-center h-[20%]'>
-                <div className='bg-[#20263d] w-1/3 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 
+                <div className='bg-[#20263d] w-1/4 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 
                     <div className='flex flex-col w-1/2'>
-                        <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Files stored</h1>
+                        <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Notes</h1>
                         <div className='flex flex-row items-end'>
                             <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>0</p>
-                            <p className='text-sm text-green-500 mb-1 ml-1 flex flex-row items-center'> <GoArrowUpRight className='mr-1'/> +0% </p>
+                            <p className='text-sm text-red-500 mb-1 ml-1 flex flex-row items-center'> <GoArrowUpRight className='mr-1'/> +0% </p>
                         </div>
                     </div>
-                    <canvas className='p-6  w-1/2' ref={filesChartRef}></canvas>
+                </div>
+
+                <div className='bg-[#20263d] w-1/4 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 
+                    <div className='flex flex-col w-1/2'>
+                        <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Files</h1>
+                        <div className='flex flex-row items-end'>
+                            <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>0</p>
+                            <p className='text-sm text-red-500 mb-1 ml-1 flex flex-row items-center'> <GoArrowUpRight className='mr-1'/> +0% </p>
+                        </div>
+                    </div>
+                    <canvas className='p-8  w-1/2' ref={filesChartRef}></canvas>
                 </div>
 
                 {/*                 
@@ -217,7 +235,7 @@ const Overview = ({ isUserActive}) => {
             </div>
             {/* Middle level */}
             <div className='flex flex-row space-x-6 h-[35%]'>
-                <div className='bg-[#20263d]  w-1/2 h-full rounded-lg flex flex-col pl-4 shadow-lg border border-gray-500'>
+                <div className='bg-[#20263d]  w-2/3 h-full rounded-lg pt-8 flex flex-col pl-4 shadow-lg border border-gray-500'>
                     <h1 className='pt-4 text-xl text-gray-200 font-semibold'>App Health</h1>
                     <p className='font-light pb-2'> You got a lot of space still free</p>
                     <div className='flex flex-row items-center my-2'>
@@ -239,108 +257,75 @@ const Overview = ({ isUserActive}) => {
                         </div>
                     </div>
                 </div>
-                <div className='bg-[#20263d]  w-1/2 h-full rounded-lg shadow-lg border border-gray-500'>
-                    <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'>App Statistics</h1>
-                    <p className='pl-4 font-light pb-2'> More detailed information that is also important</p>
-                    <div className="p-4">
-                        <div className="flex flex-col space-y-4">
-                            <div className="flex items-center justify-between">
-                                <p className="text-gray-300">Overall Storage Usage:</p>
-                                <p className="text-gray-200"><strong>65% </strong>used</p>
-                            </div>
-                            <div className="flex items-center justify-between">
-                                <p className="text-gray-300">Last Backup:</p>
-                                <p className="text-gray-200 font-semibold">April 10, 2024</p>
-                            </div>
-                            <div className="flex items-center justify-between">
-                                <p className="text-gray-300">Account Activity:</p>
-                                <p className="text-gray-200 font-semibold">Recent login from 3 new devices</p>
-                            </div>
-                        </div>
+                <div className='bg-[#20263d] flex flex-col items-center justify-center w-1/3 h-full rounded-lg shadow-lg border border-gray-500'>
+                    <h2 className='text-xl  text-gray-100 pl-4 p-2'> App capacity</h2>
+                    <div className='h-3/4 w-3/4'>
+                      <PieChart data={data} />
                     </div>
                 </div>
 
             </div>
 
             {/* Bottom level */}
-            <div className='h-[45%]'>
-            <div className='w-full  bg-[#20263d] h-full  justify-center items-center flex flex-col rounded-lg shadow-lg border border-gray-500 overflow-y-auto'>
-                {/* 
-                <div className='flex flex-col'>
-                    <div className='flex flex-row py-3 bg-[#191e31]  w-full justify-between px-4 items-center'> 
-                        <h1 className='text-2xl font-bold text-gray-200'>Most Recent Actions</h1>
-                        <button className='py-1 px-6 text-gray-100 rounded-full bg-purple-500'>Filter</button>
-                    </div>
-                    <div className="">
-                        <div className="flex flex-col">
-                            <div className="flex items-center bg-[#20263d]  hover:bg-[#2c3353] duration-300 py-2 px-4 w-full justify-between">
-                               <div className='flex flex-row items-center'>
-                                    <Image className='w-6 h-6 mr-2' src="/icons/word.svg" height={32} width={32} ></Image>
-                                    <p className="text-gray-300">demo.docx</p>
-                               </div>
-                                <div className="flex space-x-2">
-                                    <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">View</button>
-                                    <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">Edit</button>
-                                    <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">Delete</button>
-                                </div>
-                            </div>
-                            <div className="flex items-center bg-[#20263d]  hover:bg-[#2c3353] duration-300  py-2 px-4 w-full justify-between">
-                                <div className='flex flex-row items-center'>
-                                    <Image className='w-6 h-6 mr-2' src="/icons/word.svg" height={32} width={32} ></Image>
-                                    <p className="text-gray-300">login.docx</p>
-                               </div>
-                                <div className="flex space-x-2">
-                                    <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">View</button>
-                                    <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">Edit</button>
-                                    <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">Delete</button>
-                                </div>
-                            </div>
-                            <div className="flex items-center bg-[#20263d]  hover:bg-[#2c3353] duration-300  py-2 px-4 w-full justify-between">
-                                <div className='flex flex-row items-center'>
-                                        <Image className='w-6 h-6 mr-2' src="/icons/word.svg" height={32} width={32} ></Image>
-                                        <p className="text-gray-300">logs.docx</p>
-                                </div>
-                                <div className="flex space-x-2">
-                                    <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">View</button>
-                                    <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">Edit</button>
-                                    <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">Delete</button>
-                                </div>
-                            </div>
-                            <div className="flex items-center bg-[#20263d]  hover:bg-[#2c3353] duration-300  py-2 px-4 w-full justify-between">
-                                <div className='flex flex-row items-center'>
-                                    <Image className='w-6 h-6 mr-2' src="/icons/word.svg" height={32} width={32} ></Image>
-                                    <p className="text-gray-300">CV.docx</p>
-                               </div>
-                                <div className="flex space-x-2">
-                                    <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">View</button>
-                                    <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">Edit</button>
-                                    <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">Delete</button>
-                                </div>
-                            </div>
-                            <div className="flex items-center bg-[#20263d]  hover:bg-[#2c3353] duration-300  py-2 px-4 w-full justify-between">
-                                <div className='flex flex-row items-center'>
-                                    <Image className='w-6 h-6 mr-2' src="/icons/word.svg" height={32} width={32} ></Image>
-                                    <p className="text-gray-300">Github.docx</p>
-                               </div>
-                                <div className="flex space-x-2">
-                                    <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">View</button>
-                                    <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">Edit</button>
-                                    <button className="text-gray-100 bg-gray-500 hover:bg-gray-400 duration-300 rounded-full px-3 py-1">Delete</button>
-                                </div>
-                            </div>
-                            
-                            
-                        </div>
-                    </div>
+            <div className='h-[45%] w-full flex flex-row space-x-6'>
+                <div className='bg-[#20263d]  space-y-6  w-2/3 h-full p-4 rounded-lg flex flex-col pl-4 shadow-lg border border-gray-500'>
+                   <div className='h-[20%]'>
+                    <h2 className='text-3xl font-bold pt-2 text-gray-200'> Folders </h2>
+                    <p className='pt-2'> Biggest folders that you currently have:</p>
+                   </div>
+                   <div className='flex h-[80%] w-auto pt-4 pb-4 items-start justify-between flex-row space-x-4 mr-4'>
+                      <div className='w-1/4 h-full flex flex-col items-center justify-center rounded-md bg-gray-600'>
+                              <div className='h-[80%] relative text-gray-600 cursor-pointer bg-sky-300 rounded-t-md w-full flex items-center justify-center'>
+                                  <BsThreeDotsVertical className='absolute top-4  w-4 h-4 right-4 cursor-pointer'/>
+                                   <div className='w-16 flex items-center justify-center h-16 rounded-full bg-sky-500 text-gray-200'>
+                                      <LuFolderCog className='w-8 h-8'/>
+                                   </div>
+                              </div>
+                              <div className='h-[20%] w-full rounded-b-md bg-gray-500 text-gray-100 flex flex-row justify-between items-center px-4'>
+                                  <p className='font-semibold'>Apple </p>
+                                  <p className='text-gray-300 font-light'> 12 </p>
+                              </div>
+                      </div>
+                      <div className='w-1/4 h-full flex flex-col items-center justify-center rounded-md bg-gray-600'>
+                            <div className='h-[80%] bg-sky-300 rounded-t-md w-full flex items-center justify-center'>
+                              <div className='w-16 flex items-center justify-center h-16 rounded-full bg-sky-500 text-gray-200'>
+                                  <LuFolderCog className='w-8 h-8'/>
+                              </div>
+                              </div>
+                              <div className='h-[20%] w-full rounded-b-md bg-gray-500 text-gray-100 flex flex-row justify-between items-center px-4'>
+                                  <p className='font-semibold'>Dev </p>
+                                  <p className='text-gray-300 font-light'> 111 </p>
+                              </div>
+                      </div>
+                      <div className='w-1/4 h-full flex flex-col items-center justify-center rounded-md bg-gray-600'>
+                              <div className='h-[80%] bg-sky-300 rounded-t-md w-full flex items-center justify-center'>
+                                   <div className='w-16 flex items-center justify-center h-16 rounded-full bg-sky-500 text-gray-200'>
+                                      <LuFolderCog className='w-8 h-8'/>
+                                   </div>
+                              </div>
+                              <div className='h-[20%] w-full rounded-b-md bg-gray-500 text-gray-100 flex flex-row justify-between items-center px-4'>
+                                  <p className='font-semibold'>Passwords </p>
+                                  <p className='text-gray-300 font-light'> 1253 </p>
+                              </div>
+                      </div>
+                      <div className='w-1/4 h-full flex flex-col items-center justify-center rounded-md bg-gray-600'>
+                              <div className='h-[80%] bg-sky-300 rounded-t-md w-full flex items-center justify-center'>
+                                   <div className='w-16 flex items-center justify-center h-16 rounded-full bg-sky-500 text-gray-200'>
+                                      <LuFolderCog className='w-8 h-8'/>
+                                   </div>
+                              </div>
+                              <div className='h-[20%] w-full rounded-b-md bg-gray-500 text-gray-100 flex flex-row justify-between items-center px-4'>
+                                  <p className='font-semibold'>Notes </p>
+                                  <p className='text-gray-300 font-light'> 7 </p>
+                              </div>
+                      </div>
+                   </div>
                 </div>
-                */}
-                    <div className='flex opacity-95 mb-2 flex-row justify-center items-center mt-4'>
-                        <Image src="/logo/light.svg" width={32} height={32} alt='logo' />
-                        <p className='pt-1 text-2xl text-gray-100 pl-2'> DataDepot</p>
-                    </div>
-                    <h1 className='text-xl text-gray-300 font-light text-center '> Coming soon... </h1>
-            </div>
 
+              <div className='w-1/3  bg-[#20263d] h-full  justify-center items-center flex flex-col rounded-lg shadow-lg border border-gray-500 overflow-y-auto'>
+                      <h2 className='text-3xl font-semibold text-gray-200 p-4'> Recent Activity</h2>
+              </div>
+    
             </div>
         </div>
     </div>

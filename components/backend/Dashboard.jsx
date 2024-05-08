@@ -148,7 +148,6 @@ const Dashboard = ({isUserActive}) => {
                 <IoSettingsOutline className={`${sidebarVisible ? 'mr-2':'w-6 h-6'}`} />
                 {sidebarVisible && <span className="text-gray-200">Settings</span>}
               </button>
-              <Link className='text-center' href="/testFirebaseConn">  Send Message </Link>
             </div>
 
             </div>

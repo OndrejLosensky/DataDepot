@@ -100,14 +100,14 @@ const FolderGraph = () => {
     }, [folderData]);
 
     return (
-        <div className='bg-[#20263d] w-1/3 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'>
-            <div className='flex flex-col w-1/2'>
-                <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Folders stored</h1>
+        <div className='bg-[#20263d] w-1/4 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'>
+            <div className='flex flex-col w-2/3'>
+                <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Folders</h1>
                 <div className='flex pl-4'>
                    <PercentageFolderCount/>
                 </div>
             </div>
-            <canvas className='p-6 w-1/2' ref={passwordsChartRef}></canvas>
+            <canvas className='p-8 w-1/3' ref={passwordsChartRef}></canvas>
             {/* 
             <div className="w-full h-full flex items-center justify-center flex-col ">
                 <h1 className="text-gray-200 text-3xl text-center font-semibold pt-6">Folder Data</h1>
