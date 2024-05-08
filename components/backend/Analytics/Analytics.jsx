@@ -12,6 +12,7 @@ import PieChart from '../Lab/PieChart';
 import { LuFolderCog } from "react-icons/lu";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import PercentageSnippetCount from '../Lab/PercentageSnippetCount';
+import SnippetGraph from '../Lab/SnippetGraph';
 
 
 const Overview = ({ isUserActive}) => {
@@ -192,19 +193,9 @@ const Overview = ({ isUserActive}) => {
                             <p className='text-sm text-red-500 mb-1 ml-1 flex flex-row items-center'> <GoArrowUpRight className='mr-1'/> +0% </p>
                         </div>
                     </div>
-                    <PercentageSnippetCount/>
                 </div>
 
-                <div className='bg-[#20263d] w-1/4 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 
-                    <div className='flex flex-col w-1/2'>
-                        <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Files</h1>
-                        <div className='flex flex-row items-end'>
-                            <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>0</p>
-                            <p className='text-sm text-red-500 mb-1 ml-1 flex flex-row items-center'> <GoArrowUpRight className='mr-1'/> +0% </p>
-                        </div>
-                    </div>
-                    <canvas className='p-8  w-1/2' ref={filesChartRef}></canvas>
-                </div>
+               <SnippetGraph/>
 
                 {/*                 
                 <div className='bg-[#20263d] w-1/3 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 

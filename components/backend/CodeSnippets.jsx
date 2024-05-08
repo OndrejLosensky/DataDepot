@@ -117,6 +117,7 @@ const CodeSnippets = ({ isUserActive }) => {
                             key={snippet.id}
                             text={snippet.text}
                             code={snippet.code}
+                            date={snippet.creation_date}
                             onDelete={() => deleteSnippet(snippet.id)}
                         />
                     ))}

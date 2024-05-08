@@ -1,10 +1,13 @@
 import React from "react";
 
-const SnippetCard = ({ text, code, onDelete }) => {
+const SnippetCard = ({ text, code, onDelete, date }) => {
     return (
         <div className="bg-gray-700 p-4 mt-2 rounded-md shadow-md">
             <div className="flex justify-between items-center mb-2">
-                <h3 className="text-lg font-semibold">{text}</h3>
+               <div className="flex flex-row items-center space-x-2">
+                    <h3 className="text-xl text-gray-200 font-semibold">{text}</h3>
+                    <p className="text-gray-400 font-light"> {date} </p>
+               </div>
                 <button onClick={onDelete} className="text-red-500 hover:text-red-600 duration-300">
                     Delete
                 </button>
@@ -12,6 +15,7 @@ const SnippetCard = ({ text, code, onDelete }) => {
             <pre className="bg-gray-900 p-2 rounded-md">
                 <code>{code}</code>
             </pre>
+          
         </div>
     );
 };
