@@ -177,3 +177,11 @@ I have also changed the analytics page a little and last remaining chart for doc
 The Analytics page will also have an folders card with biggest folders to access quickly
 
 Today I will also create an Getting started page for new users 
+
+Codding snippets now fully functions in a basic version. You can add snippet, delete it and more. Also it has an functioning pagination.
+
+Create an simple, but cool looking get started page. It has 6 button to navigate more as the user wants. Also i made basic wireframe for the Notes section so I can create graph and couting system for it. That will be last thing for first section of Analytics page.
+
+Spent hours today: `5 Hours 31 mins`
+
+---
