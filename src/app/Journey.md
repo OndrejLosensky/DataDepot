@@ -168,3 +168,12 @@ I spent like 6 hours of this day to learn for my final exams, so not much time l
 Spent hours today: `4 Hours 22 mins`
 
 –––
+
+## Day 15 - 8.5. 2024
+Today I started of with fixing the percentage and It was pretty simple. Yesterday I was just tired to think. So now it has an dynamic percentage + chart for Passwords, Folder and for new item which are Coding snippets. I managed to create really basic component with pagination.
+
+I have also changed the analytics page a little and last remaining chart for documents is **Notes**, The last section of this app. Where users can also store theirs notes efficiently.
+
+The Analytics page will also have an folders card with biggest folders to access quickly
+
+Today I will also create an Getting started page for new users 
