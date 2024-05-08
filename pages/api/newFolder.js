@@ -6,7 +6,7 @@ export default function handler(req, res) {
     const day = String(currentDate.getDate()).padStart(2, '0');
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const year = currentDate.getFullYear();
-    const dateCreated = `${day}-${month}-${year}`;
+    const dateCreated = `${year}-${month}-${day}`;
 
 
   if (req.method === 'POST') {

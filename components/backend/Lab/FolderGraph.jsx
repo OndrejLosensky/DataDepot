@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Chart from 'chart.js/auto';
 import axios from 'axios';
 import { GoArrowDownLeft, GoArrowUpRight } from "react-icons/go";
+import PercentageFolderCount from "./PercentageFolderCount";
 
 const FolderGraph = () => {
     const passwordsChartRef = useRef(null);
@@ -102,12 +103,8 @@ const FolderGraph = () => {
         <div className='bg-[#20263d] w-1/3 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'>
             <div className='flex flex-col w-1/2'>
                 <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Folders stored</h1>
-                <div className='flex flex-row items-end'>
-                    <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>{totalCountFolders}</p>
-                    <p className={`text-sm mb-1 ml-1 flex flex-row items-center ${percentChange >= 0 ? 'text-green-500' : 'text-red-500'}`}>
-                        {percentChange >= 0 ? <GoArrowUpRight className='mr-1'/> : <GoArrowDownLeft className='mr-1'/>}
-                        {percentChange.toFixed(2)}%
-                    </p>
+                <div className='flex pl-4'>
+                   <PercentageFolderCount/>
                 </div>
             </div>
             <canvas className='p-6 w-1/2' ref={passwordsChartRef}></canvas>
