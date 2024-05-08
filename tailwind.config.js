@@ -26,7 +26,7 @@ module.exports = {
         ],
         glow2:
         [
-          "0px 0px 16px rgba(220,50, 222, 0.45)",
+          "0px 0px 16px rgba(220,50, 222, 0.38)",
         ]
       },
       colors: {

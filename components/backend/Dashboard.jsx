@@ -27,11 +27,12 @@ import { FaCode } from "react-icons/fa6";
 import Link from 'next/link';
 import Notes from '../backend/Notes';
 import { FaRegStickyNote } from "react-icons/fa";
+import GetStarted from './GetStarted';
 
 
 const Dashboard = ({isUserActive}) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [activeComponent, setActiveComponent] = useState('Analytics');
+  const [activeComponent, setActiveComponent] = useState('getStarted');
   const router = useRouter();
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [sidebarVisible, setSidebarVisible] = useState(true);
@@ -122,7 +123,7 @@ const Dashboard = ({isUserActive}) => {
               </div>
             </div>
             <div>
-              <div className='flex flex-row justify-center py-4 border-b border-gray-400'>
+              <div className='flex flex-row justify-center py-4 border-b  border-gray-400' onClick={() => handleComponentClick('getStarted')}>
                 <Image alt='logo' src="/logo/light.svg" width={32} height={32} />
                 {sidebarVisible && <p className='text-2xl text-gray-100 pl-2'> DataDepot</p>}
               </div>
@@ -173,6 +174,7 @@ const Dashboard = ({isUserActive}) => {
               {activeComponent === 'Analytics' && <Analytics isUserActive={isUserActive}/>}
               {activeComponent === 'PasswordManager' && <PasswordManager isUserActive={isUserActive}/>}
               {activeComponent === 'Notes' && <Notes isUserActive={isUserActive}/>}
+              {activeComponent === 'getStarted' && <GetStarted/>}
               {activeComponent === 'Lab' && <Lab/>}
               {activeComponent === 'CodeSnippets' && <CodeSnippets isUserActive={isUserActive}/>}
 
