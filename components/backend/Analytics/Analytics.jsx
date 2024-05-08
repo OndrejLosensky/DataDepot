@@ -323,7 +323,7 @@ const Overview = ({ isUserActive}) => {
                 </div>
 
               <div className='w-1/3  bg-[#20263d] h-full  justify-center items-center flex flex-col rounded-lg shadow-lg border border-gray-500 overflow-y-auto'>
-                      <h2 className='text-3xl font-semibold text-gray-200 p-4'> Recent Activity</h2>
+                      <h2 className='text-3xl font-semibold text-gray-200 p-4'> User Activity</h2>
               </div>
     
             </div>
