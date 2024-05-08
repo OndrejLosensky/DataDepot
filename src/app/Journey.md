@@ -182,11 +182,13 @@ Codding snippets now fully functions in a basic version. You can add snippet, de
 
 Create an simple, but cool looking get started page. It has 6 button to navigate more as the user wants. Also i made basic wireframe for the Notes section so I can create graph and couting system for it. That will be last thing for first section of Analytics page.
 
+### Preview
 
-#### Preview
-<img width="1666" alt="Snímek obrazovky 2024-05-08 v 21 04 37" src="https://github.com/OndrejLosensky/DataDepot-v1/assets/127244546/46bb515a-f181-4b3f-8213-849f2936d5b3">
 
+
+I have also started working on my coding portfolio which is made using Vue.js and TypeScript
 
 Spent hours today: `5 Hours 31 mins`
+
 
 ---
