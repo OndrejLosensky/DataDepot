@@ -11,32 +11,32 @@ const GetStarted = () => {
 
         <p className='pt-4'> Efficient data management storage customized for a developer. Store passwords, documents, notes and more </p>
         <div className='grid grid-cols-2 w-1/2  gap-6 mt-8'>
-            <div className='w-full cursor-pointer hover:border-gray-300 duration-300 hover:scale-105  h-24 rounded-md shadow-lg border border-gray-500 flex flex-row items-center justify-between px-6'>
+            <div className='w-full cursor-pointer hover:border-gray-300 duration-300 hover:scale-105  h-20   rounded-md shadow-lg border border-gray-500 flex flex-row items-center justify-between px-6'>
                 <FaHome className='w-6 h-6 text-gray-100'/>
                 Getting started
                 <MdOutlineKeyboardArrowRight/>
             </div>
-            <div className='w-full cursor-pointer hover:border-gray-300 duration-300 hover:scale-105  h-24 rounded-md shadow-lg border border-gray-500 flex flex-row items-center justify-between px-6'>
+            <div className='w-full cursor-pointer hover:border-gray-300 duration-300 hover:scale-105  h-20 rounded-md shadow-lg border border-gray-500 flex flex-row items-center justify-between px-6'>
                 <FaQuestion className='w-6 h-6 text-gray-100'/>
                 Help
                 <MdOutlineKeyboardArrowRight/>
             </div>
-            <div className='w-full cursor-pointer hover:border-gray-300 duration-300 hover:scale-105  h-24 rounded-md shadow-lg border border-gray-500 flex flex-row items-center justify-between px-6'>
+            <div className='w-full cursor-pointer hover:border-gray-300 duration-300 hover:scale-105  h-20 rounded-md shadow-lg border border-gray-500 flex flex-row items-center justify-between px-6'>
                 <FaFile className='w-6 h-6 text-gray-100'/>
                 File Management
                 <MdOutlineKeyboardArrowRight/>
             </div>
-            <div className='w-full cursor-pointer hover:border-gray-300 duration-300 hover:scale-105  h-24 rounded-md shadow-lg border border-gray-500 flex flex-row items-center justify-between px-6'>
+            <div className='w-full cursor-pointer hover:border-gray-300 duration-300 hover:scale-105  h-20 rounded-md shadow-lg border border-gray-500 flex flex-row items-center justify-between px-6'>
                 <MdLockOutline className='w-6 h-6 text-gray-100'/>
                 Passwords Storage
                 <MdOutlineKeyboardArrowRight/>
             </div>
-            <div className='w-full cursor-pointer hover:border-gray-300 duration-300 hover:scale-105  h-24 rounded-md shadow-lg border border-gray-500 flex flex-row items-center justify-between px-6'>
+            <div className='w-full cursor-pointer hover:border-gray-300 duration-300 hover:scale-105  h-20 rounded-md shadow-lg border border-gray-500 flex flex-row items-center justify-between px-6'>
                 <FaCode className='w-6 h-6 text-gray-100'/>
                 Coding Snippets
                 <MdOutlineKeyboardArrowRight/>
             </div>
-            <div className='w-full cursor-pointer hover:border-gray-300 duration-300 hover:scale-105  h-24 rounded-md shadow-lg border border-gray-500 flex flex-row items-center justify-between px-6'>
+            <div className='w-full cursor-pointer hover:border-gray-300 duration-300 hover:scale-105  h-20 rounded-md shadow-lg border border-gray-500 flex flex-row items-center justify-between px-6'>
                 <FaRegStickyNote className='w-6 h-6 text-gray-100'/>
                 Quick Notes
                 <MdOutlineKeyboardArrowRight/>

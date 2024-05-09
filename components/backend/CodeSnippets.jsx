@@ -5,6 +5,7 @@ import Profile from "./Profile";
 import SnippetCard from "./SnippetCard";
 import { IoCloseOutline } from "react-icons/io5";
 import { FaRegCircleCheck } from "react-icons/fa6";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const CodeSnippets = ({ isUserActive }) => {
     const [snippets, setSnippets] = useState([]);
@@ -89,6 +90,63 @@ const CodeSnippets = ({ isUserActive }) => {
 
     return (
         <div className="w-full h-full flex flex-col space-y-8">
+              {modalOpen && (
+                <div className="absolute z-10 top-0 left-0 w-full h-[100%] flex justify-center items-center bg-gray-900 bg-opacity-75">
+                    <div className="bg-[#1D232A] p-6  w-1/4 rounded-lg border border-gray-600 shadow-md">
+                        <h3 className="text-2xl text-gray-200 font-bold mb-4">Add Snippet</h3>
+                        <div className="mb-4">
+                            <label
+                                htmlFor="snippetText"
+                                className="block font-medium"
+                            >
+                                Snippet Text
+                            </label>
+                            <input
+                                type="text"
+                                id="snippetText"
+                                value={snippetText}
+                                onChange={(e) =>
+                                    setSnippetText(e.target.value)
+                                }
+                                className="w-full bg-[#15191d]  mt-2 text-gray-200 placeholder:text-gray-300 border py-2 pl-2  border-gray-300 rounded-md focus:ring-violet-500 focus:border-violet-500"
+                                placeholder="Type the name of the snippet"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label
+                                htmlFor="code"
+                                className="block font-medium"
+                            >
+                                Code
+                            </label>
+                            <textarea
+                                id="code"
+                                value={code}
+                                onChange={(e) => setCode(e.target.value)}
+                                rows="8"
+                                placeholder="Insert the code here"
+                                className="w-full bg-[#15191d] pl-2 pt-2 mt-2 text-gray-200 placeholder:text-gray-300 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500"
+                            ></textarea>
+                        </div>
+                        <div className="flex justify-end">
+                            <button
+                                onClick={addSnippet}
+                                className="px-4 py-2 bg-purple-500 hover:bg-purple-600 duration-300 text-white rounded-md"
+                            >
+                                Add
+                            </button>
+                            <button
+                                onClick={() => setModalOpen(false)}
+                                className="ml-2 px-4 py-2 bg-gray-300 hover:bg-gray-400 duration-300 text-gray-700 rounded-md"
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+
             {alert && (
                 <div className={`absolute bottom-6  flex flex-row items-center right-4 bg-${alert.type === 'success' ? 'green' : 'red'}-500 text-white text-center py-4 px-10`}>
                 {alert.type === 'success' ? <FaRegCircleCheck className='mr-2'/> : <IoCloseOutline className='mr-2'/>}
@@ -138,70 +196,15 @@ const CodeSnippets = ({ isUserActive }) => {
                 </div>
             </div>
 
-            {modalOpen && (
-                <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-700 bg-opacity-50">
-                    <div className="bg-gray-700 p-4  w-1/4 rounded-md shadow-md">
-                        <h3 className="text-2xl text-gray-200 font-bold mb-4">Add Snippet</h3>
-                        <div className="mb-4">
-                            <label
-                                htmlFor="snippetText"
-                                className="block font-medium"
-                            >
-                                Snippet Text
-                            </label>
-                            <input
-                                type="text"
-                                id="snippetText"
-                                value={snippetText}
-                                onChange={(e) =>
-                                    setSnippetText(e.target.value)
-                                }
-                                className="w-full py-2 pl-2  border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-                                placeholder="Type the name of the snippet"
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label
-                                htmlFor="code"
-                                className="block font-medium"
-                            >
-                                Code
-                            </label>
-                            <textarea
-                                id="code"
-                                value={code}
-                                onChange={(e) => setCode(e.target.value)}
-                                rows="8"
-                                placeholder="Insert the code here"
-                                className="w-full pl-2 pt-2 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-                            ></textarea>
-                        </div>
-                        <div className="flex justify-end">
-                            <button
-                                onClick={addSnippet}
-                                className="px-4 py-2 bg-purple-500 text-white rounded-md"
-                            >
-                                Add
-                            </button>
-                            <button
-                                onClick={() => setModalOpen(false)}
-                                className="ml-2 px-4 py-2 bg-gray-300 text-gray-700 rounded-md"
-                            >
-                                Cancel
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            )}
-
+          
             <div className="h-[10%] flex items-end justify-center">
                 {/* Previous Button */}
                 <button
                     onClick={() => paginate(currentPage - 1)}
-                    className="px-3 py-1 mx-1 rounded-md bg-purple-500 text-gray-100"
+                    className="px-3 py-1 mx-1 rounded-md flex flex-row items-center bg-purple-500 text-gray-100"
                     disabled={currentPage === 1}
                 >
-                    Previous
+                     <IoIosArrowBack className="mr-2"/> Previous
                 </button>
                 {/* Pagination */}
                 <nav className="inline-flex">
@@ -211,9 +214,9 @@ const CodeSnippets = ({ isUserActive }) => {
                             <button
                                 key={i}
                                 onClick={() => paginate(i + 1)}
-                                className={`px-3 py-1 mx-1 rounded-md bg-purple-500 text-gray-100 ${
+                                className={`px-3 py-1 mx-1 rounded-md bg-purple-200 text-gray-700 ${
                                     currentPage === i + 1
-                                        ? "bg-purple-600"
+                                        ? "bg-purple-400 text-gray-100"
                                         : ""
                                 }`}
                             >
@@ -225,10 +228,10 @@ const CodeSnippets = ({ isUserActive }) => {
                 {/* Next Button */}
                 <button
                     onClick={() => paginate(currentPage + 1)}
-                    className="px-3 py-1 mx-1 rounded-md bg-purple-500 text-gray-100"
+                    className="px-3 py-1 mx-1 rounded-md flex flex-row items-center bg-purple-500 text-gray-100"
                     disabled={currentPage === totalPages}
                 >
-                    Next
+                    Next <IoIosArrowForward className="ml-2"/> 
                 </button>
             </div>
         </div>
