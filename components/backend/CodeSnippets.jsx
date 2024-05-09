@@ -6,6 +6,7 @@ import SnippetCard from "./SnippetCard";
 import { IoCloseOutline } from "react-icons/io5";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import Skeleton from "../Skeleton";
 
 const CodeSnippets = ({ isUserActive }) => {
     const [snippets, setSnippets] = useState([]);
@@ -16,6 +17,7 @@ const CodeSnippets = ({ isUserActive }) => {
     const [snippetText, setSnippetText] = useState("");
     const [code, setCode] = useState("");
     const [alert, setAlert] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const showAlert = (type, message) => {
         setAlert({ type, message });
@@ -33,6 +35,7 @@ const CodeSnippets = ({ isUserActive }) => {
             const response = await axios.get("/api/getSnippets");
             setSnippets(response.data);
             setTotalPages(Math.ceil(response.data.length / snippetsPerPage));
+            setLoading(false);
         } catch (error) {
             console.error('Error fetching snippets:', error);
         }
@@ -89,10 +92,10 @@ const CodeSnippets = ({ isUserActive }) => {
     );
 
     return (
-        <div className="w-full h-full flex flex-col space-y-8">
-              {modalOpen && (
-                <div className="absolute z-10 top-0 left-0 w-full h-[100%] flex justify-center items-center bg-gray-900 bg-opacity-75">
-                    <div className="bg-[#1D232A] p-6  w-1/4 rounded-lg border border-gray-600 shadow-md">
+        <div className="w-full h-full flex flex-col space-y-8 relative">
+            {modalOpen && (
+                <div className="absolute z-10 top-0 left-0 w-full h-full flex justify-center items-center bg-gray-900 bg-opacity-75">
+                    <div className="bg-[#1D232A] p-6 w-1/4 rounded-lg border border-gray-600 shadow-md">
                         <h3 className="text-2xl text-gray-200 font-bold mb-4">Add Snippet</h3>
                         <div className="mb-4">
                             <label
@@ -108,7 +111,7 @@ const CodeSnippets = ({ isUserActive }) => {
                                 onChange={(e) =>
                                     setSnippetText(e.target.value)
                                 }
-                                className="w-full bg-[#15191d]  mt-2 text-gray-200 placeholder:text-gray-300 border py-2 pl-2  border-gray-300 rounded-md focus:ring-violet-500 focus:border-violet-500"
+                                className="w-full bg-[#15191d] mt-2 text-gray-200 placeholder:text-gray-300 border py-2 pl-2 border-gray-300 rounded-md focus:ring-violet-500 focus:border-violet-500"
                                 placeholder="Type the name of the snippet"
                             />
                         </div>
@@ -146,9 +149,8 @@ const CodeSnippets = ({ isUserActive }) => {
                 </div>
             )}
 
-
             {alert && (
-                <div className={`absolute bottom-6  flex flex-row items-center right-4 bg-${alert.type === 'success' ? 'green' : 'red'}-500 text-white text-center py-4 px-10`}>
+                <div className={`absolute bottom-6 flex flex-row items-center right-4 bg-${alert.type === 'success' ? 'green' : 'red'}-500 text-white text-center py-4 px-10`}>
                 {alert.type === 'success' ? <FaRegCircleCheck className='mr-2'/> : <IoCloseOutline className='mr-2'/>}
                 {alert.message}
                 </div>
@@ -177,22 +179,19 @@ const CodeSnippets = ({ isUserActive }) => {
                     </span>
                 </h2>
                 <div className="grid grid-cols-3 gap-4">
-                    {currentSnippets.map((snippet) => (
-                        <SnippetCard
-                            key={snippet.id}
-                            text={snippet.text}
-                            code={snippet.code}
-                            date={snippet.creation_date}
-                            onDelete={() => deleteSnippet(snippet.id)}
-                        />
-                    ))}
-                    {/* Placeholder cards to ensure 3x3 grid */}
-                    {currentSnippets.length < 9 &&
-                        Array(9 - currentSnippets.length)
-                            .fill(null)
-                            .map((_, index) => (
-                                <div key={index} className="bg-transparent h-1/3"></div>
-                            ))}
+                    {loading
+                        ? Array.from({ length: 9 }, (_, index) => (
+                              <Skeleton key={index} />
+                          ))
+                        : currentSnippets.map((snippet) => (
+                              <SnippetCard
+                                  key={snippet.id}
+                                  text={snippet.text}
+                                  code={snippet.code}
+                                  date={snippet.creation_date}
+                                  onDelete={() => deleteSnippet(snippet.id)}
+                              />
+                          ))}
                 </div>
             </div>
             <div className="h-[10%] flex items-end justify-center">
