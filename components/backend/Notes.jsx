@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SlNotebook } from "react-icons/sl";
 import SearchInput from './SearchInput';
 import Profile from './Profile';
+import axios from 'axios';
 
 const Notes = ({ isUserActive }) => {
   // State to store notes
@@ -14,16 +15,38 @@ const Notes = ({ isUserActive }) => {
   const addNote = () => {
     if (newNoteTitle.trim() !== '' && newNoteContent.trim() !== '') {
       const newNote = {
-        id: notes.length + 1, // Generate unique id for the note
-        title: newNoteTitle.trim(), // Title of the note
-        content: newNoteContent.trim(), // Content of the note
+        title: newNoteTitle.trim(),
+        content: newNoteContent.trim(),
       };
-      setNotes([...notes, newNote]);
-      setNewNoteTitle(''); // Clear title input after adding note
-      setNewNoteContent(''); // Clear content input after adding note
-      setShowAddNoteForm(false); // Hide the form after adding note
+
+      axios.post('/api/addNote', newNote)
+        .then(response => {
+          const { id } = response.data;
+          setNotes([...notes, { id, ...newNote }]);
+          setNewNoteTitle('');
+          setNewNoteContent('');
+          setShowAddNoteForm(false);
+        })
+        .catch(error => {
+          console.error('Error adding note:', error);
+        });
     }
   };
+
+  // Function to fetch notes from API
+  const fetchNotes = () => {
+    axios.get('/api/getNotes')
+      .then(response => {
+        setNotes(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching notes:', error);
+      });
+  };
+
+  useEffect(() => {
+    fetchNotes();
+  }, []);
 
   return (
     <div className='w-full h-full flex flex-col'>
