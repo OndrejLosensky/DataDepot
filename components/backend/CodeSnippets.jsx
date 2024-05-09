@@ -195,8 +195,6 @@ const CodeSnippets = ({ isUserActive }) => {
                             ))}
                 </div>
             </div>
-
-          
             <div className="h-[10%] flex items-end justify-center">
                 {/* Previous Button */}
                 <button

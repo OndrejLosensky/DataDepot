@@ -27,7 +27,7 @@ const Notes = ({ isUserActive }) => {
 
   return (
     <div className='w-full h-full flex flex-col'>
-      <div className='flex items-center justify-between h-[5%]'>
+      <div className='flex items-center justify-between h-12'>
         <div className='flex items-center gap-x-2'>
           <SlNotebook className='w-6 h-6 text-gray-200' />
           <p className='text-2xl text-gray-200 font-sora pr-4'>NoteStorage</p>
@@ -48,15 +48,17 @@ const Notes = ({ isUserActive }) => {
         </div>
       </div>
 
-      <div className='h-[95%] grid grid-cols-3 gap-4 pt-4 overflow-auto'>
+      <div className='overflow-auto pt-4'>
+        
+        <div className='grid grid-cols-3 gap-4'>
         {showAddNoteForm && (
-          <div className='col-span-3 bg-gray-800 rounded-md p-4'>
+          <div className='bg-gray-800 h-[350px] rounded-md p-4 mb-4'>
             <input
               type="text"
               value={newNoteTitle}
               onChange={(e) => setNewNoteTitle(e.target.value)}
               placeholder="Title"
-              className="w-full px-4 py-2 mb-4 bg-gray-700 text-gray-200 rounded-lg focus:outline-none"
+              className="w-full mb-4 px-4 py-2 bg-gray-700 text-gray-200 rounded-lg focus:outline-none"
             />
             <textarea
               value={newNoteContent}
@@ -64,7 +66,7 @@ const Notes = ({ isUserActive }) => {
               placeholder="Type your new note..."
               className="w-full h-24 px-4 py-2 mb-4 bg-gray-700 text-gray-200 rounded-lg resize-none focus:outline-none"
             />
-            <div className="flex justify-end mt-4">
+            <div className="flex justify-end">
               <button 
                 className="px-4 py-2 bg-purple-500 rounded-lg text-gray-100 mr-2"
                 onClick={addNote}
@@ -80,17 +82,18 @@ const Notes = ({ isUserActive }) => {
             </div>
           </div>
         )}
-        {notes.map(note => (
-          <div key={note.id} className='bg-gray-800 w-1/4 h-1/2 rounded-md p-4'>
-            <input
-              type="text"
-              value={note.title}
-              readOnly
-              className="mb-2 w-full px-4 py-2 bg-gray-700 text-gray-200 rounded-lg focus:outline-none"
-            />
-            <p className='text-gray-200'>{note.content}</p>
-          </div>
-        ))}
+          {notes.map(note => (
+            <div key={note.id} className='bg-gray-800 h-[350px] rounded-md p-4'>
+              <input
+                type="text"
+                value={note.title}
+                readOnly
+                className="mb-2 w-full px-4 py-2 bg-gray-700 text-gray-200 rounded-lg focus:outline-none"
+              />
+              <p className='text-gray-200'>{note.content}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
