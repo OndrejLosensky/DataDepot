@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { HiMiniArrowTrendingUp, HiMiniArrowTrendingDown} from "react-icons/hi2";
 
-const PercentageFolderCount = () => {
+const PercentageFolderCount = ({ onUpdatePercentage }) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -28,8 +28,12 @@ const PercentageFolderCount = () => {
     return growthPercentage;
   };
 
-  console.log(data); // Check if data is fetched correctly
-  console.log(error); // Check if there are any errors
+  useEffect(() => {
+    if (data) {
+      const percentage = parseFloat(calculatePercentage(data.todayCount, data.yesterdayCount));
+      onUpdatePercentage(percentage);
+    }
+  }, [data, onUpdatePercentage]);
 
   return (
     <div className='mt-4 '>

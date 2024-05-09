@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Chart from 'chart.js/auto';
 import axios from 'axios';
-import { GoArrowDownLeft, GoArrowUpRight } from "react-icons/go";
 import PercentageFolderCount from "./PercentageFolderCount";
 
 const FolderGraph = () => {
@@ -11,6 +10,14 @@ const FolderGraph = () => {
     const [folderData, setFolderData] = useState([]);
     const [prevCount, setPrevCount] = useState(0);
     const [percentChange, setPercentChange] = useState(0);
+    const [fillColor, setFillColor] = useState('rgba(30, 197, 92, 0.2)');
+    const [borderColor, setBorderColor] = useState('#22c55d');
+
+    const updatePercentage = (percentage) => {
+        setPercentChange(percentage);
+        setFillColor(parseFloat(percentage) < 0 ? 'rgba(255, 99, 132, 0.2)' : 'rgba(30, 197, 92, 0.2)');
+        setBorderColor(parseFloat(percentage) < 0 ? '#FF6384' : '#22c55d');
+    };
 
     useEffect(() => {
         const fetchTotalFolders = async () => {
@@ -29,13 +36,11 @@ const FolderGraph = () => {
         const fetchFolderData = async () => {
             try {
                 const response = await axios.get('/api/folders-v2');
-                console.log(response.data); // Log folder data to console
                 setFolderData(response.data);
             } catch (error) {
                 console.error("Error fetching folder data:", error);
             }
         };
-        
 
         fetchTotalFolders();
         fetchFolderData();
@@ -54,6 +59,13 @@ const FolderGraph = () => {
 
                 passwordsChartInstance.current.options.scales.y.min = 0;
 
+                // Update fill color and border color based on percentage change
+                passwordsChartInstance.current.data.datasets[0].fill = {
+                    target: 'origin',
+                    above: fillColor,
+                };
+                passwordsChartInstance.current.data.datasets[0].borderColor = borderColor;
+
                 passwordsChartInstance.current.update();
             }
         };
@@ -71,9 +83,9 @@ const FolderGraph = () => {
                         data: [],
                         fill: {
                             target: 'origin',
-                            above: 'rgba(30, 197, 92, 0.2)',
+                            above: fillColor,
                         },
-                        borderColor: '#22c55d',
+                        borderColor: borderColor,
                         tension: 0.3,
                     }]
                 },
@@ -97,40 +109,17 @@ const FolderGraph = () => {
             updateChart();
         }
 
-    }, [folderData]);
+    }, [folderData, fillColor, borderColor]);
 
     return (
         <div className='bg-[#20263d] w-full h-full rounded-lg flex flex-row shadow-lg border border-gray-500'>
             <div className='flex flex-col w-2/3'>
                 <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Folders</h1>
                 <div className='flex pl-4'>
-                   <PercentageFolderCount/>
+                    <PercentageFolderCount onUpdatePercentage={updatePercentage} />
                 </div>
             </div>
             <canvas className='p-8 w-1/3' ref={passwordsChartRef}></canvas>
-            {/* 
-            <div className="w-full h-full flex items-center justify-center flex-col ">
-                <h1 className="text-gray-200 text-3xl text-center font-semibold pt-6">Folder Data</h1>
-                <div className="w-full h-1/2 flex flex-col items-center justify-center">
-                    <table className="border-collapse border border-gray-600 text-gray-200 mt-4">
-                        <thead>
-                            <tr>
-                                <th className="border border-gray-600 px-4 py-2">Date</th>
-                                <th className="border border-gray-600 px-4 py-2">Count</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {folderData.map((row, index) => (
-                                <tr key={index}>
-                                    <td className="border border-gray-600 px-4 py-2">{row.date_created}</td>
-                                    <td className="border border-gray-600 px-4 py-2">{row.count}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            */}
         </div>
     );
 }

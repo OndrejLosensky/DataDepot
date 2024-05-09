@@ -10,6 +10,14 @@ const SnippetGraph = () => {
     const [snippetData, setSnippetData] = useState([]);
     const [prevCount, setPrevCount] = useState(0);
     const [percentChange, setPercentChange] = useState(0);
+    const [fillColor, setFillColor] = useState('rgba(30, 197, 92, 0.2)');
+    const [borderColor, setBorderColor] = useState('#22c55d');
+
+    const updatePercentage = (percentage) => {
+        setPercentChange(percentage);
+        setFillColor(parseFloat(percentage) < 0 ? 'rgba(255, 99, 132, 0.2)' : 'rgba(30, 197, 92, 0.2)');
+        setBorderColor(parseFloat(percentage) < 0 ? '#FF6384' : '#22c55d');
+    };
 
     useEffect(() => {
         const fetchTotalSnippets = async () => {
@@ -29,7 +37,6 @@ const SnippetGraph = () => {
         const fetchSnippetData = async () => {
             try {
                 const response = await axios.get('/api/snippets-v2');
-                console.log(response.data); // Log snippet data to console
                 setSnippetData(response.data);
             } catch (error) {
                 console.error("Error fetching snippet data:", error);
@@ -53,6 +60,12 @@ const SnippetGraph = () => {
 
                 snippetChartInstance.current.options.scales.y.min = 0;
 
+                snippetChartInstance.current.data.datasets[0].fill = {
+                    target: 'origin',
+                    above: fillColor,
+                };
+                snippetChartInstance.current.data.datasets[0].borderColor = borderColor;
+
                 snippetChartInstance.current.update();
             }
         };
@@ -67,9 +80,9 @@ const SnippetGraph = () => {
                         data: [],
                         fill: {
                             target: 'origin',
-                            above: 'rgba(30, 197, 92, 0.2)',
+                            above: fillColor,
                         },
-                        borderColor: '#22c55d',
+                        borderColor: borderColor,
                         tension: 0.3,
                     }]
                 },
@@ -93,14 +106,14 @@ const SnippetGraph = () => {
 
         updateChart();
 
-    }, [snippetData]);
+    }, [snippetData, fillColor, borderColor]);
 
     return (
         <div className='bg-[#20263d] w-full h-full rounded-lg flex flex-row shadow-lg border border-gray-500'>
             <div className='flex flex-col w-2/3'>
                 <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Snippets</h1>
                 <div className='flex pl-4'>
-                    <PercentageSnippetCount/>
+                    <PercentageSnippetCount onUpdatePercentage={updatePercentage} />
                 </div>
             </div>
             <canvas className='p-8 w-1/3' ref={snippetChartRef}></canvas>

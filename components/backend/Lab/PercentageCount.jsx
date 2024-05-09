@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { HiMiniArrowTrendingUp, HiMiniArrowTrendingDown} from "react-icons/hi2";
 
-const PercentageCount = () => {
+const PercentageCount = ({ onUpdatePercentage }) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -14,13 +14,17 @@ const PercentageCount = () => {
         }
         const result = await response.json();
         setData(result);
+        if (result) {
+          const percentage = calculatePercentage(result.todayCount, result.yesterdayCount);
+          onUpdatePercentage(percentage);
+        }
       } catch (error) {
         setError(error.message);
       }
     };
 
     fetchData();
-  }, []);
+  }, [onUpdatePercentage]);
 
   const calculatePercentage = (today, yesterday) => {
     if (yesterday === 0) return '100.00%';
@@ -32,13 +36,6 @@ const PercentageCount = () => {
     <div className='mt-4'>
       {data && (
         <div className='flex flex-col'>
-            {/* 
-          <div>
-            <p>Total passwords: {data.totalCount}</p>
-            <p>Passwords added yesterday: {data.yesterdayCount}</p>
-            <p>Passwords added today: {data.todayCount}</p>
-          </div>
-          */}
           <h2 className='text-4xl text-purple-500 font-bold'> {data.totalCount}</h2>
           <div className={parseFloat(calculatePercentage(data.todayCount, data.yesterdayCount)) < 0 ? "text-red-500 text-sm" : "text-green-500 text-sm"}>
             {parseFloat(calculatePercentage(data.todayCount, data.yesterdayCount)) < 0 ? (
