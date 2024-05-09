@@ -192,3 +192,15 @@ Spent hours today: `5 Hours 31 mins`
 
 
 ---
+
+## Day 16 - 9.5. 2024
+Today I have  made functional Notes section, where user can create note and save it inside the database. It also has an grid layout and input form that looks the same as single note card. Then i added Skeleton loader for both Notes and Coding Snippets sections. It looks better. Then i adjusted charts in the analytics page to turn red when user is in minus values in a growth and back to green when it hits 0 or +.
+
+Also i changed my portfolio tech stack and went for NextJs and TypeScript. I started by creating simple folder structure with functionaling international language setter. It can be changed in which language the website is visible. Its made using App router in the new Next.js
+
+Spent hours today: `4 Hours 22 mins`
+
+
+*I opened whole DataDepot repo just so i could write this Journey before i go to sleep (its 11:24PM)*
+
+--- 
