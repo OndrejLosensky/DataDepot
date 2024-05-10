@@ -42,6 +42,7 @@ const Notes = ({ isUserActive }) => {
       .then(response => {
         setNotes(response.data);
         setLoading(false); // Set loading to false after fetching
+       
       })
       .catch(error => {
         console.error('Error fetching notes:', error);
@@ -125,7 +126,7 @@ const Notes = ({ isUserActive }) => {
 
 
           {/* Display skeleton while loading */}
-          {loading && [1, 2, 3, 4, 5, 6].map(index => <Skeleton key={index} />)}
+          {loading && [1, 2, 3,4,5,6].map(index => <Skeleton key={index} />)}
 
           {/* Display filtered notes */}
           {!loading && filteredNotes.map(note => (
