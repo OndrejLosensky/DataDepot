@@ -182,7 +182,7 @@ const CodeSnippets = ({ isUserActive }) => {
                 </div>
             </div>
             <div className="h-[85%] overflow-y-auto">
-                <h2 className="text-xl font-sora font-semibold text-left text-gray-200 ">
+                <h2 className="text-xl mb-2 font-sora font-semibold text-left text-gray-200 ">
                     {" "}
                     Coding Snippets{" "}
                     <span className="text-gray-300 font-thin">

@@ -7,7 +7,9 @@ const GetStarted = () => {
   return (
     <div className='w-full flex flex-col items-center'>
         <p className='py-2 mx-auto bg-slate-800 shadow-md border border-gray-600 mt-12 rounded-full'>  <span className='px-4 ml-2 rounded-full bg-violet-600 drop-shadow-glow2 text-violet-100 py-1'> new </span>  <span className='px-4 text-gray-400 hover:text-gray-300 duration-200 '> Introducing DataDefender Algorithms </span></p>
-        <h1 className='text-4xl font-bold pt-10 text-gray-200'>Meet DataDepot</h1>
+        <h1 className="relative z-10 text-5xl mt-10  bg-clip-text text-transparent bg-gradient-to-br from-neutral-300 to-neutral-500  text-center font-sans font-bold">
+          Meet the DataDepot app
+        </h1>
 
         <p className='pt-4'> Efficient data management storage customized for a developer. Store passwords, documents, notes and more </p>
         <div className='grid grid-cols-2 w-1/2  gap-6 mt-8'>
