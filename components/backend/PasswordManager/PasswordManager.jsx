@@ -1,7 +1,5 @@
-// components/backend/Lab/PasswordManager.jsx
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image'
 import { IoClose } from "react-icons/io5";
 import { AiOutlineQuestion } from "react-icons/ai";
 import Profile from '../Profile';
@@ -19,10 +17,11 @@ import SearchInput from '../SearchInput';
 import Pagination from './Pagination';
 import { CiFolderOff } from "react-icons/ci";
 import FolderPerPage from './FolderPerPage';
-
+import Image from 'next/image';
 
 const PasswordManager = ({ isUserActive }) => {
   const [folders, setFolders] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const [newFolderName, setNewFolderName] = useState('');
   const [newFolderDescription, setNewFolderDescription] = useState('');
   const [showNewFolderInput, setShowNewFolderInput] = useState(false);
@@ -36,6 +35,8 @@ const PasswordManager = ({ isUserActive }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
   const [showFeature, setShowFeature] = useState(false);
+  const [alert, setAlert] = useState(null);
+  const [totalCount, setTotalCount] = useState(0);
 
   const closeBanner = () => {
     setShowBanner(false);
@@ -46,7 +47,6 @@ const PasswordManager = ({ isUserActive }) => {
     setIsClicked(true);
   };
 
-  const [alert, setAlert] = useState(null);
   const showAlert = (type, message) => {
     setAlert({ type, message });
     setTimeout(() => {
@@ -62,6 +62,92 @@ const PasswordManager = ({ isUserActive }) => {
     fetchFolders();
   }, []);
 
+  useEffect(() => {
+    fetchFolders();
+  }, [searchQuery]);
+
+  const fetchFolders = async () => {
+    try {
+      const response = await axios.get('/api/getFolders');
+      setFolders(response.data);
+    } catch (error) {
+      console.error('Failed to fetch folders:', error.message);
+      setFolders([]);
+    }
+  };
+
+  const truncateText = (text, maxLength) => {
+    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+  };
+
+  const handleNewFolderSubmit = async () => {
+    if (newFolderName.trim() !== '' && newFolderDescription.trim() !== '') {
+      try {
+        const response = await fetch('/api/newFolder', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            folderName: newFolderName,
+            folderDescription: newFolderDescription
+          }),
+        });
+        if (response.ok) {
+          await fetchFolders();
+          setNewFolderName('');
+          setNewFolderDescription('');
+        } else {
+          console.error('Failed to create folder:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Failed to create folder:', error.message);
+      }
+    }
+    setShowNewFolderInput(false);
+  };
+
+  const handleAddPasswordSubmit = async () => {
+    try {
+      const response = await axios.post('/api/newPassword', {
+        folderId: selectedFolder,
+        username: username,
+        password: password,
+        app: app,
+      });
+
+      if (response.data.success) {
+        console.log("Password added successfully!");
+        showAlert('success', 'Successfully deleted the password');
+        setUsername('');
+        setPassword('');
+        setApp('');
+        setSelectedFolder('');
+        await fetchFolders();
+        await fetchTotalPasswords();
+      } else {
+        console.error('Failed to add password:', response.data.error);
+        showAlert('error', 'Failed to delete create the password');
+      }
+    } catch (error) {
+      console.error('Failed to add password:', error.message);
+    }
+    setShowAddPasswordInput(false);
+  };
+
+  const fetchTotalPasswords = async () => {
+    try {
+      const response = await axios.get('/api/totalFolders');
+      setTotalCount(response.data.totalCount);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTotalPasswords();
+  }, []);
+
   const handleFolderClick = (folder) => {
     setSelectedFolder(folder);
     setSelectedComponent('passwordsPage');
@@ -73,97 +159,18 @@ const PasswordManager = ({ isUserActive }) => {
     fetchFolders();
   };
 
-  const fetchFolders = async () => {
-    try {
-        const response = await axios.get('/api/getFolders');
-        setFolders(response.data);
-    } catch (error) {
-        console.error('Failed to fetch folders:', error.message);
-        // Ensure that even if there's an error, the response is sent
-        setFolders([]); // Set an empty array or handle the error state accordingly
-    }
-};
-
-const truncateText = (text, maxLength) => {
-  return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
-};
-
-
-const handleNewFolderSubmit = async () => {
-  if (newFolderName.trim() !== '' && newFolderDescription.trim() !== '') {
-      try {
-          const response = await fetch('/api/newFolder', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ 
-                  folderName: newFolderName,
-                  folderDescription: newFolderDescription
-              }),
-          });
-          if (response.ok) {
-              await fetchFolders();
-              setNewFolderName('');
-              setNewFolderDescription('');
-          } else {
-              console.error('Failed to create folder:', response.statusText);
-          }
-      } catch (error) {
-          console.error('Failed to create folder:', error.message);
-      }
-  }
-  setShowNewFolderInput(false);
-};
-
-  
-
-  const handleAddPasswordSubmit = async () => {
-    try {
-        const response = await axios.post('/api/newPassword', {
-            folderId: selectedFolder,
-            username: username,
-            password: password,
-            app: app,
-        });
-
-        if (response.data.success) {
-            console.log("Password added successfully!");
-            showAlert('success', 'Successfully deleted the password');
-            setUsername('');
-            setPassword('');
-            setApp('');
-            setSelectedFolder('');
-            await fetchFolders();
-            await fetchTotalPasswords(); 
-        } else {
-            console.error('Failed to add password:', response.data.error);
-            showAlert('error', 'Failed to delete create the password');
-        }
-    } catch (error) {
-        console.error('Failed to add password:', error.message);
-    }
-    setShowAddPasswordInput(false);
-};
-
-
-  const [totalCount, setTotalCount] = useState(0);
-        
-  const fetchTotalPasswords = async () => {
-    try {
-        const response = await axios.get('/api/totalFolders');
-        setTotalCount(response.data.totalCount);
-    } catch (error) {
-        console.error(error);
-    }
+  const handleSearch = (query) => {
+    setSearchQuery(query);
   };
 
-    useEffect(() => {
-        fetchTotalPasswords();
-    }, []);
+  const filteredFolders = folders.filter(folder => {
+    return folder.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+           folder.description.toLowerCase().includes(searchQuery.toLowerCase());
+  });
 
   return (
     <div className='w-auto h-[100%] overflow-hidden mr-4'>
+      {/* Help component */}
       {selectedComponent === 'help' && (
         <div className='w-full h-full overflow-hidden mb-12'>
           <button className='flex flex-row absolute top-4 items-center px-4 text-gray-200 py-1 bg-gray-700 mb-4 rounded-lg shadow-lg' onClick={() => setSelectedComponent('folders')} > <BsArrow90DegLeft className='mr-2'/> Back </button>
@@ -171,12 +178,14 @@ const handleNewFolderSubmit = async () => {
         </div>
       )}
 
+      {/* Passwords component */}
       {selectedComponent === 'passwordsPage' && (
         <div className='w-full h-full mb-12'>
           <Passwords folder={selectedFolder} onClose={handleClosePasswordsPage} showAlert={showAlert} />
         </div>
       )}
 
+      {/* Alert banner */}
       {alert && (
         <div className={`absolute bottom-6  flex flex-row items-center right-4 bg-${alert.type === 'success' ? 'green' : 'red'}-500 text-white text-center py-4 px-10`}>
           {alert.type === 'success' ? <FaRegCircleCheck className='mr-2'/> : <IoCloseOutline className='mr-2'/>}
@@ -184,6 +193,7 @@ const handleNewFolderSubmit = async () => {
         </div>
       )}
 
+      {/* Generate Password component */}
       {selectedComponent === 'generate' ? (
         <div className='w-auto h-full'>
           <button className='flex flex-row absolute top-4 items-center px-4 text-gray-200 py-1 bg-gray-700 rounded-lg shadow-lg' onClick={() => setSelectedComponent('folders')} > <BsArrow90DegLeft className='mr-2'/> Back </button>
@@ -194,36 +204,42 @@ const handleNewFolderSubmit = async () => {
           {/* Navbar */}
           <div className='flex flex-row justify-between overflow-hidden py-1 h-[5%]  items-center'>
             <div className='flex flex-row gap-x-4'>
+              {/* Add Password button */}
               <button
                 onClick={() => setShowAddPasswordInput(!showAddPasswordInput)}
                 className='bg-purple-500 text-gray-200 px-4 py-2 rounded-md shadow-md hover:bg-purple-600 duration-300'
               >
                 + Add Password
               </button>
+              {/* Generate Secure Password button */}
               <button
                 onClick={() => setSelectedComponent('generate')}
                 className='border border-gray-300 hover:bg-[#323a59] hover:border-gray-100 duration-300 text-gray-300 px-4 py-2 rounded-md'
               >
                 Generate Secure Password
               </button>
-              <div className='z-10 '>
-                <SearchInput placeholder="Search passwords"/>
+              {/* Search Input */}
+              <div className='z-10'>
+                <SearchInput placeholder="Search passwords..." setSearchQuery={setSearchQuery} />
               </div>
             </div>
             <div className='flex flex-row items-center'>
+              {/* Help button */}
               <button onClick={() => setSelectedComponent('help')}> <AiOutlineQuestion className='text-gray-200 bg-[#323232] hover:text-gray-50 duration-300 hover:shadow-xl hover:border-gray-400 border border-transparent w-7 h-7 mr-2 p-1 rounded-full' /></button>
+              {/* Profile component */}
               <div className='flex flex-row relative'>
                 <Profile isUserActive={isUserActive} />
               </div>
             </div>
           </div>
 
+          {/* Add Password form */}
           {showAddPasswordInput && (
             <div className='absolute flex flex-col w-auto mx-auto z-10 px-8 h-[385px] justify-center p-2 rounded-lg shadow-lg bg-[#41434e]'>
-               <div className='flex flex-row justify-between items-center mb-2'>
-                      <p className='font-light text-lg text-gray-300'> Create new folder</p>
-                      <IoCloseOutline className='text-gray-200 hover:bg-gray-600 rounded-full w-6 h-6 ' onClick={() => setShowAddPasswordInput(!showAddPasswordInput)} />
-                </div>
+              <div className='flex flex-row justify-between items-center mb-2'>
+                <p className='font-light text-lg text-gray-300'> Create new folder</p>
+                <IoCloseOutline className='text-gray-200 hover:bg-gray-600 rounded-full w-6 h-6 ' onClick={() => setShowAddPasswordInput(!showAddPasswordInput)} />
+              </div>
               <p> Where does the password belong to?</p>
               <select
                 className="p-2 border rounded-md"
@@ -259,38 +275,38 @@ const handleNewFolderSubmit = async () => {
                 onChange={(e) => setPassword(e.target.value)}
                 className='p-2 border rounded-md'
               />
-
               <button
                 onClick={handleAddPasswordSubmit}
                 className='mt-2 px-4 py-2 bg-purple-500 text-gray-200 rounded-md shadow-md hover:bg-purple-600 duration-300'
               >
                 Add Password
               </button>
-          </div>
+            </div>
           )}
+
           {/* Banner */}
           {showBanner && (
-          <div className='w-full bg-gray-800 h-[25%] flex flex-row overflow-hidden'>
-            <div className='w-1/4 flex justify-center items-center'>
-              <Image src="/lock.svg" width={150} height={150} alt='Icon for banner' className='rounded-full bg-gray-500 m-16 p-6' />
-            </div>
-            <div className='w-3/4 relative justify-center space-y-2 flex flex-col'>
-              <button className='absolute right-4 top-4 hover:bg-gray-600 duration-300 p-1 rounded-full' onClick={closeBanner}> <IoClose className='text-gray-200 w-5 h-5' /> </button>
-              <h1 className='text-3xl font-bold text-gray-200 font-inter'> Welcome to PasswordDepot</h1>
-              <p className='font-light text-gray-300 font-roboto'> You can store your passwords here and make them as much as organized as you like </p>
-              <br />
-              <div className='flex flex-row space-x-6'>
-                <button className='px-4 py-2 bg-purple-500 hover:bg-purple-600 duration-300 text-gray-200 rounded-md shadow-md'> See how it works</button>
-                <button className='text-gray-300 px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-300 hover:text-gray-800 duration-500 ' onClick={closeBanner}> Maybe later</button>
+            <div className='w-full bg-gray-800 h-[25%] flex flex-row overflow-hidden'>
+              <div className='w-1/4 flex justify-center items-center'>
+                <Image src="/lock.svg" width={150} height={150} alt='Icon for banner' className='rounded-full bg-gray-500 m-16 p-6' />
+              </div>
+              <div className='w-3/4 relative justify-center space-y-2 flex flex-col'>
+                <button className='absolute right-4 top-4 hover:bg-gray-600 duration-300 p-1 rounded-full' onClick={closeBanner}> <IoClose className='text-gray-200 w-5 h-5' /> </button>
+                <h1 className='text-3xl font-bold text-gray-200 font-inter'> Welcome to PasswordDepot</h1>
+                <p className='font-light text-gray-300 font-roboto'> You can store your passwords here and make them as much as organized as you like </p>
+                <br />
+                <div className='flex flex-row space-x-6'>
+                  <button className='px-4 py-2 bg-purple-500 hover:bg-purple-600 duration-300 text-gray-200 rounded-md shadow-md'> See how it works</button>
+                  <button className='text-gray-300 px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-300 hover:text-gray-800 duration-500 ' onClick={closeBanner}> Maybe later</button>
+                </div>
               </div>
             </div>
-          </div>
-        )}
-        {showFeature && (
-          <div className="flex items-center justify-center h-[25%] transition-height duration-300">
-            <h1 className="text-3xl font-semibold text-gray-300">Feature Coming Soon</h1>
-          </div>
-        )}
+          )}
+          {showFeature && (
+            <div className="flex items-center justify-center h-[25%] transition-height duration-300">
+              <h1 className="text-3xl font-semibold text-gray-300">Feature Coming Soon</h1>
+            </div>
+          )}
 
           {/* Passwords (cards with folders) */}
           <div className='w-full h-[70%] flex flex-col overflow-hidden'>
@@ -357,8 +373,8 @@ const handleNewFolderSubmit = async () => {
             </div>
 
             <div className='grid grid-cols-4 h-4/6 w-[100%] gap-4 relative '>
-            {folders.length > 0 ? (
-              folders.map((folder) => (
+            {filteredFolders.length > 0 ? (
+              filteredFolders.map((folder) => (
                 <div key={folder.id} className={`duration-300 ${selectedIcon === 'list' ? 'border-gray-500 hover:border-gray-300' : 'border-gray-500 hover:border-gray-300'}`}>
                   {selectedIcon === 'list' ? (
                     <div onClick={() => handleFolderClick(folder)} className='flex h-16 cursor-pointer items-center justify-between bg-[#303444] rounded-sm p-4 border border-gray-500 hover:border-gray-200 duration-300'>
