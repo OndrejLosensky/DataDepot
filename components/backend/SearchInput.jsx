@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const SearchInput = ({ placeholder }) => {
+const SearchInput = ({ placeholder, setSearchQuery }) => {
     const [isClicked, setIsClicked] = useState(false);
-    const [searchItems, setSearchItems] = useState([]);
+    const [searchValue, setSearchValue] = useState('');
     const inputRef = useRef(null);
 
     useEffect(() => {
@@ -32,15 +32,16 @@ const SearchInput = ({ placeholder }) => {
         setIsClicked(true);
     };
 
-    // Function to simulate searching (replace it with actual search functionality)
-    const search = (query) => {
-        // Simulated search results
-        const results = [
-            { id: 1, name: 'Result 1' },
-            { id: 2, name: 'Result 2' },
-            { id: 3, name: 'Result 3' },
-        ];
-        setSearchItems(results);
+    // Function to set search query
+    const handleSearch = (e) => {
+        setSearchValue(e.target.value);
+        setSearchQuery(e.target.value);
+    };
+
+    // Function to clear search input
+    const clearSearch = () => {
+        setSearchValue('');
+        setSearchQuery('');
     };
 
     return (
@@ -54,11 +55,19 @@ const SearchInput = ({ placeholder }) => {
                     className="grow"
                     placeholder={placeholder}
                     onClick={handleInputClick}
-                    onChange={(e) => search(e.target.value)}
+                    onChange={handleSearch}
+                    value={searchValue}
                 />
                 <kbd className="kbd kbd-sm ">⌘</kbd>
                 <kbd className="kbd kbd-sm">K</kbd>
             </label>
+            {searchValue && (
+                <button onClick={clearSearch} className="absolute right-0 translate-x-10 top-0 bottom-0 flex items-center px-2 text-gray-400 hover:text-gray-200 duration-300 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                        <path fillRule="evenodd" d="M3.293 4.293a1 1 0 0 1 1.414 1.414L10 10.414l5.293-5.293a1 1 0 1 1 1.414 1.414L11.414 12l5.293 5.293a1 1 0 0 1-1.414 1.414L10 13.414l-5.293 5.293a1 1 0 1 1-1.414-1.414L8.586 12 3.293 6.707a1 1 0 0 1 0-1.414z" clipRule="evenodd" />
+                    </svg>
+                </button>
+            )}
         </div>
     );
 };

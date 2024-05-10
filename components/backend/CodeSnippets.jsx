@@ -18,6 +18,7 @@ const CodeSnippets = ({ isUserActive }) => {
     const [code, setCode] = useState("");
     const [alert, setAlert] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [searchQuery, setSearchQuery] = useState('');
 
     const showAlert = (type, message) => {
         setAlert({ type, message });
@@ -30,11 +31,18 @@ const CodeSnippets = ({ isUserActive }) => {
         fetchSnippets();
     }, []);
 
+    useEffect(() => {
+        const filteredSnippets = snippets.filter(snippet => {
+            return snippet.text.toLowerCase().includes(searchQuery.toLowerCase()) || snippet.code.toLowerCase().includes(searchQuery.toLowerCase());
+        });
+        setTotalPages(Math.ceil(filteredSnippets.length / snippetsPerPage));
+        setCurrentPage(1);
+    }, [snippets, searchQuery]);
+
     const fetchSnippets = async () => {
         try {
             const response = await axios.get("/api/getSnippets");
             setSnippets(response.data);
-            setTotalPages(Math.ceil(response.data.length / snippetsPerPage));
             setLoading(false);
         } catch (error) {
             console.error('Error fetching snippets:', error);
@@ -86,7 +94,10 @@ const CodeSnippets = ({ isUserActive }) => {
 
     const indexOfLastSnippet = currentPage * snippetsPerPage;
     const indexOfFirstSnippet = indexOfLastSnippet - snippetsPerPage;
-    const currentSnippets = snippets.slice(
+    const filteredSnippets = snippets.filter(snippet => {
+        return snippet.text.toLowerCase().includes(searchQuery.toLowerCase()) || snippet.code.toLowerCase().includes(searchQuery.toLowerCase());
+    });
+    const currentSnippets = filteredSnippets.slice(
         indexOfFirstSnippet,
         indexOfLastSnippet
     );
@@ -164,7 +175,7 @@ const CodeSnippets = ({ isUserActive }) => {
                     >
                         + Add
                     </button>
-                    <SearchInput placeholder="Search for a snippet" />
+                    <SearchInput placeholder="Search for a snippet" setSearchQuery={setSearchQuery} />
                 </div>
                 <div className="flex flex-row relative">
                     <Profile isUserActive={isUserActive} />
@@ -175,7 +186,7 @@ const CodeSnippets = ({ isUserActive }) => {
                     {" "}
                     Coding Snippets{" "}
                     <span className="text-gray-300 font-thin">
-                        ({snippets.length})
+                        ({filteredSnippets.length} / {snippets.length})
                     </span>
                 </h2>
                 <div className="grid grid-cols-3 gap-4">

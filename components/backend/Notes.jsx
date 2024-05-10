@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { SlNotebook } from "react-icons/sl";
-import SearchInput from './SearchInput';
 import Profile from './Profile';
 import axios from 'axios';
 import Skeleton from '../Skeleton';
+import SearchInput from '../backend/SearchInput';
 
 const Notes = ({ isUserActive }) => {
   // State to store notes and loading state
@@ -12,6 +12,7 @@ const Notes = ({ isUserActive }) => {
   const [newNoteTitle, setNewNoteTitle] = useState('');
   const [newNoteContent, setNewNoteContent] = useState('');
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Function to add a new note
   const addNote = () => {
@@ -40,10 +41,7 @@ const Notes = ({ isUserActive }) => {
     axios.get('/api/getNotes')
       .then(response => {
         setNotes(response.data);
-        // Timeout for testing the looks of the skeleton
-        setTimeout = () => {
-          setLoading(false); // Set loading to false after fetching
-        }, 3000;
+        setLoading(false); // Set loading to false after fetching
       })
       .catch(error => {
         console.error('Error fetching notes:', error);
@@ -54,13 +52,20 @@ const Notes = ({ isUserActive }) => {
     fetchNotes();
   }, []);
 
+  // Function to filter notes based on search query
+  const filteredNotes = notes.filter(note => {
+    return note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+           note.content.toLowerCase().includes(searchQuery.toLowerCase());
+  });
+
   return (
     <div className='w-full h-full flex flex-col'>
       <div className='flex items-center justify-between h-12'>
         <div className='flex items-center gap-x-2'>
           <SlNotebook className='w-6 h-6 text-gray-200' />
           <p className='text-2xl text-gray-200 font-sora pr-4'>NoteStorage</p>
-          <SearchInput placeholder="Search note" />
+          {/* Search Input */}
+          <SearchInput placeholder="Search notes..." setSearchQuery={setSearchQuery} />
         </div>
         <div className='flex items-center'>
           {!showAddNoteForm && (
@@ -78,6 +83,7 @@ const Notes = ({ isUserActive }) => {
       </div>
 
       <div className='overflow-auto pt-4'>
+
         <div className='grid grid-cols-3 gap-4'>
           {showAddNoteForm && (
             <div className='bg-gray-800 h-[350px] rounded-md p-4 mb-4'>
@@ -114,8 +120,8 @@ const Notes = ({ isUserActive }) => {
           {/* Display skeleton while loading */}
           {loading && [1, 2, 3, 4, 5, 6].map(index => <Skeleton key={index} />)}
 
-          {/* Display notes */}
-          {!loading && notes.map(note => (
+          {/* Display filtered notes */}
+          {!loading && filteredNotes.map(note => (
             <div key={note.id} className='bg-gray-800 h-[350px] rounded-md p-4'>
               <input
                 type="text"
