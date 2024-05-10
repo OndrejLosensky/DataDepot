@@ -204,3 +204,12 @@ Spent hours today: `4 Hours 22 mins`
 *I opened whole DataDepot repo just so i could write this Journey before i go to sleep (its 11:24PM)*
 
 --- 
+
+## Day 17 - 10.5. 2024
+Today I made some changes to PasswordManager UI so it looks same, and updated the filtering by search input. I have made query parameters to be able to search in the maps of folders, notes and coding snippets. I work relatively well. Tommorow I gotta add last chart to the Analytics page so its first row is complete.
+
+I have also been working on my personal portfolio which I plan to release in the summer so I can land a job.
+
+Spent hours today: `2 Hours 43 mins`
+
+--- 
