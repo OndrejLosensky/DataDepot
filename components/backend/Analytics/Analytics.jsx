@@ -256,8 +256,8 @@ const Overview = ({ isUserActive}) => {
                                    </div>
                               </div>
                               <div className='h-[20%] w-full rounded-b-md bg-gray-500 text-gray-100 flex flex-row justify-between items-center px-4'>
-                                  <p className='font-semibold'>Apple </p>
-                                  <p className='text-gray-300 font-light'> 12 </p>
+                                  <p className='font-semibold'>Files</p>
+                                  <p className='text-gray-300 font-light'> 122 </p>
                               </div>
                       </div>
                       <div className='w-1/4 h-full flex flex-col items-center justify-center rounded-md bg-gray-600'>
@@ -268,8 +268,8 @@ const Overview = ({ isUserActive}) => {
                               </div>
                               </div>
                               <div className='h-[20%] w-full rounded-b-md bg-gray-500 text-gray-100 flex flex-row justify-between items-center px-4'>
-                                  <p className='font-semibold'>Dev </p>
-                                  <p className='text-gray-300 font-light'> 111 </p>
+                                  <p className='font-semibold'> Notes </p>
+                                  <p className='text-gray-300 font-light'> 1742 </p>
                               </div>
                       </div>
                       <div className='w-1/4 h-full flex flex-col items-center justify-center rounded-md bg-gray-600'>
@@ -292,8 +292,8 @@ const Overview = ({ isUserActive}) => {
                                    </div>
                               </div>
                               <div className='h-[20%] w-full rounded-b-md bg-gray-500 text-gray-100 flex flex-row justify-between items-center px-4'>
-                                  <p className='font-semibold'>Notes </p>
-                                  <p className='text-gray-300 font-light'> 7 </p>
+                                  <p className='font-semibold'>Snippets</p>
+                                  <p className='text-gray-300 font-light'> 71 </p>
                               </div>
                       </div>
                    </div>

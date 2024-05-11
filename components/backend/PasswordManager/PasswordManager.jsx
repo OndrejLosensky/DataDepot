@@ -311,7 +311,7 @@ const PasswordManager = ({ isUserActive }) => {
                     {" "}
                     {" "}
                     <span className="text-gray-300 font-thin">
-                        ({filteredFolders.length} / {folders.length})
+                        ({filteredFolders.length})
                     </span></span>
                 </h1>
                 <div className='relative flex flex-row space-x-4'>
@@ -375,56 +375,51 @@ const PasswordManager = ({ isUserActive }) => {
               </div>
 
               <div className='grid grid-cols-4 gap-4 h-[85%] mt-4 w-full'>
-                {loading && [1, 2, 3, 4, 5, 6, 7, 8].map(index => <SkeletonFolder key={index} />)}
-
-                {filteredFolders.length > 0 ? (
-                  filteredFolders.map((folder, index) => (
-                    <div key={folder.id} className={`duration-300 ${selectedIcon === 'list' ? 'border-gray-500 hover:border-gray-300' : 'border-gray-500 hover:border-gray-300'}`}>
-                      {selectedIcon === 'list' ? (
-                        <div onClick={() => handleFolderClick(folder)} className='flex h-16 cursor-pointer items-center justify-between bg-[#303444] rounded-sm p-4 border border-gray-500 hover:border-gray-200 duration-300'>
-                          <div className='flex flex-row justify-between items-center w-full'>
-                            <div className='flex flex-row items-center'>
-                              <Image alt='static icon' width={48} height={24} src="/google.png" className='mr-2'/>
-                              <h1 className='text-xl font-semibold text-gray-300'>{truncateText(folder.name, 20)}</h1>
-                            </div>
-                            <p className='text-gray-400'>{folder.passwords ? folder.passwords.length : 0} {folder.passwords && folder.passwords.length === 1 ? 'item' : 'items'}</p>
-                          </div>
-                        </div>
-                      ) : (
-                        <div onClick={() => handleFolderClick(folder)} className='h-32 bg-[#20263d] cursor-pointer rounded-sm border border-gray-500 hover:border-gray-200 duration-300'>
-                          <div className='h-full bg-[#303444] rounded-sm flex flex-col justify-between'>
-                            <div className='p-3 flex flex-row justify-between items-center'>
-                              <div className='flex flex-row items-center'>
-                                <Image alt='static icon' width={48} height={24} src="/google.png" className='mr-2'/>
-                                <h1 className='text-xl font-semibold text-gray-300'>{folder.name}</h1>
+                {loading ? (
+                        Array.from({ length: 12 }, (_, index) => (
+                          <SkeletonFolder key={index}/>
+                        ))
+                    ) : filteredFolders.length === 0 ? (
+                        <p className="text-gray-300 font-light text-2xl">No folders found</p>
+                    ) : (
+                      filteredFolders.map((folder, index) => (
+                        <div key={folder.id} className={`duration-300 ${selectedIcon === 'list' ? 'border-gray-500 hover:border-gray-300' : 'border-gray-500 hover:border-gray-300'}`}>
+                          {selectedIcon === 'list' ? (
+                            <div onClick={() => handleFolderClick(folder)} className='flex h-16 cursor-pointer items-center justify-between bg-[#303444] rounded-sm p-4 border border-gray-500 hover:border-gray-200 duration-300'>
+                              <div className='flex flex-row justify-between items-center w-full'>
+                                <div className='flex flex-row items-center'>
+                                  <Image alt='static icon' width={48} height={24} src="/google.png" className='mr-2'/>
+                                  <h1 className='text-xl font-semibold text-gray-300'>{truncateText(folder.name, 20)}</h1>
+                                </div>
+                                <p className='text-gray-400'>{folder.passwords ? folder.passwords.length : 0} {folder.passwords && folder.passwords.length === 1 ? 'item' : 'items'}</p>
                               </div>
-                              <p className='text-gray-400'>{folder.passwords ? folder.passwords.length : 0} {folder.passwords && folder.passwords.length === 1 ? 'item' : 'items'}</p>
                             </div>
-                            <div className='flex flex-col justify-center items-start p-4 text-gray-300 pb-2'>
-                              <p className='font-thin'>{truncateText(folder.description, 30)}</p>
-                              <p className='font-light text-gray-300'>{folder.date_created}</p>
+                          ) : (
+                            <div onClick={() => handleFolderClick(folder)} className='h-32 bg-[#20263d] cursor-pointer rounded-sm border border-gray-500 hover:border-gray-200 duration-300'>
+                              <div className='h-full bg-[#303444] rounded-sm flex flex-col justify-between'>
+                                <div className='p-3 flex flex-row justify-between items-center'>
+                                  <div className='flex flex-row items-center'>
+                                    <Image alt='static icon' width={48} height={24} src="/google.png" className='mr-2'/>
+                                    <h1 className='text-xl font-semibold text-gray-300'>{folder.name}</h1>
+                                  </div>
+                                  <p className='text-gray-400'>{folder.passwords ? folder.passwords.length : 0} {folder.passwords && folder.passwords.length === 1 ? 'item' : 'items'}</p>
+                                </div>
+                                <div className='flex flex-col justify-center items-start p-4 text-gray-300 pb-2'>
+                                  <p className='font-thin'>{truncateText(folder.description, 30)}</p>
+                                  <p className='font-light text-gray-300'>{folder.date_created}</p>
+                                </div>
+                              </div>
                             </div>
-                          </div>
+                          )}
                         </div>
-                      )}
-                    </div>
-                  ))
-                ) : (
-                  <div className="col-span-4 h-full text-gray-400 flex items-center justify-center">
-                    <div className='flex flex-row space-x-2 items-center'>
-                      <CiFolderOff className='w-10 h-10'/>
-                      <h2 className='text-xl'>No folders were found...</h2>
-                    </div>
-                  </div>
-                )}
+                      ))
+                    )}
+
               </div>
             </div>
 
           </div>
-          {/* Pagination */}
-          <div className='flex flex-row w-full h-12 items-center justify-end' >
-            <Pagination/>
-          </div>
+
         </div>
       )}
     </div>

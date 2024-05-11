@@ -12,10 +12,11 @@ const CodeSnippets = ({ isUserActive }) => {
     const [snippets, setSnippets] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const [snippetsPerPage] = useState(9);
+    const [snippetsPerPage] = useState(6);
     const [modalOpen, setModalOpen] = useState(false);
     const [snippetText, setSnippetText] = useState("");
     const [code, setCode] = useState("");
+    const [tags, setTags] = useState("");
     const [alert, setAlert] = useState(null);
     const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
@@ -46,6 +47,7 @@ const CodeSnippets = ({ isUserActive }) => {
             setLoading(false);
         } catch (error) {
             console.error('Error fetching snippets:', error);
+            setLoading(false); // Set loading to false on error
         }
     };
 
@@ -54,6 +56,7 @@ const CodeSnippets = ({ isUserActive }) => {
             const response = await axios.post("/api/addSnippet", {
                 text: snippetText,
                 code: code,
+                tags: tags.split(",").map(tag => tag.trim()), // Split tags by comma and trim each tag
             });
 
             if (!code || snippetText === "") {
@@ -63,10 +66,12 @@ const CodeSnippets = ({ isUserActive }) => {
                 setModalOpen(false);
                 setSnippetText("");
                 setCode("");
+                setTags("");
                 showAlert("success", "Snippet added successfully!");
             }
         } catch (error) {
             console.error('Error adding snippet:', error);
+            showAlert("error", "Failed to add snippet");
         }
     };
 
@@ -77,18 +82,19 @@ const CodeSnippets = ({ isUserActive }) => {
             });
             if (response.status === 200) {
                 fetchSnippets();
+                showAlert("success", "Snippet deleted successfully!");
             }
         } catch (error) {
             console.error('Error deleting snippet:', error);
+            showAlert("error", "Failed to delete snippet");
         }
     };
 
+    const editSnippet = (id, text, code, tags) => {
+        // edit functionality
+    };
+
     const paginate = (pageNumber) => {
-        if (pageNumber < 1) {
-            pageNumber = 1;
-        } else if (pageNumber > totalPages) {
-            pageNumber = totalPages;
-        }
         setCurrentPage(pageNumber);
     };
 
@@ -142,6 +148,24 @@ const CodeSnippets = ({ isUserActive }) => {
                                 className="w-full bg-[#15191d] pl-2 pt-2 mt-2 text-gray-200 placeholder:text-gray-300 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500"
                             ></textarea>
                         </div>
+                        <div className="mb-4">
+                            <label
+                                htmlFor="tags"
+                                className="block font-medium"
+                            >
+                                Tags (comma-separated)
+                            </label>
+                            <input
+                                type="text"
+                                id="tags"
+                                value={tags}
+                                onChange={(e) =>
+                                    setTags(e.target.value)
+                                }
+                                className="w-full bg-[#15191d] mt-2 text-gray-200 placeholder:text-gray-300 border py-2 pl-2 border-gray-300 rounded-md focus:ring-violet-500 focus:border-violet-500"
+                                placeholder="Add tags"
+                            />
+                        </div>
                         <div className="flex justify-end">
                             <button
                                 onClick={addSnippet}
@@ -182,34 +206,43 @@ const CodeSnippets = ({ isUserActive }) => {
                 </div>
             </div>
             <div className="h-[85%] overflow-y-auto">
-                <h2 className="text-xl mb-2 font-sora font-semibold text-left text-gray-200 ">
+                <h2 className="text-xl h-[5%] mb-2 font-sora font-semibold text-left text-gray-200 ">
                     {" "}
                     Coding Snippets{" "}
                     <span className="text-gray-300 font-thin">
-                        ({filteredSnippets.length} / {snippets.length})
+                        ({filteredSnippets.length})
                     </span>
                 </h2>
-                <div className="grid grid-cols-3 gap-4">
-                    {loading
-                        ? Array.from({ length: 9 }, (_, index) => (
-                              <Skeleton key={index} />
-                          ))
-                        : currentSnippets.map((snippet) => (
-                              <SnippetCard
-                                  key={snippet.id}
-                                  text={snippet.text}
-                                  code={snippet.code}
-                                  date={snippet.creation_date}
-                                  onDelete={() => deleteSnippet(snippet.id)}
-                              />
-                          ))}
+                <div className="grid h-[90%] grid-cols-3 gap-4">
+                    {loading ? (
+                        Array.from({ length: 6 }, (_, index) => (
+                            <Skeleton key={index} />
+                        ))
+                    ) : currentSnippets.length === 0 ? (
+                        <p className="text-gray-300 text-center justify-center items-center pt-64 text-2xl col-span-3">No snippets found</p>
+                    ) : (
+                        currentSnippets.map((snippet) => (
+                            <SnippetCard
+                                key={snippet.id}
+                                id={snippet.id}
+                                text={snippet.text}
+                                code={snippet.code}
+                                tag={snippet.tag}
+                                date={snippet.creation_date}
+                                onDelete={deleteSnippet}
+                                onEdit={editSnippet}
+                            />
+                        ))
+                    )}
                 </div>
+
+
             </div>
             <div className="h-[10%] flex items-end justify-center">
                 {/* Previous Button */}
                 <button
                     onClick={() => paginate(currentPage - 1)}
-                    className="px-3 py-1 mx-1 rounded-md flex flex-row items-center bg-purple-500 text-gray-100"
+                    className={`px-3 py-1 mx-1 rounded-md flex flex-row items-center ${currentPage === 1 ? "bg-gray-400 text-gray-500 cursor-not-allowed" : "bg-purple-500 text-gray-100 hover:bg-purple-600"} duration-300`}
                     disabled={currentPage === 1}
                 >
                      <IoIosArrowBack className="mr-2"/> Previous
@@ -236,10 +269,10 @@ const CodeSnippets = ({ isUserActive }) => {
                 {/* Next Button */}
                 <button
                     onClick={() => paginate(currentPage + 1)}
-                    className="px-3 py-1 mx-1 rounded-md flex flex-row items-center bg-purple-500 text-gray-100"
+                    className={`px-3 py-1 mx-1 rounded-md flex flex-row items-center ${currentPage === totalPages ? "bg-gray-400 text-gray-500 cursor-not-allowed" : "bg-purple-500 text-gray-100 hover:bg-purple-600"} duration-300`}
                     disabled={currentPage === totalPages}
                 >
-                    Next <IoIosArrowForward className="ml-2"/> 
+                    Next <IoIosArrowForward className="ml-2"/>
                 </button>
             </div>
         </div>

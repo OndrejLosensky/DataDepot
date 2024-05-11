@@ -113,6 +113,9 @@ const Dashboard = ({isUserActive}) => {
               <button onClick={handleLogout}>Confirm</button>
             </div>
           )}
+
+            <button onClick={() => handleComponentClick('Lab')} className='absolute bottom-4 right-4 p-2 bg-purple-600 rounded-full hover:bg-purple-700 duration-200'> <ImLab className='w-4 h-4 text-gray-50'/> </button>
+
             <div className={`shadow-lg h-screen border-r-[0.3px] border-gray-600 sticky left-0 top-0 justify-between bg-[#2d2f36] text-gray-200 flex flex-col duration-200 ${sidebarVisible ? 'w-[15%]' : 'w-[5%]'}`}>
             {/* Toggle sidebar button */}
             <div className={`tooltip absolute ${sidebarVisible ? 'translate-x-0':'translate-x-0'} duration-300 right-0 top-1/2 tooltip-right`} data-tip={toolTipData}>
@@ -136,8 +139,8 @@ const Dashboard = ({isUserActive}) => {
                 <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md hover:text-purple-200 duration-300 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'CodeSnippets' ? 'bg-purple-500 text-purple-200 hover:text-purple-100' : ''}`} onClick={() => handleComponentClick('CodeSnippets')}> <FaCode className={`${sidebarVisible ? '':'w-5 h-12'}`} /> {sidebarVisible && 'Coding'} </button>
                 <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md hover:text-purple-200 duration-300 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Notes' ? 'bg-purple-500 text-purple-200 hover:text-purple-100' : ''}`} onClick={() => handleComponentClick('Notes')}> <FaRegStickyNote className={`${sidebarVisible ? '':'w-5 h-12'}`} /> {sidebarVisible && 'Notes'} </button>
                 {/*<button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md hover:text-purple-200 duration-300 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Users' ? 'bg-purple-500 text-purple-200 hover:text-purple-100' : ''}`} onClick={() => handleComponentClick('Users')}> <FaUsersCog className={`${sidebarVisible ? '':'w-5 h-12'}`} /> {sidebarVisible && 'Users'} </button>*/}
-                <button className={`${sidebarVisible ? 'px-4 py-2  mx-4':'justify-center mx-4'}  rounded-md hover:text-purple-200 duration-300 text-[#DFDFDF] flex flex-row items-center gap-2 text-md font-semibold cursor-pointer ${activeComponent === 'Lab' ? 'bg-purple-500 text-purple-200 hover:text-purple-100' : ''}`} onClick={() => handleComponentClick('Lab')}> <ImLab className={`${sidebarVisible ? '':'w-5 h-12'}`} /> {sidebarVisible && 'Lab'} </button>
               </div>
+
             </div>
             <div className='w-full flex flex-col space-y-2 mb-6'>
               {sidebarVisible ?  (<ProgressBar />) : (<ProgressBarRadial/>)}
@@ -168,13 +171,13 @@ const Dashboard = ({isUserActive}) => {
             </dialog>
 
 
-            <div className={`m-4 ${sidebarVisible ? 'w-[85%]':'w-[95%]'}`}>
+            <div className={`m-4 font-sora ${sidebarVisible ? 'w-[85%]':'w-[95%]'}`}>
               {activeComponent === 'Files' && <Files isUserActive={isUserActive} />}
               {activeComponent === 'Settings' && <Settings setActiveComponent={setActiveComponent} />}
               {activeComponent === 'Analytics' && <Analytics isUserActive={isUserActive}/>}
               {activeComponent === 'PasswordManager' && <PasswordManager isUserActive={isUserActive}/>}
               {activeComponent === 'Notes' && <Notes isUserActive={isUserActive}/>}
-              {activeComponent === 'getStarted' && <GetStarted/>}
+              {activeComponent === 'getStarted' && <GetStarted  setActiveComponent={setActiveComponent}/>}
               {activeComponent === 'Lab' && <Lab/>}
               {activeComponent === 'CodeSnippets' && <CodeSnippets isUserActive={isUserActive}/>}
 

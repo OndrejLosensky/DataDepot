@@ -133,7 +133,7 @@ const PasswordGraph = () => {
     return (
         <div className='bg-[#20263d] h-full rounded-lg flex flex-row shadow-lg border border-gray-500'>
             <div className='flex flex-col w-2/3'>
-                <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Snippets</h1>
+                <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Passwords</h1>
                 <div className='flex pl-4'>
                     <PercentageCount onUpdatePercentage={updatePercentage} />
                 </div>
