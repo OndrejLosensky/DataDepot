@@ -213,3 +213,23 @@ I have also been working on my personal portfolio which I plan to release in the
 Spent hours today: `2 Hours 43 mins`
 
 --- 
+
+## Day 18 - 11.5. 2024
+Today i tried to enhance UI everywhere but got no idea how to get it better. I changed some layouts, finished the Notes graph, changed some of those cards, removed pagination for password folder and added Text to display that feature **DataDefender** is coming soon. Then i removed Lab from the sidebar and made only small button in the bottom right corner. Its just for me to work with. 
+
+Also the GetStarted page has now functioning buttons to move directly to desired section.
+
+The app has a long way to go, but the progress starts to be insane. I would like to change from JavaScript to TypeScript soon.
+
+### Also i finally thought about limits:
+* Folders: 250 (combined with files and passwords)
+* Passwords: 3000 (inside folders or not)
+* Notes: 750 single notes. 
+* Code snippets: 1000 max
+
+
+Later in the day I have been working on my personal web portfolio!
+
+Spent hours today: `3 hours 12 mins`
+
+--- 
