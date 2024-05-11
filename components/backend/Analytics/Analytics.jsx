@@ -17,7 +17,7 @@ import { FaLock } from "react-icons/fa";
 import { BsJournalCode } from "react-icons/bs";
 import { LuFolderTree } from "react-icons/lu";
 import { FaCode, FaFolderTree } from 'react-icons/fa6';
-
+import NotesGraph from '../Lab/NotesGraph';
 
 const Overview = ({ isUserActive}) => {
     const passwordsChartRef = useRef(null);
@@ -188,38 +188,26 @@ const Overview = ({ isUserActive}) => {
         {/* Charts, statistics etc */}
         <div className='w-full space-y-6 h-[90%] flex flex-col overflow-hidden'>
             {/* Top level */}
-            <div className='flex flex-row w-full grid-cols-4 space-x-6 justify-center h-[20%]'>
-              {/* 
-                <div className='bg-[#20263d] w-1/4 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 
-                    <div className='flex flex-col w-1/2'>
-                        <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Notes</h1>
-                        <div className='flex flex-row items-end'>
-                            <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>0</p>
-                            <p className='text-sm text-red-500 mb-1 ml-1 flex flex-row items-center'> <GoArrowUpRight className='mr-1'/> +0% </p>
-                        </div>
-                    </div>
+            <div className='flex flex-row w-full justify-between space-x-6 h-[20%]'>
+
+               
+                <div className='w-1/3'>
+                  <NotesGraph/>
                 </div>
-                */}
-            
 
-               <SnippetGraph/>
-
-               <PasswordGraph/>
-
-               <FolderGraph/>
-                {/*  
-                <div className='bg-[#20263d]  w-1/3 h-full rounded-lg flex flex-row shadow-lg border border-gray-500'> 
-         
-                    <div className='flex flex-col w-1/2'>
-                        <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Folders stored</h1>
-                        <div className='flex flex-row items-end'>
-                            <p className='text-4xl pt-2 ml-4 font-mono font-bold text-purple-500'>{totalCountFolders}</p>
-                            <p className='text-sm text-red-500 mb-1 ml-1 flex flex-row items-center'> <GoArrowDownLeft className='mr-1'/> +100% </p>
-                        </div>
-                    </div>
-                    <canvas className='p-6  w-1/2' ref={foldersChartRef}></canvas>
+                <div className='w-1/3'>
+                  <SnippetGraph/>
                 </div>
-                */}
+
+                <div className='w-1/3'>
+                  <PasswordGraph/>
+                </div>
+
+              
+
+              
+
+
             </div>
             {/* Middle level */}
             <div className='flex flex-row space-x-6 h-[35%]'>
@@ -245,11 +233,9 @@ const Overview = ({ isUserActive}) => {
                         </div>
                     </div>
                 </div>
+
                 <div className='bg-[#20263d] flex flex-col items-center justify-center w-1/3 h-full rounded-lg shadow-lg border border-gray-500'>
-                    <h2 className='text-xl  text-gray-100 pl-4 p-2'> App capacity</h2>
-                    <div className='h-3/4 w-3/4'>
-                      <PieChart data={data} />
-                    </div>
+                    <FolderGraph/>
                 </div>
 
             </div>
@@ -314,7 +300,10 @@ const Overview = ({ isUserActive}) => {
                 </div>
 
               <div className='w-1/3  bg-[#20263d] h-full  justify-center items-center flex flex-col rounded-lg shadow-lg border border-gray-500 overflow-y-auto'>
-                      <h2 className='text-3xl font-semibold text-gray-200 p-4'> User Activity</h2>
+                    <h2 className='text-xl  text-gray-100 pl-4 p-2'> App capacity</h2>
+                    <div className='h-3/4 w-3/4'>
+                      <PieChart data={data} />
+                    </div>
               </div>
     
             </div>

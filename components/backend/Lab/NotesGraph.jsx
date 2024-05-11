@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Chart from 'chart.js/auto';
 import axios from 'axios';
 import { HiMiniArrowTrendingUp, HiMiniArrowTrendingDown } from "react-icons/hi2";
-import PercentageCount from "./PercentageCount";
+import PercentageNotesCount from "./PercentageNotesCount";
 
 const PasswordGraph = () => {
     const passwordsChartRef = useRef(null);
@@ -23,7 +23,7 @@ const PasswordGraph = () => {
 
     const fetchTotalPasswords = async () => {
         try {
-            const response = await axios.get('/api/totalPasswords');
+            const response = await axios.get('/api/totalNotes');
             const currentCount = response.data.totalCount;
             setTotalCountPasswords(currentCount);
             const change = currentCount - prevCount;
@@ -37,7 +37,7 @@ const PasswordGraph = () => {
 
     const fetchPasswordData = async () => {
         try {
-            const response = await axios.get('/api/passwords');
+            const response = await axios.get('/api/notes');
             setPasswordData(response.data);
         } catch (error) {
             console.error(error);
@@ -133,12 +133,12 @@ const PasswordGraph = () => {
     return (
         <div className='bg-[#20263d] h-full rounded-lg flex flex-row shadow-lg border border-gray-500'>
             <div className='flex flex-col w-2/3'>
-                <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Snippets</h1>
-                <div className='flex pl-4'>
-                    <PercentageCount onUpdatePercentage={updatePercentage} />
+                <h1 className='pl-4 pt-4 text-xl text-gray-200 font-semibold'> Notes</h1>
+                <div className='pl-4 flex'>
+                    <PercentageNotesCount onUpdatePercentage={updatePercentage} />
                 </div>
             </div>
-            <canvas className='p-8 w-1/3' ref={passwordsChartRef}></canvas>
+            <canvas className='p-8 w-1/5' ref={passwordsChartRef}></canvas>
         </div>
     );
 }
